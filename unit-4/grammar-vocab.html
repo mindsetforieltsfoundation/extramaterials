@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Unit 4 — Grammar & Vocab | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css?v=202607021500">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟦 Unit 4 — Grammar &amp; Vocab (Holidays)</h1>
+  <a href="../index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_4_grammar___vocab.docx</footer>
+
+<script src="scores.js?v=202607021500"></script>
+<script src="app.js?v=202607021500"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Unit 4 - Grammar & Vocab";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise"; box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Types of holiday", "Điền đúng loại kỳ nghỉ (gợi ý: a beach holiday, a city break, a family holiday, a language exchange, an adventure holiday).");
+  buildFillBlank(box, {
+    exerciseId: "u4gv-1", meta: { module: MOD, title: "Ex.1 Types of holiday" }, prefixLabel: true,
+    lines: [
+      { text: "You can do lots of activities, like cycling and horse riding, on ____.", answers: ["an adventure holiday"] },
+      { text: "My friends want to go on ____, but I don't enjoy relaxing by the sea.", answers: ["a beach holiday"] },
+      { text: "I went on ____ to Paris. It was interesting to visit museums.", answers: ["a city break"] },
+      { text: "My sister is going on ____ and will stay with a family in Italy.", answers: ["a language exchange"] },
+      { text: "I went on ____ with my parents and we camped by a lake.", answers: ["a family holiday"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "City break, Adventure, Beach or Language exchange?", "Xếp mỗi hoạt động vào đúng cột.");
+  buildSort2(box, {
+    exerciseId: "u4gv-2", meta: { module: MOD, title: "Ex.2 Holiday activities" },
+    columns: ["city break", "adventure holiday"],
+    items: [
+      { text: "go on cultural visits", col: "city break" }, { text: "see local attractions", col: "city break" },
+      { text: "see famous buildings", col: "city break" }, { text: "try local food", col: "city break" },
+      { text: "go mountain climbing", col: "adventure holiday" }, { text: "go on cycling tours", col: "adventure holiday" },
+      { text: "go horse riding", col: "adventure holiday" }, { text: "visit beach resorts", col: "adventure holiday" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "Holiday activities — complete the sentences", "Điền đúng cụm động từ (gợi ý: go shopping, go horse riding, visit local attractions, go on a beach holiday, go on day trips, stay with a host family, go on a cycling tour, go mountain climbing, go on a cultural trip, visit water parks).");
+  buildFillBlank(box, {
+    exerciseId: "u4gv-3", meta: { module: MOD, title: "Ex.3 Complete sentences" }, prefixLabel: true,
+    lines: [
+      { text: "We often ____ in the airport where you can buy things cheaper.", answers: ["go shopping"] },
+      { text: "When I visit my aunt's farm, we often ____.", answers: ["go horse riding"] },
+      { text: "You can ____ like an old castle in my town.", answers: ["visit local attractions"] },
+      { text: "Families like to ____ when the weather is hot.", answers: ["visit water parks"] },
+      { text: "From the city, you can ____ by coach to the countryside.", answers: ["go on day trips"] },
+      { text: "It's often cheaper to ____ than in a hotel.", answers: ["stay with a host family"] },
+      { text: "If you're fit, a good way to see a country is to ____.", answers: ["go on a cycling tour"] },
+      { text: "You shouldn't ____ alone, it can be dangerous.", answers: ["go mountain climbing"] },
+      { text: "When you ____ to a city, you can see museums and galleries.", answers: ["go on a cultural trip"] },
+      { text: "If you ____, you can enjoy the sea and sports like surfing.", answers: ["go on a beach holiday"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "Describing holidays", "Điền đúng tính từ (gợi ý: boring, cultural, delicious, famous, fun, interesting, local, natural, popular, traditional).");
+  buildFillBlank(box, {
+    exerciseId: "u4gv-4", meta: { module: MOD, title: "Ex.4 Adjectives" }, prefixLabel: true,
+    lines: [
+      { text: "The USA is a very ____ country to visit.", answers: ["popular"] },
+      { text: "It is more ____ to go on holiday with friends than family.", answers: ["fun"] },
+      { text: "I prefer to see animals in their ____ environment.", answers: ["natural"] },
+      { text: "You can learn about the ____ area where your host family lives.", answers: ["local"] },
+      { text: "A lot of people like the beach, but I find it ____.", answers: ["boring"] },
+      { text: "I prefer to do ____ activities like visiting museums.", answers: ["cultural"] },
+      { text: "Barcelona has a lot of ____ buildings designed by Gaudí.", answers: ["famous"] },
+      { text: "On the last night, I ate the most ____ meal.", answers: ["delicious"] },
+      { text: "The Eiffel Tower is the most ____ building in Paris.", answers: ["famous"] },
+      { text: "I love to eat ____ food when I go on holiday.", answers: ["traditional"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "Choose the correct answer — conversation", "Chọn đáp án đúng để hoàn thành hội thoại.");
+  buildMCQ(box, {
+    exerciseId: "u4gv-5", meta: { module: MOD, title: "Ex.5 Conversation" },
+    questions: [
+      { text: "____ going on holiday?", options: ["Do you like", "You like"], answer: "Do you like" },
+      { text: "Yes, ____. I always have a great time.", options: ["I do", "I did"], answer: "I do" },
+      { text: "Where ____ go?", options: ["do you usually", "did you usually"], answer: "do you usually" },
+      { text: "Last summer we ____ on a city break.", options: ["go", "went"], answer: "went" },
+      { text: "What ____ there?", options: ["do you do", "did you do"], answer: "did you do" },
+      { text: "Because my parents ____ the theatre...", options: ["enjoy", "enjoys"], answer: "enjoy" },
+      { text: "____ good?", options: ["Is it", "Was it"], answer: "Was it" },
+      { text: "This one ____ boring at all.", options: ["didn't", "wasn't"], answer: "wasn't" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "Complete Sarah's email", "Chia đúng động từ trong ngoặc (thì quá khứ đơn).");
+  buildFillBlank(box, {
+    exerciseId: "u4gv-6", meta: { module: MOD, title: "Ex.6 Sarah's email" }, prefixLabel: true,
+    lines: [
+      { text: "I ____ (go) to Germany with my family last February.", answers: ["went"] },
+      { text: "My family ____ (not like) beach holidays.", answers: ["didn't like"] },
+      { text: "Usually on holiday, I ____ (enjoy) visiting museums.", answers: ["enjoy"] },
+      { text: "We ____ (not have) time to see everything.", answers: ["didn't have"] },
+      { text: "We just ____ (see) the main ones.", answers: ["saw"] },
+      { text: "I think they ____ (be) both very interesting monuments.", answers: ["were"] },
+      { text: "I ____ (learn) about them at school last year.", answers: ["learned", "learnt"] },
+      { text: "We ____ (feel) cold a lot of the time.", answers: ["felt"] },
+      { text: "It ____ (be) the middle of winter.", answers: ["was"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "Match sentence halves", "Nối nửa đầu câu với nửa sau đúng.");
+  buildMatching(box, {
+    exerciseId: "u4gv-7", meta: { module: MOD, title: "Ex.7 Sentence halves" },
+    leftLabel: "Bắt đầu", rightLabel: "Kết thúc",
+    pairs: [
+      { left: "I go to French lessons", right: "twice a week." },
+      { left: "The weather in Stockholm", right: "wasn't very nice." },
+      { left: "I'm not good at sport,", right: "but I enjoy hiking and horse riding." },
+      { left: "Did you decide to", right: "stay with a host family?" },
+      { left: "Are you good", right: "at sailing?" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(8, "Choose the best word", "Chọn 'because' hoặc 'so' cho đúng.");
+  buildMCQ(box, {
+    exerciseId: "u4gv-8", meta: { module: MOD, title: "Ex.8 Because/So" },
+    questions: [
+      { text: "____ we enjoy kayaking, we decided to go on an adventure holiday.", options: ["As", "So"], answer: "As" },
+      { text: "The host family spoke English well ____ I wasn't worried.", options: ["because", "so"], answer: "because" },
+      { text: "We prefer city breaks ____ we find beaches boring.", options: ["because", "so"], answer: "because" },
+      { text: "____ my parents enjoy traditional food, they went on a food tour.", options: ["As", "So"], answer: "As" },
+    ],
+  });
+}
+</script>
+</body>
+</html>

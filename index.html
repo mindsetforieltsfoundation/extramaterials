@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=202607021451">
+<link rel="stylesheet" href="style.css?v=202607021500">
 </head>
 <body>
 <div class="dash-hero">
@@ -30,7 +30,7 @@
 </main>
 <footer class="page-footer">Điểm được lưu ngay trên trình duyệt này (localStorage) — mỗi học sinh nên dùng máy/trình duyệt riêng.</footer>
 
-<script src="scores.js?v=202607021451"></script>
+<script src="scores.js?v=202607021500"></script>
 <script>
 const MODULE_COLORS = {
   gv: { c: "#2F7A78", soft: "#EAF3F2" },
@@ -79,7 +79,18 @@ const UNITS = [
         titles: ["Activities","College clubs","Rachel's letter","Rachel comprehension","Word order","Susie's adjectives","Susie's letter parts","Writing"] },
     ],
   },
-  { key: "u4", name: "Unit 4", available: false, modules: [] },
+  { key: "u4", name: "Unit 4 — Holidays / Personality", available: true,
+    modules: [
+      { key: "gv", name: "Grammar & Vocab", file: "unit-4/grammar-vocab.html", prefix: "u4gv",
+        titles: ["Types of holiday","Holiday activities sort","Complete sentences","Adjectives","Conversation","Sarah's email","Sentence halves","Because/So"] },
+      { key: "lb", name: "Language Builder", file: "unit-4/language-builder.html", prefix: "u4lb",
+        titles: ["Free time nouns","Verb + -ing","Sentence halves","Adjectives","William's friends","Phrases","True/False","Word order","Correct mistakes","Writing"] },
+      { key: "ls", name: "Listening & Speaking", file: "unit-4/listening-speaking.html", prefix: "u4ls",
+        titles: ["Kinds of holiday","Activities","Simple present/past","John's reasons","Cristina's holiday","-ed pronunciation","Word order","Correct word","So/Because","Speaking"] },
+      { key: "rw", name: "Reading & Writing", file: "unit-4/reading-writing.html", prefix: "u4rw",
+        titles: ["Places","Nature Museum","Burj Khalifa verbs","Tom's postcard","Tivoli headings","Word order","Prepositions","Sentence halves","Burj Khalifa paragraphs","Writing"] },
+    ],
+  },
   { key: "u5", name: "Unit 5", available: false, modules: [] },
   { key: "u6", name: "Unit 6", available: false, modules: [] },
   { key: "u7", name: "Unit 7", available: false, modules: [] },

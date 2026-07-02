@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Unit 4 — Reading & Writing | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css?v=202607021500">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟪 Unit 4 — Reading &amp; Writing</h1>
+  <a href="../index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_4_reading___writing.docx</footer>
+
+<script src="scores.js?v=202607021500"></script>
+<script src="app.js?v=202607021500"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Unit 4 - Reading & Writing";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise"; box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Tourist places", "Nối tên địa điểm với định nghĩa.");
+  buildMatching(box, {
+    exerciseId: "u4rw-1", meta: { module: MOD, title: "Ex.1 Places" },
+    leftLabel: "Địa điểm", rightLabel: "Định nghĩa",
+    pairs: [
+      { left: "airport", right: "where planes take off and land" },
+      { left: "beach", right: "sandy area next to the sea" },
+      { left: "castle", right: "old building with towers and walls" },
+      { left: "fun park", right: "place with rides and games" },
+      { left: "hotel", right: "place where travellers stay overnight" },
+      { left: "museum", right: "building showing historical objects" },
+      { left: "restaurant", right: "place to eat a meal" },
+      { left: "skyscraper", right: "very tall modern building" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "The Nature Museum", "Đọc thông tin bảo tàng rồi điền đúng.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.85rem;margin-bottom:16px;";
+  p.innerHTML = "At the Nature Museum, visitors can play with the animal displays, learn how they eat, and take photos. From May-September, on the 2nd floor, visitors can play with a model dinosaur. Visitors can take a group tour or explore with a mobile app. Café on the 3rd floor. Shop on the ground floor. Open 9am-5pm Mon-Fri, 10am-4pm weekends. Tickets: £6 adults, £3 children, family ticket (2+2) £12. Free first Saturday of the month.";
+  box.appendChild(p);
+  buildFillBlank(box, {
+    exerciseId: "u4rw-2", meta: { module: MOD, title: "Ex.2 Nature Museum" }, prefixLabel: true,
+    lines: [
+      { text: "Visitors are welcome to take ____.", answers: ["photos"] },
+      { text: "From May-Sept, there's a model of a ____.", answers: ["dinosaur"] },
+      { text: "Visitors can take a tour in a ____ or on their own.", answers: ["group"] },
+      { text: "The café is on the ____ floor.", answers: ["third", "3rd"] },
+      { text: "The museum closes at ____ at weekends.", answers: ["4:00 p.m.", "4pm", "4:00pm"] },
+      { text: "A family ticket costs £____.", answers: ["12"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "The Burj Khalifa — choose the correct verb", "Chọn đúng động từ.");
+  buildMCQ(box, {
+    exerciseId: "u4rw-3", meta: { module: MOD, title: "Ex.3 Burj Khalifa verbs" },
+    questions: [
+      { text: "It is ____ of metal and glass.", options: ["make", "take", "made"], answer: "made" },
+      { text: "Many people ____ the Burj Khalifa every day.", options: ["travel", "visit"], answer: "visit" },
+      { text: "Visitors can ____ there for the night.", options: ["leave", "stay"], answer: "stay" },
+      { text: "Many people live or ____ in the building.", options: ["visit", "work"], answer: "work" },
+      { text: "People ____ their photos on the internet.", options: ["put", "take"], answer: "put" },
+      { text: "Many people ____ the photos and want to visit.", options: ["see", "watch"], answer: "see" },
+      { text: "If you ____ to visit Dubai...", options: ["like", "want"], answer: "want" },
+      { text: "...you should definitely ____ to the Burj Khalifa.", options: ["go", "see"], answer: "go" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "Tom's postcard", "Đọc bưu thiếp rồi chọn True/False.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.85rem;margin-bottom:16px;";
+  p.innerHTML = "Hello from Coconut Island! Having a brilliant time relaxing on the beach with my aunt, uncle and brother (parents stayed home to work). Beautiful white sand beach. Went swimming this morning — water wasn't too cold. Yesterday morning tried surfing (brother much better than me, still enjoyed it). Favourite activity: boat trip yesterday afternoon — saw dolphins and colourful fish. Yesterday evening: dinner at a restaurant, ate fish — usually don't like fish but this was delicious!";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "u4rw-4", meta: { module: MOD, title: "Ex.4 Tom's postcard" },
+    questions: [
+      { text: "Tom is on holiday with his parents.", options: ["True", "False"], answer: "False" },
+      { text: "The water was very cold when Tom went swimming.", options: ["True", "False"], answer: "False" },
+      { text: "Tom did some activities on the beach yesterday.", options: ["True", "False"], answer: "True" },
+      { text: "Tom's brother was good at surfing.", options: ["True", "False"], answer: "True" },
+      { text: "Tom's favourite activity was surfing.", options: ["True", "False"], answer: "False" },
+      { text: "Tom didn't like the fish at the restaurant.", options: ["True", "False"], answer: "False" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "Tivoli Gardens", "Đọc bài về công viên Tivoli Gardens rồi chọn đúng tiêu đề cho mỗi đoạn.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.82rem;margin-bottom:16px;";
+  p.innerHTML = "<b>A</b> Tivoli Gardens is a fun park in Copenhagen, built in 1843. Famous visitors included Hans Christian Andersen and Walt Disney. Still one of the most popular places for tourists.<br><b>B</b> Famous for rides — the oldest from 1914. 'Vertigo' travels 100km/h, won Best Ride 2014. Many restaurants and beautiful gardens.<br><b>C</b> Something for everyone — old and new rides, scary and relaxing. Popular with adults and children alike. Coloured lights at night make it relaxing.<br><b>D</b> Open all year: spring flowers, summer dance shows (open late), Halloween decorations, winter lights and market, New Year fireworks.<br><b>E</b> Two ticket types: pay for gardens + rides separately, or one ticket including rides. Copenhagen visitor card = free entry. Buy at gardens or online.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "u4rw-5", meta: { module: MOD, title: "Ex.5 Tivoli headings" },
+    questions: [
+      { text: "Paragraph A heading:", options: ["What is Tivoli Gardens?", "Things to do", "How to visit"], answer: "What is Tivoli Gardens?" },
+      { text: "Paragraph B heading:", options: ["Why is it so popular?", "Things to do", "Different times of year"], answer: "Things to do" },
+      { text: "Paragraph C heading:", options: ["Why is it so popular?", "How to visit", "What is Tivoli Gardens?"], answer: "Why is it so popular?" },
+      { text: "Paragraph D heading:", options: ["Different times of year", "How to visit", "Things to do"], answer: "Different times of year" },
+      { text: "Paragraph E heading:", options: ["How to visit", "Things to do", "Why is it so popular?"], answer: "How to visit" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "Put the words in order", "Bấm các từ theo đúng thứ tự.");
+  buildWordOrder(box, {
+    exerciseId: "u4rw-6", meta: { module: MOD, title: "Ex.6 Word order" },
+    items: [
+      { words: ["The", "Empire", "State", "Building", "is", "a", "famous", "building", "in", "New york"], answer: "The Empire State Building is a famous building in New york" },
+      { words: ["The", "building", "is", "made", "of", "wood"], answer: "The building is made of wood" },
+      { words: ["It", "is an", "very old", "place", "important", "for", "tourists"], answer: "It is an very old place important for tourists" },
+      { words: ["There", "are", "many", "people", "where", "can", "eat", "restaurants"], answer: "There are many people where can eat restaurants" },
+      { words: ["There", "is", "a", "shop", "where", "people", "can", "buy", "presents"], answer: "There is a shop where people can buy presents" },
+      { words: ["People", "can", "buy", "tickets", "on", "the", "internet"], answer: "People can buy tickets on the internet" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "Choose the correct preposition", "Chọn đúng giới từ.");
+  buildMCQ(box, {
+    exerciseId: "u4rw-7", meta: { module: MOD, title: "Ex.7 Prepositions" },
+    questions: [
+      { text: "Most people like to relax ____ the beach.", options: ["in", "on", "to"], answer: "on" },
+      { text: "You can swim ____ the sea every day.", options: ["at", "in", "on"], answer: "in" },
+      { text: "You cannot take photos ____ this museum.", options: ["in", "on", "to"], answer: "in" },
+      { text: "You can eat ____ a restaurant every night.", options: ["in", "on", "to"], answer: "in" },
+      { text: "People can take pictures ____ the top of a tall building.", options: ["at", "in", "to"], answer: "at" },
+      { text: "We went ____ an amazing boat trip.", options: ["in", "on", "to"], answer: "on" },
+      { text: "The gardens look beautiful ____ the summer.", options: ["at", "in", "on"], answer: "in" },
+      { text: "The building is made ____ wood.", options: ["in", "of", "to"], answer: "of" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(8, "Match sentence halves", "Nối nửa đầu câu với nửa sau đúng.");
+  buildMatching(box, {
+    exerciseId: "u4rw-8", meta: { module: MOD, title: "Ex.8 Sentence halves" },
+    leftLabel: "Bắt đầu", rightLabel: "Kết thúc",
+    pairs: [
+      { left: "The castle is over", right: "a thousand years old." },
+      { left: "The hotel has", right: "ten floors and 100 rooms." },
+      { left: "Over a million people", right: "visit the museum every year." },
+      { left: "In summer", right: "the gardens are open until late." },
+      { left: "The fun park is close to the", right: "city centre." },
+      { left: "The building is made of", right: "glass and metal." },
+      { left: "People can have lunch", right: "in the museum café." },
+      { left: "The Royal Palace is the", right: "most popular place for tourists." },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(9, "The Burj Khalifa — match information", "Nối thông tin với đúng đoạn (A hoặc B).");
+  buildMCQ(box, {
+    exerciseId: "u4rw-9", meta: { module: MOD, title: "Ex.9 Burj Khalifa paragraphs" },
+    questions: [
+      { text: "Where to eat.", options: ["A", "B"], answer: "A" },
+      { text: "Why the building is important.", options: ["A", "B"], answer: "B" },
+      { text: "People of different ages like visiting.", options: ["A", "B"], answer: "B" },
+      { text: "A place to stay.", options: ["A", "B"], answer: "A" },
+      { text: "How some people find out about the building.", options: ["A", "B"], answer: "B" },
+      { text: "A description of the building.", options: ["A", "B"], answer: "A" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(10, "Writing — An important tourist place", "Viết mô tả: loại địa điểm, vị trí, hoạt động, tại sao quan trọng.");
+  const wrap = document.createElement("div");
+  wrap.innerHTML = `<textarea rows="6" style="width:100%;border:1.5px solid var(--border);border-radius:8px;padding:10px;font-family:inherit;font-size:.9rem;" placeholder="This place is..."></textarea>
+  <p style="font-size:.8rem;color:#6b7280;margin-top:8px;">✏️ Bài viết tự do — giáo viên xem trực tiếp.</p>`;
+  box.appendChild(wrap);
+}
+</script>
+</body>
+</html>

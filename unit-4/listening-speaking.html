@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Unit 4 — Listening & Speaking | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css?v=202607021500">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟨 Unit 4 — Listening &amp; Speaking</h1>
+  <a href="../index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_4_listening___speaking.docx — bài nghe chuyển thành bài đọc vì không kèm audio.</footer>
+
+<script src="scores.js?v=202607021500"></script>
+<script src="app.js?v=202607021500"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Unit 4 - Listening & Speaking";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise"; box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Kinds of holiday", "Nối mô tả với đúng loại kỳ nghỉ.");
+  buildMatching(box, {
+    exerciseId: "u4ls-1", meta: { module: MOD, title: "Ex.1 Kinds of holiday" },
+    leftLabel: "Mô tả", rightLabel: "Loại kỳ nghỉ",
+    pairs: [
+      { left: "A few days visiting museums and famous buildings in a capital city", right: "city break" },
+      { left: "Staying with a family abroad to practise the language", right: "language exchange" },
+      { left: "A week on a boat, learning to sail", right: "sailing holiday" },
+      { left: "A safari trip to see lions and elephants", right: "wildlife holiday" },
+      { left: "Mountain climbing and white water rafting", right: "adventure holiday" },
+      { left: "Relaxing by the sea with sun and swimming", right: "beach holiday" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "Holiday activities", "Nối hoạt động với định nghĩa.");
+  buildMatching(box, {
+    exerciseId: "u4ls-2", meta: { module: MOD, title: "Ex.2 Activities" },
+    leftLabel: "Hoạt động", rightLabel: "Định nghĩa",
+    pairs: [
+      { left: "sunbathing", right: "lying in the sun to get a tan" },
+      { left: "sightseeing", right: "visiting famous places and buildings" },
+      { left: "snorkelling", right: "swimming underwater to look at fish" },
+      { left: "trekking", right: "walking long distances, often in mountains" },
+      { left: "souvenir shopping", right: "buying gifts to remember your trip" },
+      { left: "camping", right: "sleeping outdoors in a tent" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "Present simple or past simple?", "Chọn câu đúng ngữ pháp cho từng tình huống.");
+  buildMCQ(box, {
+    exerciseId: "u4ls-3", meta: { module: MOD, title: "Ex.3 Simple present/past" },
+    questions: [
+      { text: "Nói về sở thích chung, đang là sinh viên nghệ thuật hiện tại:", options: ["I study art in Greece.", "I studied art in Greece."], answer: "I study art in Greece." },
+      { text: "Nói chung về khoá học mùa hè (sự thật luôn đúng):", options: ["The students improve their language skills.", "The students improved their language skills."], answer: "The students improve their language skills." },
+      { text: "Nói về thói quen chung khi đi du lịch:", options: ["We sometimes stay in a hotel.", "We sometimes stayed in a hotel."], answer: "We sometimes stay in a hotel." },
+      { text: "Kể lại về chuyến đi cụ thể đã xảy ra:", options: ["I usually try traditional food.", "I usually tried traditional food."], answer: "I usually tried traditional food." },
+      { text: "Nói về thói quen chung của một nhóm bạn:", options: ["They always travel in a group.", "They always travelled in a group."], answer: "They always travel in a group." },
+      { text: "Kể một chuyến đi cụ thể trong quá khứ:", options: ["They like wildlife holidays in Africa.", "They liked wildlife holidays in Africa."], answer: "They liked wildlife holidays in Africa." },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "John's travels (bài đọc thay bài nghe)", "Đọc các đoạn về lý do John đi từng nước rồi nối đúng cặp.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.82rem;margin-bottom:16px;";
+  p.innerHTML = "Turkey: food is very good, loves trying traditional dishes. Morocco: went last year, main reason his grandmother lives there. Italy: went to study Art History (famous painters). Thailand: weather fantastic, favourite holiday type is beach + swimming. Russia: went on a language exchange, stayed with a host family, Russian improved. Spain: went for mountain climbing, one of the best places in Europe.";
+  box.appendChild(p);
+  buildMatching(box, {
+    exerciseId: "u4ls-4", meta: { module: MOD, title: "Ex.4 John's reasons" },
+    leftLabel: "Nước", rightLabel: "Lý do",
+    pairs: [
+      { left: "Turkey", right: "so he could try the food." },
+      { left: "Morocco", right: "because his grandmother lives there." },
+      { left: "Italy", right: "so he could study art." },
+      { left: "Thailand", right: "because he loves beach holidays." },
+      { left: "Russia", right: "so he could improve his language skills." },
+      { left: "Spain", right: "because he loves mountain climbing." },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "Cristina's holiday (bài đọc thay bài nghe)", "Đọc bài rồi chọn đáp án đúng.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.85rem;margin-bottom:16px;";
+  p.innerHTML = "Cristina usually goes on beach holidays, but last year (less time) they had a short city break to Paris. They stayed in a small guesthouse (cheap, but far from centre). Day 1: visited the Louvre museum (waited over an hour, but loved it). Evening: too tired for Eiffel Tower, so went to a restaurant instead — delicious traditional food, good service. Day 2: Eiffel Tower + Pompidou Centre. Day 3: day trip to Versailles by train (cheaper than car, quicker than bus). Day 4: travelled home. Cristina enjoyed her holiday — thinks Paris is a great (if expensive, not very clean) city.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "u4ls-5", meta: { module: MOD, title: "Ex.5 Cristina's holiday" },
+    questions: [
+      { text: "Cristina usually goes on", options: ["adventure holidays", "beach holidays", "sailing holidays"], answer: "beach holidays" },
+      { text: "Cristina and her friends stayed", options: ["in a guesthouse", "in a hotel", "with a family"], answer: "in a guesthouse" },
+      { text: "On the first day they visited", options: ["the Eifel Tower", "the Louvre museum", "the Pompidou Centre"], answer: "the Louvre museum" },
+      { text: "The food in the restaurant was", options: ["delicious", "not very good", "very expensive"], answer: "delicious" },
+      { text: "They went to Versailles", options: ["by bus", "by car", "by train"], answer: "by train" },
+      { text: "Cristina", options: ["didn't enjoy her holiday", "enjoyed her holiday", "wasn't sure"], answer: "enjoyed her holiday" },
+      { text: "Cristina thinks Paris is", options: ["expensive", "great", "very clean"], answer: "great" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "-ed ending pronunciation", "Chọn đúng cách phát âm đuôi -ed (/Id/, /t/, hoặc /d/).");
+  buildMCQ(box, {
+    exerciseId: "u4ls-6", meta: { module: MOD, title: "Ex.6 -ed pronunciation" },
+    questions: [
+      { text: "visited — đuôi -ed phát âm là", options: ["/Id/", "/t/", "/d/"], answer: "/Id/" },
+      { text: "walked — đuôi -ed phát âm là", options: ["/Id/", "/t/", "/d/"], answer: "/t/" },
+      { text: "stayed — đuôi -ed phát âm là", options: ["/Id/", "/t/", "/d/"], answer: "/d/" },
+      { text: "wanted — đuôi -ed phát âm là", options: ["/Id/", "/t/", "/d/"], answer: "/Id/" },
+      { text: "watched — đuôi -ed phát âm là", options: ["/Id/", "/t/", "/d/"], answer: "/t/" },
+      { text: "travelled — đuôi -ed phát âm là", options: ["/Id/", "/t/", "/d/"], answer: "/d/" },
+      { text: "decided — đuôi -ed phát âm là", options: ["/Id/", "/t/", "/d/"], answer: "/Id/" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "Put the words in order", "Bấm các từ theo đúng thứ tự.");
+  buildWordOrder(box, {
+    exerciseId: "u4ls-7", meta: { module: MOD, title: "Ex.7 Word order" },
+    items: [
+      { words: ["We", "stayed", "with", "a", "host", "family"], answer: "We stayed with a host family" },
+      { words: ["I", "went", "on", "day", "trips"], answer: "I went on day trips" },
+      { words: ["They", "visited", "water", "parks"], answer: "They visited water parks" },
+      { words: ["I", "saw", "local", "attractions"], answer: "I saw local attractions" },
+      { words: ["We", "went", "on", "a", "cycling", "tour"], answer: "We went on a cycling tour" },
+      { words: ["They", "travelled", "by", "train"], answer: "They travelled by train" },
+      { words: ["They", "went", "on", "cultural", "visits"], answer: "They went on cultural visits" },
+      { words: ["We", "visited", "museums", "and galleries"], answer: "We visited museums and galleries" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(8, "Choose the correct word", "Chọn đúng tính từ.");
+  buildMCQ(box, {
+    exerciseId: "u4ls-8", meta: { module: MOD, title: "Ex.8 Correct word" },
+    questions: [
+      { text: "I like wildlife holidays to see animals in their ____ environment.", options: ["delicious", "fun", "natural"], answer: "natural" },
+      { text: "As an architect, I visit ____ buildings like the Burj Al Arab.", options: ["easy", "famous", "long"], answer: "famous" },
+      { text: "I don't like beach holidays, going to a resort is very ____.", options: ["boring", "interesting", "short"], answer: "boring" },
+      { text: "I love China, the food is ____.", options: ["cultural", "delicious", "quick"], answer: "delicious" },
+      { text: "I enjoy museums, so I go on ____ visits.", options: ["cultural", "delicious", "difficult"], answer: "cultural" },
+      { text: "I like shopping and visiting ____ markets.", options: ["boring", "difficult", "local"], answer: "local" },
+      { text: "I think it's ____ to try traditional food.", options: ["famous", "fun", "popular"], answer: "fun" },
+      { text: "France is a very ____ country, over 50 million visitors a year.", options: ["local", "natural", "popular"], answer: "popular" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(9, "So or because?", "Điền 'so' hoặc 'because'.");
+  buildFillBlank(box, {
+    exerciseId: "u4ls-9", meta: { module: MOD, title: "Ex.9 So/Because" }, prefixLabel: true,
+    lines: [
+      { text: "I love animals ____ I often go on wildlife holidays.", answers: ["so"] },
+      { text: "We stayed in a guest house ____ hotels are expensive.", answers: ["because"] },
+      { text: "She loves sports ____ she went on an adventure holiday.", answers: ["so"] },
+      { text: "He wanted to improve his Italian ____ he went to Rome.", answers: ["so"] },
+      { text: "They love holidays by the sea ____ they stayed at a beach resort.", answers: ["so"] },
+      { text: "I went to London ____ I love visiting museums.", answers: ["because"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(10, "Speaking — Describe a holiday you liked", "Chuẩn bị nói: bạn đi đâu, làm gì, tại sao đi, tại sao thích.");
+  const wrap = document.createElement("div");
+  wrap.innerHTML = `<ul style="font-size:.88rem;color:#333;"><li>Where you went</li><li>What you did on the trip</li><li>Why you went</li><li>Why you liked it</li></ul>
+  <p style="font-size:.8rem;color:#6b7280;">🎙️ Bài nói — ghi âm và gửi riêng cho giáo viên/trợ giảng.</p>`;
+  box.appendChild(wrap);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Unit 4 — Language Builder | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css?v=202607021500">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟩 Unit 4 — Language Builder (Personality &amp; Likes)</h1>
+  <a href="../index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_4_language_builder.docx</footer>
+
+<script src="scores.js?v=202607021500"></script>
+<script src="app.js?v=202607021500"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Unit 4 - Language Builder";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise"; box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Free time nouns", "Nối hoạt động với định nghĩa.");
+  buildMatching(box, {
+    exerciseId: "u4lb-1", meta: { module: MOD, title: "Ex.1 Free time" },
+    leftLabel: "Từ vựng", rightLabel: "Định nghĩa",
+    pairs: [
+      { left: "computer games", right: "playing on a console or PC" },
+      { left: "cooking", right: "preparing food" },
+      { left: "gym", right: "a place to exercise" },
+      { left: "radio", right: "device you listen to music/news on" },
+      { left: "restaurant", right: "a place to eat out" },
+      { left: "shopping", right: "buying things in shops" },
+      { left: "walking", right: "moving on foot for exercise/leisure" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "Like/hate + -ing", "Chọn đúng dạng động từ sau like/hate/love.");
+  buildMCQ(box, {
+    exerciseId: "u4lb-2", meta: { module: MOD, title: "Ex.2 Verb + -ing" },
+    questions: [
+      { text: "He likes ____ football.", options: ["plays", "playing", "play"], answer: "playing" },
+      { text: "They hate ____ to the radio in English.", options: ["listen", "listening", "listens"], answer: "listening" },
+      { text: "I ____ reading a book at home.", options: ["loving", "loves", "love"], answer: "love" },
+      { text: "She ____ shopping in the mall.", options: ["hating", "hate", "hates"], answer: "hates" },
+      { text: "We don't like ____ sport.", options: ["do", "doing", "does"], answer: "doing" },
+      { text: "Do you like ____ for friends?", options: ["cooks", "cooking", "cook"], answer: "cooking" },
+      { text: "Don't they hate ____ for walks in bad weather?", options: ["go", "goes", "going"], answer: "going" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "Match sentence halves", "Nối nửa đầu câu với nửa sau đúng.");
+  buildMatching(box, {
+    exerciseId: "u4lb-3", meta: { module: MOD, title: "Ex.3 Sentence halves" },
+    leftLabel: "Bắt đầu", rightLabel: "Kết thúc",
+    pairs: [
+      { left: "I like going", right: "to the gym with my friends." },
+      { left: "I hate shopping", right: "for clothes." },
+      { left: "I don't like going for", right: "walks in the rain." },
+      { left: "I don't like listening", right: "to the news on the radio." },
+      { left: "I hate playing", right: "tennis." },
+      { left: "I don't like spending time", right: "surfing the internet." },
+      { left: "I love cooking", right: "dinner for my family." },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "Personality adjectives", "Điền đúng tính từ (gợi ý: boring, fit, friendly, funny, happy, interesting, lazy, sad).");
+  buildFillBlank(box, {
+    exerciseId: "u4lb-4", meta: { module: MOD, title: "Ex.4 Adjectives" }, prefixLabel: true,
+    lines: [
+      { text: "She does a lot of sport. She's very ____.", answers: ["fit"] },
+      { text: "He makes me laugh. He's really ____.", answers: ["funny"] },
+      { text: "They don't like working hard. They're ____.", answers: ["lazy"] },
+      { text: "They are always smiling. They're ____.", answers: ["happy"] },
+      { text: "She cries a lot. She's ____.", answers: ["sad"] },
+      { text: "He always tells the same stories. He's very ____.", answers: ["boring"] },
+      { text: "My teacher explains things well. She's ____.", answers: ["interesting"] },
+      { text: "The neighbours are very kind. They are very ____.", answers: ["friendly"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "William's friends", "Đọc đoạn văn rồi chọn đúng tính từ.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.85rem;margin-bottom:16px;";
+  p.innerHTML = "My best friend Eddie always makes me laugh — he's so funny. He loves playing tennis and football, and is very fit. My sister Maxine loves shopping for clothes; waiting for her is boring for me. John hates doing sport and is only happy at home reading or watching TV. Dave doesn't like working — he's very lazy. Marta loves chatting for hours online — she's very friendly.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "u4lb-5", meta: { module: MOD, title: "Ex.5 William's friends" },
+    questions: [
+      { text: "Eddie is so ____ because he makes William laugh.", options: ["boring", "funny"], answer: "funny" },
+      { text: "Eddie is very ____ because he does so much sport.", options: ["fit", "lazy"], answer: "fit" },
+      { text: "Waiting while someone shops is ____ for William.", options: ["boring", "friendly"], answer: "boring" },
+      { text: "John is only ____ at home reading or watching TV.", options: ["funny", "happy"], answer: "happy" },
+      { text: "Dave doesn't like working — he's very ____.", options: ["interesting", "lazy"], answer: "lazy" },
+      { text: "Marta is very ____ so loves chatting online.", options: ["friendly", "sad"], answer: "friendly" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "Complete with the phrases", "Điền đúng cụm động từ (gợi ý: hate doing, like going out, likes playing, loves going, loves reading, loves talking).");
+  buildFillBlank(box, {
+    exerciseId: "u4lb-6", meta: { module: MOD, title: "Ex.6 Phrases" }, prefixLabel: true,
+    lines: [
+      { text: "My best friend ____ football.", answers: ["likes playing"] },
+      { text: "Maxine ____ to the gym.", answers: ["loves going"] },
+      { text: "John and Martin ____ sport.", answers: ["hate doing"] },
+      { text: "Thomas ____ a book at home.", answers: ["loves reading"] },
+      { text: "I ____ to restaurants with my friends.", answers: ["like going out"] },
+      { text: "Marta ____ to friends on the internet.", answers: ["loves talking"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "Kyra, Lars and Rachel", "Đọc 3 hồ sơ rồi chọn True/False.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.82rem;margin-bottom:16px;";
+  p.innerHTML = "<b>Kyra</b>: from Mexico, lives in Germany, 22, student. Likes reading, playing piano, watching tennis/football on TV. Doesn't like doing sport — a bit lazy.<br><b>Lars</b>: from Sweden, 24. Likes inviting friends for dinner, loves cooking French/Italian food. Friendly, sporty and fit. Doesn't like watching TV or playing computer games.<br><b>Rachel</b>: from France, 26. Likes football, loves swimming (goes 3-4 times/week). Friends are fit too. Loves long walks and eating together in a restaurant in the evening.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "u4lb-7", meta: { module: MOD, title: "Ex.7 True/False" },
+    questions: [
+      { text: "Kyra is German.", options: ["True", "False"], answer: "False" },
+      { text: "Kyra loves playing tennis.", options: ["True", "False"], answer: "False" },
+      { text: "Kyra is lazy.", options: ["True", "False"], answer: "True" },
+      { text: "Lars is Italian.", options: ["True", "False"], answer: "False" },
+      { text: "Lars loves cooking.", options: ["True", "False"], answer: "True" },
+      { text: "Lars loves playing video games.", options: ["True", "False"], answer: "False" },
+      { text: "Rachel enjoys swimming.", options: ["True", "False"], answer: "True" },
+      { text: "Rachel's friends are fit.", options: ["True", "False"], answer: "True" },
+      { text: "Rachel loves walks with friends in the evening.", options: ["True", "False"], answer: "False", explain: "Họ đi bộ dài vào cuối tuần và ăn tối cùng nhau vào buổi tối — không phải đi bộ buổi tối." },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(8, "Put the words in order", "Bấm các từ theo đúng thứ tự.");
+  buildWordOrder(box, {
+    exerciseId: "u4lb-8", meta: { module: MOD, title: "Ex.8 Word order" },
+    items: [
+      { words: ["I", "love", "going", "to", "the", "cinema", "with", "my", "friends"], answer: "I love going to the cinema with my friends" },
+      { words: ["I", "hate", "shopping", "for", "clothes"], answer: "I hate shopping for clothes" },
+      { words: ["I", "don't", "like", "going for", "long", "walks", "in", "the park"], answer: "I don't like going for long walks in the park" },
+      { words: ["I", "like", "listening", "to", "the", "radio"], answer: "I like listening to the radio" },
+      { words: ["I", "really", "love", "chatting", "on", "the", "internet"], answer: "I really love chatting on the internet" },
+      { words: ["My", "best", "friend", "is", "a", "really", "nice", "guy"], answer: "My best friend is a really nice guy" },
+      { words: ["My", "wife", "is", "very", "friendly"], answer: "My wife is very friendly" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(9, "Correct the mistakes", "Sửa lại đúng phần bị gạch chân.");
+  buildFillBlank(box, {
+    exerciseId: "u4lb-9", meta: { module: MOD, title: "Ex.9 Correct mistakes" }, prefixLabel: true,
+    lines: [
+      { text: "I'm 22 years age. → sửa: ____", answers: ["old"] },
+      { text: "I'm German. I'm at Hamburg. → sửa: ____", answers: ["from"] },
+      { text: "I love watch football on the TV. → sửa: ____", answers: ["watching"] },
+      { text: "I don't like do sport. → sửa: ____", answers: ["doing"] },
+      { text: "I a friendly person. → sửa: ____", answers: ["am"] },
+      { text: "I hating sitting at home watching TV. → sửa: ____", answers: ["hate"] },
+      { text: "I have a good friend. His name's Mika. → ____", answers: ["correct"] },
+      { text: "She love going for walks with friends. → sửa: ____", answers: ["loves"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(10, "Writing — An important place for tourists", "Viết mô tả: loại địa điểm, vị trí, hoạt động, tại sao quan trọng.");
+  const wrap = document.createElement("div");
+  wrap.innerHTML = `<textarea rows="6" style="width:100%;border:1.5px solid var(--border);border-radius:8px;padding:10px;font-family:inherit;font-size:.9rem;" placeholder="This place is..."></textarea>
+  <p style="font-size:.8rem;color:#6b7280;margin-top:8px;">✏️ Bài viết tự do — giáo viên xem trực tiếp.</p>`;
+  box.appendChild(wrap);
+}
+</script>
+</body>
+</html>
