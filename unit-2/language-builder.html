@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 2 — Language Builder | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟩 Unit 2 — Language Builder (Family)</h1>
+  <a href="index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_2_language_builder.docx — bài nghe (Ex.3, 5, 6) đã chuyển thành bài đọc vì file gốc không kèm audio.</footer>
+
+<script src="scores.js"></script>
+<script src="app.js"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Unit 2 - Language Builder";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise";
+  box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Family relationships", "Nối người thân với đúng định nghĩa.");
+  buildMatching(box, {
+    exerciseId: "u2lb-1", meta: { module: MOD, title: "Ex.1 Family relationships" },
+    leftLabel: "Người thân", rightLabel: "Định nghĩa",
+    pairs: [
+      { left: "My grandfather", right: "is my mother's father" },
+      { left: "My uncle", right: "is my mother's brother" },
+      { left: "My aunt", right: "is my father's sister" },
+      { left: "My grandmother", right: "is my father's mother" },
+      { left: "My cousin", right: "is the child of my aunt" },
+      { left: "My brother", right: "is my mother's son" },
+      { left: "My sister", right: "is my father's daughter" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "Formal and informal family words", "Điền từ thân mật tương ứng (gợi ý: auntie, dad, grandma, grandpa, kids, mum).");
+  buildFillBlank(box, {
+    exerciseId: "u2lb-2", meta: { module: MOD, title: "Ex.2 Formal/informal" }, prefixLabel: true,
+    lines: [
+      { text: "father → ____", answers: ["dad"] },
+      { text: "mother → ____", answers: ["mum"] },
+      { text: "grandmother → ____", answers: ["grandma"] },
+      { text: "grandfather → ____", answers: ["grandpa"] },
+      { text: "aunt → ____", answers: ["auntie"] },
+      { text: "children → ____", answers: ["kids"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "Tamsin's family (bài đọc thay bài nghe)", "Đọc đoạn văn rồi chọn đáp án đúng.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.85rem;margin-bottom:16px;";
+  p.innerHTML = "This is a photo of my family — quite a big family. This is my dad, John, and next to him is my mum, Sally. Behind them is my Auntie Jill — we're really close. Next to her is my uncle, Tom, a teacher who knows a lot about football. At the back are my grandparents — grandma is 65, grandpa's over 70 but very fit. I've got two brothers and a sister: Fabian, Hamish and Rachel. My cousin Alan, a student in England, sits with them. At the back is my best friend Antonia with her husband James.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "u2lb-3", meta: { module: MOD, title: "Ex.3 Tamsin's family" },
+    questions: [
+      { text: "Tamsin's family is...", options: ["quite big", "quite small", "very big"], answer: "quite big" },
+      { text: "John is Tamsin's...", options: ["brother", "cousin", "father"], answer: "father" },
+      { text: "Next to her father is Tamsin's...", options: ["auntie", "mother", "sister"], answer: "mother" },
+      { text: "Uncle Tom is a...", options: ["football player", "teacher", "tennis player"], answer: "teacher" },
+      { text: "Tamsin's grandfather is...", options: ["over 70", "under 70", "65"], answer: "over 70" },
+      { text: "Tamsin has...", options: ["two brothers, no sister", "two brothers, one sister", "two sisters, one brother"], answer: "two brothers, one sister" },
+      { text: "Cousin Alan studies in...", options: ["America", "Australia", "England"], answer: "England" },
+      { text: "James is Antonia's...", options: ["brother", "friend", "husband"], answer: "husband" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "Complete the family tree sentences", "Điền đúng từ (gợi ý: aunt, baby brother, brother, children, grandmother, husband, mother, son, wife).");
+  buildFillBlank(box, {
+    exerciseId: "u2lb-4", meta: { module: MOD, title: "Ex.4 Family tree" }, prefixLabel: true,
+    lines: [
+      { text: "Martin is Sara's ____", answers: ["husband"] },
+      { text: "Jimmie is Martin and Sara's ____", answers: ["son", "baby brother"] },
+      { text: "Martin, Sara and Jimmie are Sylvia and Tom's ____", answers: ["children"] },
+      { text: "Sylvia is Tom's ____", answers: ["wife"] },
+      { text: "Becky is Sara's ____", answers: ["aunt"] },
+      { text: "Lilian is Martin's ____", answers: ["mother"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "Amanda's family photos (bài đọc thay bài nghe)", "Đọc hội thoại rồi trả lời câu hỏi.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.85rem;margin-bottom:16px;";
+  p.innerHTML = "Amanda shows Samir her family photos. She's on the beach with her brothers and sisters — seven of them! She has three sisters and three brothers. Her oldest sister is 32, her two youngest brothers are 9 (twins). Her other brother, James, is the same age as her — they're twins too, both 27. Her dad's younger brother, Uncle Tom, just married Maria, who is Spanish. In another photo are her dad's four grandchildren — one grandson and three granddaughters.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "u2lb-5", meta: { module: MOD, title: "Ex.5 Amanda's photos" },
+    questions: [
+      { text: "What is Amanda doing?", options: ["Taking a short break", "Working", "Drinking coffee"], answer: "Taking a short break" },
+      { text: "How many brothers and sisters does Amanda have?", options: ["3", "6", "7"], answer: "6" },
+      { text: "How old are Amanda's twin brothers?", options: ["7", "8", "9"], answer: "9" },
+      { text: "What nationality is Amanda's new aunt?", options: ["Italian", "English", "Spanish"], answer: "Spanish" },
+      { text: "Who is in the photo with Amanda's father?", options: ["His four grandchildren", "His four granddaughters", "His grandson and two granddaughters"], answer: "His four grandchildren" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "Complete with be — short forms", "Điền đúng dạng rút gọn của be.");
+  buildFillBlank(box, {
+    exerciseId: "u2lb-6", meta: { module: MOD, title: "Ex.6 Be short forms" }, prefixLabel: true,
+    lines: [
+      { text: "Wow, there are seven of you! ____ a really big family.", answers: ["you're"] },
+      { text: "My youngest brothers are 8. No, sorry, ____ 9 now.", answers: ["they're"] },
+      { text: "____ twins?", answers: ["are they"] },
+      { text: "____ the same age as me.", answers: ["he's"] },
+      { text: "____ English? — No, ____. ____ Spanish.", answers: ["is she"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "Match questions with answers", "Nối câu hỏi với câu trả lời đúng.");
+  buildMatching(box, {
+    exerciseId: "u2lb-7", meta: { module: MOD, title: "Ex.7 Q&A" },
+    leftLabel: "Câu hỏi", rightLabel: "Câu trả lời",
+    pairs: [
+      { left: "How old is your mum?", right: "She's 39." },
+      { left: "How old are your cousins?", right: "They're 5 and 9." },
+      { left: "Are you and your sister good friends?", right: "Yes, we are." },
+      { left: "Is your sister older than you?", right: "No, she isn't." },
+      { left: "Are your aunt and uncle in the photo?", right: "Yes, they are." },
+      { left: "Is her husband Italian?", right: "No, he isn't." },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(8, "Put the words in order", "Bấm các từ theo đúng thứ tự.");
+  buildWordOrder(box, {
+    exerciseId: "u2lb-8", meta: { module: MOD, title: "Ex.8 Word order" },
+    items: [
+      { words: ["We're", "all", "on", "the", "beach"], answer: "We're all on the beach" },
+      { words: ["You're", "a", "really", "big", "family"], answer: "You're a really big family" },
+      { words: ["My", "two", "brothers", "are", "9", "now"], answer: "My two brothers are 9 now" },
+      { words: ["How", "old", "is", "your", "other", "brother"], answer: "How old is your other brother" },
+      { words: ["Who", "are", "the", "four", "children"], answer: "Who are the four children" },
+      { words: ["They're", "my", "dad's", "four", "grandchildren"], answer: "They're my dad's four grandchildren" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(9, "Short forms", "Viết lại từ gạch chân bằng dạng rút gọn.");
+  buildFillBlank(box, {
+    exerciseId: "u2lb-9", meta: { module: MOD, title: "Ex.9 Short forms" }, prefixLabel: true,
+    lines: [
+      { text: "You are a big family. → ____ a big family.", answers: ["you're"] },
+      { text: "They are my uncle's grandchildren. → ____ my uncle's grandchildren.", answers: ["they're"] },
+      { text: "We are not twins. → We ____ twins.", answers: ["aren't"] },
+      { text: "I am in the photo. → ____ in the photo.", answers: ["i'm"] },
+      { text: "He is the same age as me. → ____ the same age as me.", answers: ["he's"] },
+      { text: "She is not my brother's wife. → She ____ my brother's wife.", answers: ["isn't"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(10, "Writing — Describe a family photo", "Viết đoạn mô tả 1 bức ảnh gia đình bạn (dùng This is.../They're my.../He's my...).");
+  const wrap = document.createElement("div");
+  wrap.innerHTML = `<textarea rows="6" style="width:100%;border:1.5px solid var(--border);border-radius:8px;padding:10px;font-family:inherit;font-size:.9rem;" placeholder="This is my..."></textarea>
+  <p style="font-size:.8rem;color:#6b7280;margin-top:8px;">✏️ Bài viết tự do — giáo viên xem trực tiếp.</p>`;
+  box.appendChild(wrap);
+}
+</script>
+</body>
+</html>

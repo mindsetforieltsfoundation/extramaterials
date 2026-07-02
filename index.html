@@ -3,44 +3,140 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bài tập tương tác — Mindset for IELTS Foundation</title>
+<title>Bảng điều khiển bài tập — Toàn khoá</title>
 <link rel="stylesheet" href="style.css">
 <style>
-  .hero { text-align: center; padding: 40px 18px 10px; }
-  .hero h1 { color: var(--navy); font-size: 1.8rem; margin-bottom: 6px; }
-  .hero p { color: #5a637a; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin-top: 30px; }
-  .unit-card {
-    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
-    padding: 24px; text-decoration: none; color: var(--ink);
-    box-shadow: 0 1px 3px rgba(20,30,60,.06); transition: .15s;
+  .unit-tabs { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin: 20px 0; }
+  .unit-tab {
+    padding: 8px 16px; border-radius: 999px; border: 1.5px solid var(--border);
+    background: #fff; cursor: pointer; font-size: .85rem; font-weight: 600; color: #6b7280;
   }
-  .unit-card:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(20,30,60,.12); }
-  .unit-card .num { font-size: .78rem; font-weight: 700; color: var(--blue); letter-spacing: .05em; }
-  .unit-card h2 { margin: 6px 0 4px; font-size: 1.1rem; color: var(--navy); }
-  .unit-card p { margin: 0; font-size: .85rem; color: #6b7280; }
-  .unit-card.disabled { opacity: .45; pointer-events: none; }
+  .unit-tab.active { background: var(--navy); color: #fff; border-color: var(--navy); }
+  .unit-tab.locked { opacity: .4; cursor: not-allowed; }
 </style>
 </head>
 <body>
-<div class="hero">
-  <h1>📚 Bài tập tương tác — Mindset for IELTS Foundation</h1>
-  <p>Chuyển từ các file bài tập (.docx) đã tải lên — chấm điểm tự động, làm trực tiếp trên trình duyệt.</p>
+<div class="dash-hero">
+  <h1>📚 Bài tập tương tác — Toàn khoá (10 Unit)</h1>
+  <p>Chọn Unit, chọn bài bất kỳ, làm theo thứ tự tùy ý.</p>
+  <div id="overallPill" class="overall-pill">Chưa làm bài nào</div>
 </div>
-<main style="max-width:880px;">
-  <div class="grid">
-    <a class="unit-card" href="unit1.html">
-      <div class="num">UNIT 1</div>
-      <h2>Daily Life</h2>
-      <p>8 bài tập: giờ giấc, thói quen hàng ngày, make/do, thì hiện tại đơn.</p>
-    </a>
-    <a class="unit-card" href="unit2.html">
-      <div class="num">UNIT 2</div>
-      <h2>House and Home</h2>
-      <p>8 bài tập: phòng ốc, đồ nội thất, tìm từ, câu hỏi.</p>
-    </a>
+
+<div class="unit-tabs" id="unitTabs"></div>
+
+<main style="max-width:920px;">
+  <div id="modules"></div>
+  <div style="text-align:center;">
+    <button class="reset-all" id="resetAllBtn">🗑 Xoá toàn bộ điểm đã lưu</button>
   </div>
 </main>
-<footer class="page-footer">Cập nhật thêm Unit 3–10 khi có nội dung file bài tập tương ứng.</footer>
+<footer class="page-footer">Điểm được lưu ngay trên trình duyệt này (localStorage) — mỗi học sinh nên dùng máy/trình duyệt riêng.</footer>
+
+<script src="scores.js"></script>
+<script>
+const UNITS = [
+  {
+    key: "u1", name: "Unit 1 — Daily Life", available: true,
+    modules: [
+      { key: "gv", name: "Grammar & Vocab", file: "unit1-full-4modules/grammar-vocab.html", icon: "🟦",
+        titles: ["Telling the time","Rearrange the letters","Make or Do?","Complete the email","Third person forms","Choose the correct answer","Word order","Complete the email — job"] },
+      { key: "lb", name: "Language Builder", file: "unit1-full-4modules/language-builder.html", icon: "🟩",
+        titles: ["Places in a building","Places near college","Match the opposites","Complete conversations","Sandra's tour","Complete Sandra's tour","Ask about the college","Word order","Correct the mistakes"] },
+      { key: "ls", name: "Listening & Speaking", file: "unit1-full-4modules/listening-speaking.html", icon: "🟨",
+        titles: ["Daily activities","Adverbs of frequency","Everyday verbs","Sanjay's flatmates","Mary's family","Verb groups","Word order","Match sentence halves"] },
+      { key: "rw", name: "Reading & Writing", file: "unit1-full-4modules/reading-writing.html", icon: "🟪",
+        titles: ["Match activities","Paragraph matching","Alessia's email","Comprehension","Michael & Emma","Present simple","Adverbs of frequency","Email phrases","Label email parts"] },
+    ],
+  },
+  {
+    key: "u2", name: "Unit 2 — House & Home / Family", available: true,
+    modules: [
+      { key: "gv", name: "Grammar & Vocab", file: "unit-2/grammar-vocab.html", icon: "🟦", prefix: "u2gv",
+        titles: ["Rooms of the house","Choose the correct label","Match Q&A","Word search","Correct the mistake","Rewrite as questions","Find and rewrite the mistake","Word order"] },
+      { key: "lb", name: "Language Builder", file: "unit-2/language-builder.html", icon: "🟩", prefix: "u2lb",
+        titles: ["Family relationships","Formal/informal words","Tamsin's family","Family tree","Amanda's photos","Be — short forms","Match Q&A","Word order","Short forms"] },
+    ],
+  },
+  { key: "u3", name: "Unit 3", available: false, modules: [] },
+  { key: "u4", name: "Unit 4", available: false, modules: [] },
+  { key: "u5", name: "Unit 5", available: false, modules: [] },
+  { key: "u6", name: "Unit 6", available: false, modules: [] },
+  { key: "u7", name: "Unit 7", available: false, modules: [] },
+  { key: "u8", name: "Unit 8", available: false, modules: [] },
+  { key: "u9", name: "Unit 9", available: false, modules: [] },
+  { key: "u10", name: "Unit 10", available: false, modules: [] },
+];
+
+let currentUnit = "u1";
+
+function scoreIdFor(mod, i) {
+  const prefix = mod.prefix || mod.key;
+  return `${prefix}-${i + 1}`;
+}
+
+function renderTabs() {
+  const tabs = document.getElementById("unitTabs");
+  tabs.innerHTML = "";
+  UNITS.forEach(u => {
+    const b = document.createElement("button");
+    b.className = "unit-tab" + (u.key === currentUnit ? " active" : "") + (!u.available ? " locked" : "");
+    b.textContent = u.available ? u.name.replace(/Unit \d+ — /, `U${u.key.slice(1)}: `) : `${u.name} 🔒`;
+    b.title = u.available ? "" : "Sắp có";
+    if (u.available) b.onclick = () => { currentUnit = u.key; render(); };
+    tabs.appendChild(b);
+  });
+}
+
+function render() {
+  renderTabs();
+  const container = document.getElementById("modules");
+  container.innerHTML = "";
+  const all = Scores.allEntries();
+  const unit = UNITS.find(u => u.key === currentUnit);
+
+  if (!unit.available) {
+    container.innerHTML = `<p style="text-align:center;color:#9aa2b1;padding:40px;">Unit này đang được xây dựng — sẽ cập nhật sớm.</p>`;
+    return;
+  }
+
+  unit.modules.forEach(mod => {
+    const sec = document.createElement("div");
+    sec.className = "module-section";
+    const doneCount = mod.titles.filter((_, i) => all[scoreIdFor(mod, i)]).length;
+    sec.innerHTML = `<h2>${mod.icon} ${mod.name} <span style="font-weight:400;font-size:.8rem;color:#6b7280;">(${doneCount}/${mod.titles.length} đã làm)</span></h2>`;
+    const grid = document.createElement("div");
+    grid.className = "ex-grid";
+    mod.titles.forEach((title, i) => {
+      const id = scoreIdFor(mod, i);
+      const entry = all[id];
+      const a = document.createElement("a");
+      a.className = "ex-card";
+      a.href = `${mod.file}#ex${i + 1}`;
+      const pct = entry ? entry.pct : null;
+      a.innerHTML = `
+        <div class="ex-title">Ex.${i + 1} — ${title}</div>
+        <div class="ex-pct ${pct !== null ? "done" : ""}">${pct !== null ? `✔ ${pct}% (${entry.correct}/${entry.total})` : "Chưa làm"}</div>
+        <div class="bar"><div class="bar-fill" style="width:${pct || 0}%"></div></div>
+      `;
+      grid.appendChild(a);
+    });
+    sec.appendChild(grid);
+    container.appendChild(sec);
+  });
+
+  const overall = Scores.overallPct();
+  document.getElementById("overallPill").textContent =
+    overall === null ? "Chưa làm bài nào" : `📊 Điểm trung bình chung (tất cả unit): ${overall}%`;
+}
+
+document.getElementById("resetAllBtn").onclick = () => {
+  if (confirm("Xoá toàn bộ điểm đã lưu trên trình duyệt này?")) {
+    Scores.reset();
+    render();
+  }
+};
+
+render();
+</script>
 </body>
 </html>

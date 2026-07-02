@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 2 — Grammar & Vocab | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟦 Unit 2 — Grammar &amp; Vocab (House and Home)</h1>
+  <a href="index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_2_grammar___vocab.docx</footer>
+
+<script src="scores.js"></script>
+<script src="app.js"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Unit 2 - Grammar & Vocab";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise";
+  box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Rooms of the house", "Trả lời: đây là phòng nào?");
+  buildFillBlank(box, {
+    exerciseId: "u2gv-1", meta: { module: MOD, title: "Ex.1 Rooms" }, prefixLabel: true,
+    lines: [
+      { text: "The place where you go to sleep every night → ____", answers: ["bedroom"] },
+      { text: "The place where you have a wash and brush your teeth → ____", answers: ["bathroom"] },
+      { text: "The place where everyone sits to talk, play games or watch TV → ____", answers: ["living room"] },
+      { text: "The place where you keep the car → ____", answers: ["garage"] },
+      { text: "The place you walk through to move from one room to another → ____", answers: ["hallway"] },
+      { text: "The place where you can be outside and sit on the grass → ____", answers: ["garden"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "Choose the correct label", "Chọn nhãn đúng cho mỗi đồ vật/loại nhà.");
+  buildMCQ(box, {
+    exerciseId: "u2gv-2", meta: { module: MOD, title: "Ex.2 Labels" },
+    questions: [
+      { text: "A tall appliance that keeps food frozen:", options: ["a freezer", "a fridge"], answer: "a freezer" },
+      { text: "A house joined to one other house:", options: ["a semi-detached house", "a terraced house"], answer: "a semi-detached house" },
+      { text: "Furniture you sit at to study/work:", options: ["a desk", "some drawers"], answer: "a desk" },
+      { text: "A room for reading, working or studying:", options: ["a living room", "a study"], answer: "a study" },
+      { text: "A room right under the roof:", options: ["an attic", "a basement"], answer: "an attic" },
+      { text: "Tall furniture for hanging clothes:", options: ["a cupboard", "a wardrobe"], answer: "a wardrobe" },
+      { text: "Furniture for 2-3 people to sit on:", options: ["a chair", "a sofa"], answer: "a sofa" },
+      { text: "A group of student flats around a university:", options: ["a private apartment block", "a university campus"], answer: "a university campus" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "Match the questions with the answers", "Nối câu hỏi với câu trả lời phù hợp.");
+  buildMatching(box, {
+    exerciseId: "u2gv-3", meta: { module: MOD, title: "Ex.3 Q&A" },
+    leftLabel: "Câu hỏi", rightLabel: "Câu trả lời",
+    pairs: [
+      { left: "What do you like about your room?", right: "My comfortable bed and my posters" },
+      { left: "Who do you live with?", right: "My parents, my sister and my grandparents" },
+      { left: "Do you like to cook?", right: "Yes, and I think I'm quite good at it" },
+      { left: "Where do you watch television?", right: "Usually in the living room, sometimes in my bedroom" },
+      { left: "Is it often sunny where you live?", right: "Yes. I like it because I can always relax in the garden" },
+      { left: "Where do you do your homework?", right: "Usually in the study, sometimes in my bedroom" },
+      { left: "Can you tell me where the bathroom is?", right: "Go down the hall and it's next to the living room" },
+      { left: "Why do you never go in the kitchen?", right: "Because I can't cook" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "Word search", "Tìm 10 từ về nhà cửa (bấm các ô liên tiếp để chọn 1 từ).");
+  const grid = [
+    "QIGDATTICT".split(""), "BASEMENTQE".split(""), "YOZSDXSTXL".split(""), "DOMKDSAWGE".split(""),
+    "WKITCHENAV".split(""), "IESSLOEZRI".split(""), "NETYSWSKDS".split(""), "DOUPSEIDEI".split(""),
+    "OQDRQRNONO".split(""), "WLYUDLKRWN".split(""),
+  ];
+  buildWordSearch(box, {
+    exerciseId: "u2gv-4", meta: { module: MOD, title: "Ex.4 Word search" },
+    grid, words: ["ATTIC", "BASEMENT", "DESK", "GARDEN", "KITCHEN", "SINK", "SHOWER", "STUDY", "TELEVISION", "WINDOW"],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "Correct the mistake", "Sửa lại đúng chính tả từ bị gạch chân.");
+  buildFillBlank(box, {
+    exerciseId: "u2gv-5", meta: { module: MOD, title: "Ex.5 Spelling" }, prefixLabel: true,
+    lines: [
+      { text: "I really like my certains (sai chính tả) → ____", answers: ["curtains"] },
+      { text: "a bright tabel lamb (sai chính tả, 2 từ) → ____", answers: ["table lamp"] },
+      { text: "potsers make the walls look interesting → ____", answers: ["posters"] },
+      { text: "sleep with two billows → ____", answers: ["pillows"] },
+      { text: "the only thing he can do is turn on the uven → ____", answers: ["oven"] },
+      { text: "clothes are in my walldrobe → ____", answers: ["wardrobe"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "Rewrite as questions", "Viết lại câu dưới dạng câu hỏi.");
+  buildFillBlank(box, {
+    exerciseId: "u2gv-6", meta: { module: MOD, title: "Ex.6 Questions" }, prefixLabel: true,
+    lines: [
+      { text: "It is OK to come to your house this evening. → ____", answers: ["is it ok to come to your house this evening?"] },
+      { text: "You can check that the windows are all closed. → ____", answers: ["can you check that the windows are all closed?"] },
+      { text: "You are in the living room next to the kitchen. → ____", answers: ["are you in the living room next to the kitchen?"] },
+      { text: "You want to sit in the garden. → ____", answers: ["do you want to sit in the garden?"] },
+      { text: "The apartments in the UK are very different from your country. → ____", answers: ["are the apartments in the uk very different from your country?"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "Find and rewrite the mistake", "Một số câu có lỗi sai vị trí trạng từ. Gõ phần đã sửa (gõ 'correct' nếu câu đã đúng).");
+  buildFillBlank(box, {
+    exerciseId: "u2gv-7", meta: { module: MOD, title: "Ex.7 Error correction" }, prefixLabel: true,
+    lines: [
+      { text: "In my country, people live usually in apartments. → phần sửa: ____", answers: ["people usually live"] },
+      { text: "My uncle keeps always his car in the garage. → phần sửa: ____", answers: ["always keeps"] },
+      { text: "Our sink sometimes makes a very strange noise. → ____", answers: ["correct"] },
+      { text: "I don't see very often him. → phần sửa: ____", answers: ["see him very often", "very often see him"] },
+      { text: "Do people usually celebrate their 18th birthday with a party? → ____", answers: ["correct"] },
+      { text: "Do you prefer do your homework in your bedroom? → phần sửa: ____", answers: ["to do", "doing"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(8, "Put the words in order", "Bấm các từ theo đúng thứ tự.");
+  buildWordOrder(box, {
+    exerciseId: "u2gv-8", meta: { module: MOD, title: "Ex.8 Word order" },
+    items: [
+      { words: ["He", "never", "does", "the", "washing", "up"], answer: "He never does the washing up" },
+      { words: ["Can", "you", "give", "me", "some", "advice", "?"], answer: "Can you give me some advice ?" },
+      { words: ["I", "always", "leave", "my", "house", "at", "8a.m."], answer: "I always leave my house at 8a.m." },
+      { words: ["What", "time", "does", "your", "alarm", "usually", "go", "off", "?"], answer: "What time does your alarm usually go off ?" },
+      { words: ["My", "cousin", "often", "comes", "to", "my", "house", "for", "dinner"], answer: "My cousin often comes to my house for dinner" },
+      { words: ["Where", "do", "you", "want", "to", "live", "in", "the", "future", "?"], answer: "Where do you want to live in the future ?" },
+      { words: ["How", "many", "people", "do", "you", "live", "with", "?"], answer: "How many people do you live with ?" },
+      { words: ["Do", "you", "live", "on", "the", "university", "campus", "?"], answer: "Do you live on the university campus ?" },
+    ],
+  });
+}
+</script>
+</body>
+</html>
