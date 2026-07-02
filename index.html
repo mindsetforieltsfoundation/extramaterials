@@ -4,21 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bảng điều khiển bài tập — Toàn khoá</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<style>
-  .unit-tabs { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin: 20px 0; }
-  .unit-tab {
-    padding: 8px 16px; border-radius: 999px; border: 1.5px solid var(--border);
-    background: #fff; cursor: pointer; font-size: .85rem; font-weight: 600; color: #6b7280;
-  }
-  .unit-tab.active { background: var(--navy); color: #fff; border-color: var(--navy); }
-  .unit-tab.locked { opacity: .4; cursor: not-allowed; }
-</style>
 </head>
 <body>
 <div class="dash-hero">
-  <h1>📚 Bài tập tương tác — Toàn khoá (10 Unit)</h1>
-  <p>Chọn Unit, chọn bài bất kỳ, làm theo thứ tự tùy ý.</p>
+  <div class="eyebrow">Mindset for IELTS Foundation · Extra Materials</div>
+  <h1>📚 Bài tập tương tác</h1>
+  <p>Chọn Unit → bấm vào từng module để mở bài tập → làm bài bất kỳ, thứ tự tùy ý.</p>
   <div id="overallPill" class="overall-pill">Chưa làm bài nào</div>
 </div>
 
@@ -34,30 +29,38 @@
 
 <script src="scores.js"></script>
 <script>
+const MODULE_COLORS = {
+  gv: { c: "#2F7A78", soft: "#EAF3F2" },
+  lb: { c: "#3E8F62", soft: "#E4F3EA" },
+  ls: { c: "#D98E04", soft: "#FBF0DA" },
+  rw: { c: "#7A4FA3", soft: "#F0E9F6" },
+};
+const MODULE_ICONS = { gv: "🔤", lb: "🧩", ls: "🎧", rw: "📖" };
+
 const UNITS = [
   {
     key: "u1", name: "Unit 1 — Daily Life", available: true,
     modules: [
-      { key: "gv", name: "Grammar & Vocab", file: "unit1-full-4modules/grammar-vocab.html", icon: "🟦",
+      { key: "gv", name: "Grammar & Vocab", file: "unit1-full-4modules/grammar-vocab.html",
         titles: ["Telling the time","Rearrange the letters","Make or Do?","Complete the email","Third person forms","Choose the correct answer","Word order","Complete the email — job"] },
-      { key: "lb", name: "Language Builder", file: "unit1-full-4modules/language-builder.html", icon: "🟩",
+      { key: "lb", name: "Language Builder", file: "unit1-full-4modules/language-builder.html",
         titles: ["Places in a building","Places near college","Match the opposites","Complete conversations","Sandra's tour","Complete Sandra's tour","Ask about the college","Word order","Correct the mistakes"] },
-      { key: "ls", name: "Listening & Speaking", file: "unit1-full-4modules/listening-speaking.html", icon: "🟨",
+      { key: "ls", name: "Listening & Speaking", file: "unit1-full-4modules/listening-speaking.html",
         titles: ["Daily activities","Adverbs of frequency","Everyday verbs","Sanjay's flatmates","Mary's family","Verb groups","Word order","Match sentence halves"] },
-      { key: "rw", name: "Reading & Writing", file: "unit1-full-4modules/reading-writing.html", icon: "🟪",
+      { key: "rw", name: "Reading & Writing", file: "unit1-full-4modules/reading-writing.html",
         titles: ["Match activities","Paragraph matching","Alessia's email","Comprehension","Michael & Emma","Present simple","Adverbs of frequency","Email phrases","Label email parts"] },
     ],
   },
   {
     key: "u2", name: "Unit 2 — House & Home / Family", available: true,
     modules: [
-      { key: "gv", name: "Grammar & Vocab", file: "unit-2/grammar-vocab.html", icon: "🟦", prefix: "u2gv",
+      { key: "gv", name: "Grammar & Vocab", file: "unit-2/grammar-vocab.html", prefix: "u2gv",
         titles: ["Rooms of the house","Choose the correct label","Match Q&A","Word search","Correct the mistake","Rewrite as questions","Find and rewrite the mistake","Word order"] },
-      { key: "lb", name: "Language Builder", file: "unit-2/language-builder.html", icon: "🟩", prefix: "u2lb",
+      { key: "lb", name: "Language Builder", file: "unit-2/language-builder.html", prefix: "u2lb",
         titles: ["Family relationships","Formal/informal words","Tamsin's family","Family tree","Amanda's photos","Be — short forms","Match Q&A","Word order","Short forms"] },
-      { key: "ls", name: "Listening & Speaking", file: "unit-2/listening-speaking.html", icon: "🟨", prefix: "u2ls",
+      { key: "ls", name: "Listening & Speaking", file: "unit-2/listening-speaking.html", prefix: "u2ls",
         titles: ["Housing activities","Choose the correct numbers","Spelling names","House description","Contact details","Word stress","Match phrases","Rachel's ad","Word order","Speaking"] },
-      { key: "rw", name: "Reading & Writing", file: "unit-2/reading-writing.html", icon: "🟪", prefix: "u2rw",
+      { key: "rw", name: "Reading & Writing", file: "unit-2/reading-writing.html", prefix: "u2rw",
         titles: ["Room furniture","Haruka's email","Accommodation types","Best fit","Rosa's house","Prepositions (letters)","Choose preposition","Present simple be","Word order","Writing"] },
     ],
   },
@@ -72,10 +75,22 @@ const UNITS = [
 ];
 
 let currentUnit = "u1";
+let openModules = new Set(); // keys like "u1-gv" that are expanded
 
 function scoreIdFor(mod, i) {
   const prefix = mod.prefix || mod.key;
   return `${prefix}-${i + 1}`;
+}
+
+function ringSvg(pct, color) {
+  const r = 17, c = 2 * Math.PI * r;
+  const offset = c * (1 - pct / 100);
+  return `
+    <svg width="44" height="44" viewBox="0 0 44 44">
+      <circle cx="22" cy="22" r="${r}" fill="none" stroke="#E5E6DF" stroke-width="4"/>
+      <circle cx="22" cy="22" r="${r}" fill="none" stroke="${color}" stroke-width="4"
+        stroke-dasharray="${c}" stroke-dashoffset="${offset}" stroke-linecap="round"/>
+    </svg>`;
 }
 
 function renderTabs() {
@@ -100,34 +115,76 @@ function render() {
 
   if (!unit.available) {
     container.innerHTML = `<p style="text-align:center;color:#9aa2b1;padding:40px;">Unit này đang được xây dựng — sẽ cập nhật sớm.</p>`;
+    updateOverallPill(all);
     return;
   }
 
   unit.modules.forEach(mod => {
-    const sec = document.createElement("div");
-    sec.className = "module-section";
-    const doneCount = mod.titles.filter((_, i) => all[scoreIdFor(mod, i)]).length;
-    sec.innerHTML = `<h2>${mod.icon} ${mod.name} <span style="font-weight:400;font-size:.8rem;color:#6b7280;">(${doneCount}/${mod.titles.length} đã làm)</span></h2>`;
-    const grid = document.createElement("div");
-    grid.className = "ex-grid";
+    const modKey = `${unit.key}-${mod.key}`;
+    const isOpen = openModules.has(modKey);
+    const colors = MODULE_COLORS[mod.key] || MODULE_COLORS.gv;
+    const icon = MODULE_ICONS[mod.key] || "📘";
+
+    const doneCount = mod.titles.filter((_, i) => all[scoreIdFor(mod, i)] && all[scoreIdFor(mod, i)].pct === 100).length;
+    const sumPct = mod.titles.reduce((s, _, i) => s + (all[scoreIdFor(mod, i)] ? all[scoreIdFor(mod, i)].pct : 0), 0);
+    const avgPct = Math.round(sumPct / mod.titles.length);
+
+    const block = document.createElement("div");
+    block.className = "module-block" + (isOpen ? " open" : "");
+    block.style.setProperty("--module-color", colors.c);
+    block.style.setProperty("--module-color-soft", colors.soft);
+
+    const header = document.createElement("div");
+    header.className = "module-header";
+    header.innerHTML = `
+      <div class="module-icon">${icon}</div>
+      <div class="module-info">
+        <div class="mtitle">${mod.name}</div>
+        <div class="msub">${doneCount}/${mod.titles.length} bài hoàn thành 100%</div>
+      </div>
+      <div class="module-ring">${ringSvg(avgPct, colors.c)}<div class="ring-pct">${avgPct}%</div></div>
+      <div class="module-chevron">⌄</div>
+    `;
+    header.onclick = () => {
+      if (openModules.has(modKey)) openModules.delete(modKey);
+      else openModules.add(modKey);
+      render();
+    };
+
+    const body = document.createElement("div");
+    body.className = "module-body";
+    const bodyInner = document.createElement("div");
+    bodyInner.className = "module-body-inner";
+
     mod.titles.forEach((title, i) => {
       const id = scoreIdFor(mod, i);
       const entry = all[id];
-      const a = document.createElement("a");
-      a.className = "ex-card";
-      a.href = `${mod.file}#ex${i + 1}`;
       const pct = entry ? entry.pct : null;
+      const status = pct === null ? "todo" : (pct === 100 ? "done" : "progress");
+      const statusLabel = pct === null ? "Chưa làm" : (pct === 100 ? "✔ Hoàn thành" : `${pct}% đúng`);
+
+      const a = document.createElement("a");
+      a.className = `ex-card status-${status}`;
+      a.href = `${mod.file}#ex${i + 1}`;
       a.innerHTML = `
-        <div class="ex-title">Ex.${i + 1} — ${title}</div>
-        <div class="ex-pct ${pct !== null ? "done" : ""}">${pct !== null ? `✔ ${pct}% (${entry.correct}/${entry.total})` : "Chưa làm"}</div>
+        <div class="ex-num">EX.${i + 1}</div>
+        <div class="ex-title">${title}</div>
+        <div class="ex-status">${statusLabel}</div>
         <div class="bar"><div class="bar-fill" style="width:${pct || 0}%"></div></div>
       `;
-      grid.appendChild(a);
+      bodyInner.appendChild(a);
     });
-    sec.appendChild(grid);
-    container.appendChild(sec);
+
+    body.appendChild(bodyInner);
+    block.appendChild(header);
+    block.appendChild(body);
+    container.appendChild(block);
   });
 
+  updateOverallPill(all);
+}
+
+function updateOverallPill(all) {
   const overall = Scores.overallPct();
   document.getElementById("overallPill").textContent =
     overall === null ? "Chưa làm bài nào" : `📊 Điểm trung bình chung (tất cả unit): ${overall}%`;
@@ -140,6 +197,8 @@ document.getElementById("resetAllBtn").onclick = () => {
   }
 };
 
+// Open the first module of the current unit by default for discoverability
+openModules.add("u1-gv");
 render();
 </script>
 </body>
