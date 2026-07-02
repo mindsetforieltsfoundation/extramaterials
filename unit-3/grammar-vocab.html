@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Unit 3 — Grammar & Vocab | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css?v=202607021451">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟦 Unit 3 — Grammar &amp; Vocab (Sports)</h1>
+  <a href="../index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_3_grammar___vocab.docx</footer>
+
+<script src="scores.js?v=202607021451"></script>
+<script src="app.js?v=202607021451"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Unit 3 - Grammar & Vocab";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise"; box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Sports activities", "Nối tên môn thể thao với định nghĩa.");
+  buildMatching(box, {
+    exerciseId: "u3gv-1", meta: { module: MOD, title: "Ex.1 Sports" },
+    leftLabel: "Môn thể thao", rightLabel: "Định nghĩa",
+    pairs: [
+      { left: "badminton", right: "played with rackets and a shuttlecock" },
+      { left: "cycling", right: "riding a bicycle" },
+      { left: "hiking", right: "walking long distances in the countryside" },
+      { left: "sailing", right: "travelling on water using a boat with sails" },
+      { left: "skiing", right: "moving over snow on skis" },
+      { left: "volleyball", right: "hitting a ball over a net with your hands" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "Play, Do or Go?", "Xếp mỗi môn thể thao vào đúng cột (play/do/go).");
+  buildSort2(box, {
+    exerciseId: "u3gv-2", meta: { module: MOD, title: "Ex.2 Play/Do/Go" },
+    columns: ["play", "do"],
+    items: [
+      { text: "chess", col: "play" }, { text: "football", col: "play" }, { text: "tennis", col: "play" },
+      { text: "volleyball", col: "play" }, { text: "table tennis", col: "play" }, { text: "hockey", col: "play" },
+      { text: "karate", col: "do" }, { text: "athletics", col: "do" }, { text: "gymnastics", col: "do" },
+      { text: "taekwondo", col: "do" }, { text: "boxing", col: "do" }, { text: "judo", col: "do" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "Sports verbs", "Điền đúng động từ (gợi ý: win, beats, play, hit, lose, throwing, kicking, catch, scores).");
+  buildFillBlank(box, {
+    exerciseId: "u3gv-3", meta: { module: MOD, title: "Ex.3 Sports verbs" }, prefixLabel: true,
+    lines: [
+      { text: "I hope I ____ some of my matches tomorrow.", answers: ["win"] },
+      { text: "Every team we play against ____ us.", answers: ["beats"] },
+      { text: "I really want to learn how to ____ baseball.", answers: ["play"] },
+      { text: "It's difficult to learn how to ____ the ball with the racket.", answers: ["hit"] },
+      { text: "When you ____ a match, learn from your mistakes.", answers: ["lose"] },
+      { text: "In rugby, players pass the ball by ____ it.", answers: ["throwing"] },
+      { text: "In football, players move the ball by ____ it.", answers: ["kicking"] },
+      { text: "In baseball, players wear a glove to help them ____ the ball.", answers: ["catch"] },
+      { text: "The team that ____ the most goals is the winner.", answers: ["scores"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "Choose the correct answer — Cricket", "Chọn đáp án đúng.");
+  buildMCQ(box, {
+    exerciseId: "u3gv-4", meta: { module: MOD, title: "Ex.4 Cricket" },
+    questions: [
+      { text: "Cricket is a ____ sport in India and Britain.", options: ["favourite", "good", "popular"], answer: "popular" },
+      { text: "There are 11 people in a cricket ____.", options: ["group", "set", "team"], answer: "team" },
+      { text: "You play by ____ a hard red ball with a bat.", options: ["hitting", "kicking", "throwing"], answer: "hitting" },
+      { text: "A cricket ____ can take 5 days.", options: ["goal", "match", "point"], answer: "match" },
+      { text: "People often ____ white clothes to play cricket.", options: ["put", "use", "wear"], answer: "wear" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "Find the odd word out", "Gõ từ không cùng nhóm với các từ còn lại.");
+  buildFillBlank(box, {
+    exerciseId: "u3gv-5", meta: { module: MOD, title: "Ex.5 Odd one out" }, prefixLabel: true,
+    lines: [
+      { text: "sailing / swimming / tennis / windsurfing → từ lẻ: ____", answers: ["tennis"], explain: "3 từ kia đều là môn thể thao dưới nước." },
+      { text: "football / rugby / cricket / athletics → từ lẻ: ____", answers: ["athletics"], explain: "3 từ kia đều là môn thể thao đồng đội với bóng." },
+      { text: "catch / hit / kick / racket → từ lẻ: ____", answers: ["racket"], explain: "3 từ kia là động từ, racket là danh từ (dụng cụ)." },
+      { text: "match / judo / tournament / game → từ lẻ: ____", answers: ["judo"], explain: "3 từ kia chỉ 1 trận đấu/giải đấu, judo là tên môn võ." },
+      { text: "boxing / snowboarding / skiing / ice skating → từ lẻ: ____", answers: ["boxing"], explain: "3 từ kia là môn thể thao mùa đông." },
+      { text: "ball / winner / bat / racket → từ lẻ: ____", answers: ["winner"], explain: "3 từ kia là dụng cụ thể thao." },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "Verb forms — 3rd person & -ing", "Điền đúng dạng ngôi 3 số ít và dạng -ing.");
+  buildFillBlank(box, {
+    exerciseId: "u3gv-6", meta: { module: MOD, title: "Ex.6 Verb forms" }, prefixLabel: true,
+    lines: [
+      { text: "fix → ngôi 3: ____", answers: ["fixes"] },
+      { text: "get → ngôi 3: ____", answers: ["gets"] },
+      { text: "stop → -ing: ____", answers: ["stopping"] },
+      { text: "wash → ngôi 3: ____", answers: ["washes"] },
+      { text: "make → -ing: ____", answers: ["making"] },
+      { text: "buy → -ing: ____", answers: ["buying"] },
+      { text: "copy → ngôi 3: ____", answers: ["copies"] },
+      { text: "travel → -ing: ____", answers: ["travelling", "traveling"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "Match sentence halves", "Nối nửa đầu câu với nửa sau đúng.");
+  buildMatching(box, {
+    exerciseId: "u3gv-7", meta: { module: MOD, title: "Ex.7 Sentence halves" },
+    leftLabel: "Bắt đầu", rightLabel: "Kết thúc",
+    pairs: [
+      { left: "My mum's working", right: "in Italy at the moment." },
+      { left: "I often go to the cinema", right: "on a Saturday evening." },
+      { left: "I can't speak to you right now", right: "because I'm watching TV." },
+      { left: "What does your brother", right: "like doing in his free time?" },
+      { left: "In this photo, I'm climbing", right: "a volcano with my uncle." },
+      { left: "What do you usually do", right: "at the weekend?" },
+      { left: "Why isn't Sam", right: "eating his sandwich?" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(8, "Choose the correct answer — Present simple vs continuous", "Chọn đáp án đúng.");
+  buildMCQ(box, {
+    exerciseId: "u3gv-8", meta: { module: MOD, title: "Ex.8 Simple vs continuous" },
+    questions: [
+      { text: "____ how to play tennis, but I'd like to learn.", options: ["I don't know", "I'm not knowing"], answer: "I don't know" },
+      { text: "I'm sorry, ____ your name.", options: ["I can't remember", "I'm not remembering"], answer: "I can't remember" },
+      { text: "Can you help? ____ this problem.", options: ["I don't understand", "I'm not understanding"], answer: "I don't understand" },
+      { text: "John ____ a great time on holiday.", options: ["has", "is having"], answer: "is having" },
+      { text: "It belongs to my sister and she ____ it now.", options: ["reads", "is reading"], answer: "is reading" },
+      { text: "____ go out tonight. I'm too tired!", options: ["I don't want to", "I'm not wanting to"], answer: "I don't want to" },
+      { text: "My brother ____ so many hobbies!", options: ["has", "is having"], answer: "has" },
+      { text: "Sue ____ you at the moment. She's having a shower.", options: ["can't hear", "isn't hearing"], answer: "can't hear" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(9, "Complete Katy's email", "Chia đúng động từ trong ngoặc (thì hiện tại đơn hoặc tiếp diễn).");
+  buildFillBlank(box, {
+    exerciseId: "u3gv-9", meta: { module: MOD, title: "Ex.9 Katy's email" }, prefixLabel: true,
+    lines: [
+      { text: "I ____ (have) a great time here in Leeds.", answers: ["am having", "'m having"] },
+      { text: "The city ____ (have) so many interesting places.", answers: ["has"] },
+      { text: "I ____ (enjoy) my course so far.", answers: ["am enjoying", "'m enjoying"] },
+      { text: "I really ____ (like) my classmates.", answers: ["like"] },
+      { text: "I ____ (stay) in halls of residence this year.", answers: ["am staying", "'m staying"] },
+      { text: "I ____ (have got) a job in a local restaurant.", answers: ["have got", "'ve got"] },
+      { text: "I ____ (work) there three evenings a week.", answers: ["work"] },
+      { text: "At the moment I ____ (look) for another job.", answers: ["am looking", "'m looking"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(10, "Match questions with short answers", "Nối câu hỏi với câu trả lời ngắn.");
+  buildMatching(box, {
+    exerciseId: "u3gv-10", meta: { module: MOD, title: "Ex.10 Short answers" },
+    leftLabel: "Câu hỏi", rightLabel: "Trả lời",
+    pairs: [
+      { left: "Is that your brother playing tennis?", right: "Yes, it is." },
+      { left: "Do you always get up early?", right: "Yes, I do." },
+      { left: "Are your parents staying in a hotel?", right: "Yes, they are." },
+      { left: "Are you making chocolate cake?", right: "No, I'm not." },
+      { left: "Is your brother having a good time?", right: "Yes, he is." },
+      { left: "Do you and your parents always eat together?", right: "No, we don't." },
+      { left: "Am I wearing your gold necklace?", right: "Yes, you are." },
+      { left: "Do any of your friends do taekwondo?", right: "No, they don't." },
+    ],
+  });
+}
+</script>
+</body>
+</html>

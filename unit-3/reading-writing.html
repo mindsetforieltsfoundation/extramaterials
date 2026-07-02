@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Unit 3 — Reading & Writing | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css?v=202607021451">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟪 Unit 3 — Reading &amp; Writing</h1>
+  <a href="../index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_3_reading___writing.docx</footer>
+
+<script src="scores.js?v=202607021451"></script>
+<script src="app.js?v=202607021451"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Unit 3 - Reading & Writing";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise"; box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Free time activities", "Nối hoạt động với đúng định nghĩa.");
+  buildMatching(box, {
+    exerciseId: "u3rw-1", meta: { module: MOD, title: "Ex.1 Activities" },
+    leftLabel: "Hoạt động", rightLabel: "Định nghĩa",
+    pairs: [
+      { left: "cooking", right: "preparing food to eat" },
+      { left: "cycling", right: "riding a bicycle" },
+      { left: "playing computer games", right: "using a console or PC to play" },
+      { left: "playing football", right: "kicking a ball with a team" },
+      { left: "reading books", right: "looking at pages to enjoy a story" },
+      { left: "swimming", right: "moving through water" },
+      { left: "taking photographs", right: "using a camera to capture images" },
+      { left: "watching films", right: "sitting to enjoy a movie" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "College clubs", "Đọc thông tin 4 câu lạc bộ rồi nối thông tin với đúng câu lạc bộ (A-D).");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.82rem;margin-bottom:16px;";
+  p.innerHTML = "<b>A Computer game club</b> — meets Monday & Wednesday 4pm, small hall. Once a year, a 24-hour games meeting.<br><b>B Book club</b> — meets last Thursday of month, 1-2pm, college café. Many new members this year.<br><b>C Photography club</b> — meets weekly, 3pm, library. Popular photography competition every year.<br><b>D Cooking club</b> — meets once a month, college kitchen near the big hall. Cooks dishes from different countries.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "u3rw-2", meta: { module: MOD, title: "Ex.2 College clubs" },
+    questions: [
+      { text: "This club meets once a week.", options: ["A", "B", "C", "D"], answer: "C" },
+      { text: "This club meets in a café.", options: ["A", "B", "C", "D"], answer: "B" },
+      { text: "People need to bring food to this club.", options: ["A", "B", "C", "D"], answer: "D" },
+      { text: "This club has a competition every year.", options: ["A", "B", "C", "D"], answer: "C" },
+      { text: "This club meets twice a week.", options: ["A", "B", "C", "D"], answer: "A" },
+      { text: "Once a year, this club has an event lasting a whole day.", options: ["A", "B", "C", "D"], answer: "A" },
+      { text: "There are a lot of new people in this club.", options: ["A", "B", "C", "D"], answer: "B" },
+      { text: "This club meets near the big hall.", options: ["A", "B", "C", "D"], answer: "D" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "Rachel's letter about cycling", "Đọc thư của Rachel rồi điền đúng 1 từ mỗi chỗ trống.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.85rem;margin-bottom:16px;";
+  p.innerHTML = "Dear Susie, I'm writing about the sports I enjoy. I like tennis and swimming, but my favourite sport is cycling. I got my first bike when I was 8, and started cycling to school with my sister Helen when I was 12. At the weekend, I often go cycling in the countryside with my parents. We also go on cycling holidays — last summer to the mountains in Spain, where it was sometimes difficult because the weather was very hot. I also cycle for my school team — last year I won second prize in the 10km race.";
+  box.appendChild(p);
+  buildFillBlank(box, {
+    exerciseId: "u3rw-3", meta: { module: MOD, title: "Ex.3 Rachel's letter" }, prefixLabel: true,
+    lines: [
+      { text: "Rachel's favourite sport is ____.", answers: ["cycling"] },
+      { text: "She got her first bike when she was ____.", answers: ["8", "eight"] },
+      { text: "She often goes cycling with her parents at the ____.", answers: ["weekend"] },
+      { text: "Last summer, Rachel's family went cycling in ____.", answers: ["spain"] },
+      { text: "It was difficult to cycle in Spain because it was ____.", answers: ["hot"] },
+      { text: "She is on the cycling ____ at school.", answers: ["team"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "Choose the correct answer — Rachel's letter", "Đọc lại thư Rachel rồi chọn đáp án đúng.");
+  buildMCQ(box, {
+    exerciseId: "u3rw-4", meta: { module: MOD, title: "Ex.4 Rachel comprehension" },
+    questions: [
+      { text: "Rachel started riding her bike to school when she was", options: ["8", "12", "10"], answer: "12" },
+      { text: "Now Rachel cycles to school with", options: ["her sister", "her friend Laura", "her parents"], answer: "her friend Laura" },
+      { text: "Rachel prefers cycling in", options: ["summer", "winter", "spring"], answer: "winter" },
+      { text: "Last summer the family went cycling in", options: ["the north of England", "the south of Spain", "Scotland"], answer: "the south of Spain" },
+      { text: "Rachel joined the school cycling team", options: ["last year", "two years ago", "when she was 8"], answer: "last year" },
+      { text: "Last year in the 10km race, Rachel won", options: ["first prize", "second prize", "no prize"], answer: "second prize" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "Word order — Rachel's sentences", "Bấm các từ theo đúng thứ tự.");
+  buildWordOrder(box, {
+    exerciseId: "u3rw-5", meta: { module: MOD, title: "Ex.5 Word order" },
+    items: [
+      { words: ["My", "favourite", "sport", "is", "cycling"], answer: "My favourite sport is cycling" },
+      { words: ["Swimming", "I", "first", "was", "8", "when", "started"], answer: "Swimming I first was 8 when started" },
+      { words: ["At", "the", "weekend", "I", "often", "go", "swimming"], answer: "At the weekend I often go swimming" },
+      { words: ["I", "am", "on", "my", "school", "swimming", "team"], answer: "I am on my school swimming team" },
+      { words: ["In", "a", "last", "year,I", "won", "second", "prize", "competition"], answer: "In a last year,I won second prize competition" },
+      { words: ["I", "hope", "to", "hear", "from", "you", "soon"], answer: "I hope to hear from you soon" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "Susie's reply — choose the correct adjective", "Chọn đúng tính từ cho email của Susie.");
+  buildMCQ(box, {
+    exerciseId: "u3rw-6", meta: { module: MOD, title: "Ex.6 Susie's adjectives" },
+    questions: [
+      { text: "I like football because it is an ____ game.", options: ["exciting", "tired", "difficult"], answer: "exciting" },
+      { text: "It's a good way to stay ____.", options: ["big", "healthy", "happy"], answer: "healthy" },
+      { text: "The summer camp is near a ____ forest.", options: ["big", "tired", "fun"], answer: "big" },
+      { text: "We work hard, but we have a lot of ____ too.", options: ["fun", "difficult", "healthy"], answer: "fun" },
+      { text: "I always feel ____ after matches.", options: ["happy", "tired", "exciting"], answer: "tired" },
+      { text: "Last year our team won, so we were all really ____.", options: ["happy", "difficult", "tired"], answer: "happy" },
+      { text: "It's a strong team, so it's ____ to get onto it.", options: ["difficult", "healthy", "fun"], answer: "difficult" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "Match information with paragraph", "Đọc thư của Susie rồi nối thông tin với đúng đoạn (A hoặc B).");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.82rem;margin-bottom:16px;";
+  p.innerHTML = "<b>A</b> I like football because it's exciting and healthy. I started playing when I was 9. In summer, I go to a football camp near a big forest — training mornings, matches evenings, other sports afternoons. We work hard but have fun too.<br><b>B</b> I also play for a football team. I joined when I was 12. We train twice a week, play matches Saturdays. I always feel tired after matches. Every year our school enters a competition — last year we won and were really happy! Next year I want to join another team — it's difficult to get onto.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "u3rw-7", meta: { module: MOD, title: "Ex.7 Susie's letter parts" },
+    questions: [
+      { text: "When Susie started playing football", options: ["A", "B"], answer: "A" },
+      { text: "When Susie joined the school football team", options: ["A", "B"], answer: "B" },
+      { text: "Information about a football summer camp", options: ["A", "B"], answer: "A" },
+      { text: "How Susie usually feels after matches", options: ["A", "B"], answer: "B" },
+      { text: "Information about a football competition", options: ["A", "B"], answer: "B" },
+      { text: "How often Susie plays football", options: ["A", "B"], answer: "B" },
+      { text: "Why Susie likes football", options: ["A", "B"], answer: "A" },
+      { text: "What Susie wants to do next year", options: ["A", "B"], answer: "B" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(8, "Writing — Reply to your penfriend", "Viết thư trả lời bạn: chào hỏi, trả lời các câu hỏi về thể thao, dùng tính từ, kết thư.");
+  const wrap = document.createElement("div");
+  wrap.innerHTML = `<p style="font-size:.85rem;color:#6b7280;">Gợi ý: 1) Lời chào — 2) Trả lời đầy đủ các câu hỏi trong thư bạn gửi — 3) Mỗi câu hỏi 1 đoạn — 4) Thêm tính từ cho bài viết sinh động — 5) Kết thư.</p>
+  <textarea rows="8" style="width:100%;border:1.5px solid var(--border);border-radius:8px;padding:10px;font-family:inherit;font-size:.9rem;" placeholder="Dear ..."></textarea>
+  <p style="font-size:.8rem;color:#6b7280;margin-top:8px;">✏️ Bài viết tự do — giáo viên xem trực tiếp.</p>`;
+  box.appendChild(wrap);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Unit 3 — Listening & Speaking | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css?v=202607021451">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟨 Unit 3 — Listening &amp; Speaking</h1>
+  <a href="../index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_3_listening___speaking.docx — bài nghe chuyển thành bài đọc vì không kèm audio.</footer>
+
+<script src="scores.js?v=202607021451"></script>
+<script src="app.js?v=202607021451"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Unit 3 - Listening & Speaking";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise"; box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Present simple or continuous?", "Chọn câu đúng ngữ pháp cho từng tình huống mô tả.");
+  buildMCQ(box, {
+    exerciseId: "u3ls-1", meta: { module: MOD, title: "Ex.1 Simple or continuous" },
+    questions: [
+      { text: "Nói về việc cô ấy chơi trong 1 đội bóng nói chung (thói quen):", options: ["She plays in a team.", "She's playing in a team."], answer: "She plays in a team." },
+      { text: "Nói về việc anh ấy đang dùng vợt NGAY BÂY GIỜ:", options: ["He uses a racket.", "He's using a racket."], answer: "He's using a racket." },
+      { text: "Mô tả 1 bức ảnh đang diễn ra hành động đá bóng:", options: ["They kick a ball.", "They're kicking a ball."], answer: "They're kicking a ball." },
+      { text: "Nói về thành tích chung, luôn thắng các trận:", options: ["We win the matches.", "We're winning the matches."], answer: "We win the matches." },
+      { text: "Mô tả hành động đang diễn ra trong ảnh, cô ấy đang đạp xe:", options: ["She rides a bike.", "She's riding a bike."], answer: "She's riding a bike." },
+      { text: "Nói về sở thích/thói quen leo núi nói chung:", options: ["They climb mountains.", "They're climbing mountains."], answer: "They climb mountains." },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "Match verbs to phrases", "Nối động từ với cụm từ đi kèm.");
+  buildMatching(box, {
+    exerciseId: "u3ls-2", meta: { module: MOD, title: "Ex.2 Verb + phrase" },
+    leftLabel: "Động từ", rightLabel: "Cụm từ",
+    pairs: [
+      { left: "wear", right: "special clothes" },
+      { left: "ride", right: "a bicycle" },
+      { left: "keep", right: "fit" },
+      { left: "score", right: "a goal" },
+      { left: "go", right: "swimming" },
+      { left: "kick", right: "a ball" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "How do people feel about the activity?", "Chọn đúng tính từ mô tả cảm nhận.");
+  buildMCQ(box, {
+    exerciseId: "u3ls-3", meta: { module: MOD, title: "Ex.3 Feelings about activities" },
+    questions: [
+      { text: "\"I do it every day and it keeps me healthy, but it takes a lot of effort.\"", options: ["hard work", "boring", "fun"], answer: "hard work" },
+      { text: "\"Everyone at school loves this sport, the whole team plays it!\"", options: ["scary", "popular", "fit"], answer: "popular" },
+      { text: "\"I really don't enjoy it, I just sit there and nothing happens.\"", options: ["boring", "fun", "scary"], answer: "boring" },
+      { text: "\"It makes my heart beat so fast, I was scared going down that hill!\"", options: ["scary", "fun", "fit"], answer: "scary" },
+      { text: "\"I laugh the whole time, I love playing this with my friends!\"", options: ["fun", "boring", "hard work"], answer: "fun" },
+      { text: "\"After training every day, I feel strong and healthy.\"", options: ["fit", "scary", "boring"], answer: "fit" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "Peter's activity holiday (bài đọc thay bài nghe)", "Đọc cuộc gọi giữa Peter và Susan rồi trả lời.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.85rem;margin-bottom:16px;";
+  p.innerHTML = "Peter is on an activity holiday, staying with friends at a guest house near the activity centre — cheaper than a hotel, comfortable, but food's not great, staff very friendly. Every morning they get up early and go to the centre. John and Steven are swimming; Martin's cooking with the chef, preparing a picnic for a hike later. At the moment Peter is resting because he's exhausted — so many activities, sleeping 10 hours a night but still tired, not very fit! He's sailing and canoeing on a nearby lake (not close to the sea). They've been white water rafting once on a river 20km away — scary but fun, going again tomorrow. There's cycling too but they skip it (can do at home); mountain climbing they definitely want to try, with guides for safety. Susan is studying as usual and going shopping with friends this afternoon.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "u3ls-4", meta: { module: MOD, title: "Ex.4 Peter's holiday" },
+    questions: [
+      { text: "Peter and his friends are staying at", options: ["a guest house", "a hotel", "the activity centre"], answer: "a guest house" },
+      { text: "Peter says the food's", options: ["great", "not very good", "very good"], answer: "not very good" },
+      { text: "At the moment Peter is", options: ["cooking", "hiking", "resting"], answer: "resting" },
+      { text: "Peter says he's tired because", options: ["he's doing too many activities", "he's not really fit", "he's not sleeping enough"], answer: "he's doing too many activities" },
+      { text: "The activity centre is close to", options: ["a big river", "a lake", "the sea"], answer: "a lake" },
+      { text: "They're not going cycling because", options: ["they can do it at home", "they don't have bikes", "they don't like it"], answer: "they can do it at home" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "Choose the correct words", "Chọn đúng thì (hiện tại đơn hoặc tiếp diễn).");
+  buildMCQ(box, {
+    exerciseId: "u3ls-5", meta: { module: MOD, title: "Ex.5 Choose correct tense" },
+    questions: [
+      { text: "The guest house ____ fantastic.", options: ["is", "is being"], answer: "is" },
+      { text: "I ____ a wonderful time this afternoon.", options: ["have", "'m having"], answer: "'m having" },
+      { text: "This week, we ____ up early every day.", options: ["get", "'re getting"], answer: "'re getting" },
+      { text: "At the moment she ____.", options: ["rest", "'s resting"], answer: "'s resting" },
+      { text: "John and Steven ____ this morning.", options: ["swim", "are swimming"], answer: "are swimming" },
+      { text: "What ____ this week?", options: ["do you do", "are you doing"], answer: "are you doing" },
+      { text: "I ____ every evening.", options: ["study", "'m studying"], answer: "study" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "Word stress", "Chọn số âm tiết nhấn trọng âm cho mỗi từ.");
+  buildMCQ(box, {
+    exerciseId: "u3ls-6", meta: { module: MOD, title: "Ex.6 Word stress" },
+    questions: [
+      { text: "ATHLETICS — trọng âm rơi vào âm tiết nào?", options: ["1 (ATH)", "2 (LET)"], answer: "2 (LET)" },
+      { text: "SKIING — trọng âm rơi vào âm tiết nào?", options: ["1 (SKI)", "2 (ING)"], answer: "1 (SKI)" },
+      { text: "BASKETBALL — trọng âm rơi vào âm tiết nào?", options: ["1 (BAS)", "2 (KET)"], answer: "1 (BAS)" },
+      { text: "CANOEING — trọng âm rơi vào âm tiết nào?", options: ["1 (CA)", "2 (NOE)"], answer: "2 (NOE)" },
+      { text: "GYMNASTICS — trọng âm rơi vào âm tiết nào?", options: ["1 (GYM)", "2 (NAS)"], answer: "2 (NAS)" },
+      { text: "FOOTBALL — trọng âm rơi vào âm tiết nào?", options: ["1 (FOOT)", "2 (BALL)"], answer: "1 (FOOT)" },
+      { text: "KARATE — trọng âm rơi vào âm tiết nào?", options: ["1 (KA)", "2 (RA)"], answer: "2 (RA)" },
+      { text: "COOKING — trọng âm rơi vào âm tiết nào?", options: ["1 (COOK)", "2 (ING)"], answer: "1 (COOK)" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "Play, Do or Go?", "Xếp mỗi hoạt động vào đúng cột.");
+  buildSort2(box, {
+    exerciseId: "u3ls-7", meta: { module: MOD, title: "Ex.7 Play/Do/Go" },
+    columns: ["play", "do"],
+    items: [
+      { text: "chess", col: "play" }, { text: "basketball", col: "play" }, { text: "tennis", col: "play" }, { text: "football", col: "play" },
+      { text: "judo", col: "do" }, { text: "gymnastics", col: "do" }, { text: "athletics", col: "do" }, { text: "karate", col: "do" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(8, "Write present continuous sentences", "Viết câu ở thì hiện tại tiếp diễn, dùng dạng rút gọn ('m/'s/'re).");
+  buildFillBlank(box, {
+    exerciseId: "u3ls-8", meta: { module: MOD, title: "Ex.8 Present continuous" }, prefixLabel: true,
+    lines: [
+      { text: "She / use / a racket. → ____", answers: ["she's using a racket"] },
+      { text: "They / do / athletics. → ____", answers: ["they're doing athletics"] },
+      { text: "We / play / football. → ____", answers: ["we're playing football"] },
+      { text: "He / kick / a ball. → ____", answers: ["he's kicking a ball"] },
+      { text: "I / cook / dinner. → ____", answers: ["i'm cooking dinner"] },
+      { text: "She / wear / special clothes. → ____", answers: ["she's wearing special clothes"] },
+      { text: "We / go / swimming. → ____", answers: ["we're going swimming"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(9, "Match the picture description", "Nối mô tả với hoạt động phù hợp (dạng bài mô tả tranh).");
+  buildMatching(box, {
+    exerciseId: "u3ls-9", meta: { module: MOD, title: "Ex.9 Picture description" },
+    leftLabel: "Câu mô tả", rightLabel: "Hoạt động",
+    pairs: [
+      { left: "The people are wearing helmets and life jackets on a river.", right: "white water rafting" },
+      { left: "Two teams are hitting a ball over a net with their hands.", right: "volleyball" },
+      { left: "A person is walking with a backpack in the mountains.", right: "hiking" },
+      { left: "People are cooking together in a kitchen.", right: "cooking" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(10, "Speaking — Describe an activity picture", "Chuẩn bị nói: mô tả 1 hoạt động, cảm nhận về nó (dùng: I can see..., I think..., The activity looks...).");
+  const wrap = document.createElement("div");
+  wrap.innerHTML = `<p style="font-size:.88rem;color:#333;">Useful language: In picture A (B, C, D)... / I can see... / I think... / There is/are... / The activity looks...</p>
+  <p style="font-size:.8rem;color:#6b7280;">🎙️ Bài nói — ghi âm và gửi riêng cho giáo viên/trợ giảng.</p>`;
+  box.appendChild(wrap);
+}
+</script>
+</body>
+</html>

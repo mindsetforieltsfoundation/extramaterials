@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Unit 3 — Language Builder | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css?v=202607021451">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟩 Unit 3 — Language Builder (Food &amp; Drink)</h1>
+  <a href="../index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_3_language_builder.docx — bài nghe chuyển thành bài đọc vì không kèm audio.</footer>
+
+<script src="scores.js?v=202607021451"></script>
+<script src="app.js?v=202607021451"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Unit 3 - Language Builder";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise"; box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Containers", "Nối tên vật đựng với đúng định nghĩa.");
+  buildMatching(box, {
+    exerciseId: "u3lb-1", meta: { module: MOD, title: "Ex.1 Containers" },
+    leftLabel: "Từ vựng", rightLabel: "Định nghĩa",
+    pairs: [
+      { left: "bag", right: "container made of paper or plastic you carry things in" },
+      { left: "bottle", right: "tall container for liquids like water or juice" },
+      { left: "bowl", right: "round deep dish for soup or cereal" },
+      { left: "can", right: "metal container for drinks like cola" },
+      { left: "cup", right: "small container with a handle for hot drinks" },
+      { left: "glass", right: "container made of glass for cold drinks" },
+      { left: "plate", right: "flat dish you put food on" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "Food categories", "Chọn đúng loại thực phẩm cho mỗi mô tả.");
+  buildMCQ(box, {
+    exerciseId: "u3lb-2", meta: { module: MOD, title: "Ex.2 Food labels" },
+    questions: [
+      { text: "White food usually eaten with a sauce (chips/pasta/rice)?", options: ["chips", "pasta", "rice"], answer: "rice" },
+      { text: "Round citrus fruit, yellow (apple/lemon/orange)?", options: ["apple", "lemon", "orange"], answer: "lemon" },
+      { text: "Sweet baked food, often with icing (biscuit/bread/cake)?", options: ["biscuit", "bread", "cake"], answer: "cake" },
+      { text: "Thin type of meat in a bun (fish/meat/sausage)?", options: ["fish", "meat", "sausage"], answer: "sausage" },
+      { text: "Yellow dairy product spread on bread (butter/cheese/egg)?", options: ["butter", "cheese", "egg"], answer: "butter" },
+      { text: "Small round vegetable, makes you cry when cut (garlic/onion/pepper)?", options: ["garlic", "onion", "pepper"], answer: "onion" },
+      { text: "Grilled meat in a bun with salad (burger/chicken/steak)?", options: ["burger", "chicken", "steak"], answer: "burger" },
+      { text: "White liquid from cows, drunk or used in cooking (butter/cream/milk)?", options: ["butter", "cream", "milk"], answer: "milk" },
+      { text: "White crystals used to sweeten food (pepper/salt/sugar)?", options: ["pepper", "salt", "sugar"], answer: "sugar" },
+      { text: "Frozen dessert, often in a cone (ice/ice cream/sauce)?", options: ["ice", "ice cream", "sauce"], answer: "ice cream" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "Meal words", "Nối từ với định nghĩa.");
+  buildMatching(box, {
+    exerciseId: "u3lb-3", meta: { module: MOD, title: "Ex.3 Meal words" },
+    leftLabel: "Từ vựng", rightLabel: "Định nghĩa",
+    pairs: [
+      { left: "breakfast", right: "the first meal of the day" },
+      { left: "omelette", right: "a meal people make with eggs" },
+      { left: "picnic", right: "a meal people eat outside in good weather" },
+      { left: "cereal", right: "food eaten with milk or yoghurt in the morning" },
+      { left: "sandwich", right: "two pieces of bread with something in the middle" },
+      { left: "dinner", right: "the last meal of the day" },
+      { left: "hungry", right: "how you feel when you want to eat" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "Ordering food — complete the conversations", "Điền đúng từ (gợi ý: cup, milk, can, ice, plate, cheese, sandwich).");
+  buildFillBlank(box, {
+    exerciseId: "u3lb-4", meta: { module: MOD, title: "Ex.4 Complete conversations" }, prefixLabel: true,
+    lines: [
+      { text: "Can I have a ____ of tea, please? — With milk and sugar?", answers: ["cup"] },
+      { text: "Can I have a can of cola? — With ____?", answers: ["ice"] },
+      { text: "Could I have a ____ of rice with egg? — Yes, certainly.", answers: ["plate"] },
+      { text: "I'd like a ____, please. — With cheese, egg or ____?", answers: ["sandwich"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "Ordering at the cafeteria (bài đọc thay bài nghe)", "Đọc hội thoại rồi chọn đáp án đúng.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.85rem;margin-bottom:16px;";
+  p.innerHTML = "<b>Assistant:</b> How can I help you? <b>Customer:</b> I'd like a cup of tea, with a slice of lemon, please. Have you got any nice biscuits? <b>Assistant:</b> Yes, chocolate biscuits and carrot cake. <b>Customer:</b> A slice of carrot cake then. And my son is hungry and thirsty! <b>Son:</b> Can I have a big glass of water, and could I have a bowl of onion soup, then burger and chips, please? A large portion! <b>Customer:</b> How much is that? <b>Assistant:</b> That's £18.15.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "u3lb-5", meta: { module: MOD, title: "Ex.5 Cafeteria order" },
+    questions: [
+      { text: "The customer would like to drink", options: ["tea with lemon", "tea with milk", "tea with sugar"], answer: "tea with lemon" },
+      { text: "The customer chooses", options: ["carrot cake", "chocolate cake", "lemon cake"], answer: "carrot cake" },
+      { text: "The son would like to drink a", options: ["bottle of cola", "glass of fruit juice", "glass of water"], answer: "glass of water" },
+      { text: "The son starts his meal with a bowl of", options: ["fish soup", "onion soup", "tomato soup"], answer: "onion soup" },
+      { text: "The son would also like to eat", options: ["burger and chips", "chilli and chips", "fish and chips"], answer: "burger and chips" },
+      { text: "The two orders cost", options: ["£18.15", "£18.50", "£20"], answer: "£18.15" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "Sort the questions", "Xếp câu hỏi vào đúng người nói (Customer/son hay Assistant).");
+  buildSort2(box, {
+    exerciseId: "u3lb-6", meta: { module: MOD, title: "Ex.6 Sort questions" },
+    columns: ["customer/son", "assistant"],
+    items: [
+      { text: "How can I help you?", col: "assistant" },
+      { text: "Would you like it with...?", col: "assistant" },
+      { text: "What soup would you like?", col: "assistant" },
+      { text: "And what would you like to eat?", col: "assistant" },
+      { text: "Have you got any nice biscuits?", col: "customer/son" },
+      { text: "Would you like a bottle of...?", col: "assistant" },
+      { text: "Could I have a bowl of soup...?", col: "customer/son" },
+      { text: "Can I just have a big glass...?", col: "customer/son" },
+      { text: "How much is that, please?", col: "customer/son" },
+      { text: "Can I pay by card?", col: "customer/son" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "Match questions with answers", "Nối câu hỏi với câu trả lời đúng.");
+  buildMatching(box, {
+    exerciseId: "u3lb-7", meta: { module: MOD, title: "Ex.7 Q&A" },
+    leftLabel: "Câu hỏi", rightLabel: "Câu trả lời",
+    pairs: [
+      { left: "How can I help you?", right: "I'd like a cup of coffee, please." },
+      { left: "Have you got any biscuits?", right: "No, sorry, we haven't." },
+      { left: "Would you like a glass of milk?", right: "Yes, please." },
+      { left: "Could I have a bowl of soup?", right: "Yes, of course." },
+      { left: "Can I also have a sweet?", right: "Yes, we've got ice cream or cake." },
+      { left: "How much is that, please?", right: "That's twenty pounds." },
+      { left: "Can I pay by card?", right: "No, sorry. Our machine is broken." },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(8, "Put the words in order", "Bấm các từ theo đúng thứ tự.");
+  buildWordOrder(box, {
+    exerciseId: "u3lb-8", meta: { module: MOD, title: "Ex.8 Word order" },
+    items: [
+      { words: ["Can", "I", "have", "a", "bottle", "of", "water,", "please"], answer: "Can I have a bottle of water, please" },
+      { words: ["Have", "you", "got", "any", "sandwiches"], answer: "Have you got any sandwiches" },
+      { words: ["Could", "I", "have", "a", "glass", "of", "cola,", "please"], answer: "Could I have a glass of cola, please" },
+      { words: ["Would", "you", "like", "a", "cup", "of", "coffee", "with", "milk"], answer: "Would you like a cup of coffee with milk" },
+      { words: ["I'd", "like", "an", "omelette", "with", "cheese", "and onion"], answer: "I'd like an omelette with cheese and onion" },
+      { words: ["Can", "I", "also", "have", "a", "bowl", "of", "cereal", "with yoghurt"], answer: "Can I also have a bowl of cereal with yoghurt" },
+      { words: ["How", "much", "is", "the", "steak", "and chips"], answer: "How much is the steak and chips" },
+      { words: ["Have", "you", "got", "any", "chocolate", "ice", "cream"], answer: "Have you got any chocolate ice cream" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(9, "Choose the correct answer", "Chọn đáp án đúng (đôi khi cả 2 đáp án đều đúng).");
+  buildMCQ(box, {
+    exerciseId: "u3lb-9", meta: { module: MOD, title: "Ex.9 Correct answers" },
+    questions: [
+      { text: "Would you like milk and sugar?", options: ["Yes, please.", "No, thank you."], answer: "Yes, please." },
+      { text: "Can I have a slice of lemon cake?", options: ["Yes, we have.", "Yes, of course."], answer: "Yes, of course." },
+      { text: "Have you got any chips?", options: ["No, you haven't.", "Yes, we have."], answer: "Yes, we have." },
+      { text: "What would you like for dessert?", options: ["A bowl of ice cream.", "Some chocolate cake."], answer: "A bowl of ice cream." },
+      { text: "Could I have a cola, please?", options: ["In a can?", "In a bowl?"], answer: "In a can?" },
+      { text: "Can I pay by card?", options: ["Yes, no problem.", "No, we only take cash."], answer: "Yes, no problem." },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(10, "Speaking — Order food at a cafeteria", "Chuẩn bị: hỏi có món yêu thích không, gọi 2 món ăn, gọi 1 đồ uống, hỏi giá, hỏi thanh toán thẻ.");
+  const wrap = document.createElement("div");
+  wrap.innerHTML = `<ul style="font-size:.88rem;color:#333;"><li>Find out if the cafeteria has your favourite food.</li><li>Get two or more things to eat.</li><li>Get something to drink.</li><li>Find out how much it is.</li><li>Ask to pay by card.</li></ul>
+  <p style="font-size:.8rem;color:#6b7280;">🎙️ Bài nói — ghi âm và gửi riêng cho giáo viên/trợ giảng.</p>`;
+  box.appendChild(wrap);
+}
+</script>
+</body>
+</html>

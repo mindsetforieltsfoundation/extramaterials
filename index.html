@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=202607021438">
+<link rel="stylesheet" href="style.css?v=202607021451">
 </head>
 <body>
 <div class="dash-hero">
@@ -30,7 +30,7 @@
 </main>
 <footer class="page-footer">Điểm được lưu ngay trên trình duyệt này (localStorage) — mỗi học sinh nên dùng máy/trình duyệt riêng.</footer>
 
-<script src="scores.js?v=202607021438"></script>
+<script src="scores.js?v=202607021451"></script>
 <script>
 const MODULE_COLORS = {
   gv: { c: "#2F7A78", soft: "#EAF3F2" },
@@ -67,7 +67,18 @@ const UNITS = [
         titles: ["Room furniture","Haruka's email","Accommodation types","Best fit","Rosa's house","Prepositions (letters)","Choose preposition","Present simple be","Word order","Writing"] },
     ],
   },
-  { key: "u3", name: "Unit 3", available: false, modules: [] },
+  { key: "u3", name: "Unit 3 — Sports / Food & Drink", available: true,
+    modules: [
+      { key: "gv", name: "Grammar & Vocab", file: "unit-3/grammar-vocab.html", prefix: "u3gv",
+        titles: ["Sports activities","Play, Do or Go?","Sports verbs","Cricket","Odd word out","Verb forms","Sentence halves","Simple vs continuous","Katy's email","Short answers"] },
+      { key: "lb", name: "Language Builder", file: "unit-3/language-builder.html", prefix: "u3lb",
+        titles: ["Containers","Food labels","Meal words","Complete conversations","Cafeteria order","Sort questions","Match Q&A","Word order","Correct answers","Speaking"] },
+      { key: "ls", name: "Listening & Speaking", file: "unit-3/listening-speaking.html", prefix: "u3ls",
+        titles: ["Simple or continuous?","Verb + phrase","Feelings about activities","Peter's holiday","Choose correct tense","Word stress","Play/Do/Go","Present continuous","Picture description","Speaking"] },
+      { key: "rw", name: "Reading & Writing", file: "unit-3/reading-writing.html", prefix: "u3rw",
+        titles: ["Activities","College clubs","Rachel's letter","Rachel comprehension","Word order","Susie's adjectives","Susie's letter parts","Writing"] },
+    ],
+  },
   { key: "u4", name: "Unit 4", available: false, modules: [] },
   { key: "u5", name: "Unit 5", available: false, modules: [] },
   { key: "u6", name: "Unit 6", available: false, modules: [] },
