@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 2 — Listening & Speaking | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟨 Unit 2 — Listening &amp; Speaking</h1>
+  <a href="index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_2_listening___speaking.docx — bài nghe chuyển thành bài đọc vì không kèm audio.</footer>
+
+<script src="scores.js"></script>
+<script src="app.js"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Unit 2 - Listening & Speaking";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise";
+  box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Housing activities", "Nối hoạt động với đúng định nghĩa.");
+  buildMatching(box, {
+    exerciseId: "u2ls-1", meta: { module: MOD, title: "Ex.1 Activities" },
+    leftLabel: "Từ vựng", rightLabel: "Định nghĩa",
+    pairs: [
+      { left: "estate agent", right: "person who helps you buy/rent a house" },
+      { left: "viewing", right: "visiting a house to see if you want it" },
+      { left: "flatmate", right: "person you share a flat with" },
+      { left: "rent", right: "money you pay to live somewhere" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "Choose the correct numbers", "Chọn đúng con số/thời gian/giá nhà (giả lập bài nghe số liệu).");
+  buildMCQ(box, {
+    exerciseId: "u2ls-2", meta: { module: MOD, title: "Ex.2 Numbers" },
+    questions: [
+      { text: "Viewing time:", options: ["1:45 a.m.", "11:45 a.m.", "11:15 p.m."], answer: "11:45 a.m." },
+      { text: "House area:", options: ["505 m²", "515 m²", "550 m²"], answer: "515 m²" },
+      { text: "Phone number:", options: ["3759 296300", "3759 256400", "3759 296400"], answer: "3759 296400" },
+      { text: "Distance to station:", options: ["6½ kilometres", "6½ metres", "16½ kilometres"], answer: "6½ kilometres" },
+      { text: "Meeting time:", options: ["12:25 p.m.", "12:35 p.m.", "12:35 a.m."], answer: "12:35 p.m." },
+      { text: "House price:", options: ["€416,500", "€460,500", "€465,000"], answer: "€465,000" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "Spelling names", "Điền đúng cách viết tên (chữ hoa đầu tên riêng).");
+  buildFillBlank(box, {
+    exerciseId: "u2ls-3", meta: { module: MOD, title: "Ex.3 Spelling" }, prefixLabel: true,
+    lines: [
+      { text: "First name of the caller: John ____", answers: ["Denise"] },
+      { text: "Town: Newton in ____", answers: ["Wales", "Newton"] },
+      { text: "____ Road", answers: ["Main"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "Estate agent's house description (bài đọc thay bài nghe)", "Đọc mô tả nhà rồi chọn đáp án đúng.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.85rem;margin-bottom:16px;";
+  p.innerHTML = "This is a large detached house in a quiet street close to the village centre. Last year building work made the study and dining room bigger, and the attic became an extra bedroom, so the total area is now about 150 m² (before it was 120 m²). The house has 4 bedrooms — the largest has a private bathroom. There's no large front garden, but a lovely sunny back garden for barbecues. No garage, but space for 2 cars. Asking price: €350,000.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "u2ls-4", meta: { module: MOD, title: "Ex.4 House description" },
+    questions: [
+      { text: "Last year, ____ was converted into an extra bedroom.", options: ["the attic", "the dining room", "the study"], answer: "the attic" },
+      { text: "The area of the house is around", options: ["115 m²", "150 m²", "160 m²"], answer: "150 m²" },
+      { text: "The largest bedroom has", options: ["a private bathroom", "a private shower room", "lots of cupboards"], answer: "a private bathroom" },
+      { text: "The house has a large", options: ["back garden", "front garden", "garage"], answer: "back garden" },
+      { text: "Asking price:", options: ["€215,000", "€350,000", "€360,000"], answer: "€350,000" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "Complete the viewing/contact details", "Điền đúng thông tin (gợi ý: Friday, 6:00, 9:00, 123456, Smith, 07911234567, Church).");
+  buildFillBlank(box, {
+    exerciseId: "u2ls-5", meta: { module: MOD, title: "Ex.5 Contact details" }, prefixLabel: true,
+    lines: [
+      { text: "Monday to ____: 9:30 a.m. – 6:00 p.m.", answers: ["friday"] },
+      { text: "Saturday: ____ a.m. – 4:00 p.m.", answers: ["9:00", "9"] },
+      { text: "Contact: Mark ____", answers: ["smith"] },
+      { text: "Office: 279 ____ Road", answers: ["church"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "Word stress", "Chọn đúng trọng âm rơi vào âm tiết nào.");
+  buildMCQ(box, {
+    exerciseId: "u2ls-6", meta: { module: MOD, title: "Ex.6 Word stress" },
+    questions: [
+      { text: "STUDY — trọng âm rơi vào âm tiết nào?", options: ["1", "2"], answer: "1" },
+      { text: "GARDEN — trọng âm rơi vào âm tiết nào?", options: ["1", "2"], answer: "1" },
+      { text: "GARAGE — trọng âm rơi vào âm tiết nào?", options: ["1", "2"], answer: "1" },
+      { text: "ATTIC — trọng âm rơi vào âm tiết nào?", options: ["1", "2"], answer: "1" },
+      { text: "BATHROOM — trọng âm rơi vào âm tiết nào?", options: ["1", "2"], answer: "1" },
+      { text: "KITCHEN — trọng âm rơi vào âm tiết nào?", options: ["1", "2"], answer: "1", explain: "Hầu hết danh từ 2 âm tiết trong bài này đều nhấn âm tiết đầu." },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "Match words to make phrases", "Nối từ đầu với từ sau để tạo cụm.");
+  buildMatching(box, {
+    exerciseId: "u2ls-7", meta: { module: MOD, title: "Ex.7 Phrases" },
+    leftLabel: "Bắt đầu", rightLabel: "Kết thúc",
+    pairs: [
+      { left: "single", right: "bed" }, { left: "shared", right: "bathroom" },
+      { left: "ground", right: "floor" }, { left: "table", right: "lamp" },
+      { left: "fast", right: "Wi-Fi" }, { left: "apartment", right: "block" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(8, "Rachel's flatmate advertisement", "Đọc quảng cáo tìm bạn cùng phòng rồi trả lời.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.85rem;margin-bottom:16px;";
+  p.innerHTML = "My name's Rachel, a 2nd year student at Central School of Art. I live in a large flat in an apartment block, only 2 km from the city centre. The flat's about 120 m², with 3 bedrooms — I'd like to rent one (about 4.5m wide, 6m long) to another student. Shared bathroom, kitchen, lounge; modern, comfortable, fast Wi-Fi. Price: €400/month. Call 1896 320744.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "u2ls-8", meta: { module: MOD, title: "Ex.8 Rachel's ad" },
+    questions: [
+      { text: "What year is Rachel in?", options: ["1st year", "2nd year", "3rd year"], answer: "2nd year" },
+      { text: "How far is the flat from the city centre?", options: ["1 km", "2 km", "4.5 km"], answer: "2 km" },
+      { text: "How much is the rent per month?", options: ["€120", "€300", "€400"], answer: "€400" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(9, "Put the words in order", "Bấm các từ theo đúng thứ tự thành câu hỏi.");
+  buildWordOrder(box, {
+    exerciseId: "u2ls-9", meta: { module: MOD, title: "Ex.9 Word order" },
+    items: [
+      { words: ["What", "type", "of", "house", "do", "you", "live", "in"], answer: "What type of house do you live in" },
+      { words: ["What", "do", "you", "like", "about", "your", "house"], answer: "What do you like about your house" },
+      { words: ["Who", "do", "you", "live", "with"], answer: "Who do you live with" },
+      { words: ["Which", "room", "in", "your", "house", "is", "your", "favourite"], answer: "Which room in your house is your favourite" },
+      { words: ["Where", "do", "you", "study"], answer: "Where do you study" },
+      { words: ["Is", "it", "quiet", "where", "you", "live"], answer: "Is it quiet where you live" },
+      { words: ["Where", "do", "you", "listen", "to", "music"], answer: "Where do you listen to music" },
+      { words: ["Do", "you", "have", "a", "single", "or", "double", "bed"], answer: "Do you have a single or double bed" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(10, "Speaking — Describe your home", "Chuẩn bị nói: loại nhà, điều bạn thích, ở cùng ai, phòng yêu thích, nơi học bài, có yên tĩnh không.");
+  const wrap = document.createElement("div");
+  wrap.innerHTML = `<ul style="font-size:.88rem;color:#333;"><li>What type of home do you live in?</li><li>What do you like about your home?</li><li>Who do you live with?</li><li>Which is your favourite room and why?</li><li>Where do you study?</li><li>Is it quiet where you live?</li></ul>
+  <p style="font-size:.8rem;color:#6b7280;">🎙️ Bài nói — ghi âm và gửi riêng cho giáo viên/trợ giảng.</p>`;
+  box.appendChild(wrap);
+}
+</script>
+</body>
+</html>

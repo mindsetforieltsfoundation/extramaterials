@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 2 — Reading & Writing | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟪 Unit 2 — Reading &amp; Writing</h1>
+  <a href="index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_2_reading___writing.docx</footer>
+
+<script src="scores.js"></script>
+<script src="app.js"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Unit 2 - Reading & Writing";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise";
+  box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Room furniture", "Nối đồ vật với đúng định nghĩa.");
+  buildMatching(box, {
+    exerciseId: "u2rw-1", meta: { module: MOD, title: "Ex.1 Furniture" },
+    leftLabel: "Từ vựng", rightLabel: "Định nghĩa",
+    pairs: [
+      { left: "bookcase", right: "furniture with shelves for books" },
+      { left: "cupboard", right: "furniture with doors for storing things" },
+      { left: "cushion", right: "soft pillow-like object on a sofa/chair" },
+      { left: "desk", right: "table for working or studying" },
+      { left: "lamp", right: "object that gives light" },
+      { left: "picture", right: "image/art on the wall" },
+      { left: "rug", right: "small carpet on the floor" },
+      { left: "television", right: "screen for watching programmes" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "Haruka's email", "Đọc email rồi điền đúng 1 từ mỗi chỗ trống.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.85rem;margin-bottom:16px;";
+  p.innerHTML = "Dear Sir or Madam, My name is Haruka Murukami. I come from Tokyo in Japan. I am coming to the USA in August and will start my course at New College in September. Thank you for sending me the course information. I felt a bit worried about the course before, but now I feel really excited about studying at New College. I am writing to find out about student accommodation for international students. I would like to know what the rooms are like and what furniture they have. I would also like to know where students like me who live on the campus can eat.";
+  box.appendChild(p);
+  buildFillBlank(box, {
+    exerciseId: "u2rw-2", meta: { module: MOD, title: "Ex.2 Haruka's email" }, prefixLabel: true,
+    lines: [
+      { text: "Haruka's home country is ____.", answers: ["japan"] },
+      { text: "Haruka starts studying at New College in ____.", answers: ["september"] },
+      { text: "Haruka received some information about the ____.", answers: ["course"] },
+      { text: "Haruka feels ____ about the course now.", answers: ["excited"] },
+      { text: "Haruka wants to know what ____ the rooms have.", answers: ["furniture"] },
+      { text: "Haruka wants to know where she is able to ____.", answers: ["eat"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "Types of student accommodation", "Đọc bài rồi nối thông tin với đúng đoạn (A/B/C).");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.85rem;margin-bottom:16px;";
+  p.innerHTML = "<b>A College halls of residence</b> — Single rooms with bed, desk, chair, wardrobe, cupboard, bookcase; shared bathrooms/kitchen (Holly Hall has private bathrooms). Breakfast, lunch, dinner in college restaurant. Good for students who want to make friends but not cook.<br><br><b>B Private houses or flats</b> — More expensive, but students can live with friends. Find on college website. Good for students who prefer to cook themselves.<br><br><b>C Host families</b> — Live with a local family, own bedroom, share bathroom/living room/kitchen. Family cooks breakfast & dinner; student buys own lunch. Family organises weekend activities. Great for improving English quickly.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "u2rw-3", meta: { module: MOD, title: "Ex.3 Accommodation types" },
+    questions: [
+      { text: "This costs more than the other types.", options: ["A", "B", "C"], answer: "B" },
+      { text: "This accommodation includes three meals.", options: ["A", "B", "C"], answer: "A" },
+      { text: "Students cook their own meals here.", options: ["A", "B", "C"], answer: "B" },
+      { text: "Weekend trips are organised for students.", options: ["A", "B", "C"], answer: "C" },
+      { text: "Has three different buildings.", options: ["A", "B", "C"], answer: "A" },
+      { text: "Helps students improve English quickly.", options: ["A", "B", "C"], answer: "C" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "Best accommodation for each student", "Đọc yêu cầu của từng bạn du học sinh rồi chọn loại chỗ ở phù hợp nhất (dùng lại thông tin bài đọc Ex.3).");
+  buildMCQ(box, {
+    exerciseId: "u2rw-4", meta: { module: MOD, title: "Ex.4 Best fit" },
+    questions: [
+      { text: "Komal (India): muốn quen bạn bản xứ, cải thiện tiếng Anh nhanh, thích nấu ăn, không muốn tốn nhiều tiền.", options: ["halls of residence", "private house or flat", "host family"], answer: "host family" },
+      { text: "Pierre (France): muốn gần thư viện để học, không muốn mất thời gian mua sắm/nấu ăn.", options: ["halls of residence", "private house or flat", "host family"], answer: "halls of residence" },
+      { text: "Yuxi (China): muốn ở cùng chị gái + vài người khác, gần trường, thích tự nấu ăn.", options: ["halls of residence", "private house or flat", "host family"], answer: "private house or flat" },
+      { text: "Ahmed (Dubai): mới tới thành phố, muốn kết bạn mới, không thích nấu ăn, không muốn đi xa.", options: ["halls of residence", "private house or flat", "host family"], answer: "halls of residence" },
+      { text: "Nasreen (Saudi Arabia): muốn thư giãn buổi tối, nói tiếng Anh, không muốn chỉ ở với người cùng nước.", options: ["halls of residence", "private house or flat", "host family"], answer: "host family" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "Rosa's favourite holiday house", "Đọc bài rồi nối thông tin với đúng đoạn (A-E).");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.82rem;margin-bottom:16px;";
+  p.innerHTML = "<b>A</b> As a famous runner, I travel a lot for work, but my favourite holiday is my aunt and uncle's house in the south of Spain — I go every summer.<br><b>B</b> The house is over 100 years old, once a farm with horses and sheep. Now it has a big garden with a barbecue area, fruit trees and flowers, close to the sea.<br><b>C</b> All rooms are large. My favourite bedroom is the first on the left upstairs — I used to stay there as a child, with a window seat for reading.<br><b>D</b> The style is traditional; my uncle made much of the furniture himself. We watch films together in the living room in the evenings. My aunt loves painting — her paintings are on the walls.<br><b>E</b> Close to beautiful countryside and quiet beaches. The village has lovely cafés and restaurants. I go canoeing, horse riding and hiking nearby.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "u2rw-5", meta: { module: MOD, title: "Ex.5 Rosa's house" },
+    questions: [
+      { text: "Outdoor activities Rosa likes doing", options: ["A", "B", "C", "D", "E"], answer: "E" },
+      { text: "Rosa's favourite place to sleep", options: ["A", "B", "C", "D", "E"], answer: "C" },
+      { text: "The history of the house", options: ["A", "B", "C", "D", "E"], answer: "B" },
+      { text: "The furniture in the house", options: ["A", "B", "C", "D", "E"], answer: "D" },
+      { text: "Rosa's favourite place for holiday", options: ["A", "B", "C", "D", "E"], answer: "A" },
+      { text: "Where the family spends evenings", options: ["A", "B", "C", "D", "E"], answer: "D" },
+      { text: "Places to eat near the house", options: ["A", "B", "C", "D", "E"], answer: "E" },
+      { text: "Rosa's aunt's hobby", options: ["A", "B", "C", "D", "E"], answer: "D" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "Rearrange the letters — prepositions of place", "Sắp lại chữ cái để tìm đúng giới từ vị trí.");
+  buildFillBlank(box, {
+    exerciseId: "u2rw-6", meta: { module: MOD, title: "Ex.6 Prepositions" }, prefixLabel: true,
+    lines: [
+      { text: "There is a cupboard ____ (no) the wall.", answers: ["on"] },
+      { text: "There is a guitar ____ (udrne) the bed.", answers: ["under"] },
+      { text: "There is a lamp ____ (txne ot) the computer.", answers: ["next to"] },
+      { text: "There is a window ____ (bhenid) the bed.", answers: ["behind"] },
+      { text: "There is a tennis racquet ____ (ni) the cupboard.", answers: ["in"] },
+      { text: "There is a chair ____ (ni rtnfo fo) the desk.", answers: ["in front of"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "Choose the correct preposition", "Chọn đúng giới từ để hoàn thành đoạn văn.");
+  buildMCQ(box, {
+    exerciseId: "u2rw-7", meta: { module: MOD, title: "Ex.7 Prepositions" },
+    questions: [
+      { text: "I live ____ number 9 Castle Street.", options: ["at", "in", "on"], answer: "at" },
+      { text: "There is a garden ____ the house.", options: ["behind", "in", "on"], answer: "behind" },
+      { text: "There are trees and flowers ____ the garden.", options: ["in", "on", "under"], answer: "in" },
+      { text: "____ the ground floor there is a kitchen.", options: ["At", "In", "On"], answer: "On" },
+      { text: "____ the living room, there is a sofa.", options: ["In", "On", "Under"], answer: "In" },
+      { text: "There is a lamp ____ the sofa.", options: ["in", "next to", "on"], answer: "next to" },
+      { text: "There is a television ____ a small window.", options: ["in", "on", "under"], answer: "on" },
+      { text: "There is a lamp ____ the desk.", options: ["at", "in", "on"], answer: "on" },
+      { text: "There are posters ____ the walls.", options: ["in", "near", "on"], answer: "on" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(8, "Complete with present simple 'be'", "Điền đúng dạng của 'be' (is/are).");
+  buildFillBlank(box, {
+    exerciseId: "u2rw-8", meta: { module: MOD, title: "Ex.8 Present simple be" }, prefixLabel: true,
+    lines: [
+      { text: "I ____ (like) this room because it's relaxing.", answers: ["like"] },
+      { text: "There ____ (be) two big sofas and two small armchairs.", answers: ["are"] },
+      { text: "The sofas ____ (be) blue.", answers: ["are"] },
+      { text: "There ____ (be) also a colourful rug on the floor.", answers: ["is"] },
+      { text: "Sometimes I ____ (sit) in my favourite chair and ____ (read) a book.", answers: ["sit"] },
+      { text: "I often ____ (watch) films with my family.", answers: ["watch"] },
+      { text: "Sometimes we order pizza and ____ (eat) it there.", answers: ["eat"] },
+      { text: "My sister ____ (play) the piano very well.", answers: ["plays"] },
+      { text: "I ____ (be) not very good, but I have lessons.", answers: ["am"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(9, "Put the words in order", "Bấm các từ theo đúng thứ tự.");
+  buildWordOrder(box, {
+    exerciseId: "u2rw-9", meta: { module: MOD, title: "Ex.9 Word order" },
+    items: [
+      { words: ["My", "favourite", "room", "is", "the", "living room", "at my", "grandma's house."], answer: "My favourite room is the living room at my grandma's house." },
+      { words: ["I", "really like", "this", "room", "because", "it", "has", "lots of", "nice", "furniture"], answer: "I really like this room because it has lots of nice furniture" },
+      { words: ["There", "are", "two big red", "chairs", "next", "to", "the", "television"], answer: "There are two big red chairs next to the television" },
+      { words: ["There", "are", "some", "cushions", "on", "the", "sofas"], answer: "There are some cushions on the sofas" },
+      { words: ["Is", "there", "a lamp", "on", "the", "bookcase"], answer: "Is there a lamp on the bookcase" },
+      { words: ["There", "is", "a pretty", "rug", "on", "the floor"], answer: "There is a pretty rug on the floor" },
+      { words: ["There", "is", "a small table", "in front of", "the window"], answer: "There is a small table in front of the window" },
+      { words: ["There", "is", "a photograph", "of", "my", "family", "on", "the", "table"], answer: "There is a photograph of my family on the table" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(10, "Writing — Describe your favourite room", "Viết đoạn mô tả phòng yêu thích của bạn: tại sao thích, đồ nội thất/màu sắc, vị trí đồ vật, bạn thích làm gì ở đó.");
+  const wrap = document.createElement("div");
+  wrap.innerHTML = `<textarea rows="6" style="width:100%;border:1.5px solid var(--border);border-radius:8px;padding:10px;font-family:inherit;font-size:.9rem;" placeholder="My favourite room is..."></textarea>
+  <p style="font-size:.8rem;color:#6b7280;margin-top:8px;">✏️ Bài viết tự do — giáo viên xem trực tiếp.</p>`;
+  box.appendChild(wrap);
+}
+</script>
+</body>
+</html>
