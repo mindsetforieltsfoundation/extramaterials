@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=202607021500">
+<link rel="stylesheet" href="style.css?v=202607021520">
 </head>
 <body>
 <div class="dash-hero">
@@ -30,7 +30,7 @@
 </main>
 <footer class="page-footer">Điểm được lưu ngay trên trình duyệt này (localStorage) — mỗi học sinh nên dùng máy/trình duyệt riêng.</footer>
 
-<script src="scores.js?v=202607021500"></script>
+<script src="scores.js?v=202607021520"></script>
 <script>
 const MODULE_COLORS = {
   gv: { c: "#2F7A78", soft: "#EAF3F2" },
@@ -91,7 +91,18 @@ const UNITS = [
         titles: ["Places","Nature Museum","Burj Khalifa verbs","Tom's postcard","Tivoli headings","Word order","Prepositions","Sentence halves","Burj Khalifa paragraphs","Writing"] },
     ],
   },
-  { key: "u5", name: "Unit 5", available: false, modules: [] },
+  { key: "u5", name: "Unit 5 — Food / Jobs", available: true,
+    modules: [
+      { key: "gv", name: "Grammar & Vocab", file: "unit-5/grammar-vocab.html", prefix: "u5gv",
+        titles: ["Food items","Food categories","Cooking verbs","A/an/some/any","A lot of/many/much","Choose correct word","Pizza text","Recipe order"] },
+      { key: "lb", name: "Language Builder", file: "unit-5/language-builder.html", prefix: "u5lb",
+        titles: ["Jobs","Workplaces","Job verbs","School subjects","Best job","Hamish","Sara's email","Correct prepositions","Writing","Speaking"] },
+      { key: "ls", name: "Listening & Speaking", file: "unit-5/listening-speaking.html", prefix: "u5ls",
+        titles: ["World dishes","Conversations","Cooking actions","Famous dishes","Paella recipe","Spelling","A/an/some","Cooking instructions","Moussaka","Speaking"] },
+      { key: "rw", name: "Reading & Writing", file: "unit-5/reading-writing.html", prefix: "u5rw",
+        titles: ["Food types","Richard's letter","Jenny's email","Street food","Food around the world","Word order","Countable/uncountable","Correct form","Paragraph matching","Writing"] },
+    ],
+  },
   { key: "u6", name: "Unit 6", available: false, modules: [] },
   { key: "u7", name: "Unit 7", available: false, modules: [] },
   { key: "u8", name: "Unit 8", available: false, modules: [] },

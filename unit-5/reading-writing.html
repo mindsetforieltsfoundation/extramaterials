@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Unit 5 — Reading & Writing | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css?v=202607021520">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟪 Unit 5 — Reading &amp; Writing</h1>
+  <a href="../index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_5reading___writing.docx</footer>
+
+<script src="scores.js?v=202607021520"></script>
+<script src="app.js?v=202607021520"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Unit 5 - Reading & Writing";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise"; box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Food types", "Nối tên món ăn với định nghĩa.");
+  buildMatching(box, {
+    exerciseId: "u5rw-1", meta: { module: MOD, title: "Ex.1 Food types" },
+    leftLabel: "Món ăn", rightLabel: "Định nghĩa",
+    pairs: [
+      { left: "dumplings", right: "small pieces of dough filled with meat/vegetables" },
+      { left: "fish", right: "animal from water eaten as food" },
+      { left: "meat", right: "flesh of an animal eaten as food" },
+      { left: "noodles", right: "long thin strips of pasta" },
+      { left: "pasta", right: "Italian food made from flour and water" },
+      { left: "rice", right: "small white/brown grains, a staple food" },
+      { left: "soup", right: "liquid food eaten with a spoon" },
+      { left: "vegetables", right: "plants eaten as food" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "Richard's letter about UK food", "Đọc thư rồi chọn đúng từ.");
+  buildMCQ(box, {
+    exerciseId: "u5rw-2", meta: { module: MOD, title: "Ex.2 Richard's letter" },
+    questions: [
+      { text: "British people eat unhealthy, ____ food like fish and chips all the time (nhưng không đúng hoàn toàn).", options: ["fried", "heat"], answer: "fried" },
+      { text: "Chinese and Indian food is very ____ in the UK.", options: ["like", "popular"], answer: "popular" },
+      { text: "I think Indian food is very ____.", options: ["boring", "tasty"], answer: "tasty" },
+      { text: "People have afternoon tea with ____ foods like cakes.", options: ["spicy", "sweet"], answer: "sweet" },
+      { text: "My ____ dish from my country is Shepherd's Pie.", options: ["favourite", "popular"], answer: "favourite" },
+      { text: "It is a ____ dish made of meat, vegetables and potato.", options: ["cold", "hot"], answer: "hot" },
+      { text: "It is quite a ____ dish because of the vegetables.", options: ["fat", "healthy"], answer: "healthy" },
+      { text: "My favourite ____ dish is apple pie.", options: ["cold", "sweet"], answer: "sweet" },
+      { text: "We have some ____ dishes in Britain.", options: ["boiled", "delicious"], answer: "delicious" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "Jenny's email about Turkish food", "Đọc email rồi chọn True/False.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.85rem;margin-bottom:16px;";
+  p.innerHTML = "Jenny is on a school exchange in Turkey, staying with Alev's family (they cook every day). Breakfast: bread, eggs, cheese, jam — similar to UK. Lunch: lots of small dishes. Favourites: borek (cheese & potato), dolma (vegetable & rice). Tried ayran (yoghurt drink) — didn't like it much but drank it all since it's healthy. Dinner: had kebab (most famous Turkish dish) — delicious. After dinner: coffee + baklava (sweet cakes with honey) — bringing some home for Karen.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "u5rw-3", meta: { module: MOD, title: "Ex.3 Jenny's email" },
+    questions: [
+      { text: "Jenny is in Turkey with her family.", options: ["True", "False"], answer: "False" },
+      { text: "Jenny knew a lot about Turkish food before staying with Alev.", options: ["True", "False"], answer: "False" },
+      { text: "Turkish breakfast is not very different from UK breakfast.", options: ["True", "False"], answer: "True" },
+      { text: "Borek is a dish with rice.", options: ["True", "False"], answer: "False" },
+      { text: "Jenny didn't like the Turkish yoghurt drink.", options: ["True", "False"], answer: "True" },
+      { text: "Baklava is a sweet dish.", options: ["True", "False"], answer: "True" },
+      { text: "Jenny tried a famous Turkish dish in a restaurant.", options: ["True", "False"], answer: "True" },
+      { text: "Jenny is going to bring some coffee back from Turkey.", options: ["True", "False"], answer: "False" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "Street food article", "Đọc bài rồi điền đúng 1 từ mỗi chỗ trống.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.85rem;margin-bottom:16px;";
+  p.innerHTML = "Street food is often cheaper and tastier than restaurant food, and full of local people rather than tourists. France: baguettes (bread with cheese/meat/salad), sold from street stalls. Italy: pizza slices and arancini (fried rice balls — 'oranges' in Italian). Mexico: tacos (spicy beans and meat). Eating street food helps you learn about new places and talk to locals.";
+  box.appendChild(p);
+  buildFillBlank(box, {
+    exerciseId: "u5rw-4", meta: { module: MOD, title: "Ex.4 Street food" }, prefixLabel: true,
+    lines: [
+      { text: "Many people like to try the local ____ when visiting another country.", answers: ["food"] },
+      { text: "Restaurants have a lot of ____ but not many local people.", answers: ["tourists"] },
+      { text: "Street food is usually ____ than food in restaurants.", answers: ["cheaper"] },
+      { text: "You can buy baguettes on the ____ in France.", answers: ["street"] },
+      { text: "Arancini is the Italian word for ____.", answers: ["oranges"] },
+      { text: "Tacos are popular street food in ____.", answers: ["mexico"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "Food around the world", "Đọc về ẩm thực 4 nước rồi nối thông tin với đúng nước.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.82rem;margin-bottom:16px;";
+  p.innerHTML = "<b>Japan</b>: fresh, healthy, ramen, curries; eat slowly & small amounts; not many sweet dishes; New Year: rice cakes + ozoni soup.<br><b>Italy</b>: pasta/pizza but also lots of vegetables/olive oil; long lunches; evening pizzeria + gelato.<br><b>China</b>: lots of vegetables, some meat/fish; garlic & ginger; green tea (healthy); dumplings for New Year, moon cakes for Autumn Festival.<br><b>Poland</b>: warming winter food, pierogi dumplings, carrots/potatoes/cabbage; cheesecake/doughnuts; 4 small meals/day, main meal 2pm; Christmas = 12 dishes.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "u5rw-5", meta: { module: MOD, title: "Ex.5 Food around the world" },
+    questions: [
+      { text: "A healthy drink is popular in this country.", options: ["Japan", "Italy", "China", "Poland"], answer: "China" },
+      { text: "People eat soup to celebrate New Year.", options: ["Japan", "Italy", "China", "Poland"], answer: "Japan" },
+      { text: "Healthy food often includes olive oil.", options: ["Japan", "Italy", "China", "Poland"], answer: "Italy" },
+      { text: "People eat 4 small meals a day.", options: ["Japan", "Italy", "China", "Poland"], answer: "Poland" },
+      { text: "Dumplings are eaten to celebrate New Year.", options: ["Japan", "Italy", "China", "Poland"], answer: "China" },
+      { text: "People eat a special 12-dish meal at Christmas.", options: ["Japan", "Italy", "China", "Poland"], answer: "Poland" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "Put the words in order", "Bấm các từ theo đúng thứ tự.");
+  buildWordOrder(box, {
+    exerciseId: "u5rw-6", meta: { module: MOD, title: "Ex.6 Word order" },
+    items: [
+      { words: ["In", "China,people", "don't", "eat", "a", "lot", "of", "meat"], answer: "In China,people don't eat a lot of meat" },
+      { words: ["I", "always", "eat", "ice", "cream", "in", "the", "summer"], answer: "I always eat ice cream in the summer" },
+      { words: ["Turkish", "people", "eat", "a", "big", "breakfast"], answer: "Turkish people eat a big breakfast" },
+      { words: ["Indian", "food", "is", "often", "quite", "spicy"], answer: "Indian food is often quite spicy" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "Countable or uncountable?", "Xếp mỗi danh từ vào đúng cột.");
+  buildSort2(box, {
+    exerciseId: "u5rw-7", meta: { module: MOD, title: "Ex.7 Countable/uncountable" },
+    columns: ["countable", "uncountable"],
+    items: [
+      { text: "egg", col: "countable" }, { text: "apple", col: "countable" }, { text: "dumpling", col: "countable" }, { text: "pizza", col: "countable" },
+      { text: "bread", col: "uncountable" }, { text: "meat", col: "uncountable" }, { text: "soup", col: "uncountable" }, { text: "rice", col: "uncountable" },
+      { text: "pasta", col: "uncountable" }, { text: "vegetable", col: "countable" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(8, "Countable or uncountable form", "Sửa lại từ gạch chân sang đúng dạng đếm được/không đếm được.");
+  buildFillBlank(box, {
+    exerciseId: "u5rw-8", meta: { module: MOD, title: "Ex.8 Correct form" }, prefixLabel: true,
+    lines: [
+      { text: "There is not many milk left. → sửa: ____", answers: ["much"] },
+      { text: "I made a soup for dinner. → sửa: ____", answers: ["some"] },
+      { text: "How many rice would you like? → sửa: ____", answers: ["much"] },
+      { text: "I like to eat a fruit for breakfast. → sửa: ____", answers: ["some"] },
+      { text: "Would you like some cup of coffee? → sửa: ____", answers: ["a"] },
+      { text: "I don't eat many meat any more. → sửa: ____", answers: ["much"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(9, "Match information to paragraph", "Đọc lại thư của Richard rồi nối thông tin với đúng đoạn (A hoặc B).");
+  buildMCQ(box, {
+    exerciseId: "u5rw-9", meta: { module: MOD, title: "Ex.9 Paragraph matching" },
+    questions: [
+      { text: "A description of Richard's favourite dish.", options: ["A", "B"], answer: "B" },
+      { text: "Food from different countries.", options: ["A", "B"], answer: "A" },
+      { text: "Who cooks Richard's favourite dish.", options: ["A", "B"], answer: "B" },
+      { text: "A winter dish.", options: ["A", "B"], answer: "B" },
+      { text: "Something British people don't have very often.", options: ["A", "B"], answer: "A" },
+      { text: "Richard's opinion of British food.", options: ["A", "B"], answer: "B" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(10, "Writing — Reply about food", "Viết email trả lời bạn về món ăn (chào hỏi, trả lời từng câu hỏi, dùng tính từ mô tả món ăn).");
+  const wrap = document.createElement("div");
+  wrap.innerHTML = `<textarea rows="6" style="width:100%;border:1.5px solid var(--border);border-radius:8px;padding:10px;font-family:inherit;font-size:.9rem;" placeholder="Dear ..."></textarea>
+  <p style="font-size:.8rem;color:#6b7280;margin-top:8px;">✏️ Bài viết tự do — giáo viên xem trực tiếp.</p>`;
+  box.appendChild(wrap);
+}
+</script>
+</body>
+</html>

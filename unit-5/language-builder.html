@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Unit 5 — Language Builder | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css?v=202607021520">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟩 Unit 5 — Language Builder (Jobs)</h1>
+  <a href="../index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_5_language_builder.docx — bài nghe chuyển thành bài đọc vì không kèm audio.</footer>
+
+<script src="scores.js?v=202607021520"></script>
+<script src="app.js?v=202607021520"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Unit 5 - Language Builder";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise"; box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Jobs", "Nối tên nghề nghiệp với định nghĩa.");
+  buildMatching(box, {
+    exerciseId: "u5lb-1", meta: { module: MOD, title: "Ex.1 Jobs" },
+    leftLabel: "Nghề nghiệp", rightLabel: "Định nghĩa",
+    pairs: [
+      { left: "dentist", right: "checks and cleans people's teeth" },
+      { left: "waiter", right: "serves food and drinks at a restaurant" },
+      { left: "mechanic", right: "repairs cars" },
+      { left: "chef", right: "cooks meals in a restaurant" },
+      { left: "nurse", right: "cares for patients in a hospital" },
+      { left: "doctor", right: "treats sick people" },
+      { left: "pilot", right: "flies a plane" },
+      { left: "receptionist", right: "welcomes visitors at the front desk" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "Workplaces", "Chọn đúng nơi làm việc.");
+  buildMCQ(box, {
+    exerciseId: "u5lb-2", meta: { module: MOD, title: "Ex.2 Workplaces" },
+    questions: [
+      { text: "A place with many workers and machines making products:", options: ["factory", "office", "shop"], answer: "factory" },
+      { text: "A place to fix cars:", options: ["garage", "hospital", "sports club"], answer: "garage" },
+      { text: "A place to grow crops and keep animals:", options: ["factory", "farm", "supermarket"], answer: "farm" },
+      { text: "A place where police officers work:", options: ["factory", "farm", "police station"], answer: "police station" },
+      { text: "A place where trains stop:", options: ["hospital", "post office", "railway station"], answer: "railway station" },
+      { text: "A place to buy medicine:", options: ["chemist", "library", "restaurant"], answer: "chemist" },
+      { text: "A place to buy books:", options: ["bookshop", "garage", "shop"], answer: "bookshop" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "Job verbs", "Điền đúng động từ (gợi ý: cleans, cooks, flies, grows, paints, repairs, sells, serves, shows, takes, teaches, writes).");
+  buildFillBlank(box, {
+    exerciseId: "u5lb-3", meta: { module: MOD, title: "Ex.3 Job verbs" }, prefixLabel: true,
+    lines: [
+      { text: "She's a chef. She ____ meals in a restaurant.", answers: ["cooks"] },
+      { text: "She's a waitress. She ____ food and drinks.", answers: ["serves"] },
+      { text: "He's a pilot. He ____ a plane.", answers: ["flies"] },
+      { text: "She's a lecturer. She ____ in a university.", answers: ["teaches"] },
+      { text: "He's a mechanic. He ____ cars in a garage.", answers: ["repairs"] },
+      { text: "She's a journalist. She ____ reports for newspapers.", answers: ["writes"] },
+      { text: "She's a guide. She ____ tourists round the town.", answers: ["shows"] },
+      { text: "She's a dentist. She checks and ____ people's teeth.", answers: ["cleans"] },
+      { text: "She's a sales assistant. She ____ things to customers.", answers: ["sells"] },
+      { text: "He's a photographer. He ____ photos at weddings.", answers: ["takes"] },
+      { text: "He's a farmer. He ____ fruit and vegetables.", answers: ["grows"] },
+      { text: "He's an artist. He ____ pictures.", answers: ["paints"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "School subjects", "Điền đúng môn học.");
+  buildFillBlank(box, {
+    exerciseId: "u5lb-4", meta: { module: MOD, title: "Ex.4 School subjects" }, prefixLabel: true,
+    lines: [
+      { text: "Students learn about the past: ____", answers: ["history"] },
+      { text: "Students study countries, mountains and seas: ____", answers: ["geography"] },
+      { text: "Students learn about plants and animals: ____", answers: ["biology"] },
+      { text: "Students study how things change when mixed: ____", answers: ["chemistry"] },
+      { text: "Students study electricity, light and sound: ____", answers: ["physics"] },
+      { text: "Students study numbers: ____", answers: ["maths"] },
+      { text: "Students learn to paint or draw: ____", answers: ["art"] },
+      { text: "Students learn to use computers and equipment: ____", answers: ["technology"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "Choose the best job", "Đọc đoạn văn rồi chọn đúng nghề nghiệp phù hợp cho mỗi người.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.85rem;margin-bottom:16px;";
+  p.innerHTML = "Emma was good at languages, loves talking and writing, studies English. Jim was good at biology, studying medicine. Laura liked being with small children, good at most subjects. Dan hated school, learnt to repair cars at college. Beth was good at French and German, likes meeting people from other countries.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "u5lb-5", meta: { module: MOD, title: "Ex.5 Best job" },
+    questions: [
+      { text: "Emma wants to be a", options: ["driver", "journalist", "nurse"], answer: "journalist" },
+      { text: "Jim wants to be a", options: ["doctor", "mechanic", "pilot"], answer: "doctor" },
+      { text: "Laura is now working as a", options: ["cook", "guide", "teacher"], answer: "teacher" },
+      { text: "Dan now works as a", options: ["farmer", "mechanic", "police officer"], answer: "mechanic" },
+      { text: "Beth now has a job as a", options: ["actor", "guide", "nurse"], answer: "guide" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "Hamish talks about work (bài đọc thay bài nghe)", "Đọc phỏng vấn rồi chọn True/False.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.82rem;margin-bottom:16px;";
+  p.innerHTML = "Hamish is 18, still at school, studying maths, science and technology. He works hard, usually gets As or Bs. He doesn't want to go to university — wants a job after school. He's had several Saturday jobs: sales assistant in a shop, waiter in an Italian restaurant. Currently working in his uncle's computer shop doing simple repairs — really likes it. The presenter advises him to continue working there after school.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "u5lb-6", meta: { module: MOD, title: "Ex.6 Hamish" },
+    questions: [
+      { text: "Hamish is 19 years old.", options: ["True", "False"], answer: "False" },
+      { text: "He is studying three subjects at school.", options: ["True", "False"], answer: "True" },
+      { text: "He works hard at school.", options: ["True", "False"], answer: "True" },
+      { text: "He wants to study technology at university.", options: ["True", "False"], answer: "False" },
+      { text: "He has had several Saturday jobs.", options: ["True", "False"], answer: "True" },
+      { text: "He is working as a waiter now.", options: ["True", "False"], answer: "False" },
+      { text: "He likes repairing computers.", options: ["True", "False"], answer: "True" },
+      { text: "The presenter thinks he should work for his uncle.", options: ["True", "False"], answer: "True" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "Sara's job email", "Điền đúng từ vào email xin việc (gợi ý: course, fun, good, hobbies, interested, interview, jobs, store, working).");
+  buildFillBlank(box, {
+    exerciseId: "u5lb-7", meta: { module: MOD, title: "Ex.7 Sara's email" }, prefixLabel: true,
+    lines: [
+      { text: "I am very ____ in the job of receptionist.", answers: ["interested"] },
+      { text: "I have just finished a ____ in Maths and Technology.", answers: ["course"] },
+      { text: "I'm very ____ at languages.", answers: ["good"] },
+      { text: "I have had several ____ during the summer.", answers: ["jobs"] },
+      { text: "I worked as a sales assistant in a big ____.", answers: ["store"] },
+      { text: "I'm good at ____ with others in a team.", answers: ["working"] },
+      { text: "My ____ are reading and watching films.", answers: ["hobbies"] },
+      { text: "I'm friendly and good ____ to be with.", answers: ["fun"] },
+      { text: "I could come for an ____ any time this month.", answers: ["interview"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(8, "Correct the mistakes", "Sửa lại đúng giới từ bị gạch chân.");
+  buildFillBlank(box, {
+    exerciseId: "u5lb-8", meta: { module: MOD, title: "Ex.8 Correct prepositions" }, prefixLabel: true,
+    lines: [
+      { text: "I'm really good on technology. → sửa: ____", answers: ["at"] },
+      { text: "I was always interested for history. → sửa: ____", answers: ["in"] },
+      { text: "I've worked in a shop at a sales assistant. → sửa: ____", answers: ["as"] },
+      { text: "I am very interested of the job. → sửa: ____", answers: ["in"] },
+      { text: "I have a job in the weekend. → sửa: ____", answers: ["at"] },
+      { text: "I work as a receptionist to a dentist. → sửa: ____", answers: ["for"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(9, "Writing — Apply for a weekend job", "Viết thư/email xin việc làm cuối tuần: công việc muốn làm, tại sao, tuổi/công việc hiện tại, điểm mạnh, kinh nghiệm, sở thích.");
+  const wrap = document.createElement("div");
+  wrap.innerHTML = `<textarea rows="6" style="width:100%;border:1.5px solid var(--border);border-radius:8px;padding:10px;font-family:inherit;font-size:.9rem;" placeholder="Dear Sir or Madam,..."></textarea>
+  <p style="font-size:.8rem;color:#6b7280;margin-top:8px;">✏️ Bài viết tự do — giáo viên xem trực tiếp.</p>`;
+  box.appendChild(wrap);
+}
+
+{
+  const box = exerciseBlock(10, "Speaking — Subjects & jobs", "Chuẩn bị nói: môn học giỏi, công việc muốn làm và tại sao, công việc người thân trong gia đình.");
+  const wrap = document.createElement("div");
+  wrap.innerHTML = `<p style="font-size:.8rem;color:#6b7280;">🎙️ Bài nói — ghi âm và gửi riêng cho giáo viên/trợ giảng.</p>`;
+  box.appendChild(wrap);
+}
+</script>
+</body>
+</html>

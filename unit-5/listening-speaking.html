@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Unit 5 — Listening & Speaking | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css?v=202607021520">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟨 Unit 5 — Listening &amp; Speaking</h1>
+  <a href="../index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_5_listening___speaking.docx — bài nghe chuyển thành bài đọc vì không kèm audio.</footer>
+
+<script src="scores.js?v=202607021520"></script>
+<script src="app.js?v=202607021520"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Unit 5 - Listening & Speaking";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise"; box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "World dishes", "Nối tên món ăn với đất nước xuất xứ.");
+  buildMatching(box, {
+    exerciseId: "u5ls-1", meta: { module: MOD, title: "Ex.1 World dishes" },
+    leftLabel: "Món ăn", rightLabel: "Xuất xứ",
+    pairs: [
+      { left: "paella", right: "Spain" }, { left: "tagine", right: "Morocco" },
+      { left: "fondue", right: "Switzerland" }, { left: "perico", right: "Venezuela" },
+      { left: "sushi", right: "Japan" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "Complete the conversations", "Điền đúng danh từ (gợi ý: any eggs, any butter, some milk, some cheese, some flour, some sugar).");
+  buildFillBlank(box, {
+    exerciseId: "u5ls-2", meta: { module: MOD, title: "Ex.2 Conversations" }, prefixLabel: true,
+    lines: [
+      { text: "A: Do you have ____? B: No, I don't.", answers: ["any eggs"] },
+      { text: "A: There's ____ in the fridge. B: There's ____ as well.", answers: ["some milk"] },
+      { text: "A: We need ____ to make an omelette. B: And also ____.", answers: ["some flour"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "Cooking actions", "Nối động từ nấu ăn với hành động mô tả.");
+  buildMatching(box, {
+    exerciseId: "u5ls-3", meta: { module: MOD, title: "Ex.3 Cooking actions" },
+    leftLabel: "Động từ", rightLabel: "Mô tả",
+    pairs: [
+      { left: "boil", right: "cook in bubbling water" },
+      { left: "chop", right: "cut into small pieces with a knife" },
+      { left: "cut", right: "divide something with a knife" },
+      { left: "fry", right: "cook in a pan with oil" },
+      { left: "mix", right: "combine ingredients together" },
+      { left: "roll", right: "flatten dough with a rolling pin" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "Famous dishes around the world", "Chọn đúng từ cho mỗi món ăn.");
+  buildMCQ(box, {
+    exerciseId: "u5ls-4", meta: { module: MOD, title: "Ex.4 Famous dishes" },
+    questions: [
+      { text: "Paella is made from rice and chicken ____ into small pieces.", options: ["chopped", "cut"], answer: "chopped" },
+      { text: "Tagine's couscous is ____ with vegetables.", options: ["mixed", "rolled"], answer: "mixed" },
+      { text: "Fondue is a dish of ____ — or beef.", options: ["cheese", "eggs"], answer: "cheese" },
+      { text: "Perico is made from ____ and eggs.", options: ["fruit", "vegetables"], answer: "vegetables" },
+      { text: "Sushi's main ingredients are ____ and rice.", options: ["fish", "meat"], answer: "fish" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "How to make paella (bài đọc thay bài nghe)", "Đọc công thức paella rồi chọn True/False.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.85rem;margin-bottom:16px;";
+  p.innerHTML = "Paella is famous in Spain (Valencia). Main ingredient: rice. Traditional = rabbit, now usually chicken + seafood. A wonderful dish to share (not to eat alone). Cheap to make: chicken, seafood, oil, onions, peppers, tomatoes, green beans, garlic, saffron (expensive, small amount), stock, rice. Needs a special wide pan. Steps: cut chicken, chop vegetables, fry chicken until golden, add vegetables and fry, add saffron/rice/salt and mix, add stock and cook until nearly done, add seafood and beans, cook a few more minutes, taste and add more salt if needed.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "u5ls-5", meta: { module: MOD, title: "Ex.5 Paella recipe" },
+    questions: [
+      { text: "Paella is usually made with chicken and seafood.", options: ["True", "False"], answer: "True" },
+      { text: "Paella is a wonderful dish to eat alone.", options: ["True", "False"], answer: "False" },
+      { text: "Paella is an expensive dish to make.", options: ["True", "False"], answer: "False" },
+      { text: "A special pan is used for making paella.", options: ["True", "False"], answer: "True" },
+      { text: "Chicken is the first ingredient you fry.", options: ["True", "False"], answer: "True" },
+      { text: "You should cook the paella quickly.", options: ["True", "False"], answer: "False" },
+      { text: "The last ingredient to add is the rice.", options: ["True", "False"], answer: "False" },
+      { text: "You should add a little salt at the end if you want.", options: ["True", "False"], answer: "True" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "Correct the spelling", "Sửa lỗi chính tả từ vựng đồ ăn (thêm/đổi/bỏ 1 chữ cái).");
+  buildFillBlank(box, {
+    exerciseId: "u5ls-6", meta: { module: MOD, title: "Ex.6 Spelling" }, prefixLabel: true,
+    lines: [
+      { text: "sal → ____", answers: ["salt"] },
+      { text: "aple → ____", answers: ["apple"] },
+      { text: "cabbige → ____", answers: ["cabbage"] },
+      { text: "flouor → ____", answers: ["flour"] },
+      { text: "mylk → ____", answers: ["milk"] },
+      { text: "orrange → ____", answers: ["orange"] },
+      { text: "juise → ____", answers: ["juice"] },
+      { text: "tomatoe → ____", answers: ["tomato"] },
+      { text: "pastar → ____", answers: ["pasta"] },
+      { text: "oyl → ____", answers: ["oil"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "A, an, or some?", "Xếp mỗi danh từ vào đúng cột.");
+  buildSort2(box, {
+    exerciseId: "u5ls-7", meta: { module: MOD, title: "Ex.7 A/an/some" },
+    columns: ["a/an", "some"],
+    items: [
+      { text: "onion", col: "a/an" }, { text: "egg", col: "a/an" }, { text: "orange", col: "a/an" }, { text: "apple", col: "a/an" },
+      { text: "cabbage", col: "some" }, { text: "tomato", col: "some" }, { text: "pasta", col: "some" }, { text: "milk", col: "some" },
+      { text: "rice", col: "some" }, { text: "chicken", col: "some" }, { text: "shrimp", col: "some" }, { text: "flour", col: "some" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(8, "Match cooking instructions", "Nối nửa đầu câu với nửa sau đúng.");
+  buildMatching(box, {
+    exerciseId: "u5ls-8", meta: { module: MOD, title: "Ex.8 Cooking instructions" },
+    leftLabel: "Bắt đầu", rightLabel: "Kết thúc",
+    pairs: [
+      { left: "Mix the ingredients", right: "together." },
+      { left: "Fry the eggs", right: "in some oil." },
+      { left: "Boil the potatoes", right: "in the water." },
+      { left: "Cut the meat", right: "into pieces." },
+      { left: "Chop all", right: "the vegetables into very small pieces." },
+      { left: "Bake the bread", right: "in the oven." },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(9, "Put the words in order — Moussaka", "Bấm các từ theo đúng thứ tự.");
+  buildWordOrder(box, {
+    exerciseId: "u5ls-9", meta: { module: MOD, title: "Ex.9 Moussaka" },
+    items: [
+      { words: ["Moussaka", "is", "a", "dish", "from", "Greece"], answer: "Moussaka is a dish from Greece" },
+      { words: ["It's", "popular", "in", "my", "country", "and", "I", "like", "it"], answer: "It's popular in my country and I like it" },
+      { words: ["The", "main", "ingredients", "are meat,", "aubergines", "and chesse"], answer: "The main ingredients are meat, aubergines and chesse" },
+      { words: ["It", "has", "other", "vegetables", "such as", "tomatoes and", "onions"], answer: "It has other vegetables such as tomatoes and onions" },
+      { words: ["You", "cook", "moussaka", "in", "the", "oven"], answer: "You cook moussaka in the oven" },
+      { words: ["It's", "served", "with", "a delicious", "Greek salad"], answer: "It's served with a delicious Greek salad" },
+      { words: ["You", "can", "eat", "it", "at", "home or", "a", "restaurant"], answer: "You can eat it at home or a restaurant" },
+      { words: ["It's", "a", "great dish", "to", "eat", "with", "friends"], answer: "It's a great dish to eat with friends" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(10, "Speaking — Describe a dish you enjoy", "Chuẩn bị nói: xuất xứ, nguyên liệu chính, cách làm, tại sao thích, ăn ở đâu, ăn cùng ai.");
+  const wrap = document.createElement("div");
+  wrap.innerHTML = `<p style="font-size:.8rem;color:#6b7280;">🎙️ Bài nói — ghi âm và gửi riêng cho giáo viên/trợ giảng.</p>`;
+  box.appendChild(wrap);
+}
+</script>
+</body>
+</html>

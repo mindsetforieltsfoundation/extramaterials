@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Unit 5 — Grammar & Vocab | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css?v=202607021520">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟦 Unit 5 — Grammar &amp; Vocab (Food)</h1>
+  <a href="../index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_5_grammar___vocab.docx</footer>
+
+<script src="scores.js?v=202607021520"></script>
+<script src="app.js?v=202607021520"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Unit 5 - Grammar & Vocab";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise"; box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Food items", "Nối tên món ăn với đúng nhóm.");
+  buildMatching(box, {
+    exerciseId: "u5gv-1", meta: { module: MOD, title: "Ex.1 Food items" },
+    leftLabel: "Từ vựng", rightLabel: "Nhóm",
+    pairs: [
+      { left: "beef", right: "a type of red meat" },
+      { left: "cauliflower", right: "a white vegetable" },
+      { left: "duck", right: "a type of poultry meat" },
+      { left: "garlic", right: "a strong-flavoured bulb used for cooking" },
+      { left: "lettuce", right: "green salad leaves" },
+      { left: "lobster", right: "a large shellfish" },
+      { left: "salmon", right: "a pink fish" },
+      { left: "spaghetti", right: "long thin pasta" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "Food categories", "Xếp mỗi loại thực phẩm vào đúng nhóm.");
+  buildSort2(box, {
+    exerciseId: "u5gv-2", meta: { module: MOD, title: "Ex.2 Food categories" },
+    columns: ["vegetables/carbs", "meat/seafood"],
+    items: [
+      { text: "lettuce", col: "vegetables/carbs" }, { text: "carrot", col: "vegetables/carbs" },
+      { text: "garlic", col: "vegetables/carbs" }, { text: "cauliflower", col: "vegetables/carbs" },
+      { text: "spaghetti", col: "vegetables/carbs" },
+      { text: "duck", col: "meat/seafood" }, { text: "salmon", col: "meat/seafood" },
+      { text: "beef", col: "meat/seafood" }, { text: "lobster", col: "meat/seafood" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "Cooking verbs", "Nối động từ nấu ăn với định nghĩa.");
+  buildMatching(box, {
+    exerciseId: "u5gv-3", meta: { module: MOD, title: "Ex.3 Cooking verbs" },
+    leftLabel: "Động từ", rightLabel: "Định nghĩa",
+    pairs: [
+      { left: "bake", right: "to cook something like bread or cake in the oven" },
+      { left: "boil", right: "to cook food in water" },
+      { left: "chop", right: "to cut something into small pieces" },
+      { left: "fry", right: "to cook something in hot oil or fat" },
+      { left: "mix", right: "to put two or more ingredients together" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "A, an, some, any", "Điền đúng mạo từ/lượng từ.");
+  buildFillBlank(box, {
+    exerciseId: "u5gv-4", meta: { module: MOD, title: "Ex.4 A/an/some/any" }, prefixLabel: true,
+    lines: [
+      { text: "I have ____ sandwich for lunch. (danh từ đếm được số ít, phụ âm)", answers: ["a"] },
+      { text: "I had ____ apple for a snack. (danh từ đếm được số ít, nguyên âm)", answers: ["an"] },
+      { text: "There are ____ oranges in the cupboard. (câu khẳng định, số nhiều)", answers: ["some"] },
+      { text: "Are there ____ tomatoes? (câu hỏi)", answers: ["any"] },
+      { text: "There isn't ____ fish on the menu. (câu phủ định)", answers: ["any"] },
+      { text: "Can I have ____ water, please? (lời đề nghị/yêu cầu)", answers: ["some"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "A lot of, many, much", "Chọn đáp án đúng.");
+  buildMCQ(box, {
+    exerciseId: "u5gv-5", meta: { module: MOD, title: "Ex.5 A lot of/many/much" },
+    questions: [
+      { text: "We use ____ in positive and negative sentences với cả đếm được và không đếm được.", options: ["a lot of", "many"], answer: "a lot of" },
+      { text: "We have ____ oranges to eat.", options: ["a lot of", "much"], answer: "a lot of" },
+      { text: "We don't have ____ fruit in winter.", options: ["a lot of", "many"], answer: "many" },
+      { text: "We use ____ trong câu hỏi/phủ định với danh từ đếm được.", options: ["many", "much"], answer: "many" },
+      { text: "How ____ lemons do you need?", options: ["many", "much"], answer: "many" },
+      { text: "There aren't ____ cauliflowers in the shop.", options: ["many", "much"], answer: "many" },
+      { text: "We use ____ trong câu hỏi/phủ định với danh từ không đếm được.", options: ["many", "much"], answer: "much" },
+      { text: "How ____ coffee is there?", options: ["many", "much"], answer: "much" },
+      { text: "There isn't ____ sugar in the dish.", options: ["many", "much"], answer: "much" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "Choose the correct word", "Chọn đáp án đúng.");
+  buildMCQ(box, {
+    exerciseId: "u5gv-6", meta: { module: MOD, title: "Ex.6 Choose correct word" },
+    questions: [
+      { text: "There isn't ____ milk in the fridge.", options: ["any", "many", "some"], answer: "any" },
+      { text: "How ____ eggs do we need?", options: ["a lot of", "many", "much"], answer: "many" },
+      { text: "There are ____ potatoes in the cupboard.", options: ["a lot of", "any", "much"], answer: "a lot of" },
+      { text: "How ____ spaghetti do we have?", options: ["any", "many", "much"], answer: "much" },
+      { text: "I think we have ____ carrots.", options: ["any", "much", "some"], answer: "some" },
+      { text: "I would like ____ fish, please.", options: ["any", "much", "some"], answer: "some" },
+      { text: "How ____ sugar would you like?", options: ["many", "much", "some"], answer: "much" },
+      { text: "There aren't ____ vegetables in the shop.", options: ["many", "much", "some"], answer: "many" },
+      { text: "We don't have ____ beef at all.", options: ["any", "many", "some"], answer: "any" },
+      { text: "There are ____ different salads on the menu.", options: ["a lot of", "any", "much"], answer: "a lot of" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "My favourite food — choose the correct answer", "Chọn đáp án đúng để hoàn thành bài đọc về pizza.");
+  buildMCQ(box, {
+    exerciseId: "u5gv-7", meta: { module: MOD, title: "Ex.7 Pizza text" },
+    questions: [
+      { text: "My ____ food is pizza.", options: ["best", "favourite", "lovely"], answer: "favourite" },
+      { text: "I like ____ pizzas because they're easy to prepare.", options: ["eat", "eating", "ate"], answer: "eating" },
+      { text: "If you want to ____ your own pizza...", options: ["get", "have", "make"], answer: "make" },
+      { text: "You can ____ tomatoes and cheese on top.", options: ["add", "fold", "mix"], answer: "add" },
+      { text: "You then ____ it in the oven.", options: ["boil", "cook", "fry"], answer: "cook" },
+      { text: "You can buy ____ pizza from the supermarket.", options: ["a", "much", "some"], answer: "a" },
+      { text: "Nowadays, ____ people are so busy...", options: ["a lot", "many", "much"], answer: "many" },
+      { text: "...they like to rest ____ the weekend.", options: ["at", "for", "in"], answer: "at" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(8, "Arabian cauliflower recipe", "Sắp xếp các bước theo đúng thứ tự.");
+  buildWordOrder(box, {
+    exerciseId: "u5gv-8", meta: { module: MOD, title: "Ex.8 Recipe order" },
+    items: [
+      { words: ["First,", "take", "a", "large", "cauliflower", "and", "cut", "the", "leaves", "off"], answer: "First, take a large cauliflower and cut the leaves off" },
+      { words: ["Next,", "take", "the", "cauliflower", "and", "place", "it", "in", "boiling", "water"], answer: "Next, take the cauliflower and place it in boiling water" },
+      { words: ["While", "the", "cauliflower", "is", "boiling,", "chop", "some", "garlic"], answer: "While the cauliflower is boiling, chop some garlic" },
+      { words: ["Next,", "add", "the", "garlic", "and", "lemon", "juice", "to", "the", "tahini"], answer: "Next, add the garlic and lemon juice to the tahini" },
+      { words: ["Mix", "the", "paste,", "the", "lemon", "juice", "and", "the", "garlic", "together"], answer: "Mix the paste, the lemon juice and the garlic together" },
+      { words: ["Add", "the", "mixture", "to", "the", "cauliflower"], answer: "Add the mixture to the cauliflower" },
+      { words: ["Finally,", "cover", "the", "dish", "and", "put", "it", "in", "the", "fridge"], answer: "Finally, cover the dish and put it in the fridge" },
+    ],
+  });
+}
+</script>
+</body>
+</html>
