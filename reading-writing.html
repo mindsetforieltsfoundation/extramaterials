@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reading &amp; Writing | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟪 Module 4 — Reading &amp; Writing</h1>
+  <a href="index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_1_reading___writing.docx</footer>
+
+<script src="scores.js"></script>
+<script src="app.js"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Reading & Writing";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise";
+  box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Match activities", "Nối hoạt động với đúng định nghĩa (thay cho ảnh minh họa gốc).");
+  buildMatching(box, {
+    exerciseId: "rw-1", meta: { module: MOD, title: "Ex.1 Match activities" },
+    leftLabel: "Hoạt động", rightLabel: "Định nghĩa",
+    pairs: [
+      { left: "do homework", right: "study tasks set by a teacher" },
+      { left: "do the housework", right: "clean and tidy the home" },
+      { left: "go for a walk", right: "walk outside for exercise/relaxation" },
+      { left: "go shopping", right: "go to buy things" },
+      { left: "go to the gym", right: "go somewhere to exercise" },
+      { left: "make dinner", right: "cook the evening meal" },
+      { left: "meet friends", right: "see friends together" },
+      { left: "play computer games", right: "play games on a computer/console" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "Reading — How to have a great day every day", "Đọc bài rồi chọn đúng đoạn (A/B/C) khớp với thông tin.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.85rem;margin-bottom:16px;";
+  p.innerHTML = "<b>A Get up early</b> — It is best to get up before 7:00 a.m. Many famous writers and musicians believed this. Try to get up at the same time every day.<br><br><b>B Eat breakfast</b> — Breakfast is the most important meal. People often say they don't have time, but a healthy breakfast helps you work well and stops you eating unhealthy food later.<br><br><b>C Go for a walk</b> — If you spend a lot of time indoors, go outside for 30 minutes a day. It will make you feel less tired and help you do your best work.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "rw-2", meta: { module: MOD, title: "Ex.2 Paragraph matching" },
+    questions: [
+      { text: "A lot of people don't have time to do this.", options: ["A", "B", "C"], answer: "B" },
+      { text: "This will stop you from feeling tired.", options: ["A", "B", "C"], answer: "C" },
+      { text: "This will stop you from eating unhealthy food.", options: ["A", "B", "C"], answer: "B" },
+      { text: "Famous people thought this was a good idea.", options: ["A", "B", "C"], answer: "A" },
+      { text: "You should do this at the same time every day.", options: ["A", "B", "C"], answer: "A" },
+      { text: "Many people don't want to do this.", options: ["A", "B", "C"], answer: "A" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "Alessia's email — choose the correct verb", "Chọn đúng động từ trong email của Alessia gửi Jane.");
+  buildMCQ(box, {
+    exerciseId: "rw-3", meta: { module: MOD, title: "Ex.3 Alessia's email" },
+    questions: [
+      { text: "On school days I usually ____ up at 7:00 a.m.", options: ["do", "get", "have"], answer: "get" },
+      { text: "I have a shower and ____ dressed.", options: ["do", "get", "make"], answer: "get" },
+      { text: "Then I ____ breakfast with my parents.", options: ["do", "have", "take"], answer: "have" },
+      { text: "I go home and ____ lunch with my mum.", options: ["do", "go", "have"], answer: "have" },
+      { text: "I help my mum to ____ the housework.", options: ["do", "have", "make"], answer: "do" },
+      { text: "I ____ out the bins.", options: ["do", "have", "take"], answer: "take" },
+      { text: "After dinner I ____ for a walk.", options: ["go", "have", "take"], answer: "go" },
+      { text: "I usually ____ to bed at 10 p.m.", options: ["go", "have", "make"], answer: "go" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "Reading comprehension — Alessia's email", "Đọc lại email và trả lời câu hỏi.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.85rem;margin-bottom:16px;";
+  p.innerHTML = "Alessia (Rome) writes to Jane (Cambridge): she gets up at 7:00 a.m., has a shower, gets dressed (no school uniform in Italy), has breakfast with her parents and sister, leaves home at 8:00 a.m., walks to school with friends (her sister takes a bus), has lessons until 1:00 p.m., goes home for a big lunch, does homework and housework in the afternoon, has football practice on Tuesdays and piano on Thursdays, has dinner at 7:00 p.m., goes for a family walk, and goes to bed at about 10:00 p.m.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "rw-4", meta: { module: MOD, title: "Ex.4 Comprehension" },
+    questions: [
+      { text: "What time does Alessia leave the house?", options: ["7:00 a.m.", "8:00 a.m.", "8:30 a.m."], answer: "8:00 a.m." },
+      { text: "How does Alessia's sister get to school?", options: ["Walks", "Takes a bus", "Cycles"], answer: "Takes a bus" },
+      { text: "When does Alessia have football practice?", options: ["Monday", "Tuesday", "Thursday"], answer: "Tuesday" },
+      { text: "What time does Alessia have dinner?", options: ["6:00 p.m.", "7:00 p.m.", "8:00 p.m."], answer: "7:00 p.m." },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "Michael and Emma — likes and dislikes", "Đọc đoạn hội thoại rồi trả lời câu hỏi.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.85rem;margin-bottom:16px;";
+  p.innerHTML = "Michael and Emma are talking about their free time. Michael likes sport, especially football and tennis. Emma doesn't like sport much, but doesn't mind watching it occasionally. Michael often eats dinner at home, sometimes burgers or kebabs when he's busy. Both Michael and Emma love watching action films together at the weekend.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "rw-5", meta: { module: MOD, title: "Ex.5 Michael & Emma" },
+    questions: [
+      { text: "Does Emma like sport?", options: ["Yes, a lot", "She doesn't mind it", "She hates it"], answer: "She doesn't mind it" },
+      { text: "Michael often eats", options: ["dinner at home", "dinner in a restaurant", "burgers and kebabs"], answer: "dinner at home" },
+      { text: "Both Michael and Emma like watching", options: ["comedy films", "romantic films", "action films"], answer: "action films" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "Present simple — correct form", "Chia đúng động từ trong ngoặc.");
+  buildFillBlank(box, {
+    exerciseId: "rw-6", meta: { module: MOD, title: "Ex.6 Present simple" }, prefixLabel: true,
+    lines: [
+      { text: "I usually ____ (get up) at around 6:00 a.m.", answers: ["get up"] },
+      { text: "I always ____ (drink) orange juice for breakfast.", answers: ["drink"] },
+      { text: "Breakfast ____ (be) the most important meal for me.", answers: ["is"] },
+      { text: "My sister's school is far, so she ____ (take) a bus.", answers: ["takes"] },
+      { text: "I usually ____ (wear) jeans and a tee-shirt.", answers: ["wear"] },
+      { text: "I never ____ (eat) fast food.", answers: ["eat"] },
+      { text: "Jane also ____ (like) football.", answers: ["likes"] },
+      { text: "We sometimes ____ (go) to a restaurant for dinner.", answers: ["go"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "Adverbs of frequency", "Điền đúng trạng từ tần suất (always, never, often, sometimes, usually).");
+  buildFillBlank(box, {
+    exerciseId: "rw-7", meta: { module: MOD, title: "Ex.7 Adverbs of frequency" }, prefixLabel: true,
+    lines: [
+      { text: "I walk to school with my friends most days. → I ____ walk to school with my friends.", answers: ["usually"] },
+      { text: "I have coffee every day at 11am. → I ____ have a cup of coffee at 11am.", answers: ["always"] },
+      { text: "Some weekends I go to a museum. → I ____ go to a museum at the weekend.", answers: ["sometimes"] },
+      { text: "I don't watch TV at all. → I ____ watch TV.", answers: ["never"] },
+      { text: "I go to the gym a lot. → I ____ go to the gym.", answers: ["often"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(8, "Match email phrases", "Nối phần đầu cụm từ với phần kết thúc đúng để tạo cụm trong email.");
+  buildMatching(box, {
+    exerciseId: "rw-8", meta: { module: MOD, title: "Ex.8 Email phrases" },
+    leftLabel: "Bắt đầu", rightLabel: "Kết thúc",
+    pairs: [
+      { left: "Dear", right: "Jane," }, { left: "Nice to", right: "hear from you." },
+      { left: "How", right: "are you?" }, { left: "I hope", right: "you are well." },
+      { left: "Thank you", right: "for your email." }, { left: "In your last email,", right: "you asked about ..." },
+      { left: "I'm writing to", right: "tell you about ..." }, { left: "Hope to", right: "hear from you soon." },
+      { left: "Best", right: "wishes," },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(9, "Label the email parts", "Gắn nhãn A-F đúng cho từng phần của email (chỉ gõ chữ cái A-F).");
+  buildFillBlank(box, {
+    exerciseId: "rw-9", meta: { module: MOD, title: "Ex.9 Label email parts" }, prefixLabel: true,
+    lines: [
+      { text: "What the writer does in the evening → ____", answers: ["e"] },
+      { text: "What the writer does when she gets up → ____", answers: ["b"] },
+      { text: "A greeting and introducing the topic → ____", answers: ["a"] },
+      { text: "What the writer does in the afternoon → ____", answers: ["d"] },
+      { text: "What the writer does for the rest of the morning → ____", answers: ["c"] },
+      { text: "A closing sentence and the writer's name → ____", answers: ["f"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(10, "Writing — Reply to your friend", "Viết email trả lời bạn về 1 ngày bình thường của bạn.");
+  const wrap = document.createElement("div");
+  wrap.innerHTML = `<p style="font-size:.85rem;color:#6b7280;">Gợi ý: 1) Chào & giới thiệu chủ đề — 2) Buổi sáng khi thức dậy — 3) Buổi sáng còn lại — 4) Buổi chiều — 5) Hoạt động rảnh rỗi — 6) Buổi tối — 7) Câu kết & tên.</p>
+  <textarea rows="8" style="width:100%;border:1.5px solid var(--border);border-radius:8px;padding:10px;font-family:inherit;font-size:.9rem;" placeholder="Dear ..."></textarea>
+  <p style="font-size:.8rem;color:#6b7280;margin-top:8px;">✏️ Bài viết tự do — giáo viên xem trực tiếp hoặc học sinh tự đối chiếu.</p>`;
+  box.appendChild(wrap);
+}
+</script>
+</body>
+</html>

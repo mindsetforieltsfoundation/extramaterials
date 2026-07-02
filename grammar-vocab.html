@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grammar &amp; Vocab | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟦 Module 1 — Grammar &amp; Vocab</h1>
+  <a href="index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_1_grammar___vocab.docx</footer>
+
+<script src="scores.js"></script>
+<script src="app.js"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Grammar & Vocab";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise";
+  box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Telling the time", "Nối giờ số với cách đọc bằng chữ.");
+  buildMatching(box, {
+    exerciseId: "gv-1", meta: { module: MOD, title: "Ex.1 Telling the time" },
+    leftLabel: "Giờ (số)", rightLabel: "Cách đọc (chữ)",
+    pairs: [
+      { left: "05:15", right: "a quarter past five" },
+      { left: "08:20", right: "twenty past eight" },
+      { left: "06:45", right: "a quarter to seven" },
+      { left: "14:30", right: "half past two" },
+      { left: "20:50", right: "ten to nine" },
+      { left: "09:10", right: "ten past nine" },
+      { left: "15:35", right: "twenty-five to four" },
+      { left: "10:05", right: "five past ten" },
+      { left: "12:00", right: "twelve o'clock" },
+      { left: "16:55", right: "five to five" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "Rearrange the letters", "Điền đúng động từ (chữ cái đã bị xáo trộn, gợi ý trong ngoặc).");
+  buildFillBlank(box, {
+    exerciseId: "gv-2", meta: { module: MOD, title: "Ex.2 Rearrange the letters" }, prefixLabel: true,
+    lines: [
+      { text: "The first thing I do is ____ (vahe) a shower.", answers: ["have"], explain: "vahe → have" },
+      { text: "After breakfast I ____ (hrbus) my teeth.", answers: ["brush"], explain: "hrbus → brush" },
+      { text: "Then I ____ (mtee) my friends.", answers: ["meet"], explain: "mtee → meet" },
+      { text: "We ____ (atchc) the bus to college.", answers: ["catch"], explain: "atchc → catch" },
+      { text: "At four o'clock we ____ (elave).", answers: ["leave"], explain: "elave → leave" },
+      { text: "...and ____ (og) home by bus.", answers: ["go"], explain: "og → go" },
+      { text: "In the evenings I usually ____ (htawc) TV.", answers: ["watch"], explain: "htawc → watch" },
+      { text: "I always ____ (od) my homework in the evenings.", answers: ["do"], explain: "od → do" },
+      { text: "At night I ____ (og) to bed...", answers: ["go"], explain: "og → go" },
+      { text: "...and quickly ____ (lfal) asleep.", answers: ["fall"], explain: "lfal → fall" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "Make or Do?", "Xếp mỗi cụm từ vào đúng cột MAKE hoặc DO.");
+  buildSort2(box, {
+    exerciseId: "gv-3", meta: { module: MOD, title: "Ex.3 Make or Do" },
+    columns: ["make", "do"],
+    items: [
+      { text: "the bed", col: "make" }, { text: "lunch", col: "make" }, { text: "dinner", col: "make" },
+      { text: "a mess", col: "make" }, { text: "a cake", col: "make" },
+      { text: "the cleaning", col: "do" }, { text: "the housework", col: "do" }, { text: "some homework", col: "do" },
+      { text: "the shopping", col: "do" }, { text: "the laundry", col: "do" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "Complete the email", "Điền đúng động từ vào email của Harry (gợi ý: catch, finish, get up, go out, have, leave, live, meet, walk, work).");
+  buildFillBlank(box, {
+    exerciseId: "gv-4", meta: { module: MOD, title: "Ex.4 Complete the email" }, prefixLabel: true,
+    lines: [
+      { text: "They ____ in an apartment in Pantin.", answers: ["live"] },
+      { text: "...and they both ____ as journalists.", answers: ["work"] },
+      { text: "They ____ very early...", answers: ["get up"] },
+      { text: "...and ____ home before me.", answers: ["leave"] },
+      { text: "I ____ breakfast at about 8 a.m.", answers: ["have"] },
+      { text: "I usually ____ there...", answers: ["walk"] },
+      { text: "...but if I'm late I ____ a bus.", answers: ["catch"] },
+      { text: "Lessons at the school ____ at 4 p.m.", answers: ["finish"] },
+      { text: "We ____ after school in a café...", answers: ["meet"] },
+      { text: "...or ____ in the evenings to the cinema.", answers: ["go out"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "Third person forms", "Chia đúng động từ trong ngoặc sang ngôi thứ 3 số ít.");
+  buildFillBlank(box, {
+    exerciseId: "gv-5", meta: { module: MOD, title: "Ex.5 Third person forms" }, prefixLabel: true,
+    lines: [
+      { text: "My dad ____ (wash) his car every weekend.", answers: ["washes"], explain: "động từ tận cùng -sh → thêm es" },
+      { text: "Jim ____ (watch) too much TV.", answers: ["watches"], explain: "động từ tận cùng -ch → thêm es" },
+      { text: "Adrian's baby ____ (cry) a lot.", answers: ["cries"], explain: "phụ âm + y → bỏ y, thêm ies" },
+      { text: "My brother ____ (practise) every day.", answers: ["practises", "practices"] },
+      { text: "Olga ____ (go) jogging most evenings.", answers: ["goes"], explain: "động từ tận cùng -o → thêm es" },
+      { text: "Tom ____ (do) the washing up.", answers: ["does"], explain: "động từ tận cùng -o → thêm es" },
+      { text: "Anna ____ (catch) the 253 bus each morning.", answers: ["catches"], explain: "động từ tận cùng -tch → thêm es" },
+      { text: "Nadia ____ (relax) by doing yoga.", answers: ["relaxes"], explain: "động từ tận cùng -x → thêm es" },
+      { text: "I think our teacher ____ (give) us too much homework.", answers: ["gives"] },
+      { text: "My brother ____ (switch off) his light at midnight.", answers: ["switches off", "switches"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "Choose the correct answer", "Chọn đáp án đúng.");
+  buildMCQ(box, {
+    exerciseId: "gv-6", meta: { module: MOD, title: "Ex.6 Choose correct verb" },
+    questions: [
+      { text: "My brother ____ for a computer company.", options: ["work", "works"], answer: "works", explain: "Chủ ngữ số ít (my brother) → động từ thêm -s." },
+      { text: "My friends and I often ____ basketball.", options: ["play", "plays"], answer: "play", explain: "Chủ ngữ số nhiều (my friends and I) → động từ giữ nguyên." },
+      { text: "I go to a college where everyone ____ different languages.", options: ["study", "studies"], answer: "studies" },
+      { text: "My grandparents ____ from a small village.", options: ["come", "comes"], answer: "come" },
+      { text: "My lunch break ____ at 12 and ____ at 12:45.", options: ["begin / finish", "begins / finishes"], answer: "begins / finishes" },
+      { text: "In the evenings, I ____ to chat online.", options: ["like", "likes"], answer: "like" },
+      { text: "Only my sister ____ before 6 a.m.", options: ["get up", "gets up"], answer: "gets up" },
+      { text: "She ____ a dance class every Wednesday.", options: ["have", "has"], answer: "has" },
+      { text: "My friend ____ amazing cakes.", options: ["make", "makes"], answer: "makes" },
+      { text: "Most school students ____ a uniform.", options: ["wear", "wears"], answer: "wear" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "Put the words in order", "Bấm các từ theo đúng thứ tự.");
+  buildWordOrder(box, {
+    exerciseId: "gv-7", meta: { module: MOD, title: "Ex.7 Word order" },
+    items: [
+      { words: ["My", "friend", "always", "tidies", "his", "room"], answer: "My friend always tidies his room" },
+      { words: ["At", "the", "weekend", "I", "play", "football"], answer: "At the weekend I play football" },
+      { words: ["I", "take", "a", "sandwich", "for", "lunch", "to", "college"], answer: "I take a sandwich for lunch to college" },
+      { words: ["My", "brother", "checks", "his", "phone", "every", "five", "minuts"], answer: "My brother checks his phone every five minuts" },
+      { words: ["In", "the", "evening", "I", "have", "a", "shower"], answer: "In the evening I have a shower" },
+      { words: ["I", "go", "to", "the", "dentist", "every", "six", "months"], answer: "I go to the dentist every six months" },
+      { words: ["My", "mother", "does", "most", "of", "the", "housework"], answer: "My mother does most of the housework" },
+      { words: ["At", "the", "weekend", "I", "visit", "my", "family"], answer: "At the weekend I visit my family" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(8, "Complete the email — My new job", "Điền đúng từ (gợi ý: clean, enjoy, finish, gets, have, opens, shouts, start, tells, work).");
+  buildFillBlank(box, {
+    exerciseId: "gv-8", meta: { module: MOD, title: "Ex.8 Complete the email" }, prefixLabel: true,
+    lines: [
+      { text: "I've got a new job! I ____ there every Saturday.", answers: ["work"] },
+      { text: "I ____ at 8 a.m.", answers: ["start"] },
+      { text: "The shop ____ at 9 a.m.", answers: ["opens"] },
+      { text: "I tidy and fill the shelves, ____ the floors...", answers: ["clean"] },
+      { text: "My manager ____ me what to do...", answers: ["tells"] },
+      { text: "...and never ____.", answers: ["shouts"] },
+      { text: "We ____ three breaks a day...", answers: ["have"] },
+      { text: "...and ____ at 4 p.m.", answers: ["finish"] },
+      { text: "It's hard because the shop ____ very busy...", answers: ["gets"] },
+      { text: "...but I really ____ it.", answers: ["enjoy"] },
+    ],
+  });
+}
+</script>
+</body>
+</html>

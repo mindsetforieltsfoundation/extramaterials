@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Listening &amp; Speaking | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟨 Module 3 — Listening &amp; Speaking</h1>
+  <a href="index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_1_listening___speaking.docx — các bài nghe được chuyển thành bài đọc vì file gốc không kèm audio.</footer>
+
+<script src="scores.js"></script>
+<script src="app.js"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Listening & Speaking";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise";
+  box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Daily activities", "Nối hoạt động với đúng định nghĩa (thay cho ảnh minh họa gốc).");
+  buildMatching(box, {
+    exerciseId: "ls-1", meta: { module: MOD, title: "Ex.1 Daily activities" },
+    leftLabel: "Hoạt động", rightLabel: "Định nghĩa",
+    pairs: [
+      { left: "drive to work", right: "go to your job by car" },
+      { left: "go to the gym", right: "go somewhere to exercise" },
+      { left: "have dinner", right: "eat the evening meal" },
+      { left: "play chess", right: "play a board game with a king and queen" },
+      { left: "read in bed", right: "look at a book before sleeping" },
+      { left: "use a computer", right: "work or browse on a laptop/PC" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "Adverbs of frequency (bài đọc thay bài nghe)", "5 người nói về thói quen của họ. Điền đúng trạng từ tần suất.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.85rem;margin-bottom:16px;";
+  p.innerHTML = "1. \"I'm on my laptop all day, every day for work.\" → She <b>always</b> uses computers.<br>2. \"Once in a while I play chess with my dad.\" → I <b>sometimes</b> play chess.<br>3. \"Every single morning before work, without fail.\" → I <b>always</b> go to the gym.<br>4. \"Most days she takes the car, but sometimes she walks.\" → She <b>usually</b> drives to work.<br>5. \"Every night before I sleep, for at least 20 minutes.\" → He <b>always</b> reads in bed.";
+  box.appendChild(p);
+  buildFillBlank(box, {
+    exerciseId: "ls-2", meta: { module: MOD, title: "Ex.2 Adverbs of frequency" }, prefixLabel: true,
+    lines: [
+      { text: "She ____ uses computers.", answers: ["always"] },
+      { text: "I ____ play chess.", answers: ["sometimes"] },
+      { text: "I ____ go to the gym.", answers: ["always"] },
+      { text: "She ____ drives to work.", answers: ["usually"] },
+      { text: "He ____ reads in bed.", answers: ["always"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "Everyday verbs (bài đọc thay bài nghe)", "5 người nói về việc họ làm mỗi ngày. Điền đúng động từ.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.85rem;margin-bottom:16px;";
+  p.innerHTML = "Gợi ý: drives, makes, moves, play, reads";
+  box.appendChild(p);
+  buildFillBlank(box, {
+    exerciseId: "ls-3", meta: { module: MOD, title: "Ex.3 Everyday verbs" }, prefixLabel: true,
+    lines: [
+      { text: "Every morning he ____ his children to school.", answers: ["drives"] },
+      { text: "When she's at the office she ____ her emails immediately.", answers: ["reads"] },
+      { text: "Every day she ____ computers from the storeroom to the shop.", answers: ["moves"] },
+      { text: "Most evenings she ____ dinner.", answers: ["makes"] },
+      { text: "Every lunchtime they ____ basketball.", answers: ["play"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "Sanjay's flatmates (bài đọc thay bài nghe)", "Đọc hội thoại và nối tên người với thói quen của họ.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.85rem;margin-bottom:16px;";
+  p.innerHTML = "<b>Tom:</b> How many people live in your house? <b>Sanjay:</b> Six — me and five friends. I'm the only one who has lunch at home, so I usually use the computer or watch TV. Marc has a part-time job in a restaurant, so he's not there in the evenings. Blas cooks dinner every day, so he's always in the kitchen, but he doesn't usually do the washing up! Luke leaves the house very early to catch the bus, and goes to bed very late. John stays up late and plays chess with Luke, but doesn't get up early because he studies in the afternoon. Sam teaches French in the morning.";
+  box.appendChild(p);
+  buildMatching(box, {
+    exerciseId: "ls-4", meta: { module: MOD, title: "Ex.4 Sanjay's flatmates" },
+    leftLabel: "Người", rightLabel: "Hoạt động",
+    pairs: [
+      { left: "Marc", right: "works part time in the evenings" },
+      { left: "Blas", right: "cooks every evening" },
+      { left: "Luke", right: "gets up early" },
+      { left: "John", right: "studies in the afternoon" },
+      { left: "Sam", right: "teaches French classes in the morning" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "Mary's family routine (bài đọc thay bài nghe)", "Đọc đoạn văn và chọn đáp án đúng.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.85rem;margin-bottom:16px;";
+  p.innerHTML = "I wake up at 7. My husband Jack wakes up at the same time and gets up immediately, but I stay in bed until 7:30. Our children, Simon and Julia, get up at 8. Julia is often late for college because she always watches TV after breakfast; Simon always catches the bus on time. I'm a designer and work from home. Jack works in a bank in the city centre — he drives to work, but sometimes walks if the weather's nice. After college, Simon usually goes to the gym and Julia sometimes plays chess. Jack often goes shopping on the way home. Before bed, Julia usually chats online, and Jack goes to watch Simon play basketball at the sports centre.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "ls-5", meta: { module: MOD, title: "Ex.5 Mary's family" },
+    questions: [
+      { text: "Mary gets up at", options: ["7 o'clock", "7:15", "7:30"], answer: "7:30" },
+      { text: "Julia is usually late for college because she always", options: ["does the washing up", "gets up late", "watches TV after breakfast"], answer: "watches TV after breakfast" },
+      { text: "Mary's office is", options: ["at home", "in a bank", "in the city centre"], answer: "at home" },
+      { text: "On his way home, Jack often", options: ["goes shopping", "goes to the gym", "plays chess"], answer: "goes shopping" },
+      { text: "Jack goes to watch Simon play", options: ["basketball", "football", "tennis"], answer: "basketball" },
+      { text: "Before bed Julia usually", options: ["takes out the bins", "uses her computer", "watches TV"], answer: "uses her computer" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "He/she/it vs I/you/we/they", "Xếp mỗi động từ vào đúng nhóm chủ ngữ (dạng chia đúng của động từ).");
+  buildSort2(box, {
+    exerciseId: "ls-6", meta: { module: MOD, title: "Ex.6 Verb groups" },
+    columns: ["he/she/it", "I/you/we/they"],
+    items: [
+      { text: "gets up", col: "he/she/it" }, { text: "get up", col: "I/you/we/they" },
+      { text: "watches TV", col: "he/she/it" }, { text: "watch TV", col: "I/you/we/they" },
+      { text: "catches the bus", col: "he/she/it" }, { text: "catch the bus", col: "I/you/we/they" },
+      { text: "does homework", col: "he/she/it" }, { text: "do homework", col: "I/you/we/they" },
+      { text: "makes dinner", col: "he/she/it" }, { text: "make dinner", col: "I/you/we/they" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "Put the words in order", "Sắp xếp từ thành câu hoàn chỉnh.");
+  buildWordOrder(box, {
+    exerciseId: "ls-7", meta: { module: MOD, title: "Ex.7 Word order" },
+    items: [
+      { words: ["I'm", "often", "late", "for", "college"], answer: "I'm often late for college" },
+      { words: ["Do", "you", "sometimes", "go", "to", "the", "gym"], answer: "Do you sometimes go to the gym" },
+      { words: ["He", "always", "tries", "to", "arrive", "early"], answer: "He always tries to arrive early" },
+      { words: ["She", "never", "watches", "TV", "in", "the", "evenings"], answer: "She never watches TV in the evenings" },
+      { words: ["We", "always", "prepare", "dinner", "together"], answer: "We always prepare dinner together" },
+      { words: ["I", "never", "study", "in", "the", "library"], answer: "I never study in the library" },
+      { words: ["They", "sometimes", "catch", "the", "bus", "home"], answer: "They sometimes catch the bus home" },
+      { words: ["He", "always", "teaches", "in", "the", "morning"], answer: "He always teaches in the morning" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(8, "Match sentence halves", "Nối nửa đầu câu với nửa sau đúng.");
+  buildMatching(box, {
+    exerciseId: "ls-8", meta: { module: MOD, title: "Ex.8 Sentence halves" },
+    leftLabel: "Bắt đầu câu", rightLabel: "Kết thúc câu",
+    pairs: [
+      { left: "I wake", right: "up at 7:30." },
+      { left: "My father has", right: "a shower before breakfast." },
+      { left: "My sister goes", right: "to work." },
+      { left: "I play", right: "chess." },
+      { left: "My brother cleans", right: "the house." },
+      { left: "My mother prepares", right: "dinner." },
+      { left: "I do", right: "the washing-up." },
+      { left: "My sister takes out", right: "the bins." },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(9, "Family routine plan", "Viết kế hoạch mô tả thói quen gia đình bạn theo từng phần.");
+  const wrap = document.createElement("div");
+  wrap.innerHTML = `
+    <p style="font-size:.85rem;color:#6b7280;">Gợi ý cụm từ: My father gets up at..., I have breakfast then I..., After lunch, my mother..., When my sister gets home after school, she..., Before she goes to bed, my mother..., After dinner, we..., What I like about my day is..., I like my routine because...</p>
+    <div style="display:grid;gap:10px;">
+      <div><b>Buổi sáng</b><textarea rows="2" style="width:100%;border:1.5px solid var(--border);border-radius:8px;padding:8px;font-family:inherit;"></textarea></div>
+      <div><b>Buổi chiều</b><textarea rows="2" style="width:100%;border:1.5px solid var(--border);border-radius:8px;padding:8px;font-family:inherit;"></textarea></div>
+      <div><b>Buổi tối</b><textarea rows="2" style="width:100%;border:1.5px solid var(--border);border-radius:8px;padding:8px;font-family:inherit;"></textarea></div>
+      <div><b>Kết luận</b><textarea rows="2" style="width:100%;border:1.5px solid var(--border);border-radius:8px;padding:8px;font-family:inherit;"></textarea></div>
+    </div>
+    <p style="font-size:.8rem;color:#6b7280;margin-top:8px;">✏️ Bài viết tự do — giáo viên xem trực tiếp.</p>`;
+  box.appendChild(wrap);
+}
+
+{
+  const box = exerciseBlock(10, "Speaking — Describe your family's routine", "Chuẩn bị nói 1-2 phút, có thể ghi âm bằng điện thoại và nộp cho giáo viên riêng.");
+  const wrap = document.createElement("div");
+  wrap.innerHTML = `<ul style="font-size:.88rem;color:#333;"><li>What they do</li><li>Who they do it with</li><li>Where they do it</li><li>How often they do it</li></ul>
+  <p style="font-size:.8rem;color:#6b7280;">🎙️ Bài nói — không chấm điểm tự động trên web này. Học sinh ghi âm và gửi riêng cho giáo viên/trợ giảng.</p>`;
+  box.appendChild(wrap);
+}
+</script>
+</body>
+</html>

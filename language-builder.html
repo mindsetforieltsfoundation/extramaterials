@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Language Builder | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟩 Module 2 — Language Builder</h1>
+  <a href="index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_1_language_builder.docx — Bài nghe (Ex.5–6, 9) đã được chuyển thành bài đọc vì file gốc không kèm audio.</footer>
+
+<script src="scores.js"></script>
+<script src="app.js"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Language Builder";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise";
+  box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Places in a building", "Nối từ với đúng định nghĩa (thay cho ảnh minh họa gốc).");
+  buildMatching(box, {
+    exerciseId: "lb-1", meta: { module: MOD, title: "Ex.1 Places in a building" },
+    leftLabel: "Từ vựng", rightLabel: "Định nghĩa",
+    pairs: [
+      { left: "building", right: "a structure with a roof and walls" },
+      { left: "cash machine", right: "a machine where you get money from your bank" },
+      { left: "office", right: "a room where people work at desks" },
+      { left: "reception", right: "the desk near the entrance where visitors check in" },
+      { left: "stairs", right: "steps you use to go up or down between floors" },
+      { left: "toilets", right: "a room with a WC that people use" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "Places near a college", "Nối tên địa điểm với đúng mô tả.");
+  buildMatching(box, {
+    exerciseId: "lb-2", meta: { module: MOD, title: "Ex.2 Places near a college" },
+    leftLabel: "Từ vựng", rightLabel: "Mô tả",
+    pairs: [
+      { left: "bank", right: "a place where you keep or exchange money" },
+      { left: "car park", right: "a place where you leave your car" },
+      { left: "chemist's", right: "a shop that sells medicine" },
+      { left: "library", right: "a place with lots of books to borrow" },
+      { left: "post office", right: "a place to send letters and parcels" },
+      { left: "sports centre", right: "a place to play sports and exercise" },
+      { left: "supermarket", right: "a large shop that sells food and other goods" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "Match the opposites", "Nối mỗi từ với từ trái nghĩa.");
+  buildMatching(box, {
+    exerciseId: "lb-3", meta: { module: MOD, title: "Ex.3 Opposites" },
+    leftLabel: "Từ", rightLabel: "Trái nghĩa",
+    pairs: [
+      { left: "far", right: "near" }, { left: "right", right: "left" }, { left: "late", right: "early" },
+      { left: "small", right: "large" }, { left: "closed", right: "open" }, { left: "empty", right: "full" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "Complete the conversations", "Điền đúng từ (gợi ý: big, closed, full, late, near, right).");
+  buildFillBlank(box, {
+    exerciseId: "lb-4", meta: { module: MOD, title: "Ex.4 Complete conversations" }, prefixLabel: true,
+    lines: [
+      { text: "Are there spaces in the car park? — No, it's usually ____ by nine.", answers: ["full"] },
+      { text: "Is the cafeteria open now? — No, it's always ____ at this time.", answers: ["closed"] },
+      { text: "Are there any shops ____ the college? — No, about 10 minutes away.", answers: ["near"] },
+      { text: "Are the toilets on the left? — No, they're on the ____.", answers: ["right"] },
+      { text: "Is the library small? — No, it's very ____.", answers: ["big"] },
+      { text: "Am I ____ for the first lesson? — No, you're five minutes early.", answers: ["late"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "Sandra's college tour (bài đọc thay thế bài nghe)", "Đọc đoạn hội thoại và trả lời câu hỏi.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px 16px;font-size:.88rem;color:#333;margin-bottom:16px;";
+  p.innerHTML = "<b>Sandra:</b> Welcome to the college! We are now in the main entrance. This is the reception and that is the main office. The toilets are on the left of reception, and the stairs are in the corner. There's a room for students and a café on the ground floor. There are two large car parks, but you must arrive early — they're usually full by nine o'clock. Upstairs there are 20 classrooms, the library and the computer room.<br><br><b>Student:</b> Is there a drinks machine? <b>Sandra:</b> Yes, there is, for when the cafeteria is closed.<br><b>Student:</b> Is there a cash machine? <b>Sandra:</b> No, there isn't, but there are two banks and a post office very near.<br><b>Student:</b> Is there a sports centre? <b>Sandra:</b> Yes, it's near the supermarket.<br><b>Student:</b> Are there public telephones? <b>Sandra:</b> No, there aren't — students use mobile phones, or the office phone.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "lb-5", meta: { module: MOD, title: "Ex.5 Sandra's tour" },
+    questions: [
+      { text: "Where are the toilets?", options: ["On the left of reception", "Near the car park"], answer: "On the left of reception" },
+      { text: "When are the car parks usually full?", options: ["By nine o'clock", "By ten o'clock"], answer: "By nine o'clock" },
+      { text: "Is there a cash machine in the college?", options: ["Yes", "No"], answer: "No", explain: "Nhưng có 2 ngân hàng và bưu điện gần đó." },
+      { text: "Where is the sports centre?", options: ["Near the supermarket", "Near the library"], answer: "Near the supermarket" },
+      { text: "How do students make calls if there's a problem?", options: ["Public telephone", "Office telephone"], answer: "Office telephone" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "Complete Sandra's tour", "Điền đúng từ vào đoạn hội thoại (there is/are, this/that).");
+  buildFillBlank(box, {
+    exerciseId: "lb-6", meta: { module: MOD, title: "Ex.6 There is/are" }, prefixLabel: true,
+    lines: [
+      { text: "____ the reception here.", answers: ["this is"] },
+      { text: "____ the toilets on the left.", answers: ["those are"] },
+      { text: "Is there a drinks machine? Yes, ____.", answers: ["there is"] },
+      { text: "Is there a cash machine? No, ____ a cash machine.", answers: ["there isn't"] },
+      { text: "____ two banks near here.", answers: ["there are"] },
+      { text: "____ any shops near here? Yes, there are.", answers: ["are there"] },
+      { text: "No, ____ any public telephones.", answers: ["there aren't"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "Ask about the college", "Điền từ để hoàn thành câu hỏi (gợi ý: is, are, there, any, a).");
+  buildFillBlank(box, {
+    exerciseId: "lb-7", meta: { module: MOD, title: "Ex.7 Questions with there is/are" }, prefixLabel: true,
+    lines: [
+      { text: "____ ____ a library in the college?", answers: ["is there"] },
+      { text: "____ ____ any classrooms upstairs?", answers: ["are there"] },
+      { text: "How many car parks ____ there?", answers: ["are"] },
+      { text: "____ there a computer room?", answers: ["is"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(8, "Put the words in order", "Sắp xếp từ thành câu hoàn chỉnh.");
+  buildWordOrder(box, {
+    exerciseId: "lb-8", meta: { module: MOD, title: "Ex.8 Word order" },
+    items: [
+      { words: ["This", "is", "the", "reception"], answer: "This is the reception" },
+      { words: ["We", "are", "in", "the", "main", "office"], answer: "We are in the main office" },
+      { words: ["Are", "these", "the", "toilets"], answer: "Are these the toilets" },
+      { words: ["The", "stairs", "are", "over", "there"], answer: "The stairs are over there" },
+      { words: ["There", "is", "a", "computer", "room", "and", "a", "café"], answer: "There is a computer room and a café" },
+      { words: ["There", "is", "only", "one", "small", "car", "park"], answer: "There is only one small car park" },
+      { words: ["Is", "there", "a", "drinks", "machine"], answer: "Is there a drinks machine" },
+      { words: ["Isn't", "there", "a", "bank"], answer: "Isn't there a bank" },
+      { words: ["Are", "there", "any", "supermarkets"], answer: "Are there any supermarkets" },
+      { words: ["No", "there", "isn't", "a", "chemist"], answer: "No there isn't a chemist" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(9, "Correct the mistakes", "Sửa lại lỗi sai gạch chân (giới từ / this-that / there is-are).");
+  buildFillBlank(box, {
+    exerciseId: "lb-9", meta: { module: MOD, title: "Ex.9 Correct the mistakes" }, prefixLabel: true,
+    lines: [
+      { text: "Welcome in the college. → sửa: ____", answers: ["welcome to the college"] },
+      { text: "I'm going to show you at the building. → sửa: ____", answers: ["show you round the building"] },
+      { text: "That is the reception here. → sửa: ____", answers: ["this is the reception here"] },
+      { text: "Those are the toilets on the left. → sửa: ____", answers: ["these are the toilets on the left"] },
+      { text: "There are also a room for students. → sửa: ____", answers: ["there is also a room"] },
+      { text: "On the top of stairs... → sửa: ____", answers: ["at the top of the stairs"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(10, "Writing — Describe your school", "Viết đoạn văn mô tả các địa điểm trong trường/công ty của bạn (dùng this is/these are, there is/are).");
+  const wrap = document.createElement("div");
+  wrap.innerHTML = `<textarea rows="6" style="width:100%;border:1.5px solid var(--border);border-radius:8px;padding:10px;font-family:inherit;font-size:.9rem;" placeholder="Ví dụ: This is the reception. There is a library on the first floor..."></textarea>
+  <p style="font-size:.8rem;color:#6b7280;margin-top:8px;">✏️ Bài viết tự do — không chấm điểm tự động, giáo viên xem trực tiếp hoặc học sinh tự đối chiếu với gợi ý trong file gốc.</p>`;
+  box.appendChild(wrap);
+}
+</script>
+</body>
+</html>
