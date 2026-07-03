@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Unit 6 — Reading & Writing | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css?v=202607030733">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟪 Unit 6 — Reading &amp; Writing</h1>
+  <a href="../index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_6_reading___writing.docx</footer>
+
+<script src="scores.js?v=202607030733"></script>
+<script src="app.js?v=202607030733"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Unit 6 - Reading & Writing";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise"; box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Places in a city", "Nối địa điểm với định nghĩa.");
+  buildMatching(box, {
+    exerciseId: "u6rw-1", meta: { module: MOD, title: "Ex.1 Places" },
+    leftLabel: "Địa điểm", rightLabel: "Định nghĩa",
+    pairs: [
+      { left: "airport", right: "where planes take off and land" },
+      { left: "bus station", right: "where buses start and stop" },
+      { left: "department store", right: "large shop with many departments" },
+      { left: "market", right: "outdoor place to buy fresh food/goods" },
+      { left: "museum", right: "building showing historical objects" },
+      { left: "park", right: "green outdoor space to relax" },
+      { left: "restaurant", right: "place to eat a meal" },
+      { left: "train station", right: "where trains stop for passengers" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "Madrid travel article", "Đọc bài về Madrid rồi nối thông tin với đúng phần câu (gợi ý: two weeks in Madrid / is the most famous museum / in the park / is a good place to eat lunch / between 9pm and 10pm / by bus or train).");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.85rem;margin-bottom:16px;";
+  p.innerHTML = "Madrid: better to stay 2 weeks than 1 to see everything. City centre hotels close to sights but expensive; cheaper in the north, easy to reach centre by bus/train (bus slower). Prado = most famous museum, near a big park with a lake for boating; people walk/cycle there. Mercado de San Miguel (indoor market) = good for lunch instead of a restaurant. Spanish dinner: 9-10pm, most restaurants closed 5-9pm. Famous department store = best for food, clothes, gifts.";
+  box.appendChild(p);
+  buildMatching(box, {
+    exerciseId: "u6rw-2", meta: { module: MOD, title: "Ex.2 Madrid article" },
+    leftLabel: "Bắt đầu câu", rightLabel: "Kết thúc",
+    pairs: [
+      { left: "It is a good idea to stay", right: "two weeks in Madrid." },
+      { left: "You can travel to the city centre", right: "by bus or train." },
+      { left: "The Prado", right: "is the most famous museum in Madrid." },
+      { left: "You can rent a boat", right: "in the park." },
+      { left: "The Mercado de San Miguel", right: "is a good place to eat lunch." },
+      { left: "Most Spanish people eat dinner", right: "between 9:00 p.m. and 10:00 p.m." },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "Madrid — True or False", "Đọc lại bài Madrid rồi chọn True/False.");
+  buildMCQ(box, {
+    exerciseId: "u6rw-3", meta: { module: MOD, title: "Ex.3 Madrid T/F" },
+    questions: [
+      { text: "In one week, you can see all of the important places.", options: ["True", "False"], answer: "False" },
+      { text: "It's difficult to travel to the centre from the north.", options: ["True", "False"], answer: "False" },
+      { text: "The Prado museum is not very famous.", options: ["True", "False"], answer: "False" },
+      { text: "It takes longer to travel by bus than by train.", options: ["True", "False"], answer: "True" },
+      { text: "A lot of people like to cycle in the park.", options: ["True", "False"], answer: "True" },
+      { text: "Visitors should have lunch in a restaurant.", options: ["True", "False"], answer: "False" },
+      { text: "Between 5-9pm, most restaurants are closed.", options: ["True", "False"], answer: "True" },
+      { text: "Visitors shouldn't buy presents at a department store.", options: ["True", "False"], answer: "False" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "Four cities", "Đọc 4 đoạn văn rồi nối thông tin với đúng thành phố (A-D).");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.82rem;margin-bottom:16px;";
+  p.innerHTML = "<b>A London (Joel)</b>: great food choice, cheap at markets, worst thing = cars, never drives (dangerous).<br><b>B Birmingham (Alice)</b>: lovely parks, great for eating/shopping, much cheaper than London, worst = pollution, worse than in the past.<br><b>C Cardiff (David)</b>: small city, interesting museums, good for sports (football/rugby), friendly people, worst = weather (rains a lot in winter).<br><b>D Edinburgh (Fiona)</b>: beautiful old buildings, good food/entertainment, walkable, worst = busy with tourists in summer, prefers cold snowy winter.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "u6rw-4", meta: { module: MOD, title: "Ex.4 Four cities" },
+    questions: [
+      { text: "You can watch a lot of sports games in this city.", options: ["A", "B", "C", "D"], answer: "C" },
+      { text: "This city is not good for driving.", options: ["A", "B", "C", "D"], answer: "A" },
+      { text: "This city is not expensive to live in.", options: ["A", "B", "C", "D"], answer: "B" },
+      { text: "People here are helpful if you get lost.", options: ["A", "B", "C", "D"], answer: "C" },
+      { text: "A lot of tourists visit in the summer.", options: ["A", "B", "C", "D"], answer: "D" },
+      { text: "The food here is not as expensive as people think.", options: ["A", "B", "C", "D"], answer: "A" },
+      { text: "It is easy to travel on foot here.", options: ["A", "B", "C", "D"], answer: "D" },
+      { text: "Many people think this is not an attractive city.", options: ["A", "B", "C", "D"], answer: "B" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "Cycling in cities", "Đọc bài báo về xe đạp trong thành phố rồi chọn đáp án đúng.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.82rem;margin-bottom:16px;";
+  p.innerHTML = "Too many cars = pollution is the biggest problem. Bike rental solves this: London/Paris have rental stations. London: £2/30min, £3/1hr, £5/2hr; most stations in city centre, some near homes/parks/museums; most popular at weekends, also weekday mornings. Paris has more stations than London. First stations: Amsterdam (Netherlands); first in China: Hangzhou. Copenhagen: most modern bikes (computer screens for directions), lots of cycling space, special traffic lights, more people cycle than drive. Cycling makes people happier, healthier, saves money; areas near stations are popular to live/shop.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "u6rw-5", meta: { module: MOD, title: "Ex.5 Cycling article" },
+    questions: [
+      { text: "The most important problem with cars is", options: ["longer travel times", "more car accidents", "more pollution"], answer: "more pollution" },
+      { text: "Renting a bicycle in London for 1 hour costs", options: ["£2.00", "£3.00", "£5.00"], answer: "£3.00" },
+      { text: "Most bicycle stations in London are", options: ["in the city centre", "near people's houses", "near parks and museums"], answer: "in the city centre" },
+      { text: "The most popular time to rent bikes in London is", options: ["at the weekend", "in the mornings", "on weekdays"], answer: "at the weekend" },
+      { text: "The number of bicycle stations in Paris is", options: ["smaller than London", "larger than London", "the same as London"], answer: "larger than London" },
+      { text: "The first country to have bicycle stations was", options: ["China", "Denmark", "The Netherlands"], answer: "The Netherlands" },
+      { text: "Copenhagen has a lot of ____ for cyclists.", options: ["space", "stations", "traffic lights"], answer: "space" },
+      { text: "Bicycle stations have changed", options: ["where people go shopping", "where people work", "where people live"], answer: "where people go shopping" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "New City changes (2007→2017)", "Chọn đúng dạng so sánh để hoàn thành đoạn văn.");
+  buildMCQ(box, {
+    exerciseId: "u6rw-6", meta: { module: MOD, title: "Ex.6 New City comparatives" },
+    questions: [
+      { text: "There were some ____ changes to New City between 2007 and 2017.", options: ["big", "bigger", "biggest"], answer: "big" },
+      { text: "There are now ____ types of transport.", options: ["a lot", "more", "most"], answer: "more" },
+      { text: "The buildings are much ____ than they were.", options: ["tall", "taller", "tallest"], answer: "taller" },
+      { text: "The new hospital is much ____ than the old one.", options: ["modern", "more modern", "most modern"], answer: "more modern" },
+      { text: "In 2007, the river was ____ than it is now.", options: ["quiet", "quieter", "quietest"], answer: "quieter" },
+      { text: "There were not ____ shops and restaurants.", options: ["a lot of", "the most", "most"], answer: "a lot of" },
+      { text: "The area is much ____ than before.", options: ["busy", "busier", "busiest"], answer: "busier" },
+      { text: "It is a ____ place to live now.", options: ["good", "better", "best"], answer: "better" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "Put the New City description in order", "Sắp xếp 4 đoạn văn theo đúng thứ tự (dàn bài mô tả bản đồ trước/sau).");
+  buildWordOrder(box, {
+    exerciseId: "u6rw-7", meta: { module: MOD, title: "Ex.7 Paragraph order" },
+    items: [
+      { words: ["The", "two", "maps", "show", "changes", "to", "New", "City", "between", "2007", "and", "2017"],
+        answer: "The two maps show changes to New City between 2007 and 2017" },
+    ],
+  });
+  const p2 = document.createElement("p");
+  p2.style.cssText = "font-size:.85rem;color:#6b7280;margin-top:12px;";
+  p2.innerHTML = "Thứ tự đúng của 4 đoạn: (1) Giới thiệu chung — tên thành phố, đặc điểm, 2 thay đổi chính (giao thông & công trình). (2) Chi tiết về giao thông — ga tàu, sân bay mới, bến xe buýt mới, cho thuê xe đạp. (3) Chi tiết về công trình — nhà ở, bệnh viện, cửa hàng, trung tâm mua sắm mới. (4) Câu giới thiệu vị trí thành phố (sông, công viên) có thể đặt đầu đoạn 1.";
+  box.appendChild(p2);
+}
+
+{
+  const box = exerciseBlock(8, "Writing — Describe changes to a town", "Viết đoạn văn mô tả sự thay đổi của 1 thị trấn (dùng so sánh hơn/nhất, cho ví dụ cụ thể).");
+  const wrap = document.createElement("div");
+  wrap.innerHTML = `<p style="font-size:.85rem;color:#6b7280;">Gợi ý: 1) Mô tả thay đổi + ví dụ — 2) Dùng tính từ so sánh hơn/so sánh nhất.</p>
+  <textarea rows="6" style="width:100%;border:1.5px solid var(--border);border-radius:8px;padding:10px;font-family:inherit;font-size:.9rem;" placeholder="The two maps show..."></textarea>
+  <p style="font-size:.8rem;color:#6b7280;margin-top:8px;">✏️ Bài viết tự do — giáo viên xem trực tiếp.</p>`;
+  box.appendChild(wrap);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Unit 6 — Grammar & Vocab | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css?v=202607030733">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟦 Unit 6 — Grammar &amp; Vocab (Places in Town)</h1>
+  <a href="../index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_6_grammar___vocab.docx</footer>
+
+<script src="scores.js?v=202607030733"></script>
+<script src="app.js?v=202607030733"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Unit 6 - Grammar & Vocab";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise"; box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Places and activities", "Nối địa điểm với hoạt động phù hợp.");
+  buildMatching(box, {
+    exerciseId: "u6gv-1", meta: { module: MOD, title: "Ex.1 Places" },
+    leftLabel: "Địa điểm", rightLabel: "Hoạt động",
+    pairs: [
+      { left: "post office", right: "send a parcel" },
+      { left: "hotel", right: "stay for a few days" },
+      { left: "police station", right: "speak to a policeman" },
+      { left: "sports centre", right: "exercise" },
+      { left: "restaurant", right: "have a meal" },
+      { left: "supermarket", right: "do some food shopping" },
+      { left: "station", right: "catch a bus or a train" },
+      { left: "park", right: "relax on the grass" },
+      { left: "library", right: "borrow a book" },
+      { left: "museum", right: "look at things from the past" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "Where do you find these?", "Xếp mỗi từ vào đúng nơi (Train hay Department store).");
+  buildSort2(box, {
+    exerciseId: "u6gv-2", meta: { module: MOD, title: "Ex.2 Categories" },
+    columns: ["train", "department store"],
+    items: [
+      { text: "driver", col: "train" }, { text: "platform", col: "train" }, { text: "ticket machine", col: "train" }, { text: "pilot", col: "train" },
+      { text: "floor", col: "department store" }, { text: "clothes", col: "department store" }, { text: "lift", col: "department store" }, { text: "coffee", col: "department store" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "Giving directions", "Điền đúng giới từ vị trí (gợi ý: across, behind, between, in front of, next, on your left, on your right, opposite).");
+  buildFillBlank(box, {
+    exerciseId: "u6gv-3", meta: { module: MOD, title: "Ex.3 Directions" }, prefixLabel: true,
+    lines: [
+      { text: "The park is ____ the cinema.", answers: ["opposite"] },
+      { text: "The petrol station is ____ the road from the cinema.", answers: ["across"] },
+      { text: "The post office is ____ the café and the hotel.", answers: ["between"] },
+      { text: "The museum is ____ to the petrol station.", answers: ["next"] },
+      { text: "The café is ____ the post office.", answers: ["in front of"] },
+      { text: "Coming out of the hotel, the post office is ____.", answers: ["on your left"] },
+      { text: "The bus stop is ____ the park.", answers: ["behind"] },
+      { text: "Coming out of the museum, the petrol station is ____.", answers: ["on your right"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "Sally's shopping trip", "Chọn đúng từ để hoàn thành câu chuyện.");
+  buildMCQ(box, {
+    exerciseId: "u6gv-4", meta: { module: MOD, title: "Ex.4 Sally's trip" },
+    questions: [
+      { text: "Sally and her friend felt a bit ____.", options: ["bored", "heavy", "sorry"], answer: "bored" },
+      { text: "They decided to get some ____ clothes.", options: ["early", "latest", "new"], answer: "new" },
+      { text: "The centre had all of Sally's ____ shops.", options: ["favourite", "great", "popular"], answer: "favourite" },
+      { text: "The centre was ____ of people.", options: ["busy", "crowded", "full"], answer: "crowded" },
+      { text: "Sally was ____ not to spend too much money.", options: ["careful", "ready", "worried"], answer: "careful" },
+      { text: "After a couple of hours they felt ____.", options: ["difficult", "tired", "wrong"], answer: "tired" },
+      { text: "They had a drink and a ____ snack.", options: ["fast", "healthy", "right"], answer: "healthy" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "Descriptive adjectives", "Điền đúng tính từ (gợi ý: comfortable, famous, friendly, high, interesting, modern, old).");
+  buildFillBlank(box, {
+    exerciseId: "u6gv-5", meta: { module: MOD, title: "Ex.5 Adjectives" }, prefixLabel: true,
+    lines: [
+      { text: "I didn't enjoy the flight, my seat wasn't ____.", answers: ["comfortable"] },
+      { text: "The library looks very ____ — made of glass, unusual shape.", answers: ["modern"] },
+      { text: "The hotel staff were always polite and ____.", answers: ["friendly"] },
+      { text: "I'm reading a very ____ book about the future.", answers: ["interesting"] },
+      { text: "I bought some beautiful ____ jewellery, from the 19th century.", answers: ["old"] },
+      { text: "The mountain isn't very ____ but the views are amazing.", answers: ["high"] },
+      { text: "I sat next to a ____ actor on the train.", answers: ["famous"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "+er/est or more/most?", "Xếp mỗi tính từ vào đúng cột theo cách so sánh.");
+  buildSort2(box, {
+    exerciseId: "u6gv-6", meta: { module: MOD, title: "Ex.6 Comparative forms" },
+    columns: ["+er/est", "more/most"],
+    items: [
+      { text: "low", col: "+er/est" }, { text: "new", col: "+er/est" }, { text: "cheap", col: "+er/est" }, { text: "fast", col: "+er/est" },
+      { text: "high", col: "+er/est" }, { text: "clean", col: "+er/est" }, { text: "old", col: "+er/est" }, { text: "strong", col: "+er/est" },
+      { text: "crowded", col: "more/most" }, { text: "expensive", col: "more/most" }, { text: "careful", col: "more/most" },
+      { text: "difficult", col: "more/most" }, { text: "comfortable", col: "more/most" }, { text: "important", col: "more/most" },
+      { text: "interesting", col: "more/most" }, { text: "modern", col: "more/most" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "Comparative forms", "Chia đúng dạng so sánh hơn của tính từ trong ngoặc.");
+  buildFillBlank(box, {
+    exerciseId: "u6gv-7", meta: { module: MOD, title: "Ex.7 Comparatives" }, prefixLabel: true,
+    lines: [
+      { text: "Trains are ____ (safe) and ____ (fast) than cars.", answers: ["safer"] },
+      { text: "Traffic is usually ____ (bad) in the city.", answers: ["worse"] },
+      { text: "The bus is ____ (cheap) than the train.", answers: ["cheaper"] },
+      { text: "The main square is ____ (old) than other parts.", answers: ["older"] },
+      { text: "My old house was ____ (big) than the one now.", answers: ["bigger"] },
+      { text: "I have to get up ____ (early) than my friends.", answers: ["earlier"] },
+      { text: "The garden looks ____ (pretty) in summer.", answers: ["prettier"] },
+      { text: "My friend is much ____ (thin) than last year.", answers: ["thinner"] },
+      { text: "It is ____ (good) for your health to cycle.", answers: ["better"] },
+      { text: "Jon lives ____ (far) away than Pete.", answers: ["further", "farther"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(8, "Comparative — complete", "Điền đúng dạng so sánh hơn.");
+  buildFillBlank(box, {
+    exerciseId: "u6gv-8", meta: { module: MOD, title: "Ex.8 More comparatives" }, prefixLabel: true,
+    lines: [
+      { text: "Art galleries are interesting but museums are ____.", answers: ["more interesting"] },
+      { text: "Madrid is hot but Kuwait is ____.", answers: ["hotter"] },
+      { text: "This garden is pretty but yesterday's was ____.", answers: ["prettier"] },
+      { text: "This restaurant is good but the Italian one is ____.", answers: ["better"] },
+      { text: "I was excited but my friend was ____.", answers: ["more excited"] },
+      { text: "Cars are noisy but motorbikes are ____.", answers: ["noisier"] },
+      { text: "I'm bad at maths but my friend is ____.", answers: ["worse"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(9, "Comparing three cars", "Điền đúng dạng so sánh nhất (Car A: 2010, 80,000km, 1L, 3 doors, £2,000. Car B: 2009, 20,000km, 1.5L, 5 doors, £6,500. Car C: 2015, 10,000km, 2L, 4 doors, £15,000).");
+  buildFillBlank(box, {
+    exerciseId: "u6gv-9", meta: { module: MOD, title: "Ex.9 Superlatives" }, prefixLabel: true,
+    lines: [
+      { text: "Car A is ____ (cheap).", answers: ["the cheapest"] },
+      { text: "Car B has the ____ (many) doors.", answers: ["most"] },
+      { text: "Car C has the ____ (large) engine.", answers: ["largest"] },
+      { text: "Car A has the ____ (many) kilometres on the clock.", answers: ["most"] },
+      { text: "Car C is the ____ (expensive).", answers: ["most expensive"] },
+      { text: "Car A has the ____ (small) engine.", answers: ["smallest"] },
+      { text: "Car B is the ____ (old).", answers: ["oldest"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(10, "Toni's holiday email", "Chia đúng dạng so sánh hơn/nhất của tính từ trong ngoặc.");
+  buildFillBlank(box, {
+    exerciseId: "u6gv-10", meta: { module: MOD, title: "Ex.10 Toni's email" }, prefixLabel: true,
+    lines: [
+      { text: "The hotel was ____ (cheap) than most others I looked at.", answers: ["cheaper"] },
+      { text: "The park is ____ (big) than Central Park in New York.", answers: ["bigger"] },
+      { text: "The museum is one of the ____ (large) in Europe.", answers: ["largest"] },
+      { text: "The ____ (interesting) part was the space exhibition.", answers: ["most interesting"] },
+      { text: "It's one of the ____ (nice) palaces in Germany.", answers: ["nicest"] },
+    ],
+  });
+}
+</script>
+</body>
+</html>

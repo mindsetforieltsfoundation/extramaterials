@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Unit 6 — Language Builder | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css?v=202607030733">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟩 Unit 6 — Language Builder (Hobbies &amp; Pronouns)</h1>
+  <a href="../index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_6_language_builder.docx — bài nghe chuyển thành bài đọc vì không kèm audio.</footer>
+
+<script src="scores.js?v=202607030733"></script>
+<script src="app.js?v=202607030733"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Unit 6 - Language Builder";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise"; box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Match the opposites", "Nối mỗi từ với từ trái nghĩa.");
+  buildMatching(box, {
+    exerciseId: "u6lb-1", meta: { module: MOD, title: "Ex.1 Opposites" },
+    leftLabel: "Từ", rightLabel: "Trái nghĩa",
+    pairs: [
+      { left: "safe", right: "dangerous" }, { left: "quiet", right: "noisy" }, { left: "heavy", right: "light" },
+      { left: "lovely", right: "horrible" }, { left: "easy", right: "hard" }, { left: "quick", right: "slow" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "Personality & activity adjectives", "Điền đúng tính từ (gợi ý: dangerous, different, famous, favourite, lucky, noisy, popular, unusual).");
+  buildFillBlank(box, {
+    exerciseId: "u6lb-2", meta: { module: MOD, title: "Ex.2 Adjectives" }, prefixLabel: true,
+    lines: [
+      { text: "Her weekend is very ____ from her friends'.", answers: ["different"] },
+      { text: "She's very ____ with other students.", answers: ["popular"] },
+      { text: "He's ____ to have a Saturday job.", answers: ["lucky"] },
+      { text: "Chess is their ____ hobby.", answers: ["favourite"] },
+      { text: "Riding too fast down mountains is ____.", answers: ["dangerous"] },
+      { text: "I can't work in ____ places.", answers: ["noisy"] },
+      { text: "Nobody knows she writes for a magazine, she's not ____.", answers: ["famous"] },
+      { text: "His weekend job (3am-5am) is very ____.", answers: ["unusual"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "Hobbies", "Nối tên sở thích với định nghĩa.");
+  buildMatching(box, {
+    exerciseId: "u6lb-3", meta: { module: MOD, title: "Ex.3 Hobbies" },
+    leftLabel: "Sở thích", rightLabel: "Định nghĩa",
+    pairs: [
+      { left: "acting", right: "performing in plays or films" },
+      { left: "horse riding", right: "riding a horse for sport/leisure" },
+      { left: "painting pictures", right: "creating art with paint" },
+      { left: "playing chess", right: "a board game with a king and queen" },
+      { left: "playing the piano", right: "making music with piano keys" },
+      { left: "stamp collecting", right: "collecting postage stamps" },
+      { left: "taking photographs", right: "using a camera to capture images" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "Radio callers — interesting hobbies", "Đọc phần phỏng vấn rồi chọn True/False.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.82rem;margin-bottom:16px;";
+  p.innerHTML = "<b>Nikki</b> (22): talks about her best friend, an artist who paints sportspeople at the sports centre — amazing paintings.<br><b>Beth</b>: talks about her parents — hobby is helping people get married (clothes, restaurant, food, flowers), all for free.<br><b>Janna</b>: talks about Stephanie, studying IT, works with her uncle's small business (~10 people) making computer games, sold to shops/supermarkets/online.<br><b>Mick</b>: talks about his 11-year-old brother, a fantastic chess player, wins against people worldwide (mostly online, some matches in England); going to play in Russia this summer.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "u6lb-4", meta: { module: MOD, title: "Ex.4 Radio callers" },
+    questions: [
+      { text: "Nikki is 23 years old.", options: ["True", "False"], answer: "False" },
+      { text: "Nikki's best friend paints pictures of sportspeople.", options: ["True", "False"], answer: "True" },
+      { text: "Beth's parents help people when they get married.", options: ["True", "False"], answer: "True" },
+      { text: "They earn a lot of money from this.", options: ["True", "False"], answer: "False" },
+      { text: "Janna works with her uncle in his business.", options: ["True", "False"], answer: "True" },
+      { text: "The business sells computer games.", options: ["True", "False"], answer: "True" },
+      { text: "Mick's brother is a chess player.", options: ["True", "False"], answer: "True" },
+      { text: "Mick's brother is going to play chess in Holland.", options: ["True", "False"], answer: "False" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "Pronoun table", "Điền đúng đại từ (chủ ngữ/tân ngữ/sở hữu).");
+  buildFillBlank(box, {
+    exerciseId: "u6lb-5", meta: { module: MOD, title: "Ex.5 Pronoun table" }, prefixLabel: true,
+    lines: [
+      { text: "I (chủ ngữ) → me (tân ngữ) → ____ (sở hữu)", answers: ["my"] },
+      { text: "he (chủ ngữ) → him (tân ngữ) → his (sở hữu). Điền tân ngữ của 'she': ____", answers: ["her"] },
+      { text: "it (chủ ngữ) → ____ (tân ngữ) → its (sở hữu)", answers: ["it"] },
+      { text: "we (chủ ngữ) → us (tân ngữ) → ____ (sở hữu)", answers: ["our"] },
+      { text: "they (chủ ngữ) → them (tân ngữ) → their (sở hữu). Điền chủ ngữ tương ứng với 'us': ____", answers: ["we"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "Match the sentences", "Nối câu với câu paraphrase dùng đại từ đúng.");
+  buildMatching(box, {
+    exerciseId: "u6lb-6", meta: { module: MOD, title: "Ex.6 Pronoun sentences" },
+    leftLabel: "Câu gốc", rightLabel: "Paraphrase",
+    pairs: [
+      { left: "Stephanie loves her uncle.", right: "She loves him." },
+      { left: "Stephanie's uncle loves his niece.", right: "He loves her." },
+      { left: "Anna loves her sister.", right: "She loves her." },
+      { left: "Beth's parents love their work.", right: "They love it." },
+      { left: "Sally loves her new job.", right: "She loves it." },
+      { left: "Carla loves her parents.", right: "She loves them." },
+      { left: "Carla's mum and dad love their daughter.", right: "They love her." },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "Choose the correct pronoun", "Chọn đúng đại từ.");
+  buildMCQ(box, {
+    exerciseId: "u6lb-7", meta: { module: MOD, title: "Ex.7 Correct pronoun" },
+    questions: [
+      { text: "My friends and ____ are students.", options: ["I", "us", "we"], answer: "we" },
+      { text: "____ all have interesting hobbies.", options: ["Our", "Us", "We"], answer: "We" },
+      { text: "Lara plays piano and ____ also sings.", options: ["her", "it", "she"], answer: "she" },
+      { text: "Tom's friends often watch ____ play.", options: ["he", "him", "his"], answer: "him" },
+      { text: "There's a new sports centre near ____ college.", options: ["our", "us", "we"], answer: "our" },
+      { text: "____ brother really enjoys acting.", options: ["I", "Me", "My"], answer: "My" },
+      { text: "Susan collects stamps. Susan keeps ____ in a book.", options: ["their", "them", "they"], answer: "them" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(8, "Put the words in order", "Bấm các từ theo đúng thứ tự.");
+  buildWordOrder(box, {
+    exerciseId: "u6lb-8", meta: { module: MOD, title: "Ex.8 Word order" },
+    items: [
+      { words: ["I'm", "20", "years", "old", "and I'm studying", "art"], answer: "I'm 20 years old and I'm studying art" },
+      { words: ["My", "brother", "has", "got", "a", "fantastic", "weekend job"], answer: "My brother has got a fantastic weekend job" },
+      { words: ["My", "parents", "work", "for", "a", "big", "IT", "company"], answer: "My parents work for a big IT company" },
+      { words: ["My", "sister", "meets", "lots", "of", "interesting", "people", "at", "the sports club"], answer: "My sister meets lots of interesting people at the sports club" },
+      { words: ["We", "finished", "our", "course", "last", "year we", "at", "university"], answer: "We finished our course last year we at university" },
+      { words: ["I", "was", "an amazing", "Saturday job", "as", "a tennis coach", "to get"], answer: "I was an amazing Saturday job as a tennis coach to get" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(9, "Correct the mistakes", "Sửa lại từ gạch chân.");
+  buildFillBlank(box, {
+    exerciseId: "u6lb-9", meta: { module: MOD, title: "Ex.9 Correct pronouns" }, prefixLabel: true,
+    lines: [
+      { text: "Is you're new course interesting? → sửa: ____", answers: ["your"] },
+      { text: "No, its really boring. → sửa: ____", answers: ["it's"] },
+      { text: "His very happy playing the piano. → sửa: ____", answers: ["he's"] },
+      { text: "Can you tell my about your new job? → sửa: ____", answers: ["me"] },
+      { text: "Yes, her jobs are really good. → ____", answers: ["correct"] },
+      { text: "Yes, it's she phone. → sửa: ____", answers: ["her"] },
+      { text: "No, she never plays against him. → ____", answers: ["correct"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(10, "Speaking — An interesting activity", "Chuẩn bị nói: ai làm, thông tin cá nhân, mô tả hoạt động và tại sao thú vị.");
+  const wrap = document.createElement("div");
+  wrap.innerHTML = `<p style="font-size:.8rem;color:#6b7280;">🎙️ Bài nói — ghi âm và gửi riêng cho giáo viên/trợ giảng.</p>`;
+  box.appendChild(wrap);
+}
+</script>
+</body>
+</html>

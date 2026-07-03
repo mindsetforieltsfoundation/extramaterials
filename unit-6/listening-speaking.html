@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Unit 6 — Listening & Speaking | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css?v=202607030733">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟨 Unit 6 — Listening &amp; Speaking</h1>
+  <a href="../index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_6_listening___speaking.docx — bài nghe chuyển thành bài đọc vì không kèm audio.</footer>
+
+<script src="scores.js?v=202607030733"></script>
+<script src="app.js?v=202607030733"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Unit 6 - Listening & Speaking";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise"; box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Places in town", "Nối địa điểm với định nghĩa.");
+  buildMatching(box, {
+    exerciseId: "u6ls-1", meta: { module: MOD, title: "Ex.1 Places" },
+    leftLabel: "Địa điểm", rightLabel: "Định nghĩa",
+    pairs: [
+      { left: "department store", right: "large shop selling many types of goods" },
+      { left: "hotel", right: "place for travellers to stay" },
+      { left: "library", right: "place to borrow books" },
+      { left: "police station", right: "where police officers work" },
+      { left: "post office", right: "place to send letters and parcels" },
+      { left: "restaurant", right: "place to eat a meal" },
+      { left: "sports centre", right: "place to exercise or play sports" },
+      { left: "supermarket", right: "large shop selling food" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "Where is each person?", "Chọn đúng nơi mỗi người đang ở, dựa theo mô tả.");
+  buildMCQ(box, {
+    exerciseId: "u6ls-2", meta: { module: MOD, title: "Ex.2 Where is..." },
+    questions: [
+      { text: "\"I'm looking for a parking space, it's very busy today.\"", options: ["at work", "in a car park", "in a shopping centre"], answer: "in a car park" },
+      { text: "\"I'm standing, holding the rail, next stop is Oxford Circus.\"", options: ["on a bus", "on the underground", "walking along a street"], answer: "on the underground" },
+      { text: "\"We're flying at 30,000 feet, please fasten your seatbelt.\"", options: ["on a coach", "on a plane", "on a train"], answer: "on a plane" },
+      { text: "\"I'm pedalling up this hill, my legs are tired!\"", options: ["in a car", "on a bicycle", "on a motorbike"], answer: "on a bicycle" },
+      { text: "\"Please show your passport before boarding.\"", options: ["at an airport", "at a police station", "on a plane"], answer: "at an airport" },
+      { text: "\"The next train to London is on platform 2.\"", options: ["at a bus station", "at a supermarket", "at a train station"], answer: "at a train station" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "Giving directions", "Điền đúng giới từ vị trí (gợi ý: behind, between, left, next, opposite, right).");
+  buildFillBlank(box, {
+    exerciseId: "u6ls-3", meta: { module: MOD, title: "Ex.3 Directions" }, prefixLabel: true,
+    lines: [
+      { text: "The department store is ____ the bus station.", answers: ["behind"] },
+      { text: "The square is ____ the bus station and the castle.", answers: ["between"] },
+      { text: "The hotel is to the ____ of the bank.", answers: ["right"] },
+      { text: "The museum is ____ to the train station.", answers: ["next"] },
+      { text: "The park is ____ the restaurant and department store.", answers: ["opposite"] },
+      { text: "The sports centre is on the ____ of the bus station.", answers: ["left"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "Greentown vs Brownville (bài đọc thay bài nghe)", "Đọc bài rồi chọn True/False.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.85rem;margin-bottom:16px;";
+  p.innerHTML = "Dan works in Greentown, lives in Brownville (smaller, quieter). Greentown train station: more trains, more modern. Greentown better for shopping — 3 shopping centres, biggest has 50+ stores. Brownville has more for tourists: one of the oldest castles, 3 churches 500+ years old, better restaurants, bigger hotels. Dan uses Brownville's sports centre — cheaper than Greentown's.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "u6ls-4", meta: { module: MOD, title: "Ex.4 Greentown/Brownville" },
+    questions: [
+      { text: "Dan works in Brownville.", options: ["True", "False"], answer: "False" },
+      { text: "Brownville is bigger than Greentown.", options: ["True", "False"], answer: "False" },
+      { text: "Greentown's train station is more modern.", options: ["True", "False"], answer: "True" },
+      { text: "It's better to go shopping in Greentown.", options: ["True", "False"], answer: "True" },
+      { text: "Brownville's biggest shopping centre has over 60 stores.", options: ["True", "False"], answer: "False" },
+      { text: "There are more things for tourists in Brownville.", options: ["True", "False"], answer: "True" },
+      { text: "One of the oldest castles in the area is in Brownville.", options: ["True", "False"], answer: "True" },
+      { text: "Greentown has better restaurants and bigger hotels.", options: ["True", "False"], answer: "False" },
+      { text: "Brownville's sports centre is cheaper.", options: ["True", "False"], answer: "True" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "Helsinki (bài đọc thay bài nghe)", "Đọc bài về Helsinki rồi điền đúng thông tin.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.85rem;margin-bottom:16px;";
+  p.innerHTML = "Helsinki: largest city & capital of Finland, over half a million people. Important business centre (Nokia). Airport: ~20 million passengers/year, best airport in north Europe 2013. Nearly 100 museums, Kiasma Museum (modern art) opposite Art Kaarisilta. Some of Europe's oldest buildings. Finland has more lakes than any other European country. More students than any other Finnish city, 2 of the best universities. Smaller than other European capitals but interesting, friendly people, great restaurants.";
+  box.appendChild(p);
+  buildFillBlank(box, {
+    exerciseId: "u6ls-5", meta: { module: MOD, title: "Ex.5 Helsinki" }, prefixLabel: true,
+    lines: [
+      { text: "Helsinki is the ____ city in Finland.", answers: ["largest"] },
+      { text: "The city's important industries are technology and ____.", answers: ["design"] },
+      { text: "Helsinki airport has almost ____ million passengers a year.", answers: ["20", "twenty"] },
+      { text: "The Kiasma Museum is a modern ____ centre.", answers: ["art"] },
+      { text: "Some of Europe's ____ buildings are in Helsinki.", answers: ["oldest"] },
+      { text: "Finland has ____ lakes than any other country in Europe.", answers: ["more"] },
+      { text: "Helsinki is an ____ city for young people.", answers: ["exciting"] },
+      { text: "Visitors enjoy the culture, friendly people and great ____!", answers: ["restaurants"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "Word stress", "Chọn số âm tiết nhấn trọng âm.");
+  buildMCQ(box, {
+    exerciseId: "u6ls-6", meta: { module: MOD, title: "Ex.6 Word stress" },
+    questions: [
+      { text: "MUSEUM — trọng âm rơi vào âm tiết nào?", options: ["1", "2", "3"], answer: "2" },
+      { text: "STADIUM — trọng âm rơi vào âm tiết nào?", options: ["1", "2", "3"], answer: "1" },
+      { text: "POLICE STATION — trọng âm chính rơi vào từ nào?", options: ["POLICE", "STATION"], answer: "POLICE" },
+      { text: "CAFÉ — trọng âm rơi vào âm tiết nào?", options: ["1", "2"], answer: "2" },
+      { text: "DEPARTMENT STORE — trọng âm chính rơi vào từ nào?", options: ["DEPARTMENT", "STORE"], answer: "STORE" },
+      { text: "LIBRARY — trọng âm rơi vào âm tiết nào?", options: ["1", "2", "3"], answer: "1" },
+      { text: "THEATRE — trọng âm rơi vào âm tiết nào?", options: ["1", "2"], answer: "1" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "Comparatives and superlatives", "Điền đúng dạng so sánh (1-3 từ mỗi chỗ trống).");
+  buildFillBlank(box, {
+    exerciseId: "u6ls-7", meta: { module: MOD, title: "Ex.7 Comparative/superlative" }, prefixLabel: true,
+    lines: [
+      { text: "The Burj Khalifa is ____ (tall) building in the world.", answers: ["the tallest"] },
+      { text: "A Rolls Royce is ____ (expensive) than an Audi.", answers: ["more expensive"] },
+      { text: "A city road is ____ (busy) than a country road.", answers: ["busier"] },
+      { text: "Tokyo is ____ (big) city in the world.", answers: ["the biggest"] },
+      { text: "Australia is ____ (far) from Africa than Europe.", answers: ["further", "farther"] },
+      { text: "The food is ____ (good) thing about living here.", answers: ["the best"] },
+      { text: "The hot weather is ____ (bad) thing about summer.", answers: ["the worst"] },
+      { text: "This is ____ (popular) restaurant in town.", answers: ["the most popular"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(8, "Choose the correct word", "Chọn đúng từ mô tả trải nghiệm ở thị trấn.");
+  buildMCQ(box, {
+    exerciseId: "u6ls-8", meta: { module: MOD, title: "Ex.8 Correct word" },
+    questions: [
+      { text: "The city centre is ____ of people at the weekend.", options: ["busy", "crowded", "full"], answer: "crowded" },
+      { text: "My ____ place in town is the park.", options: ["favourite", "great", "popular"], answer: "favourite" },
+      { text: "I never feel ____ in my town.", options: ["bored", "boring", "interesting"], answer: "bored" },
+      { text: "The department store sells the ____ clothes.", options: ["latest", "new", "newest"], answer: "latest" },
+      { text: "My favourite café serves ____ food.", options: ["best", "healthy", "right"], answer: "healthy" },
+      { text: "When I feel ____ I relax in the park.", options: ["bad", "tired", "wrong"], answer: "tired" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(9, "Put the words in order", "Bấm các từ theo đúng thứ tự.");
+  buildWordOrder(box, {
+    exerciseId: "u6ls-9", meta: { module: MOD, title: "Ex.9 Word order" },
+    items: [
+      { words: ["The", "castle", "is", "the", "most", "interesting", "place", "in", "my", "hometown"], answer: "The castle is the most interesting place in my hometown" },
+      { words: ["The", "castle", "is", "the", "old", "part", "of", "the", "town"], answer: "The castle is the old part of the town" },
+      { words: ["The", "newest", "part", "of", "the", "town", "is", "near", "the university"], answer: "The newest part of the town is near the university" },
+      { words: ["The", "best", "thing", "to", "do", "is", "visit", "the", "park", "by the river"], answer: "The best thing to do is visit the park by the river" },
+      { words: ["The", "best", "place", "to", "go", "shopping", "is", "the", "new", "department store"], answer: "The best place to go shopping is the new department store" },
+      { words: ["I", "usually", "travel", "around", "the", "city", "by", "bicycle"], answer: "I usually travel around the city by bicycle" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(10, "Speaking — Talk about your hometown", "Chuẩn bị nói: bạn từ đâu, nơi mua sắm tốt nhất, phần cũ/mới nhất của thị trấn, nơi yêu thích, cách di chuyển.");
+  const wrap = document.createElement("div");
+  wrap.innerHTML = `<p style="font-size:.8rem;color:#6b7280;">🎙️ Bài nói — ghi âm và gửi riêng cho giáo viên/trợ giảng.</p>`;
+  box.appendChild(wrap);
+}
+</script>
+</body>
+</html>
