@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Unit 7 — Listening & Speaking | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css?v=202607030739">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟨 Unit 7 — Listening &amp; Speaking</h1>
+  <a href="../index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_7_listening___speaking.docx — bài nghe chuyển thành bài đọc vì không kèm audio.</footer>
+
+<script src="scores.js?v=202607030739"></script>
+<script src="app.js?v=202607030739"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Unit 7 - Listening & Speaking";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise"; box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Jobs", "Nối tên nghề nghiệp với định nghĩa.");
+  buildMatching(box, {
+    exerciseId: "u7ls-1", meta: { module: MOD, title: "Ex.1 Jobs" },
+    leftLabel: "Nghề nghiệp", rightLabel: "Định nghĩa",
+    pairs: [
+      { left: "chef", right: "cooks meals professionally" },
+      { left: "lifeguard", right: "keeps swimmers safe" },
+      { left: "receptionist", right: "welcomes visitors" },
+      { left: "shop assistant", right: "helps customers buy things" },
+      { left: "teacher", right: "teaches students" },
+      { left: "video game designer", right: "creates video games" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "Match people with skills", "Nối người với kỹ năng của họ.");
+  buildMatching(box, {
+    exerciseId: "u7ls-2", meta: { module: MOD, title: "Ex.2 Skills" },
+    leftLabel: "Nghề nghiệp", rightLabel: "Kỹ năng",
+    pairs: [
+      { left: "tour guide", right: "can talk about things that are interesting for tourists" },
+      { left: "receptionist", right: "is friendly and helpful" },
+      { left: "chef", right: "cooks many types of food" },
+      { left: "sports coach", right: "knows a lot about sport" },
+      { left: "translator", right: "speaks several languages" },
+      { left: "teacher", right: "likes working with children" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "Can or can't / could or couldn't?", "Chọn đúng từ.");
+  buildMCQ(box, {
+    exerciseId: "u7ls-3", meta: { module: MOD, title: "Ex.3 Can/could" },
+    questions: [
+      { text: "He ____ understand maths very easily.", options: ["can", "can't"], answer: "can't" },
+      { text: "I ____ write very well when I was a child.", options: ["could", "couldn't"], answer: "couldn't" },
+      { text: "She ____ speak German very well.", options: ["can", "can't"], answer: "can" },
+      { text: "They ____ read maps.", options: ["can", "can't"], answer: "can't" },
+      { text: "He ____ play sport when he was a teenager.", options: ["could", "couldn't"], answer: "could" },
+      { text: "We ____ talk easily to new people.", options: ["can", "can't"], answer: "can" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "John — then and now", "Điền đúng từ vào bài về John (gợi ý: IT, classes, languages, play, races, read, run, speak, won, wrote).");
+  buildFillBlank(box, {
+    exerciseId: "u7ls-4", meta: { module: MOD, title: "Ex.4 John then/now" }, prefixLabel: true,
+    lines: [
+      { text: "I couldn't ____ football and couldn't swim.", answers: ["play"] },
+      { text: "But I could ____ very fast.", answers: ["run"] },
+      { text: "We had lots of ____ at school.", answers: ["classes"] },
+      { text: "I always ____ at school (won races).", answers: ["won"] },
+      { text: "I also ____ my own stories.", answers: ["wrote"] },
+      { text: "I am studying ____ at university now.", answers: ["IT"] },
+      { text: "I can also ____ French and Spanish quite well.", answers: ["speak"] },
+      { text: "I can ____ Italian news online.", answers: ["read"] },
+      { text: "I enjoy giving my opinion in ____.", answers: ["languages"] },
+      { text: "I still take part in university ____.", answers: ["races"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "John's dream job", "Chọn đáp án đúng.");
+  buildMCQ(box, {
+    exerciseId: "u7ls-5", meta: { module: MOD, title: "Ex.5 Dream job" },
+    questions: [
+      { text: "I'm not sure what I ____ to do when I leave university.", options: ["want", "wanted", "will"], answer: "want" },
+      { text: "Maybe I ____ work for a newspaper.", options: ["could", "couldn't", "won't"], answer: "could" },
+      { text: "I ____ very interested in sports.", options: ["am", "are", "can"], answer: "am" },
+      { text: "I ____ going to football matches.", options: ["love", "loved", "loving"], answer: "love" },
+      { text: "I'm the one who ____ answer all the sport questions.", options: ["can", "could", "does"], answer: "can" },
+      { text: "I think my dream job ____ be a TV sports reporter.", options: ["will", "won't", "would"], answer: "would" },
+      { text: "I still need to ____ a lot.", options: ["learn", "learning", "learnt"], answer: "learn" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "Prepositions of work", "Chọn đúng giới từ.");
+  buildMCQ(box, {
+    exerciseId: "u7ls-6", meta: { module: MOD, title: "Ex.6 Prepositions" },
+    questions: [
+      { text: "My mother usually starts work ____ nine o'clock.", options: ["at", "in", "on"], answer: "at" },
+      { text: "I work ____ a shop.", options: ["at", "in", "on"], answer: "in" },
+      { text: "We're not working ____ Friday.", options: ["at", "in", "on"], answer: "on" },
+      { text: "My cousin works ____ a hospital.", options: ["at", "in", "on"], answer: "in" },
+      { text: "My sister wants to work ____ fashion.", options: ["at", "in", "on"], answer: "in" },
+      { text: "I'm studying ____ university to be a teacher.", options: ["at", "in", "on"], answer: "at" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "Positive or negative?", "Xếp mỗi câu vào đúng cột (câu khẳng định hay phủ định về khả năng).");
+  buildSort2(box, {
+    exerciseId: "u7ls-7", meta: { module: MOD, title: "Ex.7 Positive/negative" },
+    columns: ["positive", "negative"],
+    items: [
+      { text: "I can swim well.", col: "positive" }, { text: "She could speak French.", col: "positive" },
+      { text: "They can play chess.", col: "positive" }, { text: "He could read early.", col: "positive" },
+      { text: "I can't drive.", col: "negative" }, { text: "She couldn't cook.", col: "negative" },
+      { text: "We can't hear you.", col: "negative" }, { text: "He couldn't remember.", col: "negative" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(8, "Match words to make skills", "Nối động từ với đối tượng để tạo cụm kỹ năng.");
+  buildMatching(box, {
+    exerciseId: "u7ls-8", meta: { module: MOD, title: "Ex.8 Skills phrases" },
+    leftLabel: "Động từ", rightLabel: "Đối tượng",
+    pairs: [
+      { left: "ride", right: "a bicycle" }, { left: "drive", right: "a car" }, { left: "run", right: "a marathon" },
+      { left: "speak", right: "English" }, { left: "interview", right: "people" }, { left: "surf", right: "the internet" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(9, "Put the words in order", "Bấm các từ theo đúng thứ tự.");
+  buildWordOrder(box, {
+    exerciseId: "u7ls-9", meta: { module: MOD, title: "Ex.9 Word order" },
+    items: [
+      { words: ["I", "couldn't", "swim", "when I", "was", "young"], answer: "I couldn't swim when I was young" },
+      { words: ["I", "could", "read", "when I", "was", "six", "years", "old"], answer: "I could read when I was six years old" },
+      { words: ["I can", "speake", "I can read Italian", "and", "French quite well,"], answer: "I can speake I can read Italian and French quite well," },
+      { words: ["He can", "write", "stories", "on his laptop"], answer: "He can write stories on his laptop" },
+      { words: ["She can", "run", "100 meters", "in 11 seconds"], answer: "She can run 100 meters in 11 seconds" },
+      { words: ["I think", "I want", "to work as", "a journalist", "university"], answer: "I think I want to work as a journalist university" },
+      { words: ["I think my", "dream job", "would be", "a TV", "sports reporter"], answer: "I think my dream job would be a TV sports reporter" },
+      { words: ["I already", "have many", "of the skills", "you need", "for that job"], answer: "I already have many of the skills you need for that job" },
+      { words: ["I can", "speak", "different", "languages"], answer: "I can speak different languages" },
+      { words: ["I think I", "need to", "learn how", "to interview people"], answer: "I think I need to learn how to interview people" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(10, "Speaking — Talk about your skills", "Chuẩn bị nói: kỹ năng trước đây, kỹ năng hiện tại/đang học, công việc tương lai, kỹ năng cần học thêm.");
+  const wrap = document.createElement("div");
+  wrap.innerHTML = `<p style="font-size:.8rem;color:#6b7280;">🎙️ Bài nói — ghi âm và gửi riêng cho giáo viên/trợ giảng.</p>`;
+  box.appendChild(wrap);
+}
+</script>
+</body>
+</html>

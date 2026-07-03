@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Unit 7 — Reading & Writing | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css?v=202607030739">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟪 Unit 7 — Reading &amp; Writing</h1>
+  <a href="../index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_7reading___writing.docx</footer>
+
+<script src="scores.js?v=202607030739"></script>
+<script src="app.js?v=202607030739"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Unit 7 - Reading & Writing";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise"; box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Match sentence halves", "Nối nửa đầu câu với nửa sau đúng.");
+  buildMatching(box, {
+    exerciseId: "u7rw-1", meta: { module: MOD, title: "Ex.1 Sentence halves" },
+    leftLabel: "Bắt đầu", rightLabel: "Kết thúc",
+    pairs: [
+      { left: "I use", right: "a computer to do my homework." },
+      { left: "I have to write", right: "a lot of essays this week." },
+      { left: "My brother wants to learn", right: "maths when I was at school." },
+      { left: "I have to take", right: "a test before I start college." },
+      { left: "My sister has just got", right: "a job in a bank." },
+      { left: "I enjoy talking", right: "to people on my course." },
+      { left: "I spend", right: "a lot of my time studying." },
+      { left: "I was good at doing", right: "two new languages this year!" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "Blog posts about jobs", "Chọn đúng từ để hoàn thành 4 bài blog về công việc.");
+  buildMCQ(box, {
+    exerciseId: "u7rw-2", meta: { module: MOD, title: "Ex.2 Blog posts" },
+    questions: [
+      { text: "James (teacher): children say so many ____ things.", options: ["busy", "clever", "easy"], answer: "clever" },
+      { text: "James: it's important to be very ____.", options: ["boring", "difficult", "kind"], answer: "kind" },
+      { text: "James: I work very ____.", options: ["clever", "easy", "hard"], answer: "hard" },
+      { text: "Isabelle (nurse): speaking to people is very ____ in my job.", options: ["awful", "busy", "important"], answer: "important" },
+      { text: "Isabelle: this can be a ____ job.", options: ["clever", "difficult", "friendly"], answer: "difficult" },
+      { text: "Gary (athlete): I meet so many ____ people.", options: ["easy", "favourite", "interesting"], answer: "interesting" },
+      { text: "Gary: playing my best isn't always ____.", options: ["easy", "kind", "popular"], answer: "easy" },
+      { text: "Sarah (shop assistant): most customers are nice and ____.", options: ["awful", "favourite", "friendly"], answer: "friendly" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "Who is it? (bài blog)", "Đọc lại 4 bài blog rồi chọn đúng người.");
+  buildMCQ(box, {
+    exerciseId: "u7rw-3", meta: { module: MOD, title: "Ex.3 Who is it" },
+    questions: [
+      { text: "Who is happiest when busy?", options: ["James", "Isabelle", "Gary", "Sarah"], answer: "Sarah" },
+      { text: "Who needs to be kind to do the job?", options: ["James", "Isabelle", "Gary", "Sarah"], answer: "James" },
+      { text: "Who doesn't always do the job well?", options: ["James", "Isabelle", "Gary", "Sarah"], answer: "Gary" },
+      { text: "Who had help from others when starting?", options: ["James", "Isabelle", "Gary", "Sarah"], answer: "Isabelle" },
+      { text: "Who often does work at home?", options: ["James", "Isabelle", "Gary", "Sarah"], answer: "James" },
+      { text: "Who often talks to families?", options: ["James", "Isabelle", "Gary", "Sarah"], answer: "Isabelle" },
+      { text: "Who sees new things (clothes)?", options: ["James", "Isabelle", "Gary", "Sarah"], answer: "Sarah" },
+      { text: "Who travels to different countries?", options: ["James", "Isabelle", "Gary", "Sarah"], answer: "Gary" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "New school subjects", "Đọc bài về các môn học mới rồi điền đúng từ (gợi ý: future, job, money, skills, subjects, work).");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.82rem;margin-bottom:16px;";
+  p.innerHTML = "Some schools teach new subjects thought more useful for the future: a US school teaches computer programming/app design; a UK school teaches healthy cooking and saving money; a Singapore school teaches speaking/writing well for work and family life.";
+  box.appendChild(p);
+  buildFillBlank(box, {
+    exerciseId: "u7rw-4", meta: { module: MOD, title: "Ex.4 New subjects" }, prefixLabel: true,
+    lines: [
+      { text: "New subjects will be more useful in the ____.", answers: ["future"] },
+      { text: "New ____ like Computer Programming help get a job.", answers: ["subjects"] },
+      { text: "They can help students get a ____.", answers: ["job"] },
+      { text: "Others help learn important ____ in the home.", answers: ["skills"] },
+      { text: "...how to cook healthy meals and save ____.", answers: ["money"] },
+      { text: "More skills help young people get on well at ____ and at home.", answers: ["work"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "Essay structure — tests in school", "Nối đoạn văn với đúng vai trò trong bài luận.");
+  buildMatching(box, {
+    exerciseId: "u7rw-5", meta: { module: MOD, title: "Ex.5 Essay structure" },
+    leftLabel: "Vai trò đoạn văn", rightLabel: "Nội dung",
+    pairs: [
+      { left: "Introduction of the topic", right: "Every year, many students do tests at school." },
+      { left: "Agree with the title", right: "Tests help teachers see what students understand." },
+      { left: "Disagree with the title", right: "However, some students feel very stressed about tests." },
+      { left: "Summary of the main points", right: "In conclusion, tests are useful but should not cause too much stress." },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "Advantages/disadvantages of using computers", "Chọn từ nối câu đúng (Firstly, For example, However, I think, Secondly).");
+  buildMCQ(box, {
+    exerciseId: "u7rw-6", meta: { module: MOD, title: "Ex.6 Connectors" },
+    questions: [
+      { text: "Many students use computers to help with school work. ____ there are advantages and disadvantages.", options: ["Firstly", "I think"], answer: "I think" },
+      { text: "____, computers can be helpful for finding information.", options: ["Firstly", "However"], answer: "Firstly" },
+      { text: "____, students can find websites to learn a language.", options: ["For example", "Secondly"], answer: "For example" },
+      { text: "____, young people enjoy using new technology.", options: ["Secondly", "However"], answer: "Secondly" },
+      { text: "____, computers can stop young people studying.", options: ["For example", "However"], answer: "However" },
+      { text: "____, they might check email or play games instead.", options: ["For example", "Firstly"], answer: "For example" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "Match sentences with their function", "Nối câu với đúng vai trò trong đoạn văn.");
+  buildMatching(box, {
+    exerciseId: "u7rw-7", meta: { module: MOD, title: "Ex.7 Sentence function" },
+    leftLabel: "Câu", rightLabel: "Vai trò",
+    pairs: [
+      { left: "Many students use computers to help with school work.", right: "Introduction of the topic" },
+      { left: "I think there are advantages and disadvantages.", right: "The writer's opinion" },
+      { left: "Firstly, computers can help find information.", right: "First advantage" },
+      { left: "For example, students can find websites to learn a language.", right: "An example of an advantage" },
+      { left: "Secondly, young people work better with computers.", right: "Another advantage" },
+      { left: "However, computers can stop young people studying.", right: "A disadvantage" },
+      { left: "For example, they check email or play games.", right: "An example of a disadvantage" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(8, "Writing — Advantages and disadvantages of homework", "Viết đoạn văn: giới thiệu chủ đề, ý kiến của bạn, thông tin ủng hộ, thông tin phản đối, ví dụ.");
+  const wrap = document.createElement("div");
+  wrap.innerHTML = `<p style="font-size:.85rem;color:#6b7280;">Gợi ý cấu trúc: Introduction → Your opinion → Firstly (advantage) → For example... → Secondly (advantage) → However (disadvantage) → For example...</p>
+  <textarea rows="6" style="width:100%;border:1.5px solid var(--border);border-radius:8px;padding:10px;font-family:inherit;font-size:.9rem;" placeholder="Many students..."></textarea>
+  <p style="font-size:.8rem;color:#6b7280;margin-top:8px;">✏️ Bài viết tự do — giáo viên xem trực tiếp.</p>`;
+  box.appendChild(wrap);
+}
+</script>
+</body>
+</html>

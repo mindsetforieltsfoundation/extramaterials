@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Unit 7 — Grammar & Vocab | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css?v=202607030739">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟦 Unit 7 — Grammar &amp; Vocab (Jobs &amp; Abilities)</h1>
+  <a href="../index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_7_grammar___vocab.docx</footer>
+
+<script src="scores.js?v=202607030739"></script>
+<script src="app.js?v=202607030739"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Unit 7 - Grammar & Vocab";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise"; box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Match sentence halves — can/could", "Nối nửa đầu câu với nửa sau đúng.");
+  buildMatching(box, {
+    exerciseId: "u7gv-1", meta: { module: MOD, title: "Ex.1 Sentence halves" },
+    leftLabel: "Bắt đầu", rightLabel: "Kết thúc",
+    pairs: [
+      { left: "John works a lot but doesn't mind because he", right: "can finish early on Fridays." },
+      { left: "Julia learnt Spanish quickly because she", right: "could already speak two other languages." },
+      { left: "A year ago, I", right: "couldn't even write very well." },
+      { left: "Jim's results are impressive, he", right: "can just do very well in exams." },
+      { left: "In an interview, can", right: "you remember a lot of information?" },
+      { left: "It's hard to believe Sandra", right: "couldn't even talk to new people a few months ago." },
+      { left: "I need my calculator because I", right: "can't understand maths very easily." },
+      { left: "Joseph is good at 3 sports. Could", right: "he play sport well as a child, too?" },
+      { left: "Lucy's late, she", right: "can't read maps very well." },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "Study & job verbs", "Điền đúng động từ (gợi ý: failed, finishes, get, learn, passed, started, starting, studying, take, taught).");
+  buildFillBlank(box, {
+    exerciseId: "u7gv-2", meta: { module: MOD, title: "Ex.2 Verbs" }, prefixLabel: true,
+    lines: [
+      { text: "I ____ my driving test last month.", answers: ["passed"] },
+      { text: "My sister is ____ law.", answers: ["studying"] },
+      { text: "When she ____ university, she wants to be a lawyer.", answers: ["finishes"] },
+      { text: "It's difficult to ____ a good job without experience.", answers: ["get"] },
+      { text: "My father ____ me how to cook.", answers: ["taught"] },
+      { text: "I didn't ____ to play an instrument when younger.", answers: ["learn"] },
+      { text: "I would like to ____ piano lessons.", answers: ["take"] },
+      { text: "Many students ____ the exam.", answers: ["failed"] },
+      { text: "My friend is ____ her new job tomorrow.", answers: ["starting"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "Jobs", "Nối tên nghề nghiệp với định nghĩa.");
+  buildMatching(box, {
+    exerciseId: "u7gv-3", meta: { module: MOD, title: "Ex.3 Jobs" },
+    leftLabel: "Nghề nghiệp", rightLabel: "Định nghĩa",
+    pairs: [
+      { left: "chef", right: "cooks meals in a restaurant" },
+      { left: "cleaner", right: "cleans buildings or homes" },
+      { left: "doctor", right: "treats sick people" },
+      { left: "lifeguard", right: "watches over swimmers for safety" },
+      { left: "receptionist", right: "welcomes visitors at the front desk" },
+      { left: "shop assistant", right: "helps customers in a shop" },
+      { left: "teacher", right: "teaches students" },
+      { left: "waiter", right: "serves food in a restaurant" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "Job advertisements", "Điền đúng từ vào quảng cáo tuyển dụng (gợi ý: energy, experience, friendly, hard-working, long hours, speak another language, sports/art/music, weekend).");
+  buildFillBlank(box, {
+    exerciseId: "u7gv-4", meta: { module: MOD, title: "Ex.4 Job ads" }, prefixLabel: true,
+    lines: [
+      { text: "Waiter needed. You don't need ____ of working in a restaurant.", answers: ["experience"] },
+      { text: "You should be ____ and happy to work in a team.", answers: ["hard-working"] },
+      { text: "You will work ____, especially at weekends.", answers: ["long hours"] },
+      { text: "Receptionist needed who can ____ (French, German or Spanish).", answers: ["speak another language"] },
+      { text: "You should be ____ to guests.", answers: ["friendly"] },
+      { text: "Summer Camp Leaders to teach children ____.", answers: ["sports/art/music", "sports, art or music"] },
+      { text: "You should have a lot of ____.", answers: ["energy"] },
+      { text: "You will need to work weekdays and at the ____.", answers: ["weekend"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "Prepositions in, on, at", "Điền đúng giới từ.");
+  buildFillBlank(box, {
+    exerciseId: "u7gv-5", meta: { module: MOD, title: "Ex.5 Prepositions" }, prefixLabel: true,
+    lines: [
+      { text: "My brother is working as a lifeguard ____ the swimming pool.", answers: ["at"] },
+      { text: "My cousin is studying history ____ a university ____ France.", answers: ["at"] },
+      { text: "I wouldn't like to work ____ a restaurant.", answers: ["in"] },
+      { text: "I'm not working ____ Monday.", answers: ["on"] },
+      { text: "My friend will be ____ television tonight.", answers: ["on"] },
+      { text: "I was ____ work yesterday.", answers: ["at"] },
+      { text: "I usually finish work ____ 5pm.", answers: ["at"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "Workplace vocabulary", "Xếp mỗi từ vào đúng nơi làm việc.");
+  buildSort2(box, {
+    exerciseId: "u7gv-6", meta: { module: MOD, title: "Ex.6 Workplace vocab" },
+    columns: ["restaurant", "hotel"],
+    items: [
+      { text: "waiter", col: "restaurant" }, { text: "tables", col: "restaurant" }, { text: "chef", col: "restaurant" }, { text: "meal", col: "restaurant" },
+      { text: "receptionist", col: "hotel" }, { text: "guests", col: "hotel" }, { text: "lift", col: "hotel" }, { text: "rooms", col: "hotel" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "Can conversation", "Chọn đáp án đúng để hoàn thành hội thoại.");
+  buildMCQ(box, {
+    exerciseId: "u7gv-7", meta: { module: MOD, title: "Ex.7 Can conversation" },
+    questions: [
+      { text: "A: ____ play sport?", options: ["You can", "You can't", "Can you"], answer: "Can you" },
+      { text: "B: Yes, ____ play basketball.", options: ["I can", "I can't", "can I"], answer: "I can" },
+      { text: "A: Not really, ____ play many sports.", options: ["I can", "I can't", "can I"], answer: "I can't" },
+      { text: "B: How many languages ____ speak?", options: ["you can", "you can't", "can you"], answer: "can you" },
+      { text: "A: Four. ____ speak English, Russian, Chinese and Thai.", options: ["I can", "I can't", "Can I"], answer: "I can" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(8, "Can, can't, could, couldn't", "Điền đúng từ.");
+  buildFillBlank(box, {
+    exerciseId: "u7gv-8", meta: { module: MOD, title: "Ex.8 Can/could" }, prefixLabel: true,
+    lines: [
+      { text: "I think it's because I ____ write really well.", answers: ["can"] },
+      { text: "My problem is that I ____ remember facts.", answers: ["can't"] },
+      { text: "I was so nervous that I ____ remember a thing.", answers: ["couldn't"] },
+      { text: "I studied French so I ____ communicate quite well in France.", answers: ["could"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(9, "Correct the email", "Sửa lại đúng can/can't/could/couldn't bị gạch chân trong email của Pablo.");
+  buildFillBlank(box, {
+    exerciseId: "u7gv-9", meta: { module: MOD, title: "Ex.9 Correct email" }, prefixLabel: true,
+    lines: [
+      { text: "I could swim very well. → sửa: ____ (nói về hiện tại)", answers: ["can"] },
+      { text: "I can't swim when I was a child. → sửa: ____ (nói về quá khứ)", answers: ["couldn't"] },
+      { text: "I can't also remember lots of information. → sửa: ____ (thực ra giỏi nhớ)", answers: ["can"] },
+    ],
+  });
+}
+</script>
+</body>
+</html>

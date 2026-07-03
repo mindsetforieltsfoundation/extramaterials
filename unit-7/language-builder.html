@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Unit 7 — Language Builder | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css?v=202607030739">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟩 Unit 7 — Language Builder (Holiday Jobs)</h1>
+  <a href="../index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_7_language_builder.docx — bài nghe chuyển thành bài đọc vì không kèm audio.</footer>
+
+<script src="scores.js?v=202607030739"></script>
+<script src="app.js?v=202607030739"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Unit 7 - Language Builder";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise"; box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Work tasks", "Nối hành động với định nghĩa.");
+  buildMatching(box, {
+    exerciseId: "u7lb-1", meta: { module: MOD, title: "Ex.1 Work tasks" },
+    leftLabel: "Hành động", rightLabel: "Định nghĩa",
+    pairs: [
+      { left: "answer the phone", right: "pick up and talk on the telephone" },
+      { left: "build a wall", right: "construct a wall with bricks" },
+      { left: "clean the floor", right: "make the floor clean" },
+      { left: "cut hair", right: "trim someone's hair" },
+      { left: "make drinks", right: "prepare tea, coffee, etc." },
+      { left: "wash dishes", right: "clean plates and cups" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "Job opposites", "Điền đúng từ trái nghĩa (gợi ý: clean, easy, great, high, interesting, light, short).");
+  buildFillBlank(box, {
+    exerciseId: "u7lb-2", meta: { module: MOD, title: "Ex.2 Opposites" }, prefixLabel: true,
+    lines: [
+      { text: "dirty ↔ ____", answers: ["clean"] },
+      { text: "low ↔ ____", answers: ["high"] },
+      { text: "boring ↔ ____", answers: ["interesting"] },
+      { text: "long ↔ ____", answers: ["short"] },
+      { text: "terrible ↔ ____", answers: ["great"] },
+      { text: "hard ↔ ____", answers: ["easy"] },
+      { text: "heavy ↔ ____", answers: ["light"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "Match job experiences", "Nối câu mô tả với kết luận đúng.");
+  buildMatching(box, {
+    exerciseId: "u7lb-3", meta: { module: MOD, title: "Ex.3 Job experiences" },
+    leftLabel: "Mô tả", rightLabel: "Kết luận",
+    pairs: [
+      { left: "I started work at seven and didn't finish until six.", right: "I worked long hours." },
+      { left: "The machinery was so loud you couldn't hear anybody talk.", right: "The factory was very noisy." },
+      { left: "I only earned £2 an hour.", right: "The pay was very low." },
+      { left: "I got £20 an hour.", right: "The job was well paid." },
+      { left: "I had to do the same things every day.", right: "The job was boring." },
+      { left: "It took nearly two hours to get to work.", right: "The company was a long way from my home." },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "Mark and Jacky's summer jobs (bài đọc thay bài nghe)", "Đọc hội thoại rồi chọn đúng.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.82rem;margin-bottom:16px;";
+  p.innerHTML = "Jacky worked 3 weeks in a busy office — only young person there, manager loud and never happy, but well paid, wrote emails, answered phone, made drinks. Mark: worked as waiter 1 week, pay too low (£5/hr), quit. Then worked at hairdresser's as a cleaner (not cutting hair!) — cleaned floor full of hair, boring but nice people, only £4/hr. Then worked with a builder — long hours but good money, learned to build walls, liked being outdoors, healthy and fit now.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "u7lb-4", meta: { module: MOD, title: "Ex.4 Mark & Jacky" },
+    questions: [
+      { text: "Jacky worked in a busy", options: ["café", "office", "restaurant"], answer: "office" },
+      { text: "She worked for", options: ["a week", "two weeks", "three weeks"], answer: "three weeks" },
+      { text: "The manager was very", options: ["nice", "pleasant", "loud"], answer: "loud" },
+      { text: "Mark worked as a waiter for", options: ["a week", "two weeks", "five weeks"], answer: "a week" },
+      { text: "At the hairdresser's, Mark", options: ["cut people's hair", "cleaned the floor", "washed people's hair"], answer: "cleaned the floor" },
+      { text: "Mark liked working", options: ["indoors", "outdoors", "long hours"], answer: "outdoors" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "Match questions with answers", "Nối câu hỏi với câu trả lời đúng dựa trên hội thoại của Jacky.");
+  buildMatching(box, {
+    exerciseId: "u7lb-5", meta: { module: MOD, title: "Ex.5 Q&A" },
+    leftLabel: "Câu hỏi", rightLabel: "Câu trả lời",
+    pairs: [
+      { left: "Did she work in a restaurant?", right: "No, she worked in an office." },
+      { left: "Did she like her job?", right: "Yes, it was OK." },
+      { left: "What was the manager like?", right: "Loud and never happy." },
+      { left: "Was the job well paid?", right: "Yes, it was very well paid." },
+      { left: "What work did she do?", right: "Wrote emails, answered the phone, made drinks." },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "Complete the conversation", "Điền đúng động từ (gợi ý: did, did learn, didn't, earned, got, left, liked, stopped, were, worked).");
+  buildFillBlank(box, {
+    exerciseId: "u7lb-6", meta: { module: MOD, title: "Ex.6 Complete conversation" }, prefixLabel: true,
+    lines: [
+      { text: "What ____ you do in the summer?", answers: ["did"] },
+      { text: "I ____ doing that after a week.", answers: ["stopped"] },
+      { text: "I only ____ £5 an hour.", answers: ["earned"] },
+      { text: "I ____ a job at a hairdresser's.", answers: ["got"] },
+      { text: "I ____ cut people's hair!", answers: ["didn't"] },
+      { text: "I ____ as a cleaner.", answers: ["worked"] },
+      { text: "The people ____ nice.", answers: ["were"] },
+      { text: "That's why I ____ and got another job.", answers: ["left"] },
+      { text: "I ____ to build walls.", answers: ["did learn"] },
+      { text: "I ____ being outdoors.", answers: ["liked"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "Put the words in order", "Bấm các từ theo đúng thứ tự.");
+  buildWordOrder(box, {
+    exerciseId: "u7lb-7", meta: { module: MOD, title: "Ex.7 Word order" },
+    items: [
+      { words: ["I", "got", "a", "job", "in", "a restaurant"], answer: "I got a job in a restaurant" },
+      { words: ["I", "earned", "six", "pounds", "an", "hour"], answer: "I earned six pounds an hour" },
+      { words: ["I", "worked", "very", "long", "hours"], answer: "I worked very long hours" },
+      { words: ["The", "manager", "wasn't", "very", "nice"], answer: "The manager wasn't very nice" },
+      { words: ["Most", "of", "the", "work", "was", "quite", "interesting"], answer: "Most of the work was quite interesting" },
+      { words: ["There", "were", "some", "good", "things", "about", "the", "job"], answer: "There were some good things about the job" },
+      { words: ["The", "job", "was", "really", "well", "paid"], answer: "The job was really well paid" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(8, "Choose the correct word", "Chọn đáp án đúng.");
+  buildMCQ(box, {
+    exerciseId: "u7lb-8", meta: { module: MOD, title: "Ex.8 Correct word" },
+    questions: [
+      { text: "I ____ in an office last year.", options: ["learnt", "went", "worked"], answer: "worked" },
+      { text: "My job ____ interesting.", options: ["made", "was", "went"], answer: "was" },
+      { text: "He ____ a lot of money last week.", options: ["bought", "earned", "worked"], answer: "earned" },
+      { text: "I ____ working outdoors.", options: ["didn't like", "didn't make", "didn't want"], answer: "didn't like" },
+      { text: "She ____ drinks for people.", options: ["liked", "made", "went"], answer: "made" },
+      { text: "There ____ many good things about the job.", options: ["didn't", "wasn't", "weren't"], answer: "weren't" },
+      { text: "They ____ want to work in a shop.", options: ["didn't", "wasn't", "weren't"], answer: "didn't" },
+      { text: "She ____ emails and ____ the phone.", options: ["wrote / answered", "made / replied"], answer: "wrote / answered" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(9, "Correct the verbs to past simple", "Sửa lại động từ gạch chân sang thì quá khứ đơn.");
+  buildFillBlank(box, {
+    exerciseId: "u7lb-9", meta: { module: MOD, title: "Ex.9 Past simple correction" }, prefixLabel: true,
+    lines: [
+      { text: "Diane: Last summer, I get a job in a shop. → sửa: ____", answers: ["got"] },
+      { text: "I work every day from nine to five. → sửa: ____", answers: ["worked"] },
+      { text: "I don't like it much. → sửa: ____", answers: ["didn't"] },
+      { text: "George: Last weekend, I help my mum and dad. → sửa: ____", answers: ["helped"] },
+      { text: "I don't have to work hard and it is a bit boring. → sửa (2 từ): ____", answers: ["didn't, was"] },
+      { text: "Carlo: Last year, I have a Saturday job. → sửa: ____", answers: ["had"] },
+      { text: "I love talking to customers. → sửa: ____", answers: ["loved"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(10, "Speaking — A job you had", "Chuẩn bị nói: công việc là gì, tốt hay không, thích/không thích gì, bạn đã làm gì, kiếm được bao nhiêu.");
+  const wrap = document.createElement("div");
+  wrap.innerHTML = `<p style="font-size:.8rem;color:#6b7280;">🎙️ Bài nói — ghi âm và gửi riêng cho giáo viên/trợ giảng.</p>`;
+  box.appendChild(wrap);
+}
+</script>
+</body>
+</html>

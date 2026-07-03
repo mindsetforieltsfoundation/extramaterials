@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=202607030733">
+<link rel="stylesheet" href="style.css?v=202607030739">
 </head>
 <body>
 <div class="dash-hero">
@@ -30,7 +30,7 @@
 </main>
 <footer class="page-footer">Điểm được lưu ngay trên trình duyệt này (localStorage) — mỗi học sinh nên dùng máy/trình duyệt riêng.</footer>
 
-<script src="scores.js?v=202607030733"></script>
+<script src="scores.js?v=202607030739"></script>
 <script>
 const MODULE_COLORS = {
   gv: { c: "#2F7A78", soft: "#EAF3F2" },
@@ -115,7 +115,18 @@ const UNITS = [
         titles: ["Places","Madrid article","Madrid T/F","Four cities","Cycling article","New City comparatives","Paragraph order","Writing"] },
     ],
   },
-  { key: "u7", name: "Unit 7", available: false, modules: [] },
+  { key: "u7", name: "Unit 7 — Jobs & Abilities", available: true,
+    modules: [
+      { key: "gv", name: "Grammar & Vocab", file: "unit-7/grammar-vocab.html", prefix: "u7gv",
+        titles: ["Sentence halves","Study & job verbs","Jobs","Job ads","Prepositions","Workplace vocab","Can conversation","Can/could","Correct email"] },
+      { key: "lb", name: "Language Builder", file: "unit-7/language-builder.html", prefix: "u7lb",
+        titles: ["Work tasks","Opposites","Job experiences","Mark & Jacky","Q&A","Complete conversation","Word order","Correct word","Past simple correction","Speaking"] },
+      { key: "ls", name: "Listening & Speaking", file: "unit-7/listening-speaking.html", prefix: "u7ls",
+        titles: ["Jobs","Skills","Can/could","John then/now","Dream job","Prepositions","Positive/negative","Skills phrases","Word order","Speaking"] },
+      { key: "rw", name: "Reading & Writing", file: "unit-7/reading-writing.html", prefix: "u7rw",
+        titles: ["Sentence halves","Blog posts","Who is it","New subjects","Essay structure","Connectors","Sentence function","Writing"] },
+    ],
+  },
   { key: "u8", name: "Unit 8", available: false, modules: [] },
   { key: "u9", name: "Unit 9", available: false, modules: [] },
   { key: "u10", name: "Unit 10", available: false, modules: [] },
