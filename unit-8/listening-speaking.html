@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Unit 8 — Listening & Speaking | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css?v=202607030744">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟨 Unit 8 — Listening &amp; Speaking</h1>
+  <a href="../index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_8_listening___speaking.docx — bài nghe chuyển thành bài đọc vì không kèm audio.</footer>
+
+<script src="scores.js?v=202607030744"></script>
+<script src="app.js?v=202607030744"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Unit 8 - Listening & Speaking";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise"; box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Relaxing activities", "Nối hoạt động thư giãn với định nghĩa.");
+  buildMatching(box, {
+    exerciseId: "u8ls-1", meta: { module: MOD, title: "Ex.1 Activities" },
+    leftLabel: "Hoạt động", rightLabel: "Định nghĩa",
+    pairs: [
+      { left: "listening to music", right: "hearing songs to relax" },
+      { left: "reading books", right: "looking at pages to enjoy a story" },
+      { left: "meeting friends", right: "spending time with friends" },
+      { left: "sleeping", right: "resting with eyes closed" },
+      { left: "drinking tea", right: "having a warm herbal drink" },
+      { left: "playing basketball", right: "team sport with a ball and hoop" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "Six opinions about health (bài đọc thay bài nghe)", "Đọc 6 ý kiến rồi chọn True/False.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.82rem;margin-bottom:16px;";
+  p.innerHTML = "<b>1</b> Music/art are good for relaxing, not expensive (online music, free museums).<br><b>2</b> Reading isn't relaxing for a student who reads a lot already.<br><b>3</b> Prefers meeting friends at home — more fun and cheaper.<br><b>4</b> Getting enough sleep is important — feels terrible without it.<br><b>5</b> Doesn't like drinking water directly, but drinks tea/juice (which contain water) — thinks it's important.<br><b>6</b> Basketball is hard work but relaxing and fun with friends, plays twice a week.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "u8ls-2", meta: { module: MOD, title: "Ex.2 Six opinions" },
+    questions: [
+      { text: "Speaker 1 thinks art/music is expensive.", options: ["True", "False"], answer: "False" },
+      { text: "Speaker 2 thinks reading isn't interesting (for relaxing).", options: ["True", "False"], answer: "True" },
+      { text: "Speaker 3 thinks going out with friends isn't expensive.", options: ["True", "False"], answer: "False" },
+      { text: "Speaker 4 thinks getting enough sleep is important.", options: ["True", "False"], answer: "True" },
+      { text: "Speaker 5 thinks drinking water is healthy.", options: ["True", "False"], answer: "True" },
+      { text: "Speaker 6 thinks playing basketball is relaxing.", options: ["True", "False"], answer: "True" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "Should or shouldn't?", "Chọn đáp án đúng.");
+  buildMCQ(box, {
+    exerciseId: "u8ls-3", meta: { module: MOD, title: "Ex.3 Should/shouldn't" },
+    questions: [
+      { text: "You ____ drink plenty of water.", options: ["should", "shouldn't"], answer: "should" },
+      { text: "You ____ eat too much sugar.", options: ["should", "shouldn't"], answer: "shouldn't" },
+      { text: "You ____ get enough sleep every night.", options: ["should", "shouldn't"], answer: "should" },
+      { text: "You ____ spend too much time on your phone.", options: ["should", "shouldn't"], answer: "shouldn't" },
+      { text: "You ____ do some exercise every day.", options: ["should", "shouldn't"], answer: "should" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "Park Health Centre (bài đọc thay bài nghe)", "Đọc thông tin trung tâm y tế rồi chọn have to/don't have to.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.85rem;margin-bottom:16px;";
+  p.innerHTML = "Park Health Centre open to everyone, but need to be a member (join via website first). Members should live in local area (else use another centre). Advice on many health topics, or general advice. Yoga/Pilates classes are advanced — need some experience. Healthy eating classes — recipes easy, no cooking experience needed.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "u8ls-4", meta: { module: MOD, title: "Ex.4 Health Centre" },
+    questions: [
+      { text: "You ____ feel ill to visit the centre.", options: ["have to", "don't have to"], answer: "don't have to" },
+      { text: "You ____ be a member to visit.", options: ["have to", "don't have to"], answer: "have to" },
+      { text: "Members ____ live in the local area.", options: ["have to", "don't have to"], answer: "have to" },
+      { text: "You ____ be looking for health advice for a specific problem.", options: ["have to", "don't have to"], answer: "don't have to" },
+      { text: "For yoga/Pilates, you ____ have some experience.", options: ["have to", "don't have to"], answer: "have to" },
+      { text: "You ____ be a great cook for the healthy eating classes.", options: ["have to", "don't have to"], answer: "don't have to" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "David or Emma? (bài đọc thay bài nghe)", "Đọc hội thoại rồi chọn đúng người có ý kiến đó.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.82rem;margin-bottom:16px;";
+  p.innerHTML = "David: goes to gym with friend usually, thinks exercising with others is more fun, thinks you don't have to be fit to play sport, watches TV to relax (a couple hours OK), thinks music helps you study better. Emma: not very fit, drinks tea and 2L water/day, thinks fast food and coffee are bad, prefers museums to relax, thinks watching TV isn't relaxing/healthy, prefers listening to music to relax but needs quiet to study.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "u8ls-5", meta: { module: MOD, title: "Ex.5 David or Emma" },
+    questions: [
+      { text: "You should do exercise with other people.", options: ["David", "Emma"], answer: "David" },
+      { text: "You don't have to be fit to play sport.", options: ["David", "Emma"], answer: "David" },
+      { text: "You shouldn't eat fast food.", options: ["David", "Emma"], answer: "Emma" },
+      { text: "You shouldn't drink coffee.", options: ["David", "Emma"], answer: "Emma" },
+      { text: "You should drink tea and lots of water.", options: ["David", "Emma"], answer: "Emma" },
+      { text: "You should watch a few hours of TV to relax.", options: ["David", "Emma"], answer: "David" },
+      { text: "You shouldn't listen to music when you study.", options: ["David", "Emma"], answer: "Emma" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "Match words and phrases", "Nối động từ với danh từ để tạo cụm về sức khỏe.");
+  buildMatching(box, {
+    exerciseId: "u8ls-6", meta: { module: MOD, title: "Ex.6 Health phrases" },
+    leftLabel: "Động từ", rightLabel: "Danh từ",
+    pairs: [
+      { left: "join", right: "the gym" },
+      { left: "exercise with other", right: "people" },
+      { left: "exercise", right: "outdoors" },
+      { left: "pay for a", right: "personal trainer" },
+      { left: "follow a", right: "healthy diet" },
+      { left: "focus", right: "on exams" },
+      { left: "take", right: "regular breaks from computer work" },
+      { left: "keep", right: "healthy" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "Complete with should/shouldn't", "Điền đúng động từ (gợi ý: drink, eat, get, spend).");
+  buildFillBlank(box, {
+    exerciseId: "u8ls-7", meta: { module: MOD, title: "Ex.7 Should complete" }, prefixLabel: true,
+    lines: [
+      { text: "You should ____ a lot of water when you exercise.", answers: ["drink"] },
+      { text: "Young people shouldn't ____ too much time playing games.", answers: ["spend"] },
+      { text: "If you want to be fit, you should ____ fit — go to the gym.", answers: ["get"] },
+      { text: "You should ____ lots of fruit and vegetables.", answers: ["eat"] },
+      { text: "If you want to be fit, you shouldn't ____ fast food.", answers: ["eat"] },
+      { text: "When you're young, you should ____ a lot of sleep.", answers: ["get"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(8, "Describing a picture — unhealthy habits", "Điền đúng cụm từ (gợi ý: I think, because, is drinking, is eating, is playing, is sitting, it looks, the picture shows, there are).");
+  buildFillBlank(box, {
+    exerciseId: "u8ls-8", meta: { module: MOD, title: "Ex.8 Picture description" }, prefixLabel: true,
+    lines: [
+      { text: "____ a boy in a living room.", answers: ["the picture shows"] },
+      { text: "____ some chairs, a sofa, a table.", answers: ["there are"] },
+      { text: "The boy ____ fast food.", answers: ["is eating"] },
+      { text: "...and he ____ cola.", answers: ["is drinking"] },
+      { text: "He doesn't look healthy ____ he eats badly.", answers: ["because"] },
+      { text: "____ the boy ____ video games...", answers: ["i think"] },
+      { text: "...because he ____ in front of his computer.", answers: ["is sitting"] },
+      { text: "____ like he's a bit too heavy.", answers: ["it looks"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(9, "Speaking — Describe a picture about health", "Chuẩn bị nói: mô tả tổng quát, chi tiết cụ thể, ý kiến/lý do, từ vựng sức khỏe, lời khuyên với should/shouldn't.");
+  const wrap = document.createElement("div");
+  wrap.innerHTML = `<p style="font-size:.8rem;color:#6b7280;">🎙️ Bài nói — ghi âm và gửi riêng cho giáo viên/trợ giảng.</p>`;
+  box.appendChild(wrap);
+}
+</script>
+</body>
+</html>

@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=202607030739">
+<link rel="stylesheet" href="style.css?v=202607030744">
 </head>
 <body>
 <div class="dash-hero">
@@ -30,7 +30,7 @@
 </main>
 <footer class="page-footer">Điểm được lưu ngay trên trình duyệt này (localStorage) — mỗi học sinh nên dùng máy/trình duyệt riêng.</footer>
 
-<script src="scores.js?v=202607030739"></script>
+<script src="scores.js?v=202607030744"></script>
 <script>
 const MODULE_COLORS = {
   gv: { c: "#2F7A78", soft: "#EAF3F2" },
@@ -127,7 +127,18 @@ const UNITS = [
         titles: ["Sentence halves","Blog posts","Who is it","New subjects","Essay structure","Connectors","Sentence function","Writing"] },
     ],
   },
-  { key: "u8", name: "Unit 8", available: false, modules: [] },
+  { key: "u8", name: "Unit 8 — Health & Fitness / Transport", available: true,
+    modules: [
+      { key: "gv", name: "Grammar & Vocab", file: "unit-8/grammar-vocab.html", prefix: "u8gv",
+        titles: ["Activities","Health verbs","Correct mistakes","Should/shouldn't","Have to","Should/shouldn't","School rules","Sentence halves"] },
+      { key: "lb", name: "Language Builder", file: "unit-8/language-builder.html", prefix: "u8lb",
+        titles: ["Transport","Transport verbs","Journeys","Word order","Q&A","Past simple","Gina","Gina intro","Correct word","Speaking"] },
+      { key: "ls", name: "Listening & Speaking", file: "unit-8/listening-speaking.html", prefix: "u8ls",
+        titles: ["Activities","Six opinions","Should/shouldn't","Health Centre","David or Emma","Health phrases","Should complete","Picture description","Speaking"] },
+      { key: "rw", name: "Reading & Writing", file: "unit-8/reading-writing.html", prefix: "u8rw",
+        titles: ["Advice","Diet article","Sports Centre info","Luke's email","Connectors","Advice halves","Paragraph order","Writing"] },
+    ],
+  },
   { key: "u9", name: "Unit 9", available: false, modules: [] },
   { key: "u10", name: "Unit 10", available: false, modules: [] },
 ];

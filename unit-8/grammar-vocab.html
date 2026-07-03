@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Unit 8 — Grammar & Vocab | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css?v=202607030744">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟦 Unit 8 — Grammar &amp; Vocab (Health &amp; Fitness)</h1>
+  <a href="../index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_8_grammar___vocab.docx</footer>
+
+<script src="scores.js?v=202607030744"></script>
+<script src="app.js?v=202607030744"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Unit 8 - Grammar & Vocab";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise"; box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Fitness activities", "Nối hoạt động thể chất với định nghĩa.");
+  buildMatching(box, {
+    exerciseId: "u8gv-1", meta: { module: MOD, title: "Ex.1 Activities" },
+    leftLabel: "Hoạt động", rightLabel: "Định nghĩa",
+    pairs: [
+      { left: "basketball", right: "team sport shooting a ball into a hoop" },
+      { left: "cycling", right: "riding a bicycle for exercise" },
+      { left: "go for a walk", right: "walk for relaxation/exercise" },
+      { left: "go to the gym", right: "exercise using gym equipment" },
+      { left: "running", right: "moving fast on foot" },
+      { left: "tennis", right: "sport with rackets and a ball over a net" },
+      { left: "yoga", right: "exercise for flexibility and relaxation" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "Health verbs", "Điền đúng động từ (gợi ý: do, drink, eat, get, go, join, play).");
+  buildFillBlank(box, {
+    exerciseId: "u8gv-2", meta: { module: MOD, title: "Ex.2 Health verbs" }, prefixLabel: true,
+    lines: [
+      { text: "It can be expensive to ____ a gym.", answers: ["join"] },
+      { text: "It's important to ____ plenty of water when you ____ exercise.", answers: ["drink"] },
+      { text: "I ____ lots of fruit and vegetables.", answers: ["eat"] },
+      { text: "It's a good idea to ____ advice from a trainer.", answers: ["get"] },
+      { text: "I play tennis and ____ for walks.", answers: ["go"] },
+      { text: "It's important to ____ lots of sleep.", answers: ["get"] },
+      { text: "When you ____ green tea, it can help you relax.", answers: ["drink"] },
+      { text: "Many young people ____ a sport at school.", answers: ["play"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "Correct the health conversation", "Sửa lại phần bị gạch chân.");
+  buildFillBlank(box, {
+    exerciseId: "u8gv-3", meta: { module: MOD, title: "Ex.3 Correct mistakes" }, prefixLabel: true,
+    lines: [
+      { text: "What you should eat to be healthy? → sửa: ____", answers: ["what should you eat"] },
+      { text: "It is important to exercise? → sửa: ____", answers: ["is it important to exercise"] },
+      { text: "You should to exercise for 30 minutes. → sửa: ____", answers: ["should exercise"] },
+      { text: "No, you should play on your computer for so long. → sửa: ____", answers: ["shouldn't"] },
+      { text: "You have any other advice? → sửa: ____", answers: ["do you have"] },
+      { text: "I think you shouldn't try it. (thực ra khuyên nên thử) → sửa: ____", answers: ["should"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "Should or shouldn't — health programme", "Điền đúng động từ (gợi ý: drink, eat, get, play, ride, watch).");
+  buildFillBlank(box, {
+    exerciseId: "u8gv-4", meta: { module: MOD, title: "Ex.4 Should/shouldn't" }, prefixLabel: true,
+    lines: [
+      { text: "We should ____ five glasses of water a day.", answers: ["drink"] },
+      { text: "I always think I should ____ more sleep.", answers: ["get"] },
+      { text: "We shouldn't ____ more than 2-3 hours of TV a day.", answers: ["watch"] },
+      { text: "You should ____ sport at school if you like it.", answers: ["play"] },
+      { text: "You should ____ a bicycle or walk to school.", answers: ["ride"] },
+      { text: "We shouldn't ____ fast food more than once a week.", answers: ["eat"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "Have to or don't have to?", "Chọn đáp án đúng.");
+  buildMCQ(box, {
+    exerciseId: "u8gv-5", meta: { module: MOD, title: "Ex.5 Have to" },
+    questions: [
+      { text: "We ____ wear sports clothes during sport lessons.", options: ["have to", "don't have to"], answer: "have to" },
+      { text: "You ____ pass a swimming test to be a lifeguard.", options: ["have to", "don't have to"], answer: "have to" },
+      { text: "You ____ be fit to do yoga.", options: ["have to", "don't have to"], answer: "don't have to" },
+      { text: "You ____ spend a lot of money to stay healthy.", options: ["have to", "don't have to"], answer: "don't have to" },
+      { text: "We ____ wear special shoes to play football.", options: ["have to", "don't have to"], answer: "have to" },
+      { text: "You ____ join the gym to take exercise classes.", options: ["have to", "don't have to"], answer: "don't have to" },
+      { text: "Professional players ____ practise for hours daily.", options: ["have to", "don't have to"], answer: "have to" },
+      { text: "You ____ be good at sports to stay fit.", options: ["have to", "don't have to"], answer: "don't have to" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "Complete with should/shouldn't", "Điền đúng should hoặc shouldn't.");
+  buildFillBlank(box, {
+    exerciseId: "u8gv-6", meta: { module: MOD, title: "Ex.6 Should/shouldn't" }, prefixLabel: true,
+    lines: [
+      { text: "What ____ I do to improve at tennis?", answers: ["should"] },
+      { text: "You ____ practise as much as possible.", answers: ["should"] },
+      { text: "No, you ____ train more often.", answers: ["should"] },
+      { text: "I thought I ____ have rest days.", answers: ["should"] },
+      { text: "You ____ just play twice a week — that's not enough.", answers: ["shouldn't"] },
+      { text: "I think you ____ have tennis lessons.", answers: ["should"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "Have to / don't have to — school rules", "Điền đúng cụm từ.");
+  buildFillBlank(box, {
+    exerciseId: "u8gv-7", meta: { module: MOD, title: "Ex.7 School rules" }, prefixLabel: true,
+    lines: [
+      { text: "We ____ turn off our mobile phones before class.", answers: ["have to"] },
+      { text: "We ____ wear school uniform every day.", answers: ["don't have to"] },
+      { text: "They ____ come into class every morning (it's their choice).", answers: ["don't have to"] },
+      { text: "If late, they ____ send an email to their teacher.", answers: ["have to"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(8, "Match sentence halves", "Nối nửa đầu câu với nửa sau đúng.");
+  buildMatching(box, {
+    exerciseId: "u8gv-8", meta: { module: MOD, title: "Ex.8 Sentence halves" },
+    leftLabel: "Bắt đầu", rightLabel: "Kết thúc",
+    pairs: [
+      { left: "It is a good idea to pay", right: "for a personal trainer." },
+      { left: "Joining the gym", right: "can be expensive." },
+      { left: "It is more fun when you go", right: "running with other people." },
+      { left: "It is important to follow", right: "a healthy diet." },
+      { left: "I think it's better to do", right: "yoga than go to the gym." },
+      { left: "Running is a", right: "great way to keep fit." },
+    ],
+  });
+}
+</script>
+</body>
+</html>

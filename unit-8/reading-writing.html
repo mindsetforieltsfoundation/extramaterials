@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Unit 8 — Reading & Writing | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css?v=202607030744">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟪 Unit 8 — Reading &amp; Writing</h1>
+  <a href="../index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_8_reading___writing.docx</footer>
+
+<script src="scores.js?v=202607030744"></script>
+<script src="app.js?v=202607030744"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Unit 8 - Reading & Writing";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise"; box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Healthy advice", "Nối nửa đầu câu với nửa sau đúng.");
+  buildMatching(box, {
+    exerciseId: "u8rw-1", meta: { module: MOD, title: "Ex.1 Advice" },
+    leftLabel: "Bắt đầu", rightLabel: "Kết thúc",
+    pairs: [
+      { left: "Eat plenty of", right: "fruit and vegetables." },
+      { left: "Drink plenty of", right: "water." },
+      { left: "Walk to", right: "college or work." },
+      { left: "Don't eat too much", right: "sugar and salt." },
+      { left: "Get enough", right: "sleep." },
+      { left: "Join a", right: "gym." },
+      { left: "Take an", right: "exercise class." },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "Healthy diet article", "Đọc bài về ăn uống lành mạnh rồi nối thông tin với đúng phần (A-D).");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.82rem;margin-bottom:16px;";
+  p.innerHTML = "<b>A Introduction</b>: New Year popular time to eat healthier, but hard to continue.<br><b>B Healthy snacks</b>: keep fruit/veg/nuts ready instead of chocolate; drink herbal tea instead of sugary tea/coffee before bed.<br><b>C Eating in restaurants</b>: choose veg dishes, ask waiter, skip dessert, drink water not fizzy drinks.<br><b>D Cooking at home</b>: avoid ready-meals, use less sugar/oil/salt, grill/boil not fry, use recipe books/online, avoid second servings.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "u8rw-2", meta: { module: MOD, title: "Ex.2 Diet article" },
+    questions: [
+      { text: "You should not have more than one serving.", options: ["A", "B", "C", "D"], answer: "D" },
+      { text: "People often want to eat between meals.", options: ["A", "B", "C", "D"], answer: "B" },
+      { text: "Ask someone for advice about healthy dishes.", options: ["A", "B", "C", "D"], answer: "C" },
+      { text: "You can find information on the internet.", options: ["A", "B", "C", "D"], answer: "D" },
+      { text: "Many find it difficult to continue a healthy diet.", options: ["A", "B", "C", "D"], answer: "A" },
+      { text: "A popular time for people to change their diet.", options: ["A", "B", "C", "D"], answer: "A" },
+      { text: "Choose water rather than other drinks.", options: ["A", "B", "C", "D"], answer: "C" },
+      { text: "You should change the type of tea you drink.", options: ["A", "B", "C", "D"], answer: "B" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "Mountain View Sports Centre", "Đọc tờ rơi rồi điền đúng thông tin.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.85rem;margin-bottom:16px;";
+  p.innerHTML = "Open Mon-Fri 7am-10pm, Sat-Sun 8am-9pm. Facilities: 2 gyms, 1 children's pool, 1 adult pool, 10 exercise rooms, 5 tennis courts, café. Prices: monthly pass £200, gym session £4, swimming pool £5, exercise classes £6. Lower prices for children and over-60s.";
+  box.appendChild(p);
+  buildFillBlank(box, {
+    exerciseId: "u8rw-3", meta: { module: MOD, title: "Ex.3 Sports Centre info" }, prefixLabel: true,
+    lines: [
+      { text: "Weekend hours: ____ and ____ 8am-9pm.", answers: ["saturday"] },
+      { text: "Number of gyms: ____", answers: ["2", "two"] },
+      { text: "Number of exercise rooms: ____", answers: ["10", "ten"] },
+      { text: "Number of tennis courts: ____", answers: ["5", "five"] },
+      { text: "Gym session price: £____", answers: ["4", "4.00"] },
+      { text: "Exercise classes price: £____", answers: ["6", "6.00"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "Luke's New Year email", "Đọc email rồi chọn True/False.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.85rem;margin-bottom:16px;";
+  p.innerHTML = "Luke: last year had exams, didn't exercise, ate too much chocolate/biscuits. This year: joined gym LAST WEEK, tried yoga class (liked it), plans yoga once/week + gym twice/week. Walks to college instead of bus; bikes to library (far). Cooks more at home, found healthy recipes online, cooked baked fish + veg. No junk food for 1 month; eats dried fruit/nuts, fruit or yoghurt instead of biscuits.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "u8rw-4", meta: { module: MOD, title: "Ex.4 Luke's email" },
+    questions: [
+      { text: "Luke did not follow a healthy diet last year.", options: ["True", "False"], answer: "True" },
+      { text: "He wants to join a gym soon.", options: ["True", "False"], answer: "False" },
+      { text: "He tried an exercise class last week.", options: ["True", "False"], answer: "True" },
+      { text: "He wants to go to the gym once a week.", options: ["True", "False"], answer: "False" },
+      { text: "He walks to the library.", options: ["True", "False"], answer: "False" },
+      { text: "He doesn't eat biscuits or cake in the afternoons.", options: ["True", "False"], answer: "True" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "Choose the correct connector", "Chọn từ nối đúng cho đoạn văn về thói quen ăn uống của giới trẻ.");
+  buildMCQ(box, {
+    exerciseId: "u8rw-5", meta: { module: MOD, title: "Ex.5 Connectors" },
+    questions: [
+      { text: "Many young people eat less healthy food. ____, teenagers prefer fast food.", options: ["Firstly", "However"], answer: "Firstly" },
+      { text: "...burgers, kebabs ____ pizzas.", options: ["instead of", "such as"], answer: "such as" },
+      { text: "____, fizzy drinks have become popular.", options: ["For example", "Secondly"], answer: "For example" },
+      { text: "Many drink cola ____ water.", options: ["instead of", "such as"], answer: "instead of" },
+      { text: "____, some parents try to change habits.", options: ["Also", "However"], answer: "However" },
+      { text: "____ they try to stop children eating fast food.", options: ["For example", "In my opinion"], answer: "In my opinion" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "Match sentence halves — health advice", "Nối nửa đầu câu với nửa sau đúng.");
+  buildMatching(box, {
+    exerciseId: "u8rw-6", meta: { module: MOD, title: "Ex.6 Advice halves" },
+    leftLabel: "Bắt đầu", rightLabel: "Kết thúc",
+    pairs: [
+      { left: "They should", right: "drink so many fizzy drinks." },
+      { left: "Young people should do", right: "more exercise." },
+      { left: "We shouldn't", right: "need to keep fit." },
+      { left: "He shouldn't stop", right: "following a healthy diet." },
+      { left: "I think it's better", right: "to walk than drive." },
+      { left: "You could listen", right: "to music to relax." },
+      { left: "In my opinion, we", right: "stop eating so many sweet things." },
+      { left: "I try to go", right: "for a walk every day." },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "Put the paragraph in order", "Sắp xếp 8 câu theo đúng thứ tự thành đoạn văn hoàn chỉnh (chủ đề: giữ gìn sức khỏe miễn phí).");
+  buildWordOrder(box, {
+    exerciseId: "u8rw-7", meta: { module: MOD, title: "Ex.7 Paragraph order" },
+    items: [
+      { words: ["Many", "people", "today", "say", "they", "don't", "have", "time", "to", "exercise"],
+        answer: "Many people today say they don't have time to exercise" },
+    ],
+  });
+  const p2 = document.createElement("p");
+  p2.style.cssText = "font-size:.85rem;color:#6b7280;margin-top:12px;";
+  p2.innerHTML = "Thứ tự đúng đầy đủ: (1) Many people say they're too busy to exercise → (2) However, there are ways to keep fit for free → (3) Firstly, try walking/cycling instead of bus/car → (4) This takes longer but you'll feel healthier → (5) Secondly, be more active at work/college → (6) For example, walk up stairs instead of lift → (7) Finally, try a new sport with colleagues → (8) For example, play volleyball weekly to improve health and make friends.";
+  box.appendChild(p2);
+}
+
+{
+  const box = exerciseBlock(8, "Writing — What should schools do to make students healthier?", "Viết bài luận: giới thiệu chủ đề, mô tả tình hình hiện tại, đề xuất giải pháp, kết luận + ý kiến cá nhân.");
+  const wrap = document.createElement("div");
+  wrap.innerHTML = `<p style="font-size:.85rem;color:#6b7280;">Gợi ý cấu trúc: 1) Giới thiệu chủ đề — 2) Mô tả sức khỏe học sinh hiện nay — 3) Điều trường học nên làm — 4) Kết luận + ý kiến.</p>
+  <textarea rows="6" style="width:100%;border:1.5px solid var(--border);border-radius:8px;padding:10px;font-family:inherit;font-size:.9rem;" placeholder="Many students today..."></textarea>
+  <p style="font-size:.8rem;color:#6b7280;margin-top:8px;">✏️ Bài viết tự do — giáo viên xem trực tiếp.</p>`;
+  box.appendChild(wrap);
+}
+</script>
+</body>
+</html>

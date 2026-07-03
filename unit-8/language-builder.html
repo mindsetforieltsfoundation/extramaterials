@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Unit 8 — Language Builder | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css?v=202607030744">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟩 Unit 8 — Language Builder (Transport)</h1>
+  <a href="../index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_8_language_builder.docx — bài nghe chuyển thành bài đọc vì không kèm audio.</footer>
+
+<script src="scores.js?v=202607030744"></script>
+<script src="app.js?v=202607030744"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Unit 8 - Language Builder";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise"; box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Transport types", "Nối phương tiện với định nghĩa.");
+  buildMatching(box, {
+    exerciseId: "u8lb-1", meta: { module: MOD, title: "Ex.1 Transport" },
+    leftLabel: "Phương tiện", rightLabel: "Định nghĩa",
+    pairs: [
+      { left: "bike", right: "two wheels, pedal power" },
+      { left: "boat", right: "travels on water" },
+      { left: "bus", right: "large vehicle carrying passengers on roads" },
+      { left: "coach", right: "long-distance bus" },
+      { left: "metro", right: "underground train system" },
+      { left: "motorbike", right: "two wheels with an engine" },
+      { left: "taxi", right: "car you pay to travel in" },
+      { left: "train", right: "travels on rails" },
+      { left: "tram", right: "travels on rails in a city street" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "Transport verbs", "Điền đúng động từ (gợi ý: catch, fly, get, gets, go, leaves).");
+  buildFillBlank(box, {
+    exerciseId: "u8lb-2", meta: { module: MOD, title: "Ex.2 Transport verbs" }, prefixLabel: true,
+    lines: [
+      { text: "My train ____ at 07:40.", answers: ["leaves"] },
+      { text: "I usually ____ with British Airways.", answers: ["fly"] },
+      { text: "I often ____ off the tram near the station.", answers: ["get"] },
+      { text: "I always ____ by bike in good weather.", answers: ["go"] },
+      { text: "He ____ on the bus at this stop.", answers: ["gets"] },
+      { text: "I often ____ the seven o'clock bus.", answers: ["catch"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "Ahmed, Ewa and Bik — journeys", "Đọc bài rồi chọn True/False.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.82rem;margin-bottom:16px;";
+  p.innerHTML = "Ahmed (from Dubai, now London): in Dubai, 10 min metro + 5 min walk to university. Now works as engineer in Brighton, cycles to work, 15 min. Ewa (Polish, now Manchester): in Krakow, tram to hospital ~30 min. Now nurse in Manchester, drives to work (has a car). Bik (Chinese, now Cardiff): in Beijing, 1 hour by train to college. Now student in Cardiff, takes bus to school, 20 min (short journey).";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "u8lb-3", meta: { module: MOD, title: "Ex.3 Journeys" },
+    questions: [
+      { text: "Ahmed is from Dubai.", options: ["True", "False"], answer: "True" },
+      { text: "To get to classes, he took the metro then walked.", options: ["True", "False"], answer: "True" },
+      { text: "He now goes to work on a motorbike.", options: ["True", "False"], answer: "False" },
+      { text: "Ewa studied engineering.", options: ["True", "False"], answer: "False" },
+      { text: "In Poland, she travelled to work by tram.", options: ["True", "False"], answer: "True" },
+      { text: "Ewa now goes to work by car.", options: ["True", "False"], answer: "True" },
+      { text: "Bik travelled to college in Beijing by train.", options: ["True", "False"], answer: "True" },
+      { text: "She goes to school in Cardiff by underground.", options: ["True", "False"], answer: "False" },
+      { text: "Her journey now takes over an hour.", options: ["True", "False"], answer: "False" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "Put the words in order", "Bấm các từ theo đúng thứ tự.");
+  buildWordOrder(box, {
+    exerciseId: "u8lb-4", meta: { module: MOD, title: "Ex.4 Word order" },
+    items: [
+      { words: ["His", "journey to", "university", "isn't", "very", "long"], answer: "His journey to university isn't very long" },
+      { words: ["It", "takes", "her", "ten", "minutes", "to walk", "to", "work"], answer: "It takes her ten minutes to walk to work" },
+      { words: ["They", "always", "go to", "university", "on the", "underground"], answer: "They always go to university on the underground" },
+      { words: ["It", "takes", "about", "an", "hour", "to", "get", "there", "by", "bus"], answer: "It takes about an hour to get there by bus" },
+      { words: ["He", "goes to", "college", "by", "bike"], answer: "He goes to college by bike" },
+      { words: ["He", "usually", "catches", "the", "train", "at", "8:30"], answer: "He usually catches the train at 8:30" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "Match questions with answers", "Nối câu hỏi với câu trả lời đúng.");
+  buildMatching(box, {
+    exerciseId: "u8lb-5", meta: { module: MOD, title: "Ex.5 Q&A" },
+    leftLabel: "Câu hỏi", rightLabel: "Câu trả lời",
+    pairs: [
+      { left: "Does it take you long to get to school?", right: "No, only about 15 minutes." },
+      { left: "Do you drive to work?", right: "No, I don't. I haven't got a car." },
+      { left: "How do you go to university?", right: "I often walk and sometimes go on my bike." },
+      { left: "Do you go to work by train?", right: "Yes, the railway station is only five minutes away." },
+      { left: "How many stops is it on the underground?", right: "Only three." },
+      { left: "Do you often travel by bus?", right: "Yes, it's cheap and there's a stop outside my house." },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "Change to past simple", "Chia đúng động từ gạch chân sang thì quá khứ đơn.");
+  buildFillBlank(box, {
+    exerciseId: "u8lb-6", meta: { module: MOD, title: "Ex.6 Past simple" }, prefixLabel: true,
+    lines: [
+      { text: "I always travel by taxi in New York. → ____", answers: ["travelled"] },
+      { text: "My journey to work is quite short. → ____", answers: ["was"] },
+      { text: "I go to school by bike. → ____", answers: ["went"] },
+      { text: "He drives to the office. → ____", answers: ["drove"] },
+      { text: "We don't arrive early. → ____", answers: ["didn't arrive"] },
+      { text: "Their journey by coach takes an hour. → ____", answers: ["took"] },
+      { text: "We don't fly from Manchester airport. → ____", answers: ["didn't fly"] },
+      { text: "She catches the train at six. → ____", answers: ["caught"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "Gina's transport (bài đọc thay bài nghe)", "Đọc bài về Gina rồi chọn đáp án đúng.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.85rem;margin-bottom:16px;";
+  p.innerHTML = "Gina, 23, lives in a small village 5 miles from a big town in north Germany. Town has excellent tram/train/bus services, cheap monthly ticket for under-26s. Also 'taxi buses' — book 30 min ahead by phone, only needs ordinary bus ticket (not expensive). She rarely uses public transport except in bad weather — usually cycles to university (cycling is most popular with students there).";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "u8lb-7", meta: { module: MOD, title: "Ex.7 Gina" },
+    questions: [
+      { text: "Gina lives in a", options: ["big town", "small town", "small village"], answer: "small village" },
+      { text: "The transport system is", options: ["difficult", "excellent", "terrible"], answer: "excellent" },
+      { text: "Cheap tickets are for people", options: ["under 26", "under 23", "under 16"], answer: "under 26" },
+      { text: "Taxi buses are", options: ["quite cheap", "quite expensive", "very expensive"], answer: "quite cheap" },
+      { text: "Gina doesn't often use public transport when weather is", options: ["bad", "good", "terrible"], answer: "good" },
+      { text: "Gina usually goes into town by", options: ["bus", "bicycle", "train"], answer: "bicycle" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(8, "Complete Gina's introduction", "Điền đúng dạng hiện tại đơn (gợi ý: am, are, book, buy, go, has, have, is, live, need, use).");
+  buildFillBlank(box, {
+    exerciseId: "u8lb-8", meta: { module: MOD, title: "Ex.8 Gina intro" }, prefixLabel: true,
+    lines: [
+      { text: "I ____ 23 years old.", answers: ["am"] },
+      { text: "I ____ in a small village.", answers: ["live"] },
+      { text: "There ____ lots of ways to get to town.", answers: ["are"] },
+      { text: "The town ____ excellent services.", answers: ["has"] },
+      { text: "I ____ a cheap monthly ticket.", answers: ["buy"] },
+      { text: "There ____ also taxi buses.", answers: ["is"] },
+      { text: "We ____ a timetable.", answers: ["have"] },
+      { text: "You need to ____ a seat.", answers: ["book"] },
+      { text: "You only ____ an ordinary bus ticket.", answers: ["need"] },
+      { text: "I don't ____ public transport very often.", answers: ["use"] },
+      { text: "I usually ____ to university by bike.", answers: ["go"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(9, "Choose the correct answer", "Chọn đáp án đúng.");
+  buildMCQ(box, {
+    exerciseId: "u8lb-9", meta: { module: MOD, title: "Ex.9 Correct word" },
+    questions: [
+      { text: "My ____ to work isn't very long.", options: ["go", "journey", "travel"], answer: "journey" },
+      { text: "Most students go to university ____ bike.", options: ["by", "on", "with"], answer: "by" },
+      { text: "I ____ on the metro at the station.", options: ["get", "go", "take"], answer: "get" },
+      { text: "I only travel three ____ on the underground.", options: ["journeys", "places", "stops"], answer: "stops" },
+      { text: "I often fly ____ Dubai.", options: ["at", "on", "to"], answer: "to" },
+      { text: "It usually ____ me ten minutes to walk to college.", options: ["gets", "goes", "takes"], answer: "takes" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(10, "Speaking — Public transport in your town", "Chuẩn bị nói: bạn sống ở đâu, đi đâu và tại sao, các loại phương tiện công cộng, mô tả 1 chuyến đi thường xuyên.");
+  const wrap = document.createElement("div");
+  wrap.innerHTML = `<p style="font-size:.8rem;color:#6b7280;">🎙️ Bài nói — ghi âm và gửi riêng cho giáo viên/trợ giảng.</p>`;
+  box.appendChild(wrap);
+}
+</script>
+</body>
+</html>
