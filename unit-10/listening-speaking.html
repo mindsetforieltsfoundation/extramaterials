@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Unit 10 — Listening & Speaking | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css?v=202607030752">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟨 Unit 10 — Listening &amp; Speaking</h1>
+  <a href="../index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_10_listening___speaking.docx — bài nghe chuyển thành bài đọc vì không kèm audio.</footer>
+
+<script src="scores.js?v=202607030752"></script>
+<script src="app.js?v=202607030752"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Unit 10 - Listening & Speaking";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise"; box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Technology words", "Nối từ công nghệ với định nghĩa.");
+  buildMatching(box, {
+    exerciseId: "u10ls-1", meta: { module: MOD, title: "Ex.1 Tech words" },
+    leftLabel: "Từ vựng", rightLabel: "Định nghĩa",
+    pairs: [
+      { left: "desktop", right: "a computer that stays on a desk" },
+      { left: "laptop", right: "a portable computer" },
+      { left: "internet", right: "global network connecting computers" },
+      { left: "device", right: "a piece of equipment like a phone/tablet" },
+      { left: "tablet", right: "a flat touchscreen computer" },
+      { left: "attachment", right: "a file added to an email" },
+      { left: "network", right: "connected computers/devices" },
+      { left: "technology", right: "scientific tools and methods" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "Tech opinions", "Nối người nói với nhận xét công nghệ họ đưa ra.");
+  buildMatching(box, {
+    exerciseId: "u10ls-2", meta: { module: MOD, title: "Ex.2 Tech opinions" },
+    leftLabel: "Người", rightLabel: "Nhận xét",
+    pairs: [
+      { left: "Speaker A", right: "prefers a smartphone to a laptop" },
+      { left: "Speaker B", right: "uses a tablet for work" },
+      { left: "Speaker C", right: "still uses a desktop computer" },
+      { left: "Speaker D", right: "loves streaming music and films" },
+      { left: "Speaker E", right: "backs up files every week" },
+      { left: "Speaker F", right: "worries about computer viruses" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "Choose the correct word", "Chọn đúng từ để hoàn thành câu về công nghệ.");
+  buildMCQ(box, {
+    exerciseId: "u10ls-3", meta: { module: MOD, title: "Ex.3 Correct word" },
+    questions: [
+      { text: "The new smartphones are not", options: ["cheap", "expensive", "good"], answer: "expensive" },
+      { text: "This computer program is", options: ["cheap", "expensive", "simple"], answer: "simple" },
+      { text: "Tablets are not", options: ["cheap", "difficult", "easy"], answer: "difficult" },
+      { text: "This computer is", options: ["quick", "simple", "slow"], answer: "slow" },
+      { text: "It would not be ____ to live without computers.", options: ["easy", "possible", "simple"], answer: "easy" },
+      { text: "Tablets will be more ____ than laptops in the future.", options: ["fun", "expensive", "popular"], answer: "popular" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "Which graph is correct?", "Nghe/đọc mô tả rồi chọn đúng biểu đồ (A, B hoặc C).");
+  buildMCQ(box, {
+    exerciseId: "u10ls-4", meta: { module: MOD, title: "Ex.4 Correct graph" },
+    questions: [
+      { text: "Smartphone use increased steadily from 2010 to 2025.", options: ["A", "B", "C"], answer: "A" },
+      { text: "Tablet use rose quickly then levelled off after 2020.", options: ["A", "B", "C"], answer: "B" },
+      { text: "Desktop computer use decreased continuously since 2010.", options: ["A", "B", "C"], answer: "C" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "Word stress — technology words", "Chọn đúng âm tiết nhấn trọng âm.");
+  buildMCQ(box, {
+    exerciseId: "u10ls-5", meta: { module: MOD, title: "Ex.5 Word stress" },
+    questions: [
+      { text: "DESKTOP — trọng âm rơi vào âm tiết nào?", options: ["1", "2"], answer: "1" },
+      { text: "COMPUTER — trọng âm rơi vào âm tiết nào?", options: ["1", "2", "3"], answer: "2" },
+      { text: "TECHNOLOGY — trọng âm rơi vào âm tiết nào?", options: ["1", "2", "3"], answer: "2" },
+      { text: "INTERNET — trọng âm rơi vào âm tiết nào?", options: ["1", "2", "3"], answer: "1" },
+      { text: "DEVICE — trọng âm rơi vào âm tiết nào?", options: ["1", "2"], answer: "2" },
+      { text: "TABLET — trọng âm rơi vào âm tiết nào?", options: ["1", "2"], answer: "1" },
+      { text: "ATTACHMENT — trọng âm rơi vào âm tiết nào?", options: ["1", "2", "3"], answer: "2" },
+      { text: "NETWORK — trọng âm rơi vào âm tiết nào?", options: ["1", "2"], answer: "1" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "Complete with verbs", "Điền đúng động từ (gợi ý: creates, deletes, downloads, open, stores, stream).");
+  buildFillBlank(box, {
+    exerciseId: "u10ls-6", meta: { module: MOD, title: "Ex.6 Verbs" }, prefixLabel: true,
+    lines: [
+      { text: "I don't buy DVDs anymore, I ____ the films I watch.", answers: ["stream"] },
+      { text: "I never ____ an attachment from someone I don't know.", answers: ["open"] },
+      { text: "The company automatically ____ backup files daily.", answers: ["creates"] },
+      { text: "She ____ most of her music from the internet.", answers: ["downloads"] },
+      { text: "He still ____ photos on a disk.", answers: ["stores"] },
+      { text: "She sometimes ____ old files to save space.", answers: ["deletes"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "Will or 'll?", "Chọn dạng đầy đủ hay rút gọn theo văn phong (trang trọng vs thân mật).");
+  buildMCQ(box, {
+    exerciseId: "u10ls-7", meta: { module: MOD, title: "Ex.7 Will/'ll" },
+    questions: [
+      { text: "Trong bài luận trang trọng: 'The smartphone ___ be the only computer most people have.'", options: ["will", "'ll"], answer: "will" },
+      { text: "Trong hội thoại thân mật: 'It ___ sell more than the tablet.'", options: ["will", "'ll"], answer: "'ll" },
+      { text: "Trong bài thuyết trình: 'There ___ still be tablets for sale.'", options: ["will", "'ll"], answer: "will" },
+      { text: "Phủ định luôn viết đầy đủ: 'You ___ be able to find a new camera.'", options: ["will not / won't", "'ll not"], answer: "will not / won't" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(8, "Put the words in order", "Bấm các từ theo đúng thứ tự.");
+  buildWordOrder(box, {
+    exerciseId: "u10ls-8", meta: { module: MOD, title: "Ex.8 Word order" },
+    items: [
+      { words: ["My", "smartphone is", "the", "most", "up to date", "model"], answer: "My smartphone is the most up to date model" },
+      { words: ["The", "display", "is", "thin,", "light,and", "easy to read"], answer: "The display is thin, light,and easy to read" },
+      { words: ["it's", "got", "lots", "of", "memory"], answer: "it's got lots of memory" },
+      { words: ["it", "has", "all", "the", "latest", "features"], answer: "it has all the latest features" },
+      { words: ["I", "swipe", "the", "screen", "when", "the", "apps", "appear"], answer: "I swipe the screen when the apps appear" },
+      { words: ["it", "will", "be", "out", "of date very", "soon"], answer: "it will be out of date very soon" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(9, "Speaking — Describe a device you like", "Chuẩn bị nói: đó là thiết bị gì, tại sao thích, dùng để làm gì, nó sẽ thay đổi thế nào trong tương lai.");
+  const wrap = document.createElement("div");
+  wrap.innerHTML = `<p style="font-size:.8rem;color:#6b7280;">🎙️ Bài nói — ghi âm và gửi riêng cho giáo viên/trợ giảng.</p>`;
+  box.appendChild(wrap);
+}
+</script>
+</body>
+</html>

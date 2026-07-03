@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Unit 9 — Listening & Speaking | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css?v=202607030752">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟨 Unit 9 — Listening &amp; Speaking</h1>
+  <a href="../index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_9_listening___speaking.docx — bài nghe chuyển thành bài đọc vì không kèm audio.</footer>
+
+<script src="scores.js?v=202607030752"></script>
+<script src="app.js?v=202607030752"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Unit 9 - Listening & Speaking";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise"; box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Ways to learn a language", "Nối cách học với định nghĩa.");
+  buildMatching(box, {
+    exerciseId: "u9ls-1", meta: { module: MOD, title: "Ex.1 Ways to learn" },
+    leftLabel: "Cách học", rightLabel: "Định nghĩa",
+    pairs: [
+      { left: "reading books", right: "reading printed material for practice" },
+      { left: "keeping a vocabulary notebook", right: "writing down new words to remember" },
+      { left: "watching TV in English", right: "watching English shows for listening practice" },
+      { left: "talking to native speakers", right: "practising with people who grew up speaking English" },
+      { left: "going to classes", right: "attending lessons with a teacher" },
+      { left: "using a dictionary", right: "looking up word meanings" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "Advantages or disadvantages of classes?", "Xếp mỗi ý kiến vào đúng cột.");
+  buildSort2(box, {
+    exerciseId: "u9ls-2", meta: { module: MOD, title: "Ex.2 Advantages/disadvantages" },
+    columns: ["advantages", "disadvantages"],
+    items: [
+      { text: "You learn from a real teacher", col: "advantages" },
+      { text: "You can ask questions immediately", col: "advantages" },
+      { text: "You practise speaking with classmates", col: "advantages" },
+      { text: "Classes can be expensive", col: "disadvantages" },
+      { text: "You must go at a fixed time", col: "disadvantages" },
+      { text: "The class might be too big", col: "disadvantages" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "Present continuous or going to?", "Đọc 6 người nói về sở thích/kế hoạch rồi chọn đúng thì.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.82rem;margin-bottom:16px;";
+  p.innerHTML = "Mark: started Arabic classes in September, enjoying them now. Jane: speaks Spanish/Italian, currently studying French; summer plan: study Turkish. Peter: had first judo class last year; next year plans karate. Maria: currently teaching maths privately at weekends; won't be a maths teacher in future. Jack: wants to learn to cook but too busy now; next year will live alone so plans to learn. Susan: played violin at 13, stopped; next month after exams plans to start again.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "u9ls-3", meta: { module: MOD, title: "Ex.3 Continuous/going to" },
+    questions: [
+      { text: "Mark ____ Arabic (currently doing it).", options: ["is learning", "is going to learn"], answer: "is learning" },
+      { text: "Jane ____ Turkish (future plan).", options: ["is studying", "is going to study"], answer: "is going to study" },
+      { text: "Peter ____ karate classes (future plan).", options: ["is having", "is going to have"], answer: "is going to have" },
+      { text: "Maria ____ maths (currently doing it).", options: ["is teaching", "is going to teach"], answer: "is teaching" },
+      { text: "Jack ____ to cook (future plan).", options: ["is learning", "is going to learn"], answer: "is going to learn" },
+      { text: "Susan ____ the violin (future plan, after exams).", options: ["is playing", "is going to play"], answer: "is going to play" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "Sara and David's plans", "Đọc hội thoại rồi nối hoạt động với đúng thời điểm.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.82rem;margin-bottom:16px;";
+  p.innerHTML = "David: studying for Spanish exam tomorrow, another exam Friday, visiting uncle Friday, working in parents' shop this weekend. Sara: meeting friend Julia this afternoon after class, studying for German exam later today, studying Italian in Rome next summer.";
+  box.appendChild(p);
+  buildMatching(box, {
+    exerciseId: "u9ls-4", meta: { module: MOD, title: "Ex.4 Sara & David" },
+    leftLabel: "Hoạt động", rightLabel: "Thời điểm",
+    pairs: [
+      { left: "David's Spanish exam", right: "tomorrow." },
+      { left: "David's visit to his uncle", right: "on Friday." },
+      { left: "Sara meeting her friend Julia", right: "this afternoon after class." },
+      { left: "Sara studying for her German exam", right: "later today." },
+      { left: "Sara studying Italian", right: "next summer." },
+      { left: "David working in his parents' shop", right: "at the weekend." },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "Tony's plan to learn German", "Đọc hội thoại rồi chọn đáp án đúng.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.85rem;margin-bottom:16px;";
+  p.innerHTML = "Tony is going to learn German because he's got a job in Berlin (starts in 6 months). Won't need German for the job itself (international company, everyone speaks English) but needs it outside work (shopping, restaurants, friends). Starting lessons Monday, 5 lessons/week. Also plans: watch German films with English subtitles, read German magazines from library, do grammar/vocab exercises online (free sites).";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "u9ls-5", meta: { module: MOD, title: "Ex.5 Tony's plan" },
+    questions: [
+      { text: "Tony is going to learn German because he", options: ["loves German culture", "has a job in Berlin", "has German friends"], answer: "has a job in Berlin" },
+      { text: "Tony starts his new job in", options: ["1 month", "3 months", "6 months"], answer: "6 months" },
+      { text: "At work, Tony will mostly speak", options: ["English", "German", "both equally"], answer: "English" },
+      { text: "Tony starts German lessons on", options: ["Monday", "Friday", "next week"], answer: "Monday" },
+      { text: "How many lessons a week?", options: ["3", "5", "7"], answer: "5" },
+      { text: "Tony also plans to watch German films with", options: ["German subtitles", "English subtitles", "no subtitles"], answer: "English subtitles" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "Gonna or Going to?", "Chọn dạng phát âm/viết đúng theo ngữ cảnh trang trọng hay không trang trọng.");
+  buildMCQ(box, {
+    exerciseId: "u9ls-6", meta: { module: MOD, title: "Ex.6 Gonna/Going to" },
+    questions: [
+      { text: "Văn bản trang trọng (bài luận, email công việc):", options: ["Gonna", "Going to"], answer: "Going to" },
+      { text: "Lời nói thân mật, thoải mái giữa bạn bè:", options: ["Gonna", "Going to"], answer: "Gonna" },
+      { text: "Bài phát biểu trước lớp:", options: ["Gonna", "Going to"], answer: "Going to" },
+      { text: "Tin nhắn nhanh cho bạn thân:", options: ["Gonna", "Going to"], answer: "Gonna" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "Put the words in order", "Bấm các từ theo đúng thứ tự.");
+  buildWordOrder(box, {
+    exerciseId: "u9ls-7", meta: { module: MOD, title: "Ex.7 Word order" },
+    items: [
+      { words: ["I'm", "going to", "Start", "Learning", "another", "language soon."], answer: "I'm going to Start Learning another language soon." },
+      { words: ["I need", "to learn", "French", "Because", "I'm going to", "work", "in France."], answer: "I need to learn French Because I'm going to work in France." },
+      { words: ["My new job", "I'm going to", "have to", "Learn", "French", "to do", "in Paris."], answer: "My new job I'm going to have to Learn French to do in Paris." },
+      { words: ["I'm also", "going to", "Need to speak", "French", "outside work."], answer: "I'm also going to Need to speak French outside work." },
+      { words: ["I'm going", "to start", "French", "lessons", "next week."], answer: "I'm going to start French lessons next week." },
+      { words: ["I'm", "going to", "watch", "A lot of", "French films", "with", "English subtitles."], answer: "I'm going to watch A lot of French films with English subtitles." },
+      { words: ["I'm also", "going to", "do", "some", "grammer", "exercise", "Online."], answer: "I'm also going to do some grammer exercise Online." },
+      { words: ["I think", "lessons", "At", "a language school", "are good."], answer: "I think lessons At a language school are good." },
+      { words: ["Language lessons", "are", "fun", "because", "you meet", "new people."], answer: "Language lessons are fun because you meet new people." },
+      { words: ["Learning online", "can be", "free so", "That's a", "big advantage."], answer: "Learning online can be free so That's a big advantage." },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(8, "Match questions with answers", "Nối câu hỏi về việc học ngôn ngữ với câu trả lời.");
+  buildMatching(box, {
+    exerciseId: "u9ls-8", meta: { module: MOD, title: "Ex.8 Q&A" },
+    leftLabel: "Câu hỏi", rightLabel: "Câu trả lời",
+    pairs: [
+      { left: "What's a good way to learn a language do you think?", right: "I think talking with native speakers is best." },
+      { left: "How are you going to learn German?", right: "I'm going to take evening classes." },
+      { left: "Are there any languages you want to learn?", right: "Yes, I'd love to learn Japanese." },
+      { left: "Are you going to continue studying Chinese?", right: "Yes, I'm going to take an advanced course." },
+      { left: "Do you think learning another language is a good idea?", right: "Yes, it opens up so many opportunities." },
+      { left: "What languages did you study at school?", right: "I studied French and Spanish." },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(9, "Speaking — Your language learning plans", "Chuẩn bị nói: ngôn ngữ muốn học, tại sao, khi nào/cách học, ưu nhược điểm của các cách học khác nhau.");
+  const wrap = document.createElement("div");
+  wrap.innerHTML = `<p style="font-size:.8rem;color:#6b7280;">🎙️ Bài nói — ghi âm và gửi riêng cho giáo viên/trợ giảng.</p>`;
+  box.appendChild(wrap);
+}
+</script>
+</body>
+</html>

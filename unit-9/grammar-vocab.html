@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Unit 9 — Grammar & Vocab | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css?v=202607030752">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟦 Unit 9 — Grammar &amp; Vocab (Language Learning)</h1>
+  <a href="../index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_9_grammar___vocab.docx</footer>
+
+<script src="scores.js?v=202607030752"></script>
+<script src="app.js?v=202607030752"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Unit 9 - Grammar & Vocab";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise"; box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Communication prepositions", "Điền đúng giới từ (about/by/to/with).");
+  buildFillBlank(box, {
+    exerciseId: "u9gv-1", meta: { module: MOD, title: "Ex.1 Prepositions" }, prefixLabel: true,
+    lines: [
+      { text: "I usually communicate ____ email with my lecturer.", answers: ["by"] },
+      { text: "It's best to talk ____ someone.", answers: ["to"] },
+      { text: "You must hold a conversation ____ someone to pass.", answers: ["with"] },
+      { text: "You can't take the course unless you speak ____ English well.", answers: ["-"] },
+      { text: "I want to have a chat ____ something.", answers: ["about"] },
+      { text: "Do you want to discuss ____ a topic?", answers: ["-"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "Language learning plans", "Nối kế hoạch với đúng hoạt động.");
+  buildMatching(box, {
+    exerciseId: "u9gv-2", meta: { module: MOD, title: "Ex.2 Learning plans" },
+    leftLabel: "Kế hoạch", rightLabel: "Hoạt động",
+    pairs: [
+      { left: "I'm going to study", right: "newspapers and magazines." },
+      { left: "I'm going to talk", right: "to people whose first language is English." },
+      { left: "I'm going to use", right: "a dictionary." },
+      { left: "I'm going to listen", right: "to songs in English." },
+      { left: "I'm going to keep", right: "a vocabulary notebook." },
+      { left: "I'm going to watch", right: "online videos." },
+      { left: "I'm going to read", right: "with a teacher in a classroom." },
+      { left: "I'm going to write", right: "emails to my friends." },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "Going to — future plans", "Chia đúng động từ trong ngoặc theo hình thức going to.");
+  buildFillBlank(box, {
+    exerciseId: "u9gv-3", meta: { module: MOD, title: "Ex.3 Going to" }, prefixLabel: true,
+    lines: [
+      { text: "I'm not going to worry about my English test tomorrow.", answers: ["i'm not going to worry"] },
+      { text: "Are you going to learn some French before Paris? (viết lại câu hỏi)", answers: ["are you going to learn"] },
+      { text: "I'm going to try my hardest to improve my vocabulary.", answers: ["i'm going to try"] },
+      { text: "Are you going to meet them outside the library?", answers: ["are you going to meet"] },
+      { text: "She isn't going to live in campus accommodation.", answers: ["she isn't going to live", "she is not going to live"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "Write questions with going to", "Viết câu hỏi phù hợp với câu trả lời cho sẵn.");
+  buildFillBlank(box, {
+    exerciseId: "u9gv-4", meta: { module: MOD, title: "Ex.4 Questions" }, prefixLabel: true,
+    lines: [
+      { text: "who / going to / do the project with? → I'm going to ask Aaron.", answers: ["who are you going to do the project with"] },
+      { text: "where / going to / buy a dictionary from? → There's a bookshop near my house.", answers: ["where are you going to buy a dictionary from"] },
+      { text: "how / going to / improve your language skills? → Practice, practice and more practice.", answers: ["how are you going to improve your language skills"] },
+      { text: "when / going to / tell the teacher? → At the start of the lesson.", answers: ["when are you going to tell the teacher"] },
+      { text: "why / not going to / go to university next year? → Because I'm going to work for my father's company.", answers: ["why are you not going to go to university next year", "why aren't you going to go to university next year"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "Susan and George's conversation", "Điền đúng từ (gợi ý: advantage, advice, effort, fun, progress, skills, time, work).");
+  buildFillBlank(box, {
+    exerciseId: "u9gv-5", meta: { module: MOD, title: "Ex.5 Conversation" }, prefixLabel: true,
+    lines: [
+      { text: "He's not going to make an ____.", answers: ["effort"] },
+      { text: "He never does any ____.", answers: ["work"] },
+      { text: "I tried to give him some ____.", answers: ["advice"] },
+      { text: "He only wants to have ____.", answers: ["fun"] },
+      { text: "It takes a long ____ to learn a language.", answers: ["time"] },
+      { text: "He should practise his speaking ____.", answers: ["skills"] },
+      { text: "It's harder to make any ____ if you don't speak.", answers: ["progress"] },
+      { text: "He has a big ____ because his dad is an English teacher.", answers: ["advantage"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "Complete the summary", "Điền đúng cụm từ (gợi ý: English, advice, have fun, his English exam, long time, make my progress).");
+  buildFillBlank(box, {
+    exerciseId: "u9gv-6", meta: { module: MOD, title: "Ex.6 Summary" }, prefixLabel: true,
+    lines: [
+      { text: "Mark believes he is going to fail ____.", answers: ["his english exam"] },
+      { text: "He didn't want to take Susan's ____.", answers: ["advice"] },
+      { text: "He prefers to ____ with friends.", answers: ["have fun"] },
+      { text: "It takes a lot of effort over a ____.", answers: ["long time"] },
+      { text: "Without practice, it's harder to ____.", answers: ["make my progress"] },
+      { text: "His father teaches ____.", answers: ["english"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "Make or Take?", "Xếp mỗi cụm từ vào đúng cột.");
+  buildSort2(box, {
+    exerciseId: "u9gv-7", meta: { module: MOD, title: "Ex.7 Make/Take" },
+    columns: ["make", "take"],
+    items: [
+      { text: "a difference", col: "make" }, { text: "a noise", col: "make" }, { text: "somebody laugh", col: "make" },
+      { text: "dinner", col: "make" }, { text: "a mistake", col: "make" },
+      { text: "a test", col: "take" }, { text: "a walk", col: "take" }, { text: "a picture", col: "take" },
+      { text: "an exam", col: "take" }, { text: "a guess", col: "take" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(8, "Choose the correct answer — make/take", "Chọn đáp án đúng.");
+  buildMCQ(box, {
+    exerciseId: "u9gv-8", meta: { module: MOD, title: "Ex.8 Make/take choice" },
+    questions: [
+      { text: "It's a beautiful day. I ____ a walk.", options: ["am going to make", "am going to take", "am taking"], answer: "am going to take" },
+      { text: "Lucinda thinks she ____ lots of mistakes in the exam.", options: ["made", "make", "took"], answer: "made" },
+      { text: "Robert really ____ me laugh.", options: ["is making", "makes", "takes"], answer: "makes" },
+      { text: "I always ____ lots of photos on holiday.", options: ["am taking", "make", "take"], answer: "take" },
+      { text: "What really ____ a difference is not worrying about ____ mistakes.", options: ["makes / making", "made / taking"], answer: "makes / making" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(9, "Presentation connectors", "Điền đúng từ nối (gợi ý: Firstly, However, in addition, in conclusion, also).");
+  buildFillBlank(box, {
+    exerciseId: "u9gv-9", meta: { module: MOD, title: "Ex.9 Connectors" }, prefixLabel: true,
+    lines: [
+      { text: "____, it was a language project with my friend Peter.", answers: ["firstly"] },
+      { text: "We had to find out how many people speak more than one language and ____ their level.", answers: ["also"] },
+      { text: "____, Peter is a very good student.", answers: ["in addition"] },
+      { text: "____, we didn't get good advice from Miss Smith.", answers: ["however"] },
+      { text: "____, she didn't help us at all.", answers: ["in conclusion"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(10, "Complete with phrases", "Điền đúng cụm từ (gợi ý: about, are going to have, are talking about, can practice, communicates by, had, talked about, to have, with).");
+  buildFillBlank(box, {
+    exerciseId: "u9gv-10", meta: { module: MOD, title: "Ex.10 Complete phrases" }, prefixLabel: true,
+    lines: [
+      { text: "My father and I ____ a chat ____ it tomorrow.", answers: ["are going to have"] },
+      { text: "We ____ what to have for dinner.", answers: ["are talking about"] },
+      { text: "We ____ this last week.", answers: ["talked about"] },
+      { text: "I don't know anyone who ____ letter anymore.", answers: ["communicates by"] },
+      { text: "Our teacher tells us ____ more conversations so we ____ our skills.", answers: ["to have"] },
+    ],
+  });
+}
+</script>
+</body>
+</html>

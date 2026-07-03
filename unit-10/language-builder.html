@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Unit 10 — Language Builder | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css?v=202607030752">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟩 Unit 10 — Language Builder (Weather &amp; Clothes)</h1>
+  <a href="../index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_10_language_builder.docx — bài nghe chuyển thành bài đọc vì không kèm audio.</footer>
+
+<script src="scores.js?v=202607030752"></script>
+<script src="app.js?v=202607030752"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Unit 10 - Language Builder";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise"; box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Weather phrases", "Nối hiện tượng thời tiết với định nghĩa.");
+  buildMatching(box, {
+    exerciseId: "u10lb-1", meta: { module: MOD, title: "Ex.1 Weather" },
+    leftLabel: "Thời tiết", rightLabel: "Định nghĩa",
+    pairs: [
+      { left: "It's a foggy morning.", right: "hard to see far because of mist" },
+      { left: "It's a windy day.", right: "strong air movement" },
+      { left: "It's icy today.", right: "surfaces covered in ice" },
+      { left: "It's raining.", right: "water falling from the sky" },
+      { left: "It's snowing.", right: "white flakes falling from the sky" },
+      { left: "The sun is shining.", right: "bright, clear weather" },
+      { left: "There's a storm.", right: "strong wind, rain, thunder" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "Clothes for weather", "Chọn đúng loại quần áo.");
+  buildMCQ(box, {
+    exerciseId: "u10lb-2", meta: { module: MOD, title: "Ex.2 Clothes" },
+    questions: [
+      { text: "Waterproof coat for rain:", options: ["Raincoat", "Shirt", "Suit"], answer: "Raincoat" },
+      { text: "Footwear for wet/snowy weather:", options: ["Boots", "Shoes", "Trainers"], answer: "Boots" },
+      { text: "Bottom garment for hot weather:", options: ["Skirt", "T-shirt", "Trousers"], answer: "Skirt" },
+      { text: "Carried for rain protection:", options: ["Umbrella", "Tie", "Wallet"], answer: "Umbrella" },
+      { text: "Worn around the neck for warmth:", options: ["Bag", "Belt", "Scarf"], answer: "Scarf" },
+      { text: "Worn on hands in icy weather:", options: ["Gloves", "Glasses", "Tights"], answer: "Gloves" },
+      { text: "Worn on head for style/warmth:", options: ["Handbag", "Hat", "Watch"], answer: "Hat" },
+      { text: "Worn for extra warmth on top:", options: ["Cap", "Jacket", "Jumper"], answer: "Jumper" },
+      { text: "Worn in hot weather (bottom, short):", options: ["Dress", "Shorts", "Skirt"], answer: "Shorts" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "Match clothes with weather", "Nối trang phục với câu mô tả thời tiết.");
+  buildMatching(box, {
+    exerciseId: "u10lb-3", meta: { module: MOD, title: "Ex.3 Clothes & weather" },
+    leftLabel: "Trang phục", rightLabel: "Mô tả",
+    pairs: [
+      { left: "umbrella", right: "We carry this when it's raining." },
+      { left: "scarf", right: "I wear this round my neck when it's very cold." },
+      { left: "raincoat", right: "I put this on to keep me dry if it's wet." },
+      { left: "hat", right: "I wear this on my head when I feel cold." },
+      { left: "gloves", right: "She wears these on her hands when it's icy." },
+      { left: "sunglasses", right: "They wear these when the sun's shining." },
+      { left: "boots", right: "I wear these to keep my feet warm when it's snowing." },
+      { left: "shorts", right: "He wears these when it's hot." },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "Ben and Mona's phone call", "Đọc hội thoại rồi chọn True/False.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.85rem;margin-bottom:16px;";
+  p.innerHTML = "Ben: on the train travelling to the airport, flying to Spain (Málaga, near sea) for a week's holiday. Weather there: sunny, hot, ~30 degrees. Hotel has its own beach. Mona: in Bristol, raining, wearing scarf/hat/raincoat/winter boots, wind too strong for umbrella.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "u10lb-4", meta: { module: MOD, title: "Ex.4 Ben & Mona" },
+    questions: [
+      { text: "Ben's at the airport.", options: ["True", "False"], answer: "False" },
+      { text: "He's catching a plane today.", options: ["True", "False"], answer: "True" },
+      { text: "The sun's shining in Málaga.", options: ["True", "False"], answer: "True" },
+      { text: "It isn't raining in Bristol.", options: ["True", "False"], answer: "False" },
+      { text: "Mona's wearing warm clothes.", options: ["True", "False"], answer: "True" },
+      { text: "She's using her umbrella.", options: ["True", "False"], answer: "False" },
+      { text: "Ben's staying in a hotel near the sea.", options: ["True", "False"], answer: "True" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "Put the words in order", "Bấm các từ theo đúng thứ tự.");
+  buildWordOrder(box, {
+    exerciseId: "u10lb-5", meta: { module: MOD, title: "Ex.5 Word order" },
+    items: [
+      { words: ["I'm", "phoning", "to tell you", "about", "my", "holiday", "in", "spain"], answer: "I'm phoning to tell you about my holiday in spain" },
+      { words: ["I'm", "ringing", "to", "ask", "you", "about", "the weather", "in", "Madrid"], answer: "I'm ringing to ask you about the weather in Madrid" },
+      { words: ["it isn't", "very", "cold", "today", "and it", "isn't raining", "much"], answer: "it isn't very cold today and it isn't raining much" },
+      { words: ["are", "you", "wearing", "your", "winter", "boots", "and a scarf"], answer: "are you wearing your winter boots and a scarf" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "Present continuous — write sentences", "Viết câu ở thì hiện tại tiếp diễn (dùng dạng rút gọn).");
+  buildFillBlank(box, {
+    exerciseId: "u10lb-6", meta: { module: MOD, title: "Ex.6 Present continuous" }, prefixLabel: true,
+    lines: [
+      { text: "It / rain / today. → ____", answers: ["it's raining today"] },
+      { text: "What / you / do / at the moment? → ____", answers: ["what are you doing at the moment"] },
+      { text: "We / not / study / today. → ____", answers: ["we're not studying today", "we aren't studying today"] },
+      { text: "I / not / work / at home / now. → ____", answers: ["i'm not working at home now"] },
+      { text: "You / go / to the airport? → ____", answers: ["are you going to the airport"] },
+      { text: "She / finish / her project / this evening? → ____", answers: ["is she finishing her project this evening"] },
+      { text: "The sun / shine / this afternoon. → ____", answers: ["the sun is shining this afternoon", "the sun's shining this afternoon"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "Correct the mistakes", "Sửa lại phần bị gạch chân.");
+  buildFillBlank(box, {
+    exerciseId: "u10lb-7", meta: { module: MOD, title: "Ex.7 Correct mistakes" }, prefixLabel: true,
+    lines: [
+      { text: "It's rains at the moment. → sửa: ____", answers: ["raining"] },
+      { text: "Are you go to the airport now? → sửa: ____", answers: ["going"] },
+      { text: "Is she wear her scarf and hat? → sửa: ____", answers: ["wearing"] },
+      { text: "Do you taking your umbrella to work? → sửa: ____", answers: ["take"] },
+      { text: "Does the sun shining a lot in winter? → sửa: ____", answers: ["shine"] },
+      { text: "'Is it cold outside?' 'Yes, it's snow.' → sửa: ____", answers: ["snowing"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(8, "Two answerphone messages", "Đọc 2 lời nhắn rồi chọn đáp án đúng.");
+  buildMCQ(box, {
+    exerciseId: "u10lb-8", meta: { module: MOD, title: "Ex.8 Messages" },
+    questions: [
+      { text: "Rachel is ringing about Isabelle's visit", options: ["at nine o'clock", "today", "tomorrow"], answer: "tomorrow" },
+      { text: "Rachel is waiting in a", options: ["café", "shop", "swimming pool"], answer: "café" },
+      { text: "Rachel's brother is", options: ["drinking mango juice", "running", "walking"], answer: "running" },
+      { text: "Rachel and friends are wearing", options: ["boots", "gloves", "summer clothes"], answer: "summer clothes" },
+      { text: "Ton is working", options: ["at home", "in a village", "in college"], answer: "at home" },
+      { text: "Ton says it's", options: ["hot", "raining", "sunny"], answer: "raining" },
+      { text: "Everybody's wearing", options: ["raincoats", "shorts", "sunglasses"], answer: "raincoats" },
+      { text: "Ton's friend lives in", options: ["France", "the Philippines", "the UK"], answer: "the Philippines" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(9, "Speaking — Reply to friends' messages", "Chuẩn bị nói: giới thiệu bản thân, nói bạn đang gọi từ đâu, trả lời câu hỏi của bạn, tạm biệt.");
+  const wrap = document.createElement("div");
+  wrap.innerHTML = `<p style="font-size:.8rem;color:#6b7280;">🎙️ Bài nói — ghi âm và gửi riêng cho giáo viên/trợ giảng.</p>`;
+  box.appendChild(wrap);
+}
+</script>
+</body>
+</html>

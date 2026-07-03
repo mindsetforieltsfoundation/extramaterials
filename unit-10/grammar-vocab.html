@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Unit 10 — Grammar & Vocab | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css?v=202607030752">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟦 Unit 10 — Grammar &amp; Vocab (Technology &amp; Future)</h1>
+  <a href="../index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_10_grammar___vocab.docx</footer>
+
+<script src="scores.js?v=202607030752"></script>
+<script src="app.js?v=202607030752"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Unit 10 - Grammar & Vocab";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise"; box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Technology vocabulary", "Chọn đúng từ.");
+  buildMCQ(box, {
+    exerciseId: "u10gv-1", meta: { module: MOD, title: "Ex.1 Tech vocab" },
+    questions: [
+      { text: "My brother ____ his files but doesn't back them up.", options: ["stores", "streams"], answer: "stores" },
+      { text: "You can connect computers together on a ____.", options: ["network", "website"], answer: "network" },
+      { text: "I prefer a ____ computer as I can work anywhere.", options: ["desktop", "laptop"], answer: "laptop" },
+      { text: "Stop playing games! ____ your computer now!", options: ["Crash", "Shut down"], answer: "Shut down" },
+      { text: "I don't like paying for ____.", options: ["apps", "attachments"], answer: "apps" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "Technology definitions", "Nối định nghĩa với từ đúng.");
+  buildMatching(box, {
+    exerciseId: "u10gv-2", meta: { module: MOD, title: "Ex.2 Definitions" },
+    leftLabel: "Định nghĩa", rightLabel: "Từ vựng",
+    pairs: [
+      { left: "A set of pages about a subject on the Internet", right: "website" },
+      { left: "A copy of files kept in a different place", right: "backup" },
+      { left: "A machine like a smartphone that connects to the Internet", right: "device" },
+      { left: "A file added to an email before sending", right: "attachment" },
+      { left: "When your computer suddenly stops working", right: "crash" },
+      { left: "Music/video watched without downloading first", right: "stream" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "Will/won't — future interview", "Chia đúng động từ trong ngoặc với will/won't.");
+  buildFillBlank(box, {
+    exerciseId: "u10gv-3", meta: { module: MOD, title: "Ex.3 Will/won't" }, prefixLabel: true,
+    lines: [
+      { text: "The cars ____ (communicate) with each other.", answers: ["will communicate"] },
+      { text: "There ____ (not / be) any crashes ever again.", answers: ["won't be"] },
+      { text: "____ (what people eat)?", answers: ["what will people eat"] },
+      { text: "We ____ (need definitely) more space for animals.", answers: ["will definitely need"] },
+      { text: "I'm not sure that ____ (be) possible.", answers: ["will be"] },
+      { text: "____ (how the animals breathe) on the moon?", answers: ["how will the animals breathe"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "Reading a graph — Line A", "Nối thông tin với đúng khoảng thời gian.");
+  buildMatching(box, {
+    exerciseId: "u10gv-4", meta: { module: MOD, title: "Ex.4 Graph Line A" },
+    leftLabel: "Mô tả", rightLabel: "Thời gian",
+    pairs: [
+      { left: "It increased from 10% to 40%", right: "from 2005 to 2010." },
+      { left: "It decreased by 15%", right: "between 2010 and 2015." },
+      { left: "It will finish on 65%", right: "in 2030." },
+      { left: "There will be a rise of 55%", right: "between 2015 and 2020." },
+      { left: "It went down by 5%", right: "between 2020 and 2025." },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "Describing Line B", "Điền đúng từ (gợi ý: 2005, 2020, 55%, fall, increased, rise, started, went).");
+  buildFillBlank(box, {
+    exerciseId: "u10gv-5", meta: { module: MOD, title: "Ex.5 Line B" }, prefixLabel: true,
+    lines: [
+      { text: "After it ____ from 30% in 2005...", answers: ["increased"] },
+      { text: "...it went up in ____.", answers: ["2005"] },
+      { text: "It reached ____ in 2010.", answers: ["55%"] },
+      { text: "Line B ____ up by another 20% (2010-2015).", answers: ["went"] },
+      { text: "It ____ to decrease in 2015.", answers: ["started"] },
+      { text: "Going down to 40% in ____.", answers: ["2020"] },
+      { text: "It will ____ to 50% in 2025.", answers: ["rise"] },
+      { text: "Then will ____ to 45% in 2030.", answers: ["fall"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "Choose the best summary", "Chọn tóm tắt đúng nhất cho biểu đồ.");
+  buildMCQ(box, {
+    exerciseId: "u10gv-6", meta: { module: MOD, title: "Ex.6 Best summary" },
+    questions: [
+      { text: "Tóm tắt nào mô tả đúng và đầy đủ nhất sự thay đổi của cả 2 đường trên biểu đồ (thời điểm thay đổi lớn nhất của mỗi đường)?",
+        options: [
+          "Both lines went up and down a lot, Line A changed more.",
+          "Line A's biggest changes are 2020-2030; Line B's biggest changes are 2005-2015.",
+          "Line A went up/down through several points; Line B increased then stayed similar."
+        ],
+        answer: "Line A's biggest changes are 2020-2030; Line B's biggest changes are 2005-2015." },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "Grandad's smartphone email", "Chọn đúng từ để hoàn thành email.");
+  buildMCQ(box, {
+    exerciseId: "u10gv-7", meta: { module: MOD, title: "Ex.7 Grandad's email" },
+    questions: [
+      { text: "I have some news — ____ buy a smartphone.", options: ["I'm going to", "I going to", "I will"], answer: "I'm going to" },
+      { text: "You have the ____.", options: ["late model", "later modern", "latest model"], answer: "latest model" },
+      { text: "I don't mind if it's a bit ____.", options: ["out of date", "out of order", "out of time"], answer: "out of date" },
+      { text: "I see ads for phones with great ____.", options: ["devices", "features", "websites"], answer: "features" },
+      { text: "It will be strange to play cards by ____ a screen.", options: ["swapping", "sweeping", "swiping"], answer: "swiping" },
+      { text: "Your phone has a lot of ____.", options: ["memories", "memory", "memry"], answer: "memory" },
+      { text: "That means you have space to ____ apps and files.", options: ["shop", "stand", "store"], answer: "store" },
+      { text: "I know your phone has a silver ____.", options: ["battery", "case", "screen"], answer: "case" },
+    ],
+  });
+}
+</script>
+</body>
+</html>

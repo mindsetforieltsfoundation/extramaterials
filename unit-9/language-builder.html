@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Unit 9 — Language Builder | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css?v=202607030752">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟩 Unit 9 — Language Builder (Travel Experiences)</h1>
+  <a href="../index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_9_language_builder.docx</footer>
+
+<script src="scores.js?v=202607030752"></script>
+<script src="app.js?v=202607030752"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Unit 9 - Language Builder";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise"; box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Adventure activities", "Nối hoạt động với định nghĩa.");
+  buildMatching(box, {
+    exerciseId: "u9lb-1", meta: { module: MOD, title: "Ex.1 Activities" },
+    leftLabel: "Hoạt động", rightLabel: "Định nghĩa",
+    pairs: [
+      { left: "camp in the desert", right: "sleep in a tent in a sandy area" },
+      { left: "climb a mountain", right: "go up a high mountain" },
+      { left: "go surfing", right: "ride waves on a board" },
+      { left: "ride a horse", right: "sit on a horse and control it" },
+      { left: "sail a boat", right: "travel on water using sails" },
+      { left: "swim in the sea", right: "swim in salt water" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "Present perfect verb choice", "Chọn đúng động từ.");
+  buildMCQ(box, {
+    exerciseId: "u9lb-2", meta: { module: MOD, title: "Ex.2 Verb choice" },
+    questions: [
+      { text: "I've ____ New York several times.", options: ["been", "gone", "visited"], answer: "been" },
+      { text: "He's ____ a boat to Canada.", options: ["driven", "sailed", "visited"], answer: "sailed" },
+      { text: "We've ____ a high mountain.", options: ["climbed", "run", "walked"], answer: "climbed" },
+      { text: "They've ____ to China.", options: ["been", "stayed", "visited"], answer: "been" },
+      { text: "She's ____ a lot of souvenirs.", options: ["bought", "cought", "paid"], answer: "bought" },
+      { text: "I haven't ____ a horse.", options: ["driven", "ridden", "walked"], answer: "ridden" },
+      { text: "He's never ____ in the desert.", options: ["camped", "sailed", "swum"], answer: "camped" },
+      { text: "I've often ____ from Manchester Airport.", options: ["brought", "cought", "flown"], answer: "flown" },
+      { text: "She's ____ surfing in Hawaii.", options: ["been", "flown", "sailed"], answer: "been" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "Present perfect negative", "Điền đúng dạng phủ định của have/has.");
+  buildFillBlank(box, {
+    exerciseId: "u9lb-3", meta: { module: MOD, title: "Ex.3 Negative present perfect" }, prefixLabel: true,
+    lines: [
+      { text: "I've camped in the desert. → I ____ camped in the desert.", answers: ["haven't"] },
+      { text: "He's climbed Everest. → He ____ climbed Everest.", answers: ["hasn't"] },
+      { text: "They've flown to Paris. → They ____ flown to Paris.", answers: ["haven't"] },
+      { text: "She's been to Abu Dhabi. → She ____ been to Abu Dhabi.", answers: ["hasn't"] },
+      { text: "We've eaten insects in Thailand. → We ____ eaten insects.", answers: ["haven't"] },
+      { text: "I've ridden a wild horse. → I ____ ridden a wild horse.", answers: ["haven't"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "Present perfect vs past simple", "Điền đúng dạng (gợi ý: ate, been, did, didn't, eaten, have, haven't, ridden, ride, went).");
+  buildFillBlank(box, {
+    exerciseId: "u9lb-4", meta: { module: MOD, title: "Ex.4 Perfect vs simple" }, prefixLabel: true,
+    lines: [
+      { text: "David, ____ you visited many big cities?", answers: ["have"] },
+      { text: "Sarah, ____ you visit Glasgow last year?", answers: ["did"] },
+      { text: "She's ____ to Mexico many times.", answers: ["been"] },
+      { text: "He ____ to London in June.", answers: ["went"] },
+      { text: "Has he ever ____ his bike in the mountains?", answers: ["ridden"] },
+      { text: "Did she ____ her bike to college this morning?", answers: ["ride"] },
+      { text: "We ____ seen Buckingham Palace yet.", answers: ["haven't"] },
+      { text: "They've never ____ meat.", answers: ["eaten"] },
+      { text: "On Monday evening, we ____ in a French restaurant.", answers: ["ate"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "Match questions with answers", "Nối câu hỏi với câu trả lời đúng.");
+  buildMatching(box, {
+    exerciseId: "u9lb-5", meta: { module: MOD, title: "Ex.5 Q&A" },
+    leftLabel: "Câu hỏi", rightLabel: "Câu trả lời",
+    pairs: [
+      { left: "Have you ever been to the USA?", right: "Yes, I went there last year." },
+      { left: "Have you ever seen the White House?", right: "Yes, I saw it on my trip to the US." },
+      { left: "Have you ever flown from Berlin?", right: "Yes, I flew from there last month." },
+      { left: "Have you written an email about your trip?", right: "Yes, I wrote her one yesterday." },
+      { left: "Have you ever driven on the left?", right: "Yes, I drove on that side when in England." },
+      { left: "Have you ever eaten any insects?", right: "Yes, I ate some when I was in Thailand." },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "Email about New York", "Đọc email rồi chọn True/False.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.85rem;margin-bottom:16px;";
+  p.innerHTML = "Arrived last week, hotel in city centre near tourist sites. Day 1: tourist bus tour — fantastic! Already been to Central Park + boat trip on river + Statue of Liberty. This morning: zoo in Central Park — small, not many big animals.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "u9lb-6", meta: { module: MOD, title: "Ex.6 New York email" },
+    questions: [
+      { text: "They arrived in New York last week.", options: ["True", "False"], answer: "True" },
+      { text: "The hotel is far from tourist sites.", options: ["True", "False"], answer: "False" },
+      { text: "They went on a tourist bus tour.", options: ["True", "False"], answer: "True" },
+      { text: "They haven't visited the Statue of Liberty yet.", options: ["True", "False"], answer: "False" },
+      { text: "The zoo has a lot of big animals.", options: ["True", "False"], answer: "False" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "Put the words in order", "Bấm các từ theo đúng thứ tự.");
+  buildWordOrder(box, {
+    exerciseId: "u9lb-7", meta: { module: MOD, title: "Ex.7 Word order" },
+    items: [
+      { words: ["Yesterday we", "went for", "a", "tourist bus", "trip around", "the city", "on"], answer: "Yesterday we went for a tourist bus trip around the city on" },
+      { words: ["We've", "already been", "to", "so", "many", "interesting", "places"], answer: "We've already been to so many interesting places" },
+      { words: ["This", "morning we", "went", "on a", "boat", "trip", "along", "the", "river"], answer: "This morning we went on a boat trip along the river" },
+      { words: ["Have", "you", "ever", "been", "to", "china"], answer: "Have you ever been to china" },
+      { words: ["Have", "you", "read", "about", "the", "history", "of the", "country", "or geography"], answer: "Have you read about the history of the country or geography" },
+      { words: ["I've", "been", "to England", "several times,", "but", "I've", "never visited", "Bristol"], answer: "I've been to England several times, but I've never visited Bristol" },
+      { words: ["She", "hasn't", "ever", "eaten", "fish", "and chips"], answer: "She hasn't ever eaten fish and chips" },
+      { words: ["Have", "they", "ever", "drunk", "any", "real", "fruit juice"], answer: "Have they ever drunk any real fruit juice" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(8, "Moto's holiday email", "Chọn đúng từ để hoàn thành email.");
+  buildMCQ(box, {
+    exerciseId: "u9lb-8", meta: { module: MOD, title: "Ex.8 Moto's email" },
+    questions: [
+      { text: "We've ____ safely in Paris.", options: ["arrive", "arrived", "arriving"], answer: "arrived" },
+      { text: "Our flight ____ delayed for 3 hours.", options: ["been", "has", "was"], answer: "was" },
+      { text: "We didn't ____ our hotel until evening.", options: ["reach", "reached", "reaching"], answer: "reach" },
+      { text: "Yesterday, we ____ on a bus tour.", options: ["go", "have been", "went"], answer: "went" },
+      { text: "This morning, we ____ to a museum.", options: ["gone", "have been", "went"], answer: "went" },
+      { text: "It ____ fantastic!", options: ["has been", "was", "were"], answer: "was" },
+      { text: "Have you ever ____ to Paris?", options: ["been", "go", "went"], answer: "been" },
+      { text: "Have you ever ____ fish in a cream sauce?", options: ["ate", "eat", "eaten"], answer: "eaten" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(9, "Writing — Reply to Moto's email", "Viết email trả lời Moto: trả lời câu hỏi về Paris, kể về nơi bạn đã đến, hành trình, ở với ai, những điều thú vị đã làm, hỏi lại Moto.");
+  const wrap = document.createElement("div");
+  wrap.innerHTML = `<textarea rows="6" style="width:100%;border:1.5px solid var(--border);border-radius:8px;padding:10px;font-family:inherit;font-size:.9rem;" placeholder="Hi Moto!"></textarea>
+  <p style="font-size:.8rem;color:#6b7280;margin-top:8px;">✏️ Bài viết tự do — giáo viên xem trực tiếp.</p>`;
+  box.appendChild(wrap);
+}
+</script>
+</body>
+</html>

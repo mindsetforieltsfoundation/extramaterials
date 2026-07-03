@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Unit 9 — Reading & Writing | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css?v=202607030752">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟪 Unit 9 — Reading &amp; Writing</h1>
+  <a href="../index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_9_reading___writing.docx</footer>
+
+<script src="scores.js?v=202607030752"></script>
+<script src="app.js?v=202607030752"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Unit 9 - Reading & Writing";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise"; box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Language practice methods", "Nối nửa đầu câu với nửa sau đúng.");
+  buildMatching(box, {
+    exerciseId: "u9rw-1", meta: { module: MOD, title: "Ex.1 Practice methods" },
+    leftLabel: "Bắt đầu", rightLabel: "Kết thúc",
+    pairs: [
+      { left: "I practise", right: "speaking Spanish every day." },
+      { left: "I think that I made", right: "a lot of mistakes in my French essay." },
+      { left: "Writing to a penfriend", right: "is useful for practising language." },
+      { left: "I am meeting", right: "my language exchange partner today." },
+      { left: "Have you ever taken", right: "an online English course?" },
+      { left: "Yesterday my sister downloaded", right: "a new language app on her phone." },
+      { left: "I often use", right: "a webcam to talk to my Italian friends." },
+      { left: "I want to travel", right: "abroad to learn French." },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "Languages for Kids leaflet", "Đọc tờ rơi rồi chọn True/False/Not Given.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.85rem;margin-bottom:16px;";
+  p.innerHTML = "Classes: French/Spanish Saturday mornings, Chinese/Japanese Saturday afternoons. Taught by qualified first-language teachers. No grammar exercises, lots of speaking, games, songs, try food. Ages 4-11. Morning 10am-1pm, afternoon 1pm-5pm. Weekly homework (max 30 min). End of year report on progress. More info on website.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "u9rw-2", meta: { module: MOD, title: "Ex.2 Leaflet T/F/NG" },
+    questions: [
+      { text: "Classes take place at the weekend.", options: ["True", "False", "Not Given"], answer: "True" },
+      { text: "There are Spanish classes in the afternoons.", options: ["True", "False", "Not Given"], answer: "False" },
+      { text: "Children study a lot of grammar.", options: ["True", "False", "Not Given"], answer: "False" },
+      { text: "Children often play games outside.", options: ["True", "False", "Not Given"], answer: "Not Given" },
+      { text: "Some classes finish at 1:00 p.m.", options: ["True", "False", "Not Given"], answer: "True" },
+      { text: "Children have homework every week.", options: ["True", "False", "Not Given"], answer: "True" },
+      { text: "The classes are too difficult for some children.", options: ["True", "False", "Not Given"], answer: "Not Given" },
+      { text: "Parents can find out more online.", options: ["True", "False", "Not Given"], answer: "True" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "Language exchange advertisement", "Đọc quảng cáo rồi điền đúng 1 từ mỗi chỗ trống.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.85rem;margin-bottom:16px;";
+  p.innerHTML = "John Armstrong, 2nd-year Law/Italian student in London. Next year studying in Rome for a year. Wants Italian exchange partner to practise speaking, help with grammar (worried about mistakes), and check essays. Currently Italian classes Thursday evenings, going to download an app. Free Monday/Wednesday afternoons. Meet at his house or café next to library.";
+  box.appendChild(p);
+  buildFillBlank(box, {
+    exerciseId: "u9rw-3", meta: { module: MOD, title: "Ex.3 Exchange ad" }, prefixLabel: true,
+    lines: [
+      { text: "John is now studying in ____.", answers: ["london"] },
+      { text: "John is going to spend a year at university in ____.", answers: ["rome"] },
+      { text: "He wants to practise ____ in Italian.", answers: ["speaking"] },
+      { text: "He thinks he'll make mistakes with Italian ____.", answers: ["grammar"] },
+      { text: "He wants help writing better ____.", answers: ["essays"] },
+      { text: "He's going to use an ____ to study Italian.", answers: ["app"] },
+      { text: "He can meet in the ____ on Monday or Wednesday.", answers: ["café"] },
+      { text: "He wants to meet at a ____ or his house.", answers: ["café"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "Language Master app review", "Chọn đáp án đúng về app học ngôn ngữ.");
+  buildMCQ(box, {
+    exerciseId: "u9rw-4", meta: { module: MOD, title: "Ex.4 App review" },
+    questions: [
+      { text: "Language Master helps you learn", options: ["one language", "a new language", "grammar only"], answer: "a new language" },
+      { text: "When you download it, you can learn", options: ["new words", "only grammar", "only speaking"], answer: "new words" },
+      { text: "The app most likely includes", options: ["games and quizzes", "video calls only", "textbooks only"], answer: "games and quizzes" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "Complete with linking words", "Điền đúng từ nối (gợi ý: Firstly, for example, Furthermore, However, Secondly, To sum up).");
+  buildFillBlank(box, {
+    exerciseId: "u9rw-5", meta: { module: MOD, title: "Ex.5 Linking words" }, prefixLabel: true,
+    lines: [
+      { text: "There are many advantages of learning a new language. ____, it's useful when travelling.", answers: ["firstly"] },
+      { text: "____, you can ask for directions, order food.", answers: ["for example"] },
+      { text: "____, you may not always understand what people say.", answers: ["however"] },
+      { text: "____, speaking another language could help get a job.", answers: ["secondly"] },
+      { text: "____, you may have the chance to travel for work.", answers: ["furthermore"] },
+      { text: "____, learning another language helps you have fun and get a good job.", answers: ["to sum up"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "Sentences about John's plan", "Bấm các từ theo đúng thứ tự.");
+  buildWordOrder(box, {
+    exerciseId: "u9rw-6", meta: { module: MOD, title: "Ex.6 Word order" },
+    items: [
+      { words: ["I", "had", "a", "Spanish", "penfriend", "called", "maria"], answer: "I had a Spanish penfriend called maria" },
+      { words: ["I", "started", "learning", "French", "in", "primary school"], answer: "I started learning French in primary school" },
+      { words: ["I'm", "going to", "download", "an", "app", "to", "study", "French"], answer: "I'm going to download an app to study French" },
+      { words: ["I'm", "going to", "meet", "a", "language", "exchange", "partner"], answer: "I'm going to meet a language exchange partner" },
+      { words: ["My", "sister", "is", "going to", "study", "English", "in", "the USA"], answer: "My sister is going to study English in the USA" },
+      { words: ["It's", "important", "to", "practice", "speaking", "every", "day"], answer: "It's important to practice speaking every day" },
+      { words: ["I'm", "going to", "learn", "three", "new", "words", "every", "day"], answer: "I'm going to learn three new words every day" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "Choose the correct verb", "Đọc lại quảng cáo John rồi chọn đúng động từ.");
+  buildMCQ(box, {
+    exerciseId: "u9rw-7", meta: { module: MOD, title: "Ex.7 John's verbs" },
+    questions: [
+      { text: "I'm looking for a partner who would like to ____ me.", options: ["learn", "meet", "teach"], answer: "meet" },
+      { text: "...to help me ____ my Italian.", options: ["improve", "learn", "make"], answer: "improve" },
+      { text: "I would like to ____ speaking with an Italian person.", options: ["do", "practice", "take"], answer: "practice" },
+      { text: "I think I am going to ____ a lot of mistakes.", options: ["do", "make", "take"], answer: "make" },
+      { text: "I need help to ____ Italian grammar.", options: ["speak", "study", "take"], answer: "study" },
+      { text: "I would like somebody to ____ at my essays.", options: ["look", "take", "write"], answer: "look" },
+      { text: "At the moment I ____ Italian classes on Thursdays.", options: ["make", "speak", "take"], answer: "take" },
+      { text: "I am also going to ____ an app.", options: ["download", "study", "take"], answer: "download" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(8, "Put the paragraph in order", "Sắp xếp 6 câu theo đúng thứ tự (chủ đề: lợi ích trẻ học ngoại ngữ sớm).");
+  buildWordOrder(box, {
+    exerciseId: "u9rw-8", meta: { module: MOD, title: "Ex.8 Paragraph order" },
+    items: [
+      { words: ["It", "is", "a", "good", "idea", "for", "children", "to", "learn", "a", "language", "young", "for", "three", "reasons"],
+        answer: "It is a good idea for children to learn a language young for three reasons" },
+    ],
+  });
+  const p2 = document.createElement("p");
+  p2.style.cssText = "font-size:.85rem;color:#6b7280;margin-top:12px;";
+  p2.innerHTML = "Thứ tự đúng đầy đủ: (1) It's a good idea for children to learn young for 3 reasons → (2) Firstly, young children pick up languages easily → (3) For example, they quickly repeat words they hear → (4) Secondly, learning young makes future languages easier → (5) For example, a strong 2nd language makes a 3rd language easier → (6) Finally, bilingual children often have good communication skills and make friends easily.";
+  box.appendChild(p2);
+}
+
+{
+  const box = exerciseBlock(9, "Writing — Advantages of learning English", "Viết bài luận: giới thiệu, lợi ích của việc học tiếng Anh, kinh nghiệm bản thân, kết luận + kế hoạch tương lai.");
+  const wrap = document.createElement("div");
+  wrap.innerHTML = `<p style="font-size:.85rem;color:#6b7280;">Gợi ý: 1) Giới thiệu — 2) Lợi ích của việc học tiếng Anh — 3) Kinh nghiệm học tập của bản thân — 4) Kết luận + kế hoạch học tiếp trong tương lai.</p>
+  <textarea rows="6" style="width:100%;border:1.5px solid var(--border);border-radius:8px;padding:10px;font-family:inherit;font-size:.9rem;" placeholder="There are many advantages..."></textarea>
+  <p style="font-size:.8rem;color:#6b7280;margin-top:8px;">✏️ Bài viết tự do — giáo viên xem trực tiếp.</p>`;
+  box.appendChild(wrap);
+}
+</script>
+</body>
+</html>

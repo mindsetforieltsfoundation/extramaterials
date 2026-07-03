@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=202607030744">
+<link rel="stylesheet" href="style.css?v=202607030752">
 </head>
 <body>
 <div class="dash-hero">
@@ -30,7 +30,7 @@
 </main>
 <footer class="page-footer">Điểm được lưu ngay trên trình duyệt này (localStorage) — mỗi học sinh nên dùng máy/trình duyệt riêng.</footer>
 
-<script src="scores.js?v=202607030744"></script>
+<script src="scores.js?v=202607030752"></script>
 <script>
 const MODULE_COLORS = {
   gv: { c: "#2F7A78", soft: "#EAF3F2" },
@@ -139,8 +139,30 @@ const UNITS = [
         titles: ["Advice","Diet article","Sports Centre info","Luke's email","Connectors","Advice halves","Paragraph order","Writing"] },
     ],
   },
-  { key: "u9", name: "Unit 9", available: false, modules: [] },
-  { key: "u10", name: "Unit 10", available: false, modules: [] },
+  { key: "u9", name: "Unit 9 — Language Learning / Travel", available: true,
+    modules: [
+      { key: "gv", name: "Grammar & Vocab", file: "unit-9/grammar-vocab.html", prefix: "u9gv",
+        titles: ["Prepositions","Learning plans","Going to","Questions","Conversation","Summary","Make/Take","Make/take choice","Connectors","Complete phrases"] },
+      { key: "lb", name: "Language Builder", file: "unit-9/language-builder.html", prefix: "u9lb",
+        titles: ["Activities","Verb choice","Negative present perfect","Perfect vs simple","Q&A","New York email","Word order","Moto's email","Writing"] },
+      { key: "ls", name: "Listening & Speaking", file: "unit-9/listening-speaking.html", prefix: "u9ls",
+        titles: ["Ways to learn","Advantages/disadvantages","Continuous/going to","Sara & David","Tony's plan","Gonna/Going to","Word order","Q&A","Speaking"] },
+      { key: "rw", name: "Reading & Writing", file: "unit-9/reading-writing.html", prefix: "u9rw",
+        titles: ["Practice methods","Leaflet T/F/NG","Exchange ad","App review","Linking words","Word order","John's verbs","Paragraph order","Writing"] },
+    ],
+  },
+  { key: "u10", name: "Unit 10 — Technology / Weather", available: true,
+    modules: [
+      { key: "gv", name: "Grammar & Vocab", file: "unit-10/grammar-vocab.html", prefix: "u10gv",
+        titles: ["Tech vocab","Definitions","Will/won't","Graph Line A","Line B","Best summary","Grandad's email"] },
+      { key: "lb", name: "Language Builder", file: "unit-10/language-builder.html", prefix: "u10lb",
+        titles: ["Weather","Clothes","Clothes & weather","Ben & Mona","Word order","Present continuous","Correct mistakes","Messages","Speaking"] },
+      { key: "ls", name: "Listening & Speaking", file: "unit-10/listening-speaking.html", prefix: "u10ls",
+        titles: ["Tech words","Tech opinions","Correct word","Correct graph","Word stress","Verbs","Will/'ll","Word order","Speaking"] },
+      { key: "rw", name: "Reading & Writing", file: "unit-10/reading-writing.html", prefix: "u10rw",
+        titles: ["Tech use","Mustafa's email","Reading study","Dragon 5","Chart paragraphs","Chart description","Word order","Writing"] },
+    ],
+  },
 ];
 
 let currentUnit = "u1";

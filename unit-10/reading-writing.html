@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Unit 10 — Reading & Writing | Bài tập tương tác</title>
+<link rel="stylesheet" href="style.css?v=202607030752">
+</head>
+<body>
+<div class="topbar">
+  <h1>🟪 Unit 10 — Reading &amp; Writing</h1>
+  <a href="../index.html">← Bảng điều khiển</a>
+</div>
+<main id="app"></main>
+<footer class="page-footer">Chuyển từ unit_10_reading___writing.docx</footer>
+
+<script src="scores.js?v=202607030752"></script>
+<script src="app.js?v=202607030752"></script>
+<script>
+const app = document.getElementById("app");
+const MOD = "Unit 10 - Reading & Writing";
+function exerciseBlock(num, title, instr) {
+  const box = document.createElement("div");
+  box.className = "exercise"; box.id = "ex" + num;
+  const h2 = document.createElement("h2");
+  h2.innerHTML = `<span class="badge">Exercise ${num}</span> ${title}`;
+  box.appendChild(h2);
+  if (instr) box.appendChild(Object.assign(document.createElement("p"), { className: "instr", textContent: instr }));
+  app.appendChild(box);
+  return box;
+}
+
+{
+  const box = exerciseBlock(1, "Daily technology use", "Nối nửa đầu câu với nửa sau đúng.");
+  buildMatching(box, {
+    exerciseId: "u10rw-1", meta: { module: MOD, title: "Ex.1 Tech use" },
+    leftLabel: "Bắt đầu", rightLabel: "Kết thúc",
+    pairs: [
+      { left: "I often send", right: "text messages to my friends." },
+      { left: "I am going to make", right: "a phone call to my cousin today." },
+      { left: "I usually watch", right: "TV or videos on my laptop." },
+      { left: "My father listens to", right: "the radio every morning." },
+      { left: "Yesterday I downloaded", right: "some new software and apps." },
+      { left: "I use my smartphone to surf", right: "the internet." },
+      { left: "My sister plays", right: "a lot of games on her phone." },
+      { left: "I will take some photos on", right: "my phone and send them to you." },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(2, "Mustafa's email about his tablet", "Đọc email rồi chọn True/False/Not Given.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.85rem;margin-bottom:16px;";
+  p.innerHTML = "Mustafa ordered tablet online last Friday, arrived Wednesday. Uses it to surf internet, send emails, watch videos, play games. Watches videos on bus commute, plays games online with friends every night. Also for homework: online dictionary, apps to study better, French app (has exam next month), later maybe Spanish. Favourite feature: video calls — talked to Dubai cousins for 1 hour last night. Wants to video call Tom this week.";
+  box.appendChild(p);
+  buildMCQ(box, {
+    exerciseId: "u10rw-2", meta: { module: MOD, title: "Ex.2 Mustafa's email" },
+    questions: [
+      { text: "Mustafa got his tablet last Friday.", options: ["True", "False", "Not Given"], answer: "False" },
+      { text: "He watches videos with friends every night.", options: ["True", "False", "Not Given"], answer: "False" },
+      { text: "He only uses his tablet for entertainment.", options: ["True", "False", "Not Given"], answer: "False" },
+      { text: "He is currently using an app to learn French.", options: ["True", "False", "Not Given"], answer: "True" },
+      { text: "The apps he downloads cost a lot of money.", options: ["True", "False", "Not Given"], answer: "Not Given" },
+      { text: "He talked on the phone to cousins for an hour.", options: ["True", "False", "Not Given"], answer: "False" },
+      { text: "Mustafa wants to have a video call with Tom.", options: ["True", "False", "Not Given"], answer: "True" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(3, "Study on reading habits", "Đọc bài rồi điền đúng thông tin.");
+  const p = document.createElement("p");
+  p.style.cssText = "background:#f8f9fb;border-radius:10px;padding:14px;font-size:.85rem;margin-bottom:16px;";
+  p.innerHTML = "Young people reading less than in the past. Most popular activities: computer games, surfing internet. Reading books fell by nearly 50% (2007-2017). Some worried it hurts reading/writing skills. Others think internet helps improve reading skills and teaches new information.";
+  box.appendChild(p);
+  buildFillBlank(box, {
+    exerciseId: "u10rw-3", meta: { module: MOD, title: "Ex.3 Reading study" }, prefixLabel: true,
+    lines: [
+      { text: "Young people are not ____ as much as before.", answers: ["reading"] },
+      { text: "They prefer other ____, like surfing the internet.", answers: ["activities"] },
+      { text: "Reading books fell by almost ____ percent.", answers: ["50"] },
+      { text: "Some worry young people won't be good at ____ and writing.", answers: ["reading"] },
+      { text: "Others think they can find ____ information.", answers: ["new"] },
+      { text: "...from reading things on ____.", answers: ["websites"] },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(4, "Dragon 5 smartphone review", "Chọn đáp án đúng.");
+  buildMCQ(box, {
+    exerciseId: "u10rw-4", meta: { module: MOD, title: "Ex.4 Dragon 5" },
+    questions: [
+      { text: "You can buy a Dragon 5", options: ["in shops now", "online now", "online from next week"], answer: "online now" },
+      { text: "The Dragon 5 is", options: ["bigger than the Dragon 4", "smaller than", "the same size as"], answer: "bigger than the Dragon 4" },
+      { text: "You can buy it in how many colours?", options: ["2", "3", "5"], answer: "5" },
+      { text: "Screen made of", options: ["plastic", "strong glass", "metal only"], answer: "strong glass" },
+      { text: "Problems with the Dragon 5:", options: ["too heavy and more expensive", "too small and cheap", "no problems"], answer: "too heavy and more expensive" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(5, "News chart — which paragraph?", "Nối câu hỏi với đúng đoạn văn (A, B hoặc C) mô tả biểu đồ.");
+  buildMCQ(box, {
+    exerciseId: "u10rw-5", meta: { module: MOD, title: "Ex.5 Chart paragraphs" },
+    questions: [
+      { text: "Which paragraph introduces what the chart shows?", options: ["A", "B", "C"], answer: "A" },
+      { text: "Which talks about a device used a little more in 2015 than 2000?", options: ["A", "B", "C"], answer: "B" },
+      { text: "Which tells us the most important change over time?", options: ["A", "B", "C"], answer: "C" },
+      { text: "Which talks about TV and radio use changing generally?", options: ["A", "B", "C"], answer: "B" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(6, "Describing the news chart", "Chọn đúng dạng động từ (thì hiện tại đơn/tương lai) để hoàn thành đoạn mô tả biểu đồ.");
+  buildMCQ(box, {
+    exerciseId: "u10rw-6", meta: { module: MOD, title: "Ex.6 Chart description" },
+    questions: [
+      { text: "The chart ____ the changing ways adults get news.", options: ["shows", "is going to show", "will show"], answer: "shows" },
+      { text: "In 2015, most adults ____ watching TV/newspapers.", options: ["prefer", "preferred", "will prefer"], answer: "preferred" },
+      { text: "These ways are going to ____ less popular.", options: ["become", "becoming", "became"], answer: "become" },
+      { text: "Radio listeners ____ between now and 2030.", options: ["falling", "fell", "will fall"], answer: "will fall" },
+      { text: "By 2030, radio will ____ the least popular.", options: ["be", "being", "is"], answer: "be" },
+      { text: "In 2015, online news ____ less popular than others.", options: ["is", "was", "will be"], answer: "was" },
+      { text: "Only 50% of adults ____ the internet for news then.", options: ["uses", "used", "will use"], answer: "used" },
+      { text: "The number reading news online ____ a lot by 2030.", options: ["increase", "increased", "is going to increase"], answer: "is going to increase" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(7, "Put the words in order", "Bấm các từ theo đúng thứ tự.");
+  buildWordOrder(box, {
+    exerciseId: "u10rw-7", meta: { module: MOD, title: "Ex.7 Word order" },
+    items: [
+      { words: ["the chart", "shows", "that teenagers", "used", "thwe devices", "for", "entertainment", "between", "2000", "and", "2015"],
+        answer: "the chart shows that teenagers used thwe devices for entertainment between 2000 and 2015" },
+      { words: ["The", "biggest", "change is", "going", "to", "be", "the use of", "mobile phones"], answer: "The biggest change is going to be the use of mobile phones" },
+      { words: ["most people", "today,", "prefer", "watching", "the news", "online"], answer: "most people today, prefer watching the news online" },
+      { words: ["In", "the future,", "there", "will", "be", "an increase", "in", "people", "using", "the internet"], answer: "In the future, there will be an increase in people using the internet" },
+      { words: ["Furthermore,", "the chart", "suggests", "that", "the number", "of adults", "watching", "TV", "fell"], answer: "Furthermore, the chart suggests that the number of adults watching TV fell" },
+      { words: ["The way", "that", "people", "read", "the news", "is", "going", "to", "change"], answer: "The way that people read the news is going to change" },
+      { words: ["we", "can", "see", "that", "listening to", "the", "radio", "will", "become", "less", "popular"], answer: "we can see that listening to the radio will become less popular" },
+      { words: ["To sum up,", "there", "are", "going", "to", "be", "some", "big changes", "in", "internet use", "by", "2030"], answer: "To sum up, there are going to be some big changes in internet use by 2030" },
+    ],
+  });
+}
+
+{
+  const box = exerciseBlock(8, "Writing — Describe a technology trend chart", "Viết mô tả biểu đồ dùng internet cho các hoạt động khác nhau: 1) giới thiệu chung — 2) tăng lớn nhất — 3) giảm lớn nhất — 4) tổng kết.");
+  const wrap = document.createElement("div");
+  wrap.innerHTML = `<textarea rows="6" style="width:100%;border:1.5px solid var(--border);border-radius:8px;padding:10px;font-family:inherit;font-size:.9rem;" placeholder="The chart shows..."></textarea>
+  <p style="font-size:.8rem;color:#6b7280;margin-top:8px;">✏️ Bài viết tự do — giáo viên xem trực tiếp.</p>`;
+  box.appendChild(wrap);
+}
+</script>
+</body>
+</html>
