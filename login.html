@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Đăng nhập — Bài tập tương tác</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=202607030811">
+<style>
+  body { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+  .auth-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+    padding: 36px 32px; width: 100%; max-width: 380px; box-shadow: 0 4px 20px rgba(20,30,60,.08);
+  }
+  .auth-card h1 { font-size: 1.3rem; color: var(--navy); margin: 0 0 4px; text-align: center; }
+  .auth-card p.sub { text-align: center; color: var(--muted); font-size: .85rem; margin: 0 0 24px; }
+  .auth-tabs { display: flex; gap: 6px; margin-bottom: 20px; background: #F0F1EA; border-radius: 10px; padding: 4px; }
+  .auth-tabs button {
+    flex: 1; padding: 8px; border: none; background: transparent; border-radius: 8px;
+    font-size: .85rem; font-weight: 600; color: var(--muted); cursor: pointer; font-family: "Space Grotesk", sans-serif;
+  }
+  .auth-tabs button.active { background: #fff; color: var(--navy); box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+  .auth-field { margin-bottom: 14px; }
+  .auth-field label { display: block; font-size: .78rem; color: var(--muted); margin-bottom: 4px; font-weight: 600; }
+  .auth-field input {
+    width: 100%; padding: 10px 12px; border: 1.5px solid var(--border); border-radius: 8px;
+    font-size: .9rem; font-family: inherit;
+  }
+  .auth-field input:focus { outline: none; border-color: var(--teal); }
+  .auth-submit {
+    width: 100%; padding: 11px; background: var(--navy); color: #fff; border: none;
+    border-radius: 8px; font-size: .92rem; font-weight: 700; cursor: pointer; margin-top: 8px;
+    font-family: "Space Grotesk", sans-serif;
+  }
+  .auth-submit:hover { background: var(--teal); }
+  .auth-submit:disabled { opacity: .5; cursor: not-allowed; }
+  .auth-error { background: var(--coral-soft); color: #7a1f1f; padding: 8px 12px; border-radius: 8px; font-size: .8rem; margin-bottom: 14px; display: none; }
+  .auth-error.show { display: block; }
+</style>
+</head>
+<body>
+<div class="auth-card">
+  <h1>📚 Bài tập tương tác</h1>
+  <p class="sub">Mindset for IELTS Foundation — Extra Materials</p>
+
+  <div class="auth-tabs">
+    <button id="tabLogin" class="active">Đăng nhập</button>
+    <button id="tabSignup">Đăng ký</button>
+  </div>
+
+  <div class="auth-error" id="errBox"></div>
+
+  <form id="formLogin">
+    <div class="auth-field">
+      <label>Email</label>
+      <input type="email" id="loginEmail" required autocomplete="email">
+    </div>
+    <div class="auth-field">
+      <label>Mật khẩu</label>
+      <input type="password" id="loginPassword" required autocomplete="current-password">
+    </div>
+    <button type="submit" class="auth-submit">Đăng nhập</button>
+  </form>
+
+  <form id="formSignup" style="display:none;">
+    <div class="auth-field">
+      <label>Họ và tên</label>
+      <input type="text" id="signupName" required autocomplete="name">
+    </div>
+    <div class="auth-field">
+      <label>Email</label>
+      <input type="email" id="signupEmail" required autocomplete="email">
+    </div>
+    <div class="auth-field">
+      <label>Mật khẩu (ít nhất 6 ký tự)</label>
+      <input type="password" id="signupPassword" required minlength="6" autocomplete="new-password">
+    </div>
+    <button type="submit" class="auth-submit">Tạo tài khoản</button>
+  </form>
+</div>
+
+<script type="module" src="firebase-init.js"></script>
+<script src="auth.js"></script>
+<script>
+const tabLogin = document.getElementById("tabLogin");
+const tabSignup = document.getElementById("tabSignup");
+const formLogin = document.getElementById("formLogin");
+const formSignup = document.getElementById("formSignup");
+const errBox = document.getElementById("errBox");
+
+function showTab(which) {
+  errBox.classList.remove("show");
+  if (which === "login") {
+    tabLogin.classList.add("active"); tabSignup.classList.remove("active");
+    formLogin.style.display = "block"; formSignup.style.display = "none";
+  } else {
+    tabSignup.classList.add("active"); tabLogin.classList.remove("active");
+    formSignup.style.display = "block"; formLogin.style.display = "none";
+  }
+}
+tabLogin.onclick = () => showTab("login");
+tabSignup.onclick = () => showTab("signup");
+
+function getNextUrl() {
+  const params = new URLSearchParams(location.search);
+  return params.get("next") || "index.html";
+}
+
+function showError(msg) {
+  errBox.textContent = msg;
+  errBox.classList.add("show");
+}
+
+const FRIENDLY_ERRORS = {
+  "auth/email-already-in-use": "Email này đã có tài khoản. Hãy chuyển sang tab Đăng nhập.",
+  "auth/invalid-email": "Email không hợp lệ.",
+  "auth/weak-password": "Mật khẩu quá ngắn (cần ít nhất 6 ký tự).",
+  "auth/user-not-found": "Không tìm thấy tài khoản với email này.",
+  "auth/wrong-password": "Sai mật khẩu.",
+  "auth/invalid-credential": "Email hoặc mật khẩu không đúng.",
+  "auth/too-many-requests": "Thử sai quá nhiều lần, vui lòng đợi một chút rồi thử lại.",
+};
+
+formLogin.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  errBox.classList.remove("show");
+  const btn = formLogin.querySelector("button");
+  btn.disabled = true;
+  try {
+    await window.Auth.login(
+      document.getElementById("loginEmail").value.trim(),
+      document.getElementById("loginPassword").value
+    );
+    location.href = getNextUrl();
+  } catch (err) {
+    showError(FRIENDLY_ERRORS[err.code] || ("Lỗi: " + err.message));
+    btn.disabled = false;
+  }
+});
+
+formSignup.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  errBox.classList.remove("show");
+  const btn = formSignup.querySelector("button");
+  btn.disabled = true;
+  try {
+    await window.Auth.signup(
+      document.getElementById("signupName").value.trim(),
+      document.getElementById("signupEmail").value.trim(),
+      document.getElementById("signupPassword").value
+    );
+    location.href = getNextUrl();
+  } catch (err) {
+    showError(FRIENDLY_ERRORS[err.code] || ("Lỗi: " + err.message));
+    btn.disabled = false;
+  }
+});
+
+// If already logged in, skip straight to the app.
+window.Auth.onChange((user) => {
+  if (user) location.href = getNextUrl();
+});
+</script>
+</body>
+</html>

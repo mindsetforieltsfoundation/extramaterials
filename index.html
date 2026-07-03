@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=202607030752">
+<link rel="stylesheet" href="style.css?v=202607030811">
 </head>
 <body>
 <div class="dash-hero">
@@ -30,7 +30,10 @@
 </main>
 <footer class="page-footer">Điểm được lưu ngay trên trình duyệt này (localStorage) — mỗi học sinh nên dùng máy/trình duyệt riêng.</footer>
 
-<script src="scores.js?v=202607030752"></script>
+<script type="module" src="firebase-init.js"></script>
+<script src="auth.js"></script>
+<script src="auth-guard.js"></script>
+<script src="scores.js?v=202607030811"></script>
 <script>
 const MODULE_COLORS = {
   gv: { c: "#2F7A78", soft: "#EAF3F2" },
@@ -290,7 +293,9 @@ document.getElementById("resetAllBtn").onclick = () => {
 
 // Open the first module of the current unit by default for discoverability
 openModules.add("u1-gv");
-render();
+window.addEventListener("scores-ready", render);
+// Fallback: if auth-guard doesn't fire (e.g. script load issue), still render after a delay
+setTimeout(() => { if (!window.currentUser) render(); }, 3000);
 </script>
 </body>
 </html>
