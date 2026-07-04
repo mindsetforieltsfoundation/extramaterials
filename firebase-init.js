@@ -11,7 +11,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDyfFlyIe8pujzUd4fDN0atXreuB5EmWE",
+  apiKey: "AIzaSyDyfFlyIe8pujzUd4fDN0atXreuB5EmwEE",
   authDomain: "mindset-for-ielts-foundation.firebaseapp.com",
   projectId: "mindset-for-ielts-foundation",
   storageBucket: "mindset-for-ielts-foundation.firebasestorage.app",
