@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Quản trị — Bài tập tương tác</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=202607040352">
+<style>
+  main { max-width: 1000px; }
+  .admin-hero { text-align: center; padding: 32px 18px 10px; }
+  .admin-hero h1 { color: var(--navy); font-size: 1.7rem; margin: 4px 0; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 22px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(20,30,60,.06); }
+  .card h2 { font-size: 1.05rem; color: var(--navy); margin: 0 0 14px; }
+  .form-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-end; }
+  .form-field { flex: 1; min-width: 140px; }
+  .form-field label { display: block; font-size: .75rem; color: var(--muted); margin-bottom: 4px; font-weight: 600; }
+  .form-field input { width: 100%; padding: 8px 10px; border: 1.5px solid var(--border); border-radius: 7px; font-size: .88rem; font-family: inherit; }
+  .btn { background: var(--navy); color: #fff; border: none; padding: 9px 20px; border-radius: 8px; font-size: .88rem; font-weight: 700; cursor: pointer; font-family: "Space Grotesk", sans-serif; }
+  .btn:hover { background: var(--teal); }
+  .btn:disabled { opacity: .5; cursor: not-allowed; }
+  .msg { font-size: .85rem; margin-top: 10px; padding: 8px 12px; border-radius: 8px; display: none; }
+  .msg.ok { background: var(--sage-soft); color: var(--sage); display: block; }
+  .msg.err { background: var(--coral-soft); color: #7a1f1f; display: block; }
+  table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); }
+  th { color: var(--muted); font-weight: 700; font-size: .75rem; text-transform: uppercase; letter-spacing: .03em; }
+  tr.clickable { cursor: pointer; }
+  tr.clickable:hover { background: #FAFAF7; }
+  .pct-badge { font-weight: 700; padding: 2px 8px; border-radius: 999px; font-size: .78rem; }
+  .pct-high { background: var(--sage-soft); color: var(--sage); }
+  .pct-mid { background: var(--amber-soft); color: var(--amber); }
+  .pct-low { background: var(--coral-soft); color: var(--coral); }
+  .back-link { font-size: .85rem; color: var(--teal); cursor: pointer; margin-bottom: 12px; display: inline-block; }
+</style>
+</head>
+<body>
+<div class="admin-hero">
+  <h1>🛠️ Trang quản trị Giáo viên</h1>
+  <p style="color:var(--muted);font-size:.9rem;">Tạo tài khoản học sinh &amp; theo dõi tiến độ làm bài</p>
+</div>
+
+<main>
+  <div class="card" id="createCard">
+    <h2>➕ Tạo tài khoản học sinh mới</h2>
+    <div class="form-row">
+      <div class="form-field">
+        <label>ID học sinh (không dấu, không cách)</label>
+        <input type="text" id="newId" placeholder="vd: hs001">
+      </div>
+      <div class="form-field">
+        <label>Họ và tên</label>
+        <input type="text" id="newName" placeholder="Nguyễn Văn A">
+      </div>
+      <div class="form-field">
+        <label>Mật khẩu</label>
+        <input type="text" id="newPassword" placeholder="ít nhất 6 ký tự">
+      </div>
+      <button class="btn" id="createBtn">Tạo tài khoản</button>
+    </div>
+    <div class="msg" id="createMsg"></div>
+  </div>
+
+  <div class="card" id="listCard">
+    <h2>👥 Danh sách học sinh</h2>
+    <table id="studentTable">
+      <thead><tr><th>ID</th><th>Tên</th><th>Ngày tạo</th><th>Điểm TB</th><th>Số bài đã làm</th></tr></thead>
+      <tbody id="studentBody"><tr><td colspan="5" style="color:var(--muted);">Đang tải...</td></tr></tbody>
+    </table>
+  </div>
+
+  <div class="card" id="detailCard" style="display:none;">
+    <span class="back-link" id="backLink">← Quay lại danh sách</span>
+    <h2 id="detailName"></h2>
+    <table>
+      <thead><tr><th>Bài tập</th><th>Điểm (%)</th><th>Số lần làm</th><th>Thời gian làm gần nhất</th><th>Tổng thời gian</th></tr></thead>
+      <tbody id="detailBody"></tbody>
+    </table>
+  </div>
+</main>
+
+<script type="module" src="firebase-init.js?v=202607040352"></script>
+<script src="auth.js?v=202607040352"></script>
+<script src="scores.js?v=202607040352"></script>
+<script>
+function fmtSec(s) {
+  if (!s || s < 0) return "—";
+  if (s < 60) return `${s} giây`;
+  const m = Math.floor(s / 60), r = s % 60;
+  return `${m} phút ${r} giây`;
+}
+function pctBadge(pct) {
+  const cls = pct >= 70 ? "pct-high" : pct >= 40 ? "pct-mid" : "pct-low";
+  return `<span class="pct-badge ${cls}">${pct}%</span>`;
+}
+
+window.Auth.onChange(async (user) => {
+  if (!user) {
+    location.href = "login.html?next=" + encodeURIComponent(location.pathname);
+    return;
+  }
+  if (!window.Auth.isAdmin(user)) {
+    document.body.innerHTML = `<div style="text-align:center;padding:60px 20px;">
+      <h2 style="color:var(--coral);">⛔ Không có quyền truy cập</h2>
+      <p style="color:var(--muted);">Trang này chỉ dành cho giáo viên quản trị.</p>
+      <a href="index.html" style="color:var(--teal);">← Về trang bài tập</a></div>`;
+    return;
+  }
+  loadStudents();
+});
+
+document.getElementById("createBtn").onclick = async () => {
+  const id = document.getElementById("newId").value.trim();
+  const name = document.getElementById("newName").value.trim();
+  const password = document.getElementById("newPassword").value;
+  const msg = document.getElementById("createMsg");
+  msg.className = "msg";
+  if (!id || !password || password.length < 6) {
+    msg.textContent = "Vui lòng nhập đủ ID và mật khẩu (ít nhất 6 ký tự).";
+    msg.className = "msg err";
+    return;
+  }
+  const btn = document.getElementById("createBtn");
+  btn.disabled = true;
+  try {
+    await window.Auth.createStudent(id, name, password);
+    msg.textContent = `✔ Đã tạo tài khoản cho "${name || id}" — ID: ${id} — Mật khẩu: ${password}`;
+    msg.className = "msg ok";
+    document.getElementById("newId").value = "";
+    document.getElementById("newName").value = "";
+    document.getElementById("newPassword").value = "";
+    loadStudents();
+  } catch (err) {
+    msg.textContent = "Lỗi: " + (err.code || err.message);
+    msg.className = "msg err";
+  }
+  btn.disabled = false;
+};
+
+async function loadStudents() {
+  const { db, getDocs, collection } = window.FB;
+  const tbody = document.getElementById("studentBody");
+  tbody.innerHTML = `<tr><td colspan="5" style="color:var(--muted);">Đang tải...</td></tr>`;
+  const snap = await getDocs(collection(db, "students"));
+  const rows = [];
+  snap.forEach((d) => rows.push({ uid: d.id, ...d.data() }));
+  if (!rows.length) {
+    tbody.innerHTML = `<tr><td colspan="5" style="color:var(--muted);">Chưa có học sinh nào. Tạo tài khoản đầu tiên ở trên.</td></tr>`;
+    return;
+  }
+  tbody.innerHTML = "";
+  for (const s of rows) {
+    const scores = await Scores.fetchForUser(s.uid);
+    const entries = Object.values(scores);
+    const avgPct = entries.length ? Math.round(entries.reduce((a, e) => a + e.pct, 0) / entries.length) : null;
+    const tr = document.createElement("tr");
+    tr.className = "clickable";
+    const dateStr = s.createdAt ? new Date(s.createdAt).toLocaleDateString("vi-VN") : "—";
+    tr.innerHTML = `<td><b>${s.studentId}</b></td><td>${s.name}</td><td>${dateStr}</td>
+      <td>${avgPct !== null ? pctBadge(avgPct) : "—"}</td><td>${entries.length} bài</td>`;
+    tr.onclick = () => showDetail(s, scores);
+    tbody.appendChild(tr);
+  }
+}
+
+function showDetail(student, scores) {
+  document.getElementById("listCard").style.display = "none";
+  document.getElementById("createCard").style.display = "none";
+  document.getElementById("detailCard").style.display = "block";
+  document.getElementById("detailName").textContent = `📋 ${student.name} (ID: ${student.studentId})`;
+  const tbody = document.getElementById("detailBody");
+  const entries = Object.entries(scores);
+  if (!entries.length) {
+    tbody.innerHTML = `<tr><td colspan="5" style="color:var(--muted);">Học sinh chưa làm bài nào.</td></tr>`;
+    return;
+  }
+  entries.sort((a, b) => (b[1].ts || 0) - (a[1].ts || 0));
+  tbody.innerHTML = "";
+  for (const [exId, e] of entries) {
+    const title = (e.meta && e.meta.title) ? e.meta.title : exId;
+    const module = (e.meta && e.meta.module) ? e.meta.module : "";
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td><b>${title}</b><br><span style="color:var(--muted);font-size:.78rem;">${module}</span></td>
+      <td>${pctBadge(e.pct)}</td>
+      <td>${e.attempts || 1} lần</td>
+      <td>${fmtSec(e.lastDurationSec)}</td>
+      <td>${fmtSec(e.totalDurationSec)}</td>`;
+    tbody.appendChild(tr);
+  }
+}
+
+document.getElementById("backLink").onclick = () => {
+  document.getElementById("detailCard").style.display = "none";
+  document.getElementById("listCard").style.display = "block";
+  document.getElementById("createCard").style.display = "block";
+};
+</script>
+</body>
+</html>

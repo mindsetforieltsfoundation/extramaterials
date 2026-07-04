@@ -25,7 +25,7 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 window.FB = {
-  auth, db,
+  auth, db, config: firebaseConfig,
   createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut,
   onAuthStateChanged, updateProfile,
   doc, setDoc, getDocs, collection, deleteDoc,

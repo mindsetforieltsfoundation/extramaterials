@@ -21,7 +21,10 @@
     const bar = document.createElement("div");
     bar.style.cssText = "position:fixed;top:8px;right:12px;z-index:9999;background:#14324A;color:#fff;padding:6px 14px;border-radius:999px;font-size:.78rem;font-family:sans-serif;display:flex;align-items:center;gap:10px;box-shadow:0 2px 8px rgba(0,0,0,.15);";
     const name = user.displayName || user.email;
-    bar.innerHTML = `<span>👤 ${name}</span><a href="#" id="logoutLink" style="color:#cfe0f5;text-decoration:underline;">Đăng xuất</a>`;
+    const adminLink = window.Auth.isAdmin(user)
+      ? `<a href="${inSubfolder ? '../admin.html' : 'admin.html'}" style="color:#FFD98E;text-decoration:underline;">🛠️ Quản trị</a>`
+      : "";
+    bar.innerHTML = `<span>👤 ${name}</span>${adminLink}<a href="#" id="logoutLink" style="color:#cfe0f5;text-decoration:underline;">Đăng xuất</a>`;
     document.body.appendChild(bar);
     document.getElementById("logoutLink").onclick = async (e) => {
       e.preventDefault();

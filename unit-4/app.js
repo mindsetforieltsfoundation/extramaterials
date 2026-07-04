@@ -53,7 +53,7 @@ function buildFillBlank(container, { lines, prefixLabel, exerciseId, meta }) {
     });
     scoreEl.textContent = `Kết quả: ${correct}/${inputs.length} câu đúng (${Math.round(correct / inputs.length * 100)}%).`;
     scoreEl.className = "score " + (correct === inputs.length ? "good" : "bad");
-    if (exerciseId) Scores.record(exerciseId, correct, inputs.length, meta);
+    if (exerciseId) Scores.record(exerciseId, correct, inputs.length, meta, Math.round((Date.now() - (window.__pageLoadTime||Date.now()))/1000));
     if (typeof onExerciseChecked === "function") onExerciseChecked();
   };
   resetBtn.onclick = () => {
@@ -110,7 +110,7 @@ function buildMCQ(container, { questions, exerciseId, meta }) {
     });
     scoreEl.textContent = `Kết quả: ${correct}/${questions.length} câu đúng (${Math.round(correct / questions.length * 100)}%).`;
     scoreEl.className = "score " + (correct === questions.length ? "good" : "bad");
-    if (exerciseId) Scores.record(exerciseId, correct, questions.length, meta);
+    if (exerciseId) Scores.record(exerciseId, correct, questions.length, meta, Math.round((Date.now() - (window.__pageLoadTime||Date.now()))/1000));
     if (typeof onExerciseChecked === "function") onExerciseChecked();
   };
   resetBtn.onclick = () => {
@@ -165,7 +165,7 @@ function buildMatching(container, { pairs, leftLabel, rightLabel, exerciseId, me
           matched.add(`L-${selectedLeft}`);
           matched.add(`R-${id}`);
           if (matched.size === leftItems.length * 2 && exerciseId) {
-            Scores.record(exerciseId, firstTryCorrect, pairs.length, meta);
+            Scores.record(exerciseId, firstTryCorrect, pairs.length, meta, Math.round((Date.now() - (window.__pageLoadTime||Date.now()))/1000));
             if (typeof onExerciseChecked === "function") onExerciseChecked();
           }
         } else {
@@ -254,7 +254,7 @@ function buildSort2(container, { items, columns, exerciseId, meta }) {
     });
     scoreEl.textContent = `Kết quả: ${correct}/${items.length} từ đúng vị trí (đã xếp ${total}/${items.length}).`;
     scoreEl.className = "score " + (correct === items.length && total === items.length ? "good" : "bad");
-    if (exerciseId) Scores.record(exerciseId, correct, items.length, meta);
+    if (exerciseId) Scores.record(exerciseId, correct, items.length, meta, Math.round((Date.now() - (window.__pageLoadTime||Date.now()))/1000));
     if (typeof onExerciseChecked === "function") onExerciseChecked();
   };
   resetBtn.onclick = () => location.reload();
@@ -311,7 +311,7 @@ function buildWordOrder(container, { items, exerciseId, meta }) {
     });
     scoreEl.textContent = `Kết quả: ${correct}/${blocks.length} câu đúng.`;
     scoreEl.className = "score " + (correct === blocks.length ? "good" : "bad");
-    if (exerciseId) Scores.record(exerciseId, correct, blocks.length, meta);
+    if (exerciseId) Scores.record(exerciseId, correct, blocks.length, meta, Math.round((Date.now() - (window.__pageLoadTime||Date.now()))/1000));
     if (typeof onExerciseChecked === "function") onExerciseChecked();
   };
   resetBtn.onclick = () => location.reload();
@@ -365,7 +365,7 @@ function buildWordSearch(container, { grid, words, exerciseId, meta }) {
       scoreEl.textContent = `Đã tìm ${foundSet.size}/${words.length} từ. ✔ ${match}`;
       scoreEl.className = "score good";
       if (foundSet.size === words.length && exerciseId) {
-        Scores.record(exerciseId, foundSet.size, words.length, meta);
+        Scores.record(exerciseId, foundSet.size, words.length, meta, Math.round((Date.now() - (window.__pageLoadTime||Date.now()))/1000));
         if (typeof onExerciseChecked === "function") onExerciseChecked();
       }
     } else {

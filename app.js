@@ -19,8 +19,8 @@ function norm(s) {
 }
 
 /* ---------- 1. Fill in the blank ---------- */
-function buildFillBlank(container, { lines, prefixLabel }) {
-  // lines: [{ text: "I ____ my teeth.", answers: ["brush","brushes"] }, ...]
+function buildFillBlank(container, { lines, prefixLabel, exerciseId, meta }) {
+  // lines: [{ text: "I ____ my teeth.", answers: ["brush","brushes"], explain: "..." }, ...]
   const inputs = [];
   lines.forEach((line, i) => {
     const wrap = el("div", { class: "sentence-line" });
@@ -29,25 +29,35 @@ function buildFillBlank(container, { lines, prefixLabel }) {
     const input = el("input", { class: "blank", type: "text", "data-idx": i, autocomplete: "off" });
     wrap.appendChild(input);
     wrap.appendChild(document.createTextNode(parts[1] || ""));
+    const explainEl = el("div", { class: "explain", style: "display:none;" });
+    wrap.appendChild(explainEl);
     container.appendChild(wrap);
-    inputs.push({ input, answers: line.answers.map(norm) });
+    inputs.push({ input, answers: line.answers.map(norm), explain: line.explain, explainEl, rawAnswers: line.answers });
   });
   const scoreEl = el("div", { class: "score" });
   const checkBtn = el("button", { class: "check" }, "Kiểm tra");
   const resetBtn = el("button", { class: "reset" }, "Làm lại");
   checkBtn.onclick = () => {
     let correct = 0;
-    inputs.forEach(({ input, answers }) => {
+    inputs.forEach(({ input, answers, explain, explainEl, rawAnswers }) => {
       const ok = answers.includes(norm(input.value));
       input.classList.remove("correct", "incorrect");
       input.classList.add(ok ? "correct" : "incorrect");
+      if (!ok) {
+        explainEl.style.display = "block";
+        explainEl.textContent = `✗ Đáp án đúng: "${rawAnswers[0]}"` + (explain ? ` — ${explain}` : "");
+      } else {
+        explainEl.style.display = "none";
+      }
       if (ok) correct++;
     });
-    scoreEl.textContent = `Kết quả: ${correct}/${inputs.length} câu đúng.`;
+    scoreEl.textContent = `Kết quả: ${correct}/${inputs.length} câu đúng (${Math.round(correct / inputs.length * 100)}%).`;
     scoreEl.className = "score " + (correct === inputs.length ? "good" : "bad");
+    if (exerciseId) Scores.record(exerciseId, correct, inputs.length, meta, Math.round((Date.now() - (window.__pageLoadTime||Date.now()))/1000));
+    if (typeof onExerciseChecked === "function") onExerciseChecked();
   };
   resetBtn.onclick = () => {
-    inputs.forEach(({ input }) => { input.value = ""; input.classList.remove("correct", "incorrect"); });
+    inputs.forEach(({ input, explainEl }) => { input.value = ""; input.classList.remove("correct", "incorrect"); explainEl.style.display = "none"; });
     scoreEl.textContent = "";
   };
   container.appendChild(checkBtn);
@@ -56,8 +66,8 @@ function buildFillBlank(container, { lines, prefixLabel }) {
 }
 
 /* ---------- 2. Multiple choice ---------- */
-function buildMCQ(container, { questions }) {
-  // questions: [{ text, options: [...], answer }]
+function buildMCQ(container, { questions, exerciseId, meta }) {
+  // questions: [{ text, options: [...], answer, explain }]
   const state = questions.map(() => null);
   questions.forEach((q, qi) => {
     const qwrap = el("div", { class: "mcq-q" });
@@ -73,6 +83,7 @@ function buildMCQ(container, { questions }) {
       opts.appendChild(b);
     });
     qwrap.appendChild(opts);
+    qwrap.appendChild(el("div", { class: "explain", style: "display:none;" }));
     container.appendChild(qwrap);
   });
   const scoreEl = el("div", { class: "score" });
@@ -82,20 +93,31 @@ function buildMCQ(container, { questions }) {
     let correct = 0;
     [...container.querySelectorAll(".mcq-q")].forEach((qwrap, qi) => {
       const opts = qwrap.querySelector(".mcq-options");
+      const explainEl = qwrap.querySelector(".explain");
       [...opts.children].forEach(b => {
         b.classList.remove("correct-answer", "wrong-answer");
         if (b.textContent === questions[qi].answer) b.classList.add("correct-answer");
         else if (b.textContent === state[qi]) b.classList.add("wrong-answer");
       });
-      if (state[qi] === questions[qi].answer) correct++;
+      const ok = state[qi] === questions[qi].answer;
+      if (!ok) {
+        explainEl.style.display = "block";
+        explainEl.textContent = `✗ Đáp án đúng: "${questions[qi].answer}"` + (questions[qi].explain ? ` — ${questions[qi].explain}` : "");
+      } else {
+        explainEl.style.display = "none";
+      }
+      if (ok) correct++;
     });
-    scoreEl.textContent = `Kết quả: ${correct}/${questions.length} câu đúng.`;
+    scoreEl.textContent = `Kết quả: ${correct}/${questions.length} câu đúng (${Math.round(correct / questions.length * 100)}%).`;
     scoreEl.className = "score " + (correct === questions.length ? "good" : "bad");
+    if (exerciseId) Scores.record(exerciseId, correct, questions.length, meta, Math.round((Date.now() - (window.__pageLoadTime||Date.now()))/1000));
+    if (typeof onExerciseChecked === "function") onExerciseChecked();
   };
   resetBtn.onclick = () => {
     state.fill(null);
     [...container.querySelectorAll(".mcq-options button")].forEach(b =>
       b.classList.remove("selected", "correct-answer", "wrong-answer"));
+    [...container.querySelectorAll(".explain")].forEach(e => e.style.display = "none");
     scoreEl.textContent = "";
   };
   container.appendChild(checkBtn);
@@ -104,7 +126,7 @@ function buildMCQ(container, { questions }) {
 }
 
 /* ---------- 3. Matching (click pairs) ---------- */
-function buildMatching(container, { pairs, leftLabel, rightLabel }) {
+function buildMatching(container, { pairs, leftLabel, rightLabel, exerciseId, meta }) {
   // pairs: [{ left: "...", right: "..." }]
   const leftItems = pairs.map((p, i) => ({ text: p.left, id: i }));
   const rightItems = pairs.map((p, i) => ({ text: p.right, id: i }))
@@ -117,8 +139,9 @@ function buildMatching(container, { pairs, leftLabel, rightLabel }) {
   if (rightLabel) colR.appendChild(el("h3", { style: "font-size:.85rem;color:#6b7280;margin:0 0 6px;" }, rightLabel));
 
   let selectedLeft = null;
+  let firstTryCorrect = 0;
+  let attempted = 0;
   const matched = new Set();
-  const results = {}; // leftId -> rightId chosen
 
   function makeItem(text, id, side) {
     const item = el("div", { class: "match-item" }, text);
@@ -130,24 +153,29 @@ function buildMatching(container, { pairs, leftLabel, rightLabel }) {
         item.classList.add("selected");
         selectedLeft = id;
       } else if (side === "R" && selectedLeft !== null) {
-        results[selectedLeft] = id;
         const leftEl = colL.querySelector(`[data-id="${selectedLeft}"]`);
         const correct = selectedLeft === id;
+        attempted++;
+        if (correct) firstTryCorrect++;
         [leftEl, item].forEach(x => {
           x.classList.remove("selected");
           x.classList.add(correct ? "matched-correct" : "matched-wrong");
         });
-        matched.add(`L-${selectedLeft}`);
-        matched.add(`R-${id}`);
-        selectedLeft = null;
-        if (!correct) {
+        if (correct) {
+          matched.add(`L-${selectedLeft}`);
+          matched.add(`R-${id}`);
+          if (matched.size === leftItems.length * 2 && exerciseId) {
+            Scores.record(exerciseId, firstTryCorrect, pairs.length, meta, Math.round((Date.now() - (window.__pageLoadTime||Date.now()))/1000));
+            if (typeof onExerciseChecked === "function") onExerciseChecked();
+          }
+        } else {
+          const ls = selectedLeft;
           setTimeout(() => {
             leftEl.classList.remove("matched-wrong");
             item.classList.remove("matched-wrong");
-            matched.delete(`L-${selectedLeft}`);
-            matched.delete(`R-${id}`);
           }, 700);
         }
+        selectedLeft = null;
       }
     };
     return item;
@@ -161,19 +189,13 @@ function buildMatching(container, { pairs, leftLabel, rightLabel }) {
 
   const scoreEl = el("div", { class: "score" });
   const resetBtn = el("button", { class: "reset" }, "Làm lại");
-  resetBtn.onclick = () => {
-    matched.clear();
-    selectedLeft = null;
-    [...colL.children, ...colR.children].forEach(c =>
-      c.classList.remove("selected", "matched-correct", "matched-wrong"));
-    scoreEl.textContent = "";
-  };
+  resetBtn.onclick = () => location.reload();
   container.appendChild(resetBtn);
   container.appendChild(scoreEl);
 }
 
 /* ---------- 4. Sort into 2 columns (e.g. make/do) ---------- */
-function buildSort2(container, { items, columns }) {
+function buildSort2(container, { items, columns, exerciseId, meta }) {
   // items: [{ text, col }], columns: ["make","do"]
   const pool = el("div", { class: "sort-pool" });
   const cols = el("div", { class: "sort-columns" });
@@ -232,6 +254,8 @@ function buildSort2(container, { items, columns }) {
     });
     scoreEl.textContent = `Kết quả: ${correct}/${items.length} từ đúng vị trí (đã xếp ${total}/${items.length}).`;
     scoreEl.className = "score " + (correct === items.length && total === items.length ? "good" : "bad");
+    if (exerciseId) Scores.record(exerciseId, correct, items.length, meta, Math.round((Date.now() - (window.__pageLoadTime||Date.now()))/1000));
+    if (typeof onExerciseChecked === "function") onExerciseChecked();
   };
   resetBtn.onclick = () => location.reload();
   container.appendChild(checkBtn);
@@ -240,7 +264,7 @@ function buildSort2(container, { items, columns }) {
 }
 
 /* ---------- 5. Word order builder ---------- */
-function buildWordOrder(container, { items }) {
+function buildWordOrder(container, { items, exerciseId, meta }) {
   // items: [{ words: [...], answer: "..." }]  answer = correct sentence string
   const blocks = [];
   items.forEach((it, idx) => {
@@ -287,6 +311,8 @@ function buildWordOrder(container, { items }) {
     });
     scoreEl.textContent = `Kết quả: ${correct}/${blocks.length} câu đúng.`;
     scoreEl.className = "score " + (correct === blocks.length ? "good" : "bad");
+    if (exerciseId) Scores.record(exerciseId, correct, blocks.length, meta, Math.round((Date.now() - (window.__pageLoadTime||Date.now()))/1000));
+    if (typeof onExerciseChecked === "function") onExerciseChecked();
   };
   resetBtn.onclick = () => location.reload();
   container.appendChild(checkBtn);
@@ -295,7 +321,7 @@ function buildWordOrder(container, { items }) {
 }
 
 /* ---------- 6. Word search (simplified: click-list to reveal + mark found) ---------- */
-function buildWordSearch(container, { grid, words }) {
+function buildWordSearch(container, { grid, words, exerciseId, meta }) {
   const gridEl = el("div", { class: "ws-grid" });
   const rows = grid.length, cols = grid[0].length;
   gridEl.style.gridTemplateColumns = `repeat(${cols}, 32px)`;
@@ -338,6 +364,10 @@ function buildWordSearch(container, { grid, words }) {
       list.querySelector(`[data-word="${match}"]`).classList.add("found");
       scoreEl.textContent = `Đã tìm ${foundSet.size}/${words.length} từ. ✔ ${match}`;
       scoreEl.className = "score good";
+      if (foundSet.size === words.length && exerciseId) {
+        Scores.record(exerciseId, foundSet.size, words.length, meta, Math.round((Date.now() - (window.__pageLoadTime||Date.now()))/1000));
+        if (typeof onExerciseChecked === "function") onExerciseChecked();
+      }
     } else {
       selectedCells.forEach(c => c.classList.remove("sel"));
       scoreEl.textContent = foundSet.size === words.length ? "🎉 Hoàn thành tất cả!" : "Chưa đúng, thử lại.";
