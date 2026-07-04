@@ -6,7 +6,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <title>Quản trị — Bài tập tương tác</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=202607040713">
+<link rel="stylesheet" href="style.css?v=202607040923">
 <style>
   main { max-width: 1000px; }
   .admin-hero { text-align: center; padding: 32px 18px 10px; }
@@ -80,9 +80,9 @@
   </div>
 </main>
 
-<script type="module" src="firebase-init.js?v=202607040713"></script>
-<script src="auth.js?v=202607040713"></script>
-<script src="scores.js?v=202607040713"></script>
+<script type="module" src="firebase-init.js?v=202607040923"></script>
+<script src="auth.js?v=202607040923"></script>
+<script src="scores.js?v=202607040923"></script>
 <script>
 function fmtSec(s) {
   if (!s || s < 0) return "—";
@@ -174,11 +174,27 @@ async function loadStudents() {
     } else {
       tr.className = "clickable";
       tr.innerHTML = `<td><b>${s.studentId}</b></td><td>${s.name}</td><td>${dateStr}</td>
-        <td>${avgPct !== null ? pctBadge(avgPct) : "—"}</td><td>${entries.length} bài</td>`;
-      tr.onclick = () => showDetail(s, scores);
+        <td>${avgPct !== null ? pctBadge(avgPct) : "—"}</td>
+        <td>${entries.length} bài
+          <button class="del-btn" data-uid="${s.uid}" data-name="${s.studentId}"
+            style="margin-left:8px;background:transparent;border:1px solid var(--coral);color:var(--coral);border-radius:6px;font-size:.72rem;padding:2px 8px;cursor:pointer;">
+            Xoá khỏi danh sách
+          </button>
+        </td>`;
+      [...tr.children].slice(0, 4).forEach(td => td.onclick = () => showDetail(s, scores));
     }
     tbody.appendChild(tr);
   }
+  // Wire up delete buttons (separate pass so click doesn't also trigger row click)
+  tbody.querySelectorAll(".del-btn").forEach(btn => {
+    btn.onclick = async (e) => {
+      e.stopPropagation();
+      if (!confirm(`Xoá "${btn.dataset.name}" khỏi danh sách? (Tài khoản đăng nhập vẫn còn — nếu muốn xoá hẳn, cô cần xoá thêm ở Firebase Console → Authentication)`)) return;
+      const { db, doc, deleteDoc } = window.FB;
+      await deleteDoc(doc(db, "students", btn.dataset.uid));
+      loadStudents();
+    };
+  });
 }
 
 function showDetail(student, scores) {
