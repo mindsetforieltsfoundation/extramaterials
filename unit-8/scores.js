@@ -103,17 +103,13 @@ const Scores = {
   },
 
   // For admin use: read another user's scores (requires Firestore rules to allow it).
+  // Throws on failure instead of silently returning {} — callers should show the error.
   async fetchForUser(uid) {
-    try {
-      const { db, getDocs, collection } = window.FB;
-      const snap = await getDocs(collection(db, "users", uid, "scores"));
-      const out = {};
-      snap.forEach((d) => { out[d.id] = d.data(); });
-      return out;
-    } catch (e) {
-      console.warn("Scores.fetchForUser failed", e);
-      return {};
-    }
+    const { db, getDocs, collection } = window.FB;
+    const snap = await getDocs(collection(db, "users", uid, "scores"));
+    const out = {};
+    snap.forEach((d) => { out[d.id] = d.data(); });
+    return out;
   },
 };
 

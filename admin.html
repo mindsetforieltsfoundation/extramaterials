@@ -6,7 +6,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <title>Quản trị — Bài tập tương tác</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=202607040352">
+<link rel="stylesheet" href="style.css?v=202607040713">
 <style>
   main { max-width: 1000px; }
   .admin-hero { text-align: center; padding: 32px 18px 10px; }
@@ -63,7 +63,7 @@
   </div>
 
   <div class="card" id="listCard">
-    <h2>👥 Danh sách học sinh</h2>
+    <h2>👥 Danh sách học sinh <button class="btn" id="refreshBtn" style="font-size:.75rem;padding:5px 12px;margin-left:10px;">🔄 Làm mới</button></h2>
     <table id="studentTable">
       <thead><tr><th>ID</th><th>Tên</th><th>Ngày tạo</th><th>Điểm TB</th><th>Số bài đã làm</th></tr></thead>
       <tbody id="studentBody"><tr><td colspan="5" style="color:var(--muted);">Đang tải...</td></tr></tbody>
@@ -80,9 +80,9 @@
   </div>
 </main>
 
-<script type="module" src="firebase-init.js?v=202607040352"></script>
-<script src="auth.js?v=202607040352"></script>
-<script src="scores.js?v=202607040352"></script>
+<script type="module" src="firebase-init.js?v=202607040713"></script>
+<script src="auth.js?v=202607040713"></script>
+<script src="scores.js?v=202607040713"></script>
 <script>
 function fmtSec(s) {
   if (!s || s < 0) return "—";
@@ -109,6 +109,11 @@ window.Auth.onChange(async (user) => {
   }
   loadStudents();
 });
+
+document.getElementById("refreshBtn").onclick = (e) => {
+  e.preventDefault();
+  loadStudents();
+};
 
 document.getElementById("createBtn").onclick = async () => {
   const id = document.getElementById("newId").value.trim();
@@ -151,15 +156,27 @@ async function loadStudents() {
   }
   tbody.innerHTML = "";
   for (const s of rows) {
-    const scores = await Scores.fetchForUser(s.uid);
+    const tr = document.createElement("tr");
+    let scores = {};
+    let fetchError = null;
+    try {
+      scores = await Scores.fetchForUser(s.uid);
+    } catch (e) {
+      fetchError = e.code || e.message || String(e);
+    }
     const entries = Object.values(scores);
     const avgPct = entries.length ? Math.round(entries.reduce((a, e) => a + e.pct, 0) / entries.length) : null;
-    const tr = document.createElement("tr");
-    tr.className = "clickable";
     const dateStr = s.createdAt ? new Date(s.createdAt).toLocaleDateString("vi-VN") : "—";
-    tr.innerHTML = `<td><b>${s.studentId}</b></td><td>${s.name}</td><td>${dateStr}</td>
-      <td>${avgPct !== null ? pctBadge(avgPct) : "—"}</td><td>${entries.length} bài</td>`;
-    tr.onclick = () => showDetail(s, scores);
+    if (fetchError) {
+      tr.className = "clickable";
+      tr.innerHTML = `<td><b>${s.studentId}</b></td><td>${s.name}</td><td>${dateStr}</td>
+        <td colspan="2" style="color:var(--coral);">⚠ Lỗi đọc điểm: ${fetchError}</td>`;
+    } else {
+      tr.className = "clickable";
+      tr.innerHTML = `<td><b>${s.studentId}</b></td><td>${s.name}</td><td>${dateStr}</td>
+        <td>${avgPct !== null ? pctBadge(avgPct) : "—"}</td><td>${entries.length} bài</td>`;
+      tr.onclick = () => showDetail(s, scores);
+    }
     tbody.appendChild(tr);
   }
 }
